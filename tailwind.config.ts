@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 
-function toRgba(cssVariable: any) {
+type OpacityFunction = (params: { opacityValue: number }) => string;
+
+function toRgba(cssVariable: string): OpacityFunction {
   const color = `var(${cssVariable})`;
   return ({ opacityValue }) => `rgba(${color}, ${opacityValue})`;
 }

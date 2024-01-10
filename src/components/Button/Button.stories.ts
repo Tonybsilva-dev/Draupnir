@@ -8,7 +8,17 @@ const meta: Meta<ButtonProps> = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
+  argTypes: {
+    children: {
+      type: "string"
+    },
+    disabled: {
+      type: "boolean"
+    },
+    className: {
+      type: "string"
+    }
+  },
 };
 
 export default meta;

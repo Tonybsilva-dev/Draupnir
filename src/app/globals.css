@@ -23,19 +23,19 @@ html {
   :root {
     /* COLORS */
     --background: 242, 242, 242;
-    --primary: 33, 150, 243;
+    --primary: 22, 163, 74;
     --secondary: 76, 175, 80;
     --tertiary: 255, 193, 7;
     --quaternary: 229, 57, 53, 1;
 
-    --hover: 27, 74, 240;
-    --click: 0, 46, 208;
+    --hover: 21, 128, 61;
+    --click: 20, 83, 45;
     --icon: 124, 123, 123;
     --outline: 215, 215, 215;
     --divider: 237, 237, 237;
 
     --bg-light: 255, 255, 255;
-    --bg-dark: 248, 248, 248;
+    --bg-dark: 34, 197, 94;
     --bg-disabled: 239, 239, 239;
 
     --text-primary: 24, 24, 24;
@@ -87,7 +87,7 @@ html {
 
   .dark-theme {
     --background: 242, 242, 242;
-    --primary: 13, 71, 161;
+    --primary: 34, 197, 94;
     --secondary: 0, 121, 107;
     --tertiary: 255, 160, 0;
     --quaternary: 183, 28, 28;

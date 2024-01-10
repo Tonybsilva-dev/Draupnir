@@ -10,14 +10,14 @@ const meta: Meta<ButtonProps> = {
   },
   argTypes: {
     children: {
-      type: "string"
+      type: "string",
     },
     disabled: {
-      type: "boolean"
+      type: "boolean",
     },
     className: {
-      type: "string"
-    }
+      type: "string",
+    },
   },
 };
 
@@ -29,7 +29,7 @@ export const Primary: StoryObj<ButtonProps> = {
   },
 };
 
-export const Secondary: StoryObj<ButtonProps> = {
+export const Dark: StoryObj<ButtonProps> = {
   args: {
     children: "Button",
     className: "dark-theme",

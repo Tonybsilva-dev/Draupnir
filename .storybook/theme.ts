@@ -8,7 +8,7 @@ const theme = create({
 
   brandTitle: "Draupnir UI",
   brandUrl: "https://www.linkedin.com/in/tony-silva/",
-  brandImage: "https://storybook.js.org/images/placeholders/350x150.png",
+  brandImage: "https://i.imgur.com/smq7XQS.png",
   brandTarget: "_self",
 
   //

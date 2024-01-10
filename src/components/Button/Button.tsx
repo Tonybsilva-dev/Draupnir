@@ -19,7 +19,7 @@ function getVariant(
     case "ghost":
       return disabled
         ? "bg-disabled tex-disabled"
-        : "rounded-md px-2 hover:bg-zinc-50 shadow-none text-zinc-500 dark:hover:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800";
+        : "rounded-md hover:bg-zinc-50 shadow-none text-zinc-500 dark:hover:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800";
 
     default:
       break;

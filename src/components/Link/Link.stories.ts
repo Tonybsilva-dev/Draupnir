@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Link, { LinkProps } from "./Link";
 
 const meta: Meta<LinkProps> = {
-  title: "components/Link",
+  title: "Design System/Molecules/Link",
   // tags: ["autodocs"],
   component: Link,
   parameters: {

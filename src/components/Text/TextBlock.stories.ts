@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import TextBlock, { TextBlockProps } from "./TextBlock";
 
 const meta: Meta = {
-  title: "components/TextBlock",
+  title: "Design System/Molecules/Text Block",
   component: TextBlock,
   argTypes: {
     className: {

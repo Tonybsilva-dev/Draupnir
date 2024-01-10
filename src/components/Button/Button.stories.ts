@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Button, { ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
-  title: "components/Button",
+  title: "Design System/Molecules/Button",
   // tags: ['autodocs'],
   component: Button,
   parameters: {

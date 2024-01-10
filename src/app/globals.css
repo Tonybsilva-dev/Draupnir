@@ -7,6 +7,18 @@ html {
   line-height: 1.25em;
 }
 
+@font-face {
+  font-family: "Mulish";
+  src: url("../fonts/Mulish-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+
 @layer base {
   :root {
     /* COLORS */
@@ -59,10 +71,18 @@ html {
     --spacing-2xl: 48px;
     --spacing-4xl: 56px;
 
+    /* BORDER RADIUS  */
     --border-radius-none: 0px;
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 16px;
+
+    /* FONT SIZE */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-nd: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
   }
 
   .dark-theme {

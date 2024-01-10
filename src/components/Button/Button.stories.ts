@@ -15,13 +15,13 @@ export default meta;
 
 export const Primary: StoryObj<ButtonProps> = {
   args: {
-    children: "Order now!",
+    children: "Button",
   },
 };
 
 export const Secondary: StoryObj<ButtonProps> = {
   args: {
-    children: "Order now!",
+    children: "Button",
     className: "dark-theme",
   },
 };

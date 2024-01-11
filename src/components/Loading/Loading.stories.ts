@@ -3,6 +3,9 @@ import { Loading } from "./Loading";
 
 const meta: Meta<typeof Loading> = {
   title: "Design System/Atoms/Loading",
+  parameters: {
+    layout: "centered",
+  },
   component: Loading,
 } as Meta<typeof Loading>;
 

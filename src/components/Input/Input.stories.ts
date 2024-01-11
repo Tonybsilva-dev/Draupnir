@@ -4,6 +4,9 @@ import Input, { InputProps } from "./Input";
 
 const meta: Meta<InputProps> = {
   title: "Design System/Molecules/Input",
+  parameters: {
+    layout: "centered",
+  },
   component: Input,
   argTypes: {},
 };

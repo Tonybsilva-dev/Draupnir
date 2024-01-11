@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Button, { ButtonProps } from "./Button";
+import { Button, ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
   title: "Design System/Molecules/Button",
@@ -12,7 +12,7 @@ const meta: Meta<ButtonProps> = {
     children: {
       type: "string",
     },
-    disabled: {
+    isLoading: {
       type: "boolean",
     },
     className: {
@@ -33,5 +33,13 @@ export const Dark: StoryObj<ButtonProps> = {
   args: {
     children: "Button",
     className: "dark-theme",
+  },
+};
+
+export const Loading: StoryObj<ButtonProps> = {
+  args: {
+    children: "Button",
+    variant: "ghost",
+    isLoading: true,
   },
 };

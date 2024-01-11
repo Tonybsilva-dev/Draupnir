@@ -12,12 +12,14 @@ const meta: Meta<DividerProps> = {
 
 export default meta;
 
-export const Primary: StoryObj<DividerProps> = {
+export const Default: StoryObj<DividerProps> = {
   args: {},
 };
 
-export const Default: StoryObj<DividerProps> = {
-  args: {},
+export const Dark: StoryObj<DividerProps> = {
+  args: {
+    bgColor: "dark",
+  },
 };
 
 export const DivisorWithProps: StoryObj<DividerProps> = {

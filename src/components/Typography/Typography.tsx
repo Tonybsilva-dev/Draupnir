@@ -1,7 +1,8 @@
-import React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import React, { ComponentProps } from "react";
+import { tv, VariantProps } from "tailwind-variants";
 
-const textVariants = cva("text-gray-primary text-sm font-normal", {
+const text = tv({
+  base: ["text-gray-primary font-normal"],
   variants: {
     variant: {
       primary: "text-gray-primary",
@@ -22,7 +23,9 @@ const textVariants = cva("text-gray-primary text-sm font-normal", {
   },
 });
 
-export type TypographyProps = VariantProps<typeof textVariants> & {
+export type TypographyProps = ComponentProps<"p"> & {
+  variant: "primary" | "secondary" | "tertiary";
+  size: "xs" | "sm" | "md" | "xl";
   children: React.ReactNode;
   element?: keyof JSX.IntrinsicElements;
 } & JSX.IntrinsicElements["p"];
@@ -30,12 +33,14 @@ export type TypographyProps = VariantProps<typeof textVariants> & {
 const Typography = ({
   children,
   element = "p",
+  variant,
+  size,
   className,
   ...rest
 }: TypographyProps) => {
   const Element = element as any;
   return (
-    <Element className={`${textVariants(rest)} ${className}`} {...rest}>
+    <Element className={text({ variant, size, className })} {...rest}>
       {children}
     </Element>
   );

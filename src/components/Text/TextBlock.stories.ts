@@ -1,12 +1,21 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import TextBlock, { TextBlockProps } from "./TextBlock";
+import TextBlock, { type TextBlockProps } from "./TextBlock";
 
-const meta: Meta = {
-  title: "Design System/Molecules/Text Block",
+const meta: Meta<TextBlockProps> = {
+  title: "Design System/Molecules/TextBlock",
   component: TextBlock,
+  parameters: {
+    layout: "centered",
+  },
   argTypes: {
-    className: {
+    type: {
+      type: "string",
+    },
+    title: {
+      type: "string",
+    },
+    children: {
       type: "string",
     },
   },
@@ -16,8 +25,31 @@ export default meta;
 
 export const Primary: StoryObj<TextBlockProps> = {
   args: {
-    title: "Any Title",
-    textBlock:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    title: "Título",
+    children: "Olá eu sou uma bloco de Texto padrão",
+  },
+};
+
+export const TextBlockPrimary: StoryObj<TextBlockProps> = {
+  args: {
+    title: "Título",
+    children: "Olá eu sou uma bloco de Texto Primário",
+    type: "primary",
+  },
+};
+
+export const TextBlockSecondary: StoryObj<TextBlockProps> = {
+  args: {
+    title: "Título",
+    children: "Olá eu sou uma bloco de Texto Secundário",
+    type: "secondary",
+  },
+};
+
+export const TextBlockTertiary: StoryObj<TextBlockProps> = {
+  args: {
+    title: "Título",
+    children: "Olá eu sou uma bloco de Texto Terciário",
+    type: "dark",
   },
 };

@@ -46,11 +46,13 @@ const config: Config = {
       9: "var(--spacing-4xl) /* 56px */",
     },
     fontSize: {
-      xs: 'var(--text-xs)',
-      sm: 'var(--text-sm)',
-      md: 'var(--text-md)',
-      lg: 'var(--text-lg)',
-      xl: 'var(--text-xl)',
+      xs: "var(--text-xs)",
+      sm: "var(--text-sm)",
+      md: "var(--text-md)",
+      lg: "var(--text-lg)",
+      xl: "var(--text-xl)",
+      "2xl": "var(--text-2xl)",
+      "4xl": "var(--text-4xl)",
     },
     extend: {
       colors: {

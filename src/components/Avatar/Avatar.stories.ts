@@ -17,5 +17,14 @@ const meta: Meta<AvatarProps> = {
 export default meta;
 
 export const Primary: StoryObj<AvatarProps> = {
-  args: {},
+  args: {
+    size: "sm"
+  },
+};
+
+export const AvatarImage: StoryObj<AvatarProps> = {
+  args: {
+    size: "lg",
+    image: "https://avatars.githubusercontent.com/u/54373473?v=4",
+  },
 };

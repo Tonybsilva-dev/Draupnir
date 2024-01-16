@@ -14,6 +14,8 @@ const AvatarImage = ({ src, altDescription }: AvatarImageProps) => {
         className="rounded-full"
         width={100}
         height={100}
+        title={`Avatar ${altDescription}`}
+        data-dd-action-name={`${altDescription} avatar`}
       />
     </div>
   );

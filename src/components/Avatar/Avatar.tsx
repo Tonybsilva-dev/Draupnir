@@ -1,10 +1,14 @@
 import classNames from "classnames";
 import React from "react";
-import { UserIcon } from "@heroicons/react/24/outline";
+
 import { User } from "lucide-react";
+import AvatarIcon from "./AvatarIcon";
+import AvatarImage from "./AvatarImage";
 
 export type AvatarProps = {
   size?: "xs" | "sm" | "md" | "lg";
+  image?: string;
+  description?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const avatarSizeMap = {
@@ -14,8 +18,20 @@ const avatarSizeMap = {
   lg: "w-9 h-9",
 };
 
-const Avatar = ({ size = "xs", className, ...rest }: AvatarProps) => {
+const Avatar = ({
+  image,
+  description = "",
+  size = "xs",
+  className,
+  ...rest
+}: AvatarProps) => {
   const avatarSizeClass = avatarSizeMap[size];
+
+  const AvatarComponent = image ? (
+    <AvatarImage src={image} altDescription={description} />
+  ) : (
+    <AvatarIcon />
+  );
 
   return (
     <div
@@ -26,7 +42,7 @@ const Avatar = ({ size = "xs", className, ...rest }: AvatarProps) => {
       )}
       {...rest}
     >
-      <User className="absolute w-1/2 h-1/2" />
+      {AvatarComponent}
     </div>
   );
 };

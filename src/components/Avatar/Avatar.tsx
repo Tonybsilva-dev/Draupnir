@@ -1,5 +1,7 @@
 import classNames from "classnames";
 import React from "react";
+import { UserIcon } from "@heroicons/react/24/outline";
+import { User } from "lucide-react";
 
 export type AvatarProps = {
   size?: "xs" | "sm" | "md" | "lg";
@@ -18,12 +20,14 @@ const Avatar = ({ size = "xs", className, ...rest }: AvatarProps) => {
   return (
     <div
       className={classNames(
-        "relative rounded-full bg-slate-100 flex items-center justify-center text-slate-400",
+        "relative rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-green-50",
         avatarSizeClass,
         className
       )}
       {...rest}
-    ></div>
+    >
+      <User className="absolute w-1/2 h-1/2" />
+    </div>
   );
 };
 

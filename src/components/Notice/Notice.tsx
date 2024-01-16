@@ -5,11 +5,8 @@ import { ComponentProps, useEffect } from "react";
 import { Button } from "../Button/Button";
 import { AlertCircle, CheckCircle2, Info, X } from "lucide-react";
 
-
 const notice = tv({
-  base: [
-    ""
-  ],
+  base: [""],
   variants: {
     type: {
       success: "text-green-600",
@@ -17,11 +14,10 @@ const notice = tv({
       alert: "text-yellow-600",
     },
     defaultVariants: {
-      variant: "success"
+      variant: "success",
     },
   },
 });
-
 
 export type NoticeProps = ComponentProps<"div"> & {
   type: "alert" | "success" | "error";
@@ -71,17 +67,15 @@ const Notice = ({
             type,
           })}`}
         >
-          <div className="px-2">
-          {getIcon(type)}
-          </div>
+          <div className="px-2">{getIcon(type)}</div>
           <Typography size={"md"} className={`${notice({ type })}`}>
             {message}
           </Typography>
         </div>
         {children}
         {onClose && (
-          <Button variant="ghost">
-            <X className="w-5 h-5 cursor-pointer" onClick={onClose} />
+          <Button variant="ghost" className="text-white hover:text-black">
+            <X className="w-5 h-5 cursor-pointer " onClick={onClose} />
           </Button>
         )}
       </div>

@@ -1,15 +1,27 @@
-import {
-  XMarkIcon,
-  InformationCircleIcon,
-  CheckIcon,
-  ExclamationTriangleIcon,
-} from "@heroicons/react/24/solid";
 import Box from "../Box/Box";
 import { tv, VariantProps } from "tailwind-variants";
 import Typography from "../Typography/Typography";
 import { ComponentProps, useEffect } from "react";
 import { Button } from "../Button/Button";
-import { X } from "lucide-react";
+import { AlertCircle, CheckCircle2, Info, X } from "lucide-react";
+
+
+const notice = tv({
+  base: [
+    ""
+  ],
+  variants: {
+    type: {
+      success: "text-green-600",
+      error: "text-white",
+      alert: "text-yellow-600",
+    },
+    defaultVariants: {
+      variant: "success"
+    },
+  },
+});
+
 
 export type NoticeProps = ComponentProps<"div"> & {
   type: "alert" | "success" | "error";
@@ -21,29 +33,13 @@ export type NoticeProps = ComponentProps<"div"> & {
 const getIcon = (type: NoticeProps["type"]) => {
   switch (type) {
     case "success":
-      return <CheckIcon className="w-5 h-5" />;
+      return <CheckCircle2 className="w-5 h-5" />;
     case "alert":
-      return <InformationCircleIcon className="w-5 h-5" />;
+      return <Info className="w-5 h-5" />;
     case "error":
-      return <ExclamationTriangleIcon className="w-5 h-5" />;
+      return <AlertCircle className="w-5 h-5" />;
   }
 };
-
-const notice = tv({
-  base: [],
-  variants: {
-    type: {
-      success: "text-green-900",
-      error: "text-white",
-      alert: "text-yellow-900",
-    },
-    defaultVariants: {
-      variant: {
-        type: "success",
-      },
-    },
-  },
-});
 
 const Notice = ({
   children,
@@ -53,19 +49,19 @@ const Notice = ({
   onClose,
   ...rest
 }: NoticeProps) => {
-  useEffect(() => {
-    const handleEscKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && onClose) {
-        onClose();
-      }
-    };
+  // useEffect(() => {
+  //   const handleEscKeyPress = (event: KeyboardEvent) => {
+  //     if (event.key === "Escape" && onClose) {
+  //       onClose();
+  //     }
+  //   };
 
-    document.addEventListener("keydown", handleEscKeyPress);
+  //   document.addEventListener("keydown", handleEscKeyPress);
 
-    return () => {
-      document.removeEventListener("keydown", handleEscKeyPress);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleEscKeyPress);
+  //   };
+  // }, [onClose]);
 
   return (
     <Box filledBackground rounded type={type} {...rest}>
@@ -75,7 +71,9 @@ const Notice = ({
             type,
           })}`}
         >
+          <div className="px-2">
           {getIcon(type)}
+          </div>
           <Typography size={"md"} className={`${notice({ type })}`}>
             {message}
           </Typography>

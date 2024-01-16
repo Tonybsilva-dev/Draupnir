@@ -10,7 +10,9 @@ const meta: Meta<NoticeProps> = {
 export default meta;
 
 export const Primary: StoryObj<NoticeProps> = {
-  args: {},
+  args: {
+    type: "success"
+  },
 };
 
 export const NoticeSuccess: StoryObj<NoticeProps> = {

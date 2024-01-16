@@ -42,6 +42,11 @@ html {
     --text-secondary: 92, 92, 92;
     --text-tertiary: 116, 116, 116;
     --text-disabled: 138, 138, 138;
+    --text-success: 58, 201, 34;
+    --text-error: 255, 48, 48;
+
+    --scrollbar-thumb-color: #d7d7d7;
+    --scrollbar-track-color: #ededed;
 
     /* SCREENS  */
     --screen-mobile: 640px;
@@ -80,11 +85,16 @@ html {
     /* FONT SIZE */
     --text-xs: 12px;
     --text-sm: 14px;
-    --text-nd: 16px;
+    --text-md: 16px;
     --text-lg: 18px;
     --text-xl: 20px;
     --text-2xl: 24px;
     --text-4xl: 28px;
+
+    /* TITLE FONT SIZE */
+    --title-md: 40px;
+    --title-lg: 48px;
+    --title-xl: 56px;
   }
 
   .dark-theme {

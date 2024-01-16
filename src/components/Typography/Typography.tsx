@@ -13,9 +13,13 @@ const text = tv({
       xs: "text-xs",
       sm: "text-sm",
       md: "text-md",
+      lg: "text-lg",
       xl: "text-xl",
       "2xl": "text-2xl",
       "4xl": "text-4xl",
+      title1: "text-txl",
+      title2: "text-tlg",
+      title3: "text-tmd",
     },
   },
 
@@ -27,7 +31,16 @@ const text = tv({
 
 export type TypographyProps = ComponentProps<"p"> & {
   variant?: "primary" | "secondary" | "tertiary";
-  size: "xs" | "sm" | "md" | "xl" | "2xl" | "4xl";
+  size:
+    | "xs"
+    | "sm"
+    | "md"
+    | "xl"
+    | "2xl"
+    | "4xl"
+    | "title1"
+    | "title2"
+    | "title3";
   children: React.ReactNode;
   element?: keyof JSX.IntrinsicElements;
 } & JSX.IntrinsicElements["p"];

@@ -81,7 +81,7 @@ const Notice = ({
         {children}
         {onClose && (
           <Button variant="ghost">
-            <X className="w-4 h-4 cursor-pointer" onClick={onClose} />
+            <X className="w-5 h-5 cursor-pointer" onClick={onClose} />
           </Button>
         )}
       </div>

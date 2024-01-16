@@ -36,7 +36,7 @@ const Avatar = ({
   return (
     <div
       className={classNames(
-        "relative rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-green-50",
+        "relative rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-green-50 focus:ring-2 focus:ring-offset-2 focus:ring-green-500",
         avatarSizeClass,
         className
       )}

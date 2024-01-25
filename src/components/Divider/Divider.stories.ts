@@ -27,3 +27,10 @@ export const DivisorWithProps: StoryObj<DividerProps> = {
     children: "Hello, world!",
   },
 };
+
+export const ThicknessDivisor: StoryObj<DividerProps> = {
+  args: {
+    height: "h-[5px]",
+  },
+};
+

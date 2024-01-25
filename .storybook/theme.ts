@@ -2,40 +2,40 @@ import { create } from "@storybook/theming/create";
 
 const theme = create({
   base: "light",
+
   // Typography
-  fontBase: '"Open Sans", sans-serif',
+  fontBase: '"Helvetica", "Open Sans", sans-serif',
   fontCode: "monospace",
 
-  brandTitle: "Draupnir UI",
+  brandTitle: "Draupnir Design System",
   brandUrl: "https://www.linkedin.com/in/tony-silva/",
-  brandImage: "https://i.imgur.com/4f4HGxn.png",
+  brandImage: "./draupnir-logo.png",
   brandTarget: "_self",
 
-  //
-  colorPrimary: "#22C55E",
-  colorSecondary: "#585C6D",
+  colorPrimary: "#10B981",
+  colorSecondary: "#10B981",
 
   // UI
-  appBg: "#ffffff",
-  appContentBg: "#ffffff",
-  appPreviewBg: "#ffffff",
-  // appBorderColor: "#585C6D",
-  // appBorderRadius: 4,
+  appBg: "#E4E4E7",
+  appContentBg: "#FFFFFF",
+  appBorderColor: "#E4E4E7",
+  appBorderRadius: 4,
 
   // Text colors
-  textColor: "#10162F",
-  textInverseColor: "#ffffff",
+  textColor: "black",
+  textInverseColor: "rgba(255,255,255,0.9)",
 
   // Toolbar default and active colors
-  // barTextColor: "#9E9E9E",
-  // barSelectedColor: "#585C6D",
-  // barBg: "#ffffff",
+  barTextColor: "#18181B",
+  barSelectedColor: "#E4E4E7",
+  barBg: "#E4E4E7",
+  barHoverColor: "#FFFFFF",
 
   // Form colors
-  inputBg: "#ffffff",
-  // inputBorder: "#10162F",
-  // inputTextColor: "#10162F",
-  // inputBorderRadius: 2,
+  inputBg: "white",
+  inputBorder: "silver",
+  inputTextColor: "black",
+  inputBorderRadius: 4,
 });
 
 export default theme;

@@ -46,6 +46,7 @@ const config: Config = {
         dark: "rgba(var(--bg-dark), <alpha-value>)",
         success: "rgba(var(--text-success), <alpha-value>)",
         error: "rgba(var(--text-error), <alpha-value>)",
+        info: "rgba(var(--text-info), <alpha-value>)",
         disabled: "rgba(var(--bg-disabled), <alpha-value>)",
       },
       textColor: {
@@ -56,6 +57,7 @@ const config: Config = {
         },
         success: "rgba(var(--text-success), <alpha-value>)",
         error: "rgba(var(--text-error), <alpha-value>)",
+        info: "rgba(var(--text-info), <alpha-value>)",
       },
       boxShadow: {
         sm: "var(--shadow-sm)",

@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Switch as RadixSwitch,
   type SwitchProps as RadixSwitchProps,

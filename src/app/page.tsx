@@ -1,11 +1,11 @@
-import Button from "@/components/Button/Button";
+import Switch from "@/components/Switch/Switch";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-background">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-3 p-24 bg-background">
       <h1>Hello, Draupnir</h1>
 
-      <Button> Click me! </Button>
-    </main>
-  )
+      <Switch/>
+    </div>
+  );
 }

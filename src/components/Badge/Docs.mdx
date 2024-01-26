@@ -22,7 +22,19 @@ The `Badge` component is utilized to display small pieces of information such as
 
 ## Examples
 
-<Canvas>
+<Canvas  additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Badge/Badge.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar
+  >
   <Story of={BadgeStories.Primary} />
   <Story of={BadgeStories.Success} />
   <Story of={BadgeStories.Warning} />

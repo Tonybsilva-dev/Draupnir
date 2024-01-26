@@ -18,7 +18,7 @@ const meta: Meta<DividerProps> = {
       description: "Text of the divider.",
     },
     bgColor: {
-      control: { type: "control" },
+      control: { type: "radio" },
       options: ["dark", "light", "black"],
       description: "background color of the divider.",
     },

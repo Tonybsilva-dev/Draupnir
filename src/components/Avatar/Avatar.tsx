@@ -1,7 +1,5 @@
 import classNames from "classnames";
 import React from "react";
-
-import { User } from "lucide-react";
 import AvatarIcon from "./AvatarIcon";
 import AvatarImage from "./AvatarImage";
 
@@ -28,7 +26,7 @@ const Avatar = ({
   const avatarSizeClass = avatarSizeMap[size];
 
   const AvatarComponent = image ? (
-    <AvatarImage src={image} altDescription={description} />
+    <AvatarImage src={image} altDescription={description}/>
   ) : (
     <AvatarIcon />
   );

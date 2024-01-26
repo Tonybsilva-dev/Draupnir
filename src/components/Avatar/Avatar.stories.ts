@@ -15,8 +15,8 @@ const meta: Meta<AvatarProps> = {
       options: ["xs", "sm", "md", "lg"],
       description: "Size of the avatar.",
       defaultValue: {
-        options: "xs"
-      }
+        options: "xs",
+      },
     },
     image: {
       control: { type: "text" },
@@ -30,6 +30,13 @@ const meta: Meta<AvatarProps> = {
 };
 
 export default meta;
+
+export const AvatarExtraSmall: StoryObj<AvatarProps> = {
+  args: {
+    size: "xs",
+    image: "https://avatars.githubusercontent.com/u/54373473?v=4",
+  },
+};
 
 export const AvatarSmall: StoryObj<AvatarProps> = {
   args: {

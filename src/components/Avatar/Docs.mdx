@@ -1,15 +1,39 @@
-import { Meta, Controls, Primary, Stories, Canvas } from "@storybook/blocks"
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
+import Avatar from './Avatar';
+import * as AvatarStories from './Avatar.stories';
 
-import * as Story from "./Avatar.stories.ts"
+<Meta of={AvatarStories} component={Avatar}/>
 
-<Meta of={Story} />
+# Avatar Component
+The `Avatar` component is used to represent a user, and can display images, icons or initials. It is commonly used in user interfaces to signal the presence of a person or entity.
 
-# Avatar
-This is a atom molecule.
+## Features
+- Supports images, icons and initials
+- Customizable in size and shape
+- Fallback support for initials when image is not available
 
-### Atom
+## Component
 <Primary />
-
-### Controls
+## Controls
 <Controls />
-<Stories />
+
+## Examples
+<Canvas>
+  <Story of={AvatarStories.AvatarExtraSmall} />
+  <Story of={AvatarStories.AvatarSmall} />
+  <Story of={AvatarStories.AvatarMedium} />
+  <Story of={AvatarStories.AvatarLarge} />
+</Canvas>
+
+## Usage
+<div>
+
+```jsx dark
+import { Avatar } from 'your-design-system';
+
+// Avatar with an image
+<Avatar size="sm" image="path_to_image.jpg"/>
+```
+
+</div>
+

@@ -1,18 +1,42 @@
-import { Meta, Controls, Primary, Stories } from "@storybook/blocks";
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
+import Badge from './Badge';
+import * as BadgeStories from './Badge.stories';
 
-import * as Story from "./Badge.stories";
+<Meta of={BadgeStories} component={Badge} />
 
-<Meta of={Story} />
+# Badge Component
 
-# Badge
+The `Badge` component is utilized to display small pieces of information such as status, category, or simply to highlight key aspects. It's typically used in conjunction with other UI elements to provide quick insights at a glance.
 
-This is a badge molecule.
+## Features
 
-### Molecule
+- Customizable color schemes to convey different meanings
+- Supports inclusion of icons for enhanced visual communication
+- Can be attached to avatars, buttons, or other components
 
+## Component
 <Primary />
 
-### Controls
-
+## Controls
 <Controls />
-<Stories />
+
+## Examples
+
+<Canvas>
+  <Story of={BadgeStories.Primary} />
+  <Story of={BadgeStories.Success} />
+  <Story of={BadgeStories.Warning} />
+  <Story  of={BadgeStories.Danger} />
+
+</Canvas>
+
+## Usage
+
+```jsx dark
+import { Badge } from 'your-design-system';
+
+// Default Badge
+<Badge>Default</Badge>
+
+// Badge with custom color
+<Badge variant="warning">Custom Color</Badge>

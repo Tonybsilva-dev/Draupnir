@@ -6,6 +6,10 @@ const meta: Meta<AvatarProps> = {
   title: "Design System/Atoms/Avatar",
   parameters: {
     layout: "centered",
+    parameters: {
+      notes: "These are notes for the Avatar stories",
+      info: "This is info for the Avatar stories",
+    },
   },
   component: Avatar,
   argTypes: {

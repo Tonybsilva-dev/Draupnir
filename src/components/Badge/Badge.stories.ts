@@ -3,14 +3,20 @@ import { Badge, BadgeProps } from "./Badge";
 
 const meta: Meta<BadgeProps> = {
   title: "Design System/Molecules/Badge",
-  // tags: ["autodocs"],
   component: Badge,
   parameters: {
     layout: "centered",
+    parameters: {
+      notes: "These are notes for the Badge stories",
+      info: "This is info for the Badge stories",
+    },
   },
   argTypes: {
     children: {
-      type: "string",
+      control: {
+        type: "string",
+        description: "Text of the badge.",
+      },
     },
   },
 };

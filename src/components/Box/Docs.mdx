@@ -1,18 +1,59 @@
-import { Meta, Primary, Controls, Stories } from "@storybook/blocks";
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
+import Box from './Box';
+import * as BoxStories from "./Box.stories";
 
-import * as Story from "./Box.stories.ts";
+<Meta of={BoxStories} component={Box}/>
 
-<Meta of={Story} />
+# Box Component
+The `Box` component serves as a primitive that can be used to build other components. It's essentially a `div` that you can apply styles to, making it incredibly versatile for any layout needs.
 
-# Box
+## Features
+- **Flexibility:** Use it to create layouts, wrap components, or as a standalone UI element.
+- **Style Props:** Apply common style props directly for quick and easy design adjustments.
+- **Composability:** Combine with other components to create complex, reusable design systems.
 
-The Box component is a versatile container used to wrap and group other interface elements. It provides a visual and organizational structure, allowing you to group and position components, text, images, and other elements within a defined space.
-
-### Atom
-
+## Component
 <Primary />
-
-### Controls
-
+## Controls
 <Controls />
-<Stories />
+
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Box/Box.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar
+  >
+  <div className={"flex flex-col gap-3"}>
+  <Story of={BoxStories.Primary}/>
+  <Story of={BoxStories.Default} />
+  <Story of={BoxStories.BoxAlert} />
+  <Story of={BoxStories.BoxSuccess} />
+  <Story of={BoxStories.BoxError} />
+  </div>
+</Canvas>
+
+
+## Usage
+<div>
+
+```jsx dark
+import { Avatar } from 'your-design-system';
+
+// Box filled and with children
+<Box
+  filledBackground
+  type="primary"
+>
+  This is a Standard Box.
+</Box>
+```
+
+</div>

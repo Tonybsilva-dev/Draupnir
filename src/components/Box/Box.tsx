@@ -10,12 +10,12 @@ export type BoxProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const boxClassMap = {
-  primary: "bg-primary",
-  secondary: "bg-tertiary",
-  dark: "bg-dark",
-  alert: "bg-yellow-100 text-yellow-100",
-  success: "bg-green-100 text-green-100",
-  error: "bg-error-100 text-error-100",
+  primary: "bg-zinc-50 font-bold",
+  secondary: "bg-tertiary font-bold",
+  dark: "bg-dark font-bold",
+  alert: "bg-yellow-100 text-zinc-800 font-bold",
+  success: "bg-green-100 text-zinc-800 font-bold",
+  error: "bg-error text-white font-bold",
 };
 
 const Box = ({

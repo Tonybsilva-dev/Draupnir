@@ -18,7 +18,18 @@ The `Avatar` component is used to represent a user, and can display images, icon
 <Controls />
 
 ## Examples
-<Canvas>
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Avatar/Avatar.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
   <Story of={AvatarStories.AvatarExtraSmall} />
   <Story of={AvatarStories.AvatarSmall} />
   <Story of={AvatarStories.AvatarMedium} />

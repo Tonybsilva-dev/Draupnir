@@ -1,16 +1,47 @@
-import { Meta, Controls, Primary, Stories } from "@storybook/blocks"
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
+import Loading from './Loading'
+import * as LoadingStories from "./Loading.stories"
 
-import * as Story from "./Loading.stories"
-
-<Meta of={Story} />
+<Meta of={LoadingStories} component={Loading}/>
 
 # Loading
-This is a loading atom.
+This is a loading component.
 
-### Atom
+## Features
+Features
+- Displays an animated loading indicator.
+- Utilizes a double-layer animation with ping and pulse effects.
+- Centers the loading indicator within its parent container.
+
+
+## Component
 <Primary />
 
-{/* <Canvas of={Story.Primary}/> */}
-{/* ### Controls
-<Controls /> */}
-<Stories />
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Loading/Loading.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={LoadingStories.Pulse} />
+</Canvas>
+
+
+## Usage
+<div>
+
+```jsx dark
+import { Loading } from 'your-design-system';
+
+// Avatar with an image
+<Loading />
+```
+
+</div>

@@ -4,14 +4,42 @@ import Notice, { type NoticeProps } from "./Notice";
 
 const meta: Meta<NoticeProps> = {
   title: "Design System/Molecules/Notice",
+  parameters: {
+    parameters: {
+      notes: "These are notes for the Avatar stories",
+      info: "This is info for the Avatar stories",
+    },
+  },
   component: Notice,
+  argTypes: {
+    type: {
+      control: { type: "radio" },
+      options: [
+        "success",
+        "alert",
+        "error",
+        "info",
+        "primary",
+        "secondary",
+        "dark",
+      ],
+      description: "Types of the Notice.",
+      defaultValue: {
+        options: "xs",
+      },
+    },
+    message: {
+      control: { type: "text" },
+      description: "Message of the notice",
+    },
+  },
 };
 
 export default meta;
 
 export const Primary: StoryObj<NoticeProps> = {
   args: {
-    type: "success"
+    type: "success",
   },
 };
 

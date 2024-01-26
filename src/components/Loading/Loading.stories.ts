@@ -5,6 +5,10 @@ const meta: Meta<typeof Loading> = {
   title: "Design System/Atoms/Loading",
   parameters: {
     layout: "centered",
+    parameters: {
+      notes: "These are notes for the Loading stories",
+      info: "This is info for the Loading stories",
+    },
   },
   component: Loading,
 } as Meta<typeof Loading>;

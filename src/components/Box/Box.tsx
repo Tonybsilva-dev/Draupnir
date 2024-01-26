@@ -5,17 +5,18 @@ export type BoxProps = {
   rounded?: boolean;
   border?: boolean;
   filledBackground?: boolean;
-  type?: "primary" | "secondary" | "dark" | "alert" | "success" | "error";
+  type?: "primary" | "secondary" | "dark" | "alert" | "success" | "error" | "info";
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const boxClassMap = {
   primary: "bg-zinc-50 font-bold",
-  secondary: "bg-tertiary font-bold",
+  secondary: "bg-zinc-600 font-bold",
   dark: "bg-dark font-bold",
   alert: "bg-yellow-100 text-zinc-800 font-bold",
   success: "bg-green-100 text-zinc-800 font-bold",
   error: "bg-error text-white font-bold",
+  info: "bg-info text-white font-bold",
 };
 
 const Box = ({

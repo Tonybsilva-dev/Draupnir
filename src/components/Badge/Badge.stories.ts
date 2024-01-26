@@ -15,6 +15,7 @@ const meta: Meta<BadgeProps> = {
     children: {
       control: {
         type: "string",
+        options: ["string"],
         description: "Text of the badge.",
       },
     },

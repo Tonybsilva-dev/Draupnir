@@ -8,19 +8,27 @@ const meta: Meta<LinkProps> = {
   component: Link,
   parameters: {
     layout: "centered",
+    parameters: {
+      notes: "These are notes for the Link stories",
+      info: "This is info for the Link stories",
+    },
   },
   argTypes: {
     children: {
       type: "string",
+      description: "Text of the link.",
     },
     href: {
       type: "string",
+      description: "URL of the link.",
     },
     disabled: {
-      type: "boolean",
+      control: { type: "boolean" },
+      description: "State of the link.",
     },
     className: {
       type: "string",
+      description: "Styles of the link.",
     },
   },
 };

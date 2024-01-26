@@ -1,16 +1,51 @@
-import { Meta, Controls, Primary, Stories } from "@storybook/blocks"
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
+import Link from './Link';
+import * as LinkStories from './Link.stories';
 
-import * as Story from "./Link.stories"
+<Meta of={LinkStories} component={Link}/>
 
-<Meta of={Story} />
+# Link Component
+The `Link` component is used to represent a user, and can display images, icons or initials. It is commonly used in user interfaces to signal the presence of a person or entity.
 
-# Link
-This is a link molecule, used for navigation between pages or sections.
+## Features
+- Enables URL navigation through anchor tags.
+- Customizable style with additional CSS classes.
+- Option to disable the link, preventing navigation.
+- Includes accessibility attributes like aria-disabled.
+- Supports various content types like text, icons, or images.Fallback support for initials when image is not available
 
-### Molecule
+## Component
 <Primary />
-
-{/* <Canvas of={Story.Primary}/> */}
-### Controls
+## Controls
 <Controls />
-<Stories />
+
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Link/Link.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={LinkStories.Primary} />
+  <Story of={LinkStories.Disabled} />
+  <Story of={LinkStories.Dark} />
+</Canvas>
+
+## Usage
+<div>
+
+```jsx dark
+import { Link } from 'your-design-system';
+
+// Link default
+<Link href="!#" > </Link>
+```
+
+</div>
+

@@ -4,18 +4,28 @@ import Switch, { type SwitchProps } from "./Switch";
 
 const meta: Meta<SwitchProps> = {
   title: "Design System/Molecules/Switch",
+  parameters: {
+    layout: "centered",
+    parameters: {
+      notes: "These are notes for the Avatar stories",
+      info: "This is info for the Avatar stories",
+    },
+  },
   component: Switch,
   argTypes: {
     defaultEnable: {
       type: "boolean",
       control: { type: "boolean" },
+      description: "Enabled / Disabled by default the switch.",
     },
     disabled: {
       type: "boolean",
       control: { type: "boolean" },
+      description: "Toggle the switch state.",
     },
     variant: {
       control: { type: "radio" },
+      description: "Type of the switch.",
     },
   },
 };

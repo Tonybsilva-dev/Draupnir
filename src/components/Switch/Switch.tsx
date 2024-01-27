@@ -18,11 +18,12 @@ export type SwitchProps = {
 const Switch = ({
   defaultEnable: enabledByDefault,
   variant = "common",
-  disabled,
+  disabled = false,
   onChange,
   ...rest
 }: SwitchProps) => {
-  const [enabled, setEnabled] = useState(enabledByDefault);
+  const [enabled, setEnabled] = useState(enabledByDefault ?? false);
+  
   const style = useStyleSwitch({ variant, enabled, disabled });
 
   const toggle = () => {

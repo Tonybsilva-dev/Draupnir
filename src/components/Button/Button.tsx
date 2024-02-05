@@ -43,6 +43,7 @@ export function Button({
       disabled={isLoading}
       className={button({ variant, className })}
       data-dd-action-name={`${props.value?.toString} button`}
+      aria-label="button"
     >
       {isLoading ? <Loading /> : props.children}
     </button>

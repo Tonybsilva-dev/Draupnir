@@ -1,0 +1,66 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/blocks'
+import Modal  from './Modal'
+import * as ModalStories from './Modal.stories';
+
+<Meta of={ModalStories} component={Modal} />
+
+# Modal
+This is a modal component.
+
+## Feature
+- Modal/Non-Modal Modes: Supports both focused modal and non-intrusive non-modal usage.
+- Focus Management: Automatically traps focus in modal mode for enhanced accessibility.
+- Control Flexibility: Can be used in both controlled and uncontrolled manners.
+- Accessibility Features: Integrates with Title and Description components for screen reader announcements.
+- Esc Key Closure: Enables intuitive dismissal with the Esc key.
+- Animations and Variants: build with Framer Motion and Tailwindcss pure.
+
+## Component
+<Primary />
+{/* ## Controls
+<Controls /> */}
+
+
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Modal/Modal.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={ModalStories.Primary} />
+</Canvas>
+
+
+## Usage
+<div>
+
+```jsx dark
+import {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  type ModalProps,
+} from "./Modal";
+
+// Modal example
+  <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+    <ModalHeader>Your changes will be lost</ModalHeader>
+      <ModalBody>
+        <Typography size="xl">Your changes will be lost</Typography>
+      </ModalBody>
+      <ModalFooter>
+        <Button>Save changes</Button>
+        <Button variant="outline">Don&apos;t save</Button>
+      </ModalFooter>
+  </Modal>
+```
+
+</div>

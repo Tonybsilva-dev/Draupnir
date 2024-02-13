@@ -1,0 +1,54 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/blocks'
+import SubtitlePage  from './SubtitlePage'
+import * as SubtitlePageStories from './SubtitlePage.stories';
+
+<Meta of={SubtitlePageStories} component={SubtitlePage} />
+
+# Subtitle Page
+This is a subtitle page component.
+
+## Feature
+- Modal/Non-Modal Modes: Supports both focused modal and non-intrusive non-modal usage.
+- Focus Management: Automatically traps focus in modal mode for enhanced accessibility.
+- Control Flexibility: Can be used in both controlled and uncontrolled manners.
+- Accessibility Features: Integrates with Title and Description components for screen reader announcements.
+- Esc Key Closure: Enables intuitive dismissal with the Esc key.
+- Animations and Variants: build with Framer Motion and Tailwindcss pure.
+
+## Component
+<Primary />
+## Controls
+<Controls />
+
+
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/SubtitlePage/SubtitlePage.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={SubtitlePageStories.Primary} />
+</Canvas>
+
+
+## Usage
+<div>
+
+```jsx dark
+import SubtitlePage from "./SubtitlePage";
+
+// SubtitlePage example
+    <SubtitlePage subtitle={"Personal Info"} description={"Update your photo and personal details here."}>
+      <Button variant="outline">Cancel</Button>
+      <Button variant="primary">Save</Button>
+    </SubtitlePage>
+```
+
+</div>

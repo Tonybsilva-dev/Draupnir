@@ -1,7 +1,7 @@
 import Box from "../Box/Box";
 import { tv, VariantProps } from "tailwind-variants";
 import Typography from "../Typography/Typography";
-import { ComponentProps, useEffect } from "react";
+import { ComponentProps, useEffect, useState } from "react";
 import { Button } from "../Button/Button";
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from "lucide-react";
 
@@ -58,10 +58,19 @@ const Notice = ({
   onClose,
   ...rest
 }: NoticeProps) => {
+
+  const [isVisible, setIsVisible] = useState(true);
+
+
+  const handleClose = () => {
+    setIsVisible(false);
+    if (onClose) onClose();
+  };
+
   useEffect(() => {
     const handleEscKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && onClose) {
-        onClose();
+      if (event.key === "Escape") {
+        handleClose();
       }
     };
 
@@ -70,7 +79,9 @@ const Notice = ({
     return () => {
       document.removeEventListener("keydown", handleEscKeyPress);
     };
-  }, [onClose]);
+  }, []);
+
+  if (!isVisible) return null;
 
   return (
     <Box filledBackground rounded type={type} {...rest}>
@@ -87,8 +98,15 @@ const Notice = ({
         </div>
         {children}
         {onClose && (
-          <Button variant="ghost" className="text-white hover:text-black">
-            <X className="w-5 h-5 cursor-pointer " onClick={onClose} />
+          <Button
+            variant="ghost"
+            className="text-white hover:text-black"
+            onClick={(e) => {
+              e.stopPropagation(); 
+              handleClose();
+            }}
+          >
+            <X className="w-5 h-5 cursor-pointer" />
           </Button>
         )}
       </div>

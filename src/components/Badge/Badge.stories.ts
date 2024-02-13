@@ -13,7 +13,14 @@ const meta: Meta<BadgeProps> = {
   },
   argTypes: {
     children: {
-      type: "string"
+      type: "string",
+      description: "Text description",
+    },
+    variant: {
+      control: {
+        type: "radio",
+      },
+      description: "Variant of the Badge",
     },
   },
 };

@@ -30,14 +30,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A simple and automated way to send orders directly to the kitchen, saving time in the process of passing information on orders, reducing the flow of movement in the kitchen, making waiters more available and faster for the public.
+Draupnir, the design system created in a flexible way using RadixUI in its composition with tailwindcss based on styling, standardizing the way I build my personal applications.
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-  ```sh
-  npm i draupnir-ds@latest
-  ```
 
 ### Prerequisites
 
@@ -52,6 +48,10 @@ A simple and automated way to send orders directly to the kitchen, saving time i
   ```sh
   npm install -D tailwindcss postcss autoprefixer
   npx tailwindcss init
+  ```
+
+  ```sh
+  npm i draupnir-ds@latest
   ```
 
 ### Installation

@@ -1,5 +1,5 @@
 import Box from "../Box/Box";
-import { tv, VariantProps } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 import Typography from "../Typography/Typography";
 import { ComponentProps, useEffect, useState } from "react";
 import { Button } from "../Button/Button";
@@ -58,9 +58,7 @@ const Notice = ({
   onClose,
   ...rest
 }: NoticeProps) => {
-
   const [isVisible, setIsVisible] = useState(true);
-
 
   const handleClose = () => {
     setIsVisible(false);
@@ -102,7 +100,7 @@ const Notice = ({
             variant="ghost"
             className="text-white hover:text-black"
             onClick={(e) => {
-              e.stopPropagation(); 
+              e.stopPropagation();
               handleClose();
             }}
           >

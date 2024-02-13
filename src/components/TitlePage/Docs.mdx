@@ -1,0 +1,43 @@
+import { Meta, Primary, Stories, Controls, Canvas, Story } from "@storybook/blocks";
+import  titlePage, { TitlePageProps } from './TitlePage';
+import * as TitlePageStories from "./TitlePage.stories";
+
+<Meta of={TitlePageStories} component={titlePage}/>
+
+# Title Page
+This is a title page molecule that can be used to display a text on top of page.
+### Molecule
+<Primary of={TitlePageStories} />
+### Controls:
+<Controls />
+
+
+### Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open in GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/TitlePage/TitlePage.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+    <Story of={TitlePageStories.Primary} />
+</Canvas>
+
+
+### Usage
+<div>
+
+```jsx dark
+import { Switch } from 'your-design-system';
+
+// Switch component
+<TitlePage title={"Dashboard"} description={`Hi, ${user.name}`}/>
+```
+
+</div>
+

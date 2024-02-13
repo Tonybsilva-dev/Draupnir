@@ -39,3 +39,14 @@ export const Primary: StoryObj<SubtitlePageProps> = {
     </SubtitlePage>
   ),
 };
+
+
+export const WithoutChildren: StoryObj<SubtitlePageProps> = {
+  args: {
+    subtitle: "Personal Info",
+    description: "Update your photo and personal details here.",
+  },
+  render: (args) => (
+    <SubtitlePage {...args} />
+  ),
+};

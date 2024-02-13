@@ -3,7 +3,6 @@ import { Button, ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
   title: "Design System/Molecules/Button",
-  // tags: ['autodocs'],
   component: Button,
   parameters: {
     layout: "centered",

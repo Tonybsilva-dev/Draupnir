@@ -5,6 +5,12 @@ import { Button } from "../Button/Button";
 
 const meta: Meta<SubtitlePageProps> = {
   title: "Design System/Molecules/SubtitlePage",
+  parameters: {
+    parameters: {
+      notes: "These are notes for the SubtitlePage stories",
+      info: "This is info for the SubtitlePage stories",
+    },
+  },
   component: SubtitlePage,
   argTypes: {
     subtitle: {

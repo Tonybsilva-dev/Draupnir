@@ -98,6 +98,17 @@ const config: Config = {
 export default config;
 ```
 
+4 - on your next.config.mjs set this:
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  transpilePackages: ['draupnir-ds'],
+}
+ 
+module.exports = nextConfig
+```
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 <!--

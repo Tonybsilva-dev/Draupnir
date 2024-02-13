@@ -38,27 +38,27 @@ export default meta;
 export const AvatarExtraSmall: StoryObj<AvatarProps> = {
   args: {
     size: "xs",
-    image: "https://avatars.githubusercontent.com/u/54373473?v=4",
+    image: "https://placehold.co/100x100/png",
   },
 };
 
 export const AvatarSmall: StoryObj<AvatarProps> = {
   args: {
     size: "sm",
-    image: "https://avatars.githubusercontent.com/u/54373473?v=4",
+    image: "https://placehold.co/150x150/png",
   },
 };
 
 export const AvatarMedium: StoryObj<AvatarProps> = {
   args: {
     size: "md",
-    image: "https://avatars.githubusercontent.com/u/54373473?v=4",
+    image: "https://placehold.co/200x200/png",
   },
 };
 
 export const AvatarLarge: StoryObj<AvatarProps> = {
   args: {
     size: "lg",
-    image: "https://avatars.githubusercontent.com/u/54373473?v=4",
+    image: "https://placehold.co/250x250/png",
   },
 };

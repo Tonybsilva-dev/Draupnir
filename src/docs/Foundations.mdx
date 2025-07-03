@@ -1,0 +1,48 @@
+# Foundations
+
+Bem-vindo à seção de Fundamentos do Draupnir Design System!
+
+Aqui você encontra as melhores práticas, princípios e diretrizes para utilizar o design system de forma eficiente, consistente e acessível.
+
+## Princípios do Design System
+
+- **Consistência:** Utilize os componentes e tokens para garantir uma experiência visual e funcional uniforme em todos os produtos.
+- **Acessibilidade:** Sempre priorize acessibilidade. Use componentes com suporte a ARIA, contraste adequado e navegação por teclado.
+- **Escalabilidade:** Prefira tokens e componentes reutilizáveis para facilitar a manutenção e evolução do produto.
+- **Responsividade:** Todos os componentes são pensados para funcionar bem em diferentes tamanhos de tela.
+- **Documentação:** Consulte sempre a documentação dos componentes antes de criar algo novo.
+
+## Melhores Práticas
+
+- **Use tokens:** Utilize os tokens de cor, tipografia, espaçamento e sombra para manter a identidade visual.
+- **Prefira componentes prontos:** Antes de criar um novo componente, verifique se já existe algo similar no DS.
+- **Evite sobrescrever estilos:** Use as props e variantes dos componentes para customização. Evite sobrescrever classes diretamente.
+- **Atenção ao estado:** Sempre trate estados como loading, erro, disabled e foco.
+- **Acessibilidade:** Adicione descrições, labels e roles quando necessário.
+
+## Exemplo de uso correto
+
+```tsx
+import { Button } from 'draupnir-ds';
+
+<Button variant="primary">Salvar</Button>
+```
+
+## Exemplo de uso incorreto
+
+```tsx
+<button style={{ background: 'red', color: 'white' }}>Salvar</button>
+```
+
+## Acessibilidade
+- Use sempre labels descritivos.
+- Garanta contraste suficiente entre texto e fundo.
+- Teste navegação por teclado.
+
+## Responsividade
+- Utilize os utilitários de grid e espaçamento do DS.
+- Teste os componentes em diferentes tamanhos de tela.
+
+---
+
+Consulte as demais seções para exemplos práticos e documentação detalhada de cada componente. 

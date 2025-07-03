@@ -1,0 +1,47 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks'
+import Dropdown from './Dropdown'
+import * as DropdownStories from './Dropdown.stories';
+
+<Meta of={DropdownStories} component={Dropdown}/>
+
+# Dropdown
+
+O componente Dropdown oferece um menu suspenso interativo e acessível.
+
+## Descrição
+O Dropdown do Draupnir DS permite criar menus contextuais com suporte completo a acessibilidade e temas.
+
+## Recursos
+- **Acessível:** Suporte completo a ARIA e navegação por teclado
+- **Temático:** Suporte a tema claro e escuro
+- **Animado:** Transições suaves de entrada e saída
+- **Flexível:** Composição baseada em componentes (Trigger, Content, Item)
+- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={DropdownStories.Simple} />
+  <Story of={DropdownStories.Basic} />
+  <Story of={DropdownStories.WithIcons} />
+  <Story of={DropdownStories.Actions} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Dropdown } from 'draupnir-ds';
+
+<Dropdown>
+  <Dropdown.Trigger asChild>
+    <button>Menu</button>
+  </Dropdown.Trigger>
+  <Dropdown.Content>
+    <Dropdown.Item>Opção 1</Dropdown.Item>
+    <Dropdown.Item>Opção 2</Dropdown.Item>
+  </Dropdown.Content>
+</Dropdown>
+```

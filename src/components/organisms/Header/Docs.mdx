@@ -1,0 +1,28 @@
+import { Meta, Primary, Canvas, Story } from '@storybook/addon-docs/blocks';
+import Header from './Header';
+import * as HeaderStories from './Header.stories';
+
+<Meta of={HeaderStories} component={Header}/>
+
+# Header
+
+O componente Header exibe um cabeçalho funcional com:
+- Logo à esquerda
+- Navegação central
+- Seção do usuário à direita (avatar, nome, dropdown)
+
+## Componente
+<Primary />
+
+## Exemplos
+<Canvas>
+  <Story of={HeaderStories.Default} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Header } from 'draupnir-ds';
+
+<Header />
+``` 

@@ -1,0 +1,253 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+
+<Meta title="Docs/Colors" />
+
+# Cores
+
+O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente selecionada que garante consistência visual e acessibilidade em toda a aplicação.
+
+## Paleta de Cores
+
+<ColorPalette>
+  <ColorItem
+    title="Background"
+    subtitle="Fundos da aplicação"
+    colors={{
+      BgLight: "#FFFFFF",
+      BgEscuro: "#F8F8F8",
+      BgDisabled: "#EFEFEF",
+    }}
+  />
+  <ColorItem
+    title="Escala de cinza"
+    subtitle="Textos e elementos neutros"
+    colors={{
+        TextoPrimario: "#181818",
+        TextoSecundario: "#5C5C5C",
+        TextoTerciario: "#747474",
+        TextoDesativado: "#8A8A8A",
+    }}
+  />
+  <ColorItem 
+    title="Ícones" 
+    subtitle="Elementos iconográficos"
+    colors={{ Icone: "#7C7B7B" }} 
+  />
+  <ColorItem 
+    title="Contornos" 
+    subtitle="Bordas e limites"
+    colors={{ Contorno: "#D7D7D7" }} 
+  />
+  <ColorItem 
+    title="Divisores" 
+    subtitle="Separadores visuais"
+    colors={{ Divisor: "#EDEDED" }} 
+  />
+  <ColorItem
+    title="Tom 1"
+    subtitle="Verde - Cor principal da marca"
+    colors={{
+        Primario: "#22C55E",
+        Secundario: "#4ADE80",
+        Terciario: "#86EFAC",
+        Quaternario: "#DCFCE7",
+        Hover: "#16A34A",
+        Click: "#15803D",
+    }}
+  />
+  <ColorItem
+    title="Tom 2"
+    subtitle="Laranja - Cor secundária"
+    colors={{
+        Primario: "#F97316",
+        Secundario: "#FB923C",
+        Terciario: "#FED7AA",
+        Quaternario: "#FFF7ED",
+    }}
+  />
+</ColorPalette>
+
+## Cores Semânticas
+
+<ColorPalette>
+  <ColorItem
+    title="Success"
+    subtitle="Operações bem-sucedidas"
+    colors={{
+      Success: "#3ac922",
+    }}
+  />
+  <ColorItem
+    title="Error"
+    subtitle="Erros e alertas críticos"
+    colors={{
+      Error: "#ff3030",
+    }}
+  />
+  <ColorItem
+    title="Info"
+    subtitle="Informações e dicas"
+    colors={{
+      Info: "#3b82f6",
+    }}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="Avisos e atenção"
+    colors={{
+      Warning: "#f59e0b",
+    }}
+  />
+</ColorPalette>
+
+## Escala de Cores
+
+Cada cor possui uma escala de 50 a 900, permitindo variações sutis para diferentes contextos.
+
+### Primary Scale (Verde)
+
+- **50**: rgba(22, 163, 74, 0.05) - Background muito claro
+- **100**: rgba(22, 163, 74, 0.1) - Background claro
+- **200**: rgba(22, 163, 74, 0.2) - Background médio-claro
+- **300**: rgba(22, 163, 74, 0.3) - Background médio
+- **400**: rgba(22, 163, 74, 0.4) - Background médio-escuro
+- **500**: #16a34a - Cor principal
+- **600**: #15803d - Cor principal escura
+- **700**: #14532d - Cor principal mais escura
+- **800**: #0f3e22 - Cor principal muito escura
+- **900**: #0a2917 - Cor principal mais escura
+
+### Gray Scale
+
+- **50**: #f8fafc - Cinza muito claro
+- **100**: #f1f5f9 - Cinza claro
+- **200**: #e2e8f0 - Cinza médio-claro
+- **300**: #cbd5e1 - Cinza médio
+- **400**: #94a3b8 - Cinza médio-escuro
+- **500**: #64748b - Cinza médio
+- **600**: #475569 - Cinza escuro
+- **700**: #334155 - Cinza mais escuro
+- **800**: #1e293b - Cinza muito escuro
+- **900**: #0f172a - Cinza mais escuro
+
+## Uso em Código
+
+### Importação
+
+```tsx
+import { colors } from 'draupnir-ds';
+```
+
+### Exemplos de Uso
+
+```tsx
+// Cores primárias
+const primaryColor = colors.primary[500];  // #16a34a
+const primaryLight = colors.primary[100];  // rgba(22, 163, 74, 0.1)
+const primaryDark = colors.primary[700];   // #14532d
+
+// Cores semânticas
+const successColor = colors.success[500];  // #3ac922
+const errorColor = colors.error[500];      // #ff3030
+const infoColor = colors.info[500];        // #3b82f6
+const warningColor = colors.warning[500];  // #f59e0b
+
+// Cores neutras
+const grayLight = colors.gray[100];        // #f1f5f9
+const grayMedium = colors.gray[500];       // #64748b
+const grayDark = colors.gray[800];         // #1e293b
+```
+
+### Em Componentes
+
+```tsx
+const MyComponent = () => {
+  return (
+    <div style={{
+      backgroundColor: colors.primary[500],
+      color: 'white',
+      padding: '1rem',
+      borderRadius: '8px',
+    }}>
+      Botão com cor primária
+    </div>
+  );
+};
+```
+
+### Em Tailwind CSS
+
+```tsx
+// As cores estão disponíveis como classes Tailwind
+<div className="bg-primary-500 text-white p-4 rounded-lg">
+  Botão com cor primária
+</div>
+
+<div className="bg-success-500 text-white p-4 rounded-lg">
+  Botão de sucesso
+</div>
+
+<div className="bg-error-500 text-white p-4 rounded-lg">
+  Botão de erro
+</div>
+```
+
+## Diretrizes de Uso
+
+### Cores Primárias
+
+- **500**: Use para elementos principais (botões, links)
+- **600-700**: Use para estados hover e active
+- **100-200**: Use para backgrounds sutis
+- **800-900**: Use para texto sobre fundos claros
+
+### Cores Semânticas
+
+- **Success**: Operações bem-sucedidas, confirmações
+- **Error**: Erros, validações falhadas, alertas críticos
+- **Warning**: Avisos, ações que requerem atenção
+- **Info**: Informações, dicas, estados neutros
+
+### Cores Neutras
+
+- **50-100**: Backgrounds muito claros
+- **200-300**: Bordas e separadores
+- **400-500**: Texto secundário
+- **600-700**: Texto principal
+- **800-900**: Texto sobre fundos claros
+
+## Acessibilidade
+
+### Contraste
+
+Todas as cores foram testadas para garantir contraste adequado:
+
+- **AA**: Contraste mínimo de 4.5:1 para texto normal
+- **AAA**: Contraste mínimo de 7:1 para texto pequeno
+- **Botões**: Contraste mínimo de 3:1 para elementos interativos
+
+### Daltonismo
+
+As cores foram escolhidas considerando diferentes tipos de daltonismo:
+
+- Verde e vermelho são distinguíveis
+- Azul e amarelo são alternativas seguras
+- Semântica não depende apenas da cor
+
+## Tema Escuro
+
+O sistema suporta tema escuro com cores adaptadas:
+
+```tsx
+// Cores se adaptam automaticamente ao tema
+<div className="bg-primary-500 dark:bg-primary-400">
+  Conteúdo adaptável
+</div>
+```
+
+## Próximos Passos
+
+- **[Typography](/docs/typography--page)**: Sistema tipográfico
+- **[Spacing](/docs/spacing--page)**: Sistema de espaçamentos
+- **[Shadows](/docs/shadows--page)**: Sistema de sombras
+- **[Components](/docs/atoms--page)**: Componentes que usam essas cores 

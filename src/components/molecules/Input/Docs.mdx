@@ -1,0 +1,54 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks'
+import { Input } from './Input'
+import * as InputStories from './Input.stories'
+
+<Meta of={InputStories} component={Input}/>
+
+# Input
+O componente Input é utilizado para capturar e submeter dados do usuário.
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas additionalActions={[
+    {
+      title: 'Abrir no GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Input/Input.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <div className={"grid grid-cols-2 gap-2"}>
+   <div>
+    <h3 className="text-lg font-semibold mb-2">Input com Prefixo</h3>
+      <Story of={InputStories.WithPrefix} />   
+    <h3 className="text-lg font-semibold mt-4 mb-2">Input Desabilitado</h3>
+      <Story of={InputStories.Disabled} />
+    </div>
+
+    <div>
+      <h3 className="text-lg font-semibold mb-2">Input com Erro</h3>
+        <Story of={InputStories.WithError} />
+      </div>
+  </div>
+</Canvas>
+
+## Uso
+
+```tsx
+import { Input } from 'draupnir-ds';
+
+<Input.Root label="Nome" errorMessage="Nome é obrigatório">
+  <Input.Prefix>
+    <Search className="w-5 h-5" />
+  </Input.Prefix>
+  <Input.Control placeholder="Digite seu nome" />
+</Input.Root>
+```
+

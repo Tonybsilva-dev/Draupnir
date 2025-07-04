@@ -26,7 +26,7 @@ const Avatar = ({
   const avatarSizeClass = avatarSizeMap[size];
 
   const AvatarComponent = image ? (
-    <AvatarImage src={image} altDescription={description}/>
+    <AvatarImage src={image} altDescription={description} />
   ) : (
     <AvatarIcon />
   );
@@ -34,7 +34,7 @@ const Avatar = ({
   return (
     <div
       className={classNames(
-        "relative rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-green-50 focus:ring-2 focus:ring-offset-2 focus:ring-green-500",
+        "relative bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-primary",
         avatarSizeClass,
         className
       )}

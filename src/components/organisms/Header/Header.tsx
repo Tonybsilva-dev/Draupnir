@@ -17,10 +17,10 @@ export const Header: React.FC = () => {
   const [logged, setLogged] = useState(true);
 
   return (
-    <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-zinc-200 shadow-sm">
+    <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
       {/* Esquerda: Logo */}
       <div className="flex items-center gap-2 min-w-[120px]">
-        <span className="text-xl font-bold text-zinc-900 select-none">Draupnir DS</span>
+        <span className="text-xl font-bold text-gray-900 select-none">Draupnir DS</span>
       </div>
 
       {/* Centro: Navegação */}
@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
           <a
             key={link.label}
             href={link.href}
-            className="text-zinc-700 hover:text-green-700 font-medium transition-colors px-2 py-1 rounded"
+            className="text-gray-700 hover:text-primary font-medium transition-colors px-2 py-1"
           >
             {link.label}
           </a>
@@ -41,9 +41,9 @@ export const Header: React.FC = () => {
         {logged ? (
           <Dropdown>
             <Dropdown.Trigger asChild>
-              <button className="flex items-center gap-2 px-3 py-1.5 rounded hover:bg-zinc-100 transition">
+              <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-50 transition">
                 <Avatar size="sm" description={USERNAME} image={USER_AVATAR || undefined} />
-                <span className="text-zinc-800 font-medium">{USERNAME}</span>
+                <span className="text-gray-800 font-medium">{USERNAME}</span>
               </button>
             </Dropdown.Trigger>
             <Dropdown.Content>

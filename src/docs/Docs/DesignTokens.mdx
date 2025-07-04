@@ -2,9 +2,13 @@ import { Meta, ColorPalette, ColorItem, ArgsTable } from '@storybook/addon-docs/
 
 <Meta title="Docs/Design Tokens" />
 
-# Design Tokens
+<div style={{ textAlign: 'center', margin: '2rem 0 2.5rem 0' }}>
+  <h1 style={{ fontWeight: 700, fontSize: '2.2rem', margin: '1rem 0 0.5rem 0' }}>Design Tokens</h1>
+  <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>
+Os design tokens são os elementos fundamentais do **Draupnir Design System**. <br/> Eles definem as propriedades visuais que garantem consistência, acessibilidade e escalabilidade em toda a aplicação.
+  </p>
+</div>
 
-Os design tokens são os elementos fundamentais do **Draupnir Design System**. Eles definem as propriedades visuais que garantem consistência, acessibilidade e escalabilidade em toda a aplicação.
 
 ## Visão Geral
 
@@ -17,7 +21,7 @@ O Draupnir utiliza uma arquitetura de tokens baseada em **CSS Custom Properties*
 
 ## Cores
 
-O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente selecionada que garante acessibilidade e consistência visual.
+O sistema de cores do Draupnir é baseado em uma paleta minimalista, moderna e acessível, composta por amarelo solar, azul acinzentado, branco e cinza.
 
 ### Paleta Principal
 
@@ -27,7 +31,7 @@ O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente seleciona
     subtitle="Fundos da aplicação"
     colors={{
       BgLight: "#FFFFFF",
-      BgEscuro: "#F8F8F8",
+      Bg: "#F5F5F5",
       BgDisabled: "#EFEFEF",
     }}
   />
@@ -35,32 +39,29 @@ O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente seleciona
     title="Escala de cinza"
     subtitle="Textos e elementos neutros"
     colors={{
-        TextoPrimario: "#181818",
+        TextoPrimario: "#212121",
         TextoSecundario: "#5C5C5C",
         TextoTerciario: "#747474",
         TextoDesativado: "#8A8A8A",
+        Borda: "#BDBDBD",
     }}
   />
   <ColorItem
-    title="Tom 1"
-    subtitle="Verde - Cor principal da marca"
+    title="Primary"
+    subtitle="Amarelo solar - cor principal"
     colors={{
-        Primario: "#22C55E",
-        Secundario: "#4ADE80",
-        Terciario: "#86EFAC",
-        Quaternario: "#DCFCE7",
-        Hover: "#16A34A",
-        Click: "#15803D",
+        Primary: "#FFD600",
+        Hover: "#FFEB3B",
+        Click: "#FFC228",
+        Contrast: "#212121",
     }}
   />
   <ColorItem
-    title="Tom 2"
-    subtitle="Laranja - Cor secundária"
+    title="Secondary"
+    subtitle="Azul acinzentado - cor secundária"
     colors={{
-        Primario: "#F97316",
-        Secundario: "#FB923C",
-        Terciario: "#FED7AA",
-        Quaternario: "#FFF7ED",
+        Secondary: "#3A4F63",
+        Contrast: "#FFFFFF",
     }}
   />
 </ColorPalette>
@@ -1078,5 +1079,4 @@ const mediumShadow = getShadow('md');
 ## Próximos Passos
 
 - **[Cores](/docs/colors--page)**: Documentação detalhada do sistema de cores
-- **[Componentes](/docs/atoms--page)**: Componentes que utilizam estes tokens
-- **[Guia de Uso](/docs/introduction--page)**: Como aplicar os tokens em projetos 
+- **[Componentes](/docs/atoms--page)**: Componentes que utilizam estes tokens 

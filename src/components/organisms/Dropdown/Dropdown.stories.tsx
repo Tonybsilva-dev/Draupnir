@@ -4,7 +4,7 @@ import { Dropdown } from "./Dropdown";
 import { ChevronDown, User, Settings, LogOut } from "lucide-react";
 
 const meta: Meta = {
-  title: "Organisms/Dropdown",
+  title: "Components/Organisms/Dropdown",
   component: Dropdown,
   parameters: {
     layout: "centered",

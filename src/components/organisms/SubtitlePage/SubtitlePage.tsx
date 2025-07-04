@@ -12,7 +12,7 @@ export default function SubtitlePage({
   children,
 }: SubtitlePageProps) {
   return (
-    <div className="flex lg:flex-row items-center justify-between border-b border-zinc-300 pb-5 dark:border-zinc-700">
+    <div className="flex lg:flex-row items-center justify-between border-b border-gray-200 pb-5">
       <div className="space-y-1">
         <Typography element="h2" size="xl" variant="primary">
           {subtitle}

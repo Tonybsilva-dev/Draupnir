@@ -10,13 +10,13 @@ export type BoxProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const boxClassMap = {
-  primary: "bg-zinc-50 font-bold",
-  secondary: "bg-zinc-600 font-bold",
-  dark: "bg-dark font-bold",
-  alert: "bg-yellow-100 text-zinc-800 font-bold",
-  success: "bg-green-100 text-zinc-800 font-bold",
-  error: "bg-error text-white font-bold",
-  info: "bg-info text-white font-bold",
+  primary: "bg-gray-50 text-gray-900",
+  secondary: "bg-gray-100 text-gray-900",
+  dark: "bg-gray-900 text-white",
+  alert: "bg-yellow-50 text-yellow-800",
+  success: "bg-green-50 text-green-800",
+  error: "bg-red-50 text-red-800",
+  info: "bg-blue-50 text-blue-800",
 };
 
 const Box = ({
@@ -28,12 +28,16 @@ const Box = ({
   className,
   ...rest
 }: BoxProps) => {
-  const classes = classNames({
-    "rounded-md": rounded,
-    "border border-gray-100": border,
-    "bg-dark": filledBackground,
-    [boxClassMap[type]]: type,
-  });
+  const classes = classNames(
+    {
+      // Borda só se explicitamente requisitada, e sempre clara
+      "border border-gray-200": border,
+      // Remove qualquer bg escuro padrão
+      // "bg-gray-900": filledBackground, // Removido para não poluir visual minimalista
+      [boxClassMap[type]]: type,
+    },
+    className
+  );
   return (
     <div className={`p-2 ${classes}`} {...rest}>
       {children}

@@ -2,9 +2,13 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 <Meta title="Docs/Colors" />
 
-# Cores
+<div style={{ textAlign: 'center', margin: '2rem 0 2.5rem 0' }}>
+  <h1 style={{ fontWeight: 700, fontSize: '2.2rem', margin: '1rem 0 0.5rem 0' }}>Colors</h1>
+  <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>
+    O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente <br/> selecionada que garante consistência visual e acessibilidade em toda a aplicação.
+  </p>
+</div>
 
-O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente selecionada que garante consistência visual e acessibilidade em toda a aplicação.
 
 ## Paleta de Cores
 
@@ -14,7 +18,7 @@ O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente seleciona
     subtitle="Fundos da aplicação"
     colors={{
       BgLight: "#FFFFFF",
-      BgEscuro: "#F8F8F8",
+      Bg: "#F5F5F5",
       BgDisabled: "#EFEFEF",
     }}
   />
@@ -22,47 +26,29 @@ O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente seleciona
     title="Escala de cinza"
     subtitle="Textos e elementos neutros"
     colors={{
-        TextoPrimario: "#181818",
+        TextoPrimario: "#212121",
         TextoSecundario: "#5C5C5C",
         TextoTerciario: "#747474",
         TextoDesativado: "#8A8A8A",
-    }}
-  />
-  <ColorItem 
-    title="Ícones" 
-    subtitle="Elementos iconográficos"
-    colors={{ Icone: "#7C7B7B" }} 
-  />
-  <ColorItem 
-    title="Contornos" 
-    subtitle="Bordas e limites"
-    colors={{ Contorno: "#D7D7D7" }} 
-  />
-  <ColorItem 
-    title="Divisores" 
-    subtitle="Separadores visuais"
-    colors={{ Divisor: "#EDEDED" }} 
-  />
-  <ColorItem
-    title="Tom 1"
-    subtitle="Verde - Cor principal da marca"
-    colors={{
-        Primario: "#22C55E",
-        Secundario: "#4ADE80",
-        Terciario: "#86EFAC",
-        Quaternario: "#DCFCE7",
-        Hover: "#16A34A",
-        Click: "#15803D",
+        Borda: "#BDBDBD",
     }}
   />
   <ColorItem
-    title="Tom 2"
-    subtitle="Laranja - Cor secundária"
+    title="Primary"
+    subtitle="Amarelo solar - cor principal"
     colors={{
-        Primario: "#F97316",
-        Secundario: "#FB923C",
-        Terciario: "#FED7AA",
-        Quaternario: "#FFF7ED",
+        Primary: "#FFD600",
+        Hover: "#FFEB3B",
+        Click: "#FFC228",
+        Contrast: "#212121",
+    }}
+  />
+  <ColorItem
+    title="Secondary"
+    subtitle="Azul acinzentado - cor secundária"
+    colors={{
+        Secondary: "#3A4F63",
+        Contrast: "#FFFFFF",
     }}
   />
 </ColorPalette>

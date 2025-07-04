@@ -7,6 +7,7 @@ export { default as Box } from "./atoms/Box/Box";
 export { type BoxProps } from "./atoms/Box/Box";
 export { default as Button } from "./atoms/Button/Button";
 export { type ButtonProps } from "./atoms/Button/Button";
+
 export { default as Divider } from "./atoms/Divider/Divider";
 export { type DividerProps } from "./atoms/Divider/Divider";
 export { default as Typography } from "./atoms/Typography/Typography";
@@ -28,6 +29,8 @@ export { default as Notice } from "./molecules/Notice/Notice";
 export { type NoticeProps } from "./molecules/Notice/Notice";
 export { default as Switch } from "./molecules/Switch/Switch";
 export { type SwitchProps } from "./molecules/Switch/Switch";
+export { Select, default as SelectDefault } from "./molecules/Select/Select";
+export { type SelectProps } from "./molecules/Select/Select";
 
 // Organisms - Complex combinations of molecules and atoms
 export { Dropdown, default as DropdownDefault } from "./organisms/Dropdown/Dropdown";

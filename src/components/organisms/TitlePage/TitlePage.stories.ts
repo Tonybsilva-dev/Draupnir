@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import TitlePage, { type TitlePageProps } from "./TitlePage";
 
 const meta: Meta<TitlePageProps> = {
-  title: "Organisms/TitlePage",
+  title: "Components/Organisms/TitlePage",
   component: TitlePage,
   parameters: {
     parameters: {

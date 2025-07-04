@@ -1,13 +1,38 @@
-import { Meta, Primary, Stories, Controls } from "@storybook/addon-docs/blocks" 
+import { Meta, Primary, Canvas, Controls, Story } from '@storybook/addon-docs/blocks';
+import * as StoryBlock from './TextBlock.stories.tsx';
 
-import * as Story from "./TextBlock.stories"
-
-<Meta of={Story} />
+<Meta of={StoryBlock} />
 
 # Text Block
-This is a text molecule that can be used to display titled text on a page.
-### Molecule
-<Primary of={Story} />
-### Controls:
+
+O componente Text Block é utilizado para exibir blocos de texto com título e descrição, facilitando a organização de informações.
+
+## Descrição
+O Text Block do Draupnir DS destaca textos importantes, títulos de seções e descrições de forma clara e acessível.
+
+## Recursos
+- **Acessível:** Tipografia semântica, foco visível, estrutura clara
+- **Customizável:** Permite título, descrição e children
+- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+
+## Componente
+<Primary of={StoryBlock} />
 <Controls />
-<Stories/>
+
+## Exemplos
+<Canvas>
+  <Story of={StoryBlock.Primary} />
+  <Story of={StoryBlock.TextBlockPrimary} />
+  <Story of={StoryBlock.TextBlockSecondary} />
+  <Story of={StoryBlock.TextBlockTertiary} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { TextBlock } from 'draupnir-ds';
+
+<TextBlock title="Título" type="primary">
+  Descrição ou conteúdo do bloco de texto.
+</TextBlock>
+```

@@ -1,26 +1,29 @@
-import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
-import Loading from './Loading'
-import * as LoadingStories from "./Loading.stories"
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Loading from './Loading';
+import * as LoadingStories from './Loading.stories';
 
 <Meta of={LoadingStories} component={Loading}/>
 
 # Loading
-This is a loading component.
 
-## Features
-Features
-- Displays an animated loading indicator.
-- Utilizes a double-layer animation with ping and pulse effects.
-- Centers the loading indicator within its parent container.
+O componente Loading exibe um indicador animado de carregamento.
 
+## Descrição
+O Loading do Draupnir DS utiliza animações suaves para indicar processos em andamento, centralizando o feedback visual.
 
-## Component
+## Recursos
+- **Acessível:** Pode ser lido por leitores de tela (aria-label), foco visível
+- **Animado:** Efeito ping e pulse para melhor percepção
+- **Centralizado:** Sempre centraliza o indicador no container
+- **Customizável:** Pode ser usado em diferentes contextos
+
+## Componente
 <Primary />
 
-## Examples
+## Exemplos
 <Canvas additionalActions={[
     {
-      title: 'Open in GitHub',
+      title: 'Abrir no GitHub',
       onClick: () => {
         window.open(
           'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Loading/Loading.tsx',
@@ -33,14 +36,10 @@ Features
   <Story of={LoadingStories.Pulse} />
 </Canvas>
 
+## Uso
 
-## Usage
-<div>
-
-```jsx dark
+```tsx
 import { Loading } from 'draupnir-ds';
 
-// Avatar with an image
 <Loading />
 ```
-</div>

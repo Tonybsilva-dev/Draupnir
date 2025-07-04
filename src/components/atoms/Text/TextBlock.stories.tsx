@@ -3,11 +3,20 @@ import { Meta, StoryObj } from "@storybook/react";
 import TextBlock, { type TextBlockProps } from "./TextBlock";
 
 const meta: Meta<TextBlockProps> = {
-  title: "Atoms/Text",
+  title: "Components/Atoms/Text",
   component: TextBlock,
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     type: {
-      type: "string",
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'dark'],
+      description: 'Variação de cor do bloco de texto',
+      table: {
+        type: { summary: '"primary" | "secondary" | "dark"' },
+        defaultValue: { summary: 'primary' },
+      },
     },
     title: {
       type: "string",

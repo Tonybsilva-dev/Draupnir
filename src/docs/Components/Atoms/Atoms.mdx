@@ -1,0 +1,249 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Atomic Design" />
+
+<div style={{ textAlign: 'center', margin: '2rem 0 2.5rem 0' }}>
+  <h1 style={{ fontWeight: 700, fontSize: '2.2rem', margin: '1rem 0 0.5rem 0' }}>Atomic Design</h1>
+  <p style={{ color: '#666', fontSize: '1.1rem', margin: '0.5rem 0 0 0' }}>
+    Metodologia para criar sistemas de design escaláveis e organizados
+  </p>
+</div>
+
+## O que é Atomic Design?
+
+O **Atomic Design** é uma metodologia criada por Brad Frost que organiza os componentes de interface em **5 níveis hierárquicos**, trabalhando juntos para criar sistemas de design de forma deliberada e estruturada.
+
+> "O Atomic Design não é um processo linear, é um modelo mental para pensar nas interfaces como um todo coeso e uma coleção de partes ao mesmo tempo."
+
+## Os 5 Níveis do Atomic Design
+
+### 1. 🧪 **Atoms (Átomos)**
+**Elementos básicos que não podem ser mais decompostos**
+
+Os átomos são os blocos de construção fundamentais da interface. No Draupnir, temos:
+
+- **Avatar** - Representação visual de usuários
+- **Badge** - Indicadores de status e categorias  
+- **Box** - Container flexível para layouts
+- **Button** - Ações interativas com variantes
+- **Divider** - Separadores visuais
+- **Text/Typography** - Sistema tipográfico
+
+```jsx
+// Exemplo de uso dos átomos
+<Button variant="primary">Salvar</Button>
+<Badge variant="success">Ativo</Badge>
+<Typography size="lg">Título</Typography>
+```
+
+### 2. 🧬 **Molecules (Moléculas)**
+**Coleções de átomos que formam componentes simples**
+
+As moléculas combinam átomos para criar funcionalidades específicas:
+
+- **Input** - Campo de entrada com prefix/suffix
+- **Link** - Navegação com estados
+- **Loading** - Indicadores de carregamento
+- **Notice** - Notificações e alertas
+- **Select** - Seleção com dropdown
+- **Switch** - Alternância de estados
+
+```jsx
+// Exemplo de molécula (Input compound)
+<Input.Root>
+  <Input.Prefix>
+    <Icon /> {/* Atom */}
+  </Input.Prefix>
+  <Input.Control placeholder="Digite aqui..." />
+  <Badge variant="error">Erro</Badge> {/* Atom */}
+</Input.Root>
+```
+
+### 3. 🦠 **Organisms (Organismos)**
+**Componentes complexos que formam seções distintas**
+
+Os organismos combinam moléculas e átomos para criar seções funcionais:
+
+- **Dropdown** - Menu suspenso com opções
+- **Header** - Cabeçalho da aplicação
+- **Modal** - Janelas modais com conteúdo
+- **SubtitlePage** - Páginas com subtítulos
+- **TitlePage** - Páginas com títulos
+
+```jsx
+// Exemplo de organismo (Header)
+<Header>
+  <Avatar size="sm" image="/logo.png" /> {/* Atom */}
+  <nav>
+    <Link href="/dashboard">Dashboard</Link> {/* Molecule */}
+    <Link href="/profile">Perfil</Link>
+  </nav>
+  <Button variant="secondary">Sair</Button> {/* Atom */}
+</Header>
+```
+
+### 4. 📋 **Templates (Modelos)**
+**Layouts que demonstram a estrutura do design**
+
+Os templates definem a estrutura e organização dos componentes:
+
+- **Layouts de página** - Estruturas base para diferentes tipos de página
+- **Grids responsivos** - Organização de conteúdo
+- **Sidebars e navegação** - Estruturas de navegação
+
+### 5. 📄 **Pages (Páginas)**
+**Implementações concretas com conteúdo real**
+
+As páginas aplicam conteúdo real aos templates e testam a resiliência do design:
+
+- **Páginas de login/registro**
+- **Dashboards**
+- **Formulários complexos**
+- **Listagens de dados**
+
+## Como o Draupnir Implementa o Atomic Design
+
+### 🏗️ **Estrutura de Diretórios**
+
+```
+src/
+├── components/
+│   ├── atoms/          # Átomos básicos
+│   ├── molecules/      # Combinações de átomos
+│   ├── organisms/      # Componentes complexos
+│   └── templates/      # Layouts e estruturas
+├── docs/               # Documentação
+├── tokens/             # Design tokens
+└── utils/              # Utilitários
+```
+
+### 🔄 **Fluxo de Construção**
+
+O Draupnir segue o **modelo mental** do Atomic Design:
+
+1. **Pensar do todo para as partes** - Começamos analisando páginas completas
+2. **Dividir em unidades menores** - Quebramos em organismos, moléculas e átomos
+3. **Construir de baixo para cima** - Desenvolvemos átomos primeiro, depois moléculas, etc.
+
+### 🎯 **Princípios Aplicados**
+
+#### **Atomicidade dos Componentes**
+Cada componente é **completo por si só**:
+- Independente de regras de negócio
+- Não acoplado a dados dinâmicos
+- Funciona isoladamente
+- Pode ser testado independentemente
+
+#### **Composição Flexível**
+- **Compound Components** - Como o `Input.Root`, `Input.Control`, `Input.Prefix`
+- **Composição de props** - Variantes e configurações flexíveis
+- **Reutilização inteligente** - Um átomo pode ser usado em múltiplas moléculas
+
+#### **Hierarquia de Acesso**
+```
+Pages → Templates → Organisms → Molecules → Atoms
+```
+
+Cada nível pode acessar **qualquer nível abaixo**, mas nunca acima.
+
+### 🎨 **Design System Intencional**
+
+O Draupnir é um **Design System intencional** que:
+
+- **Define padrões visuais** - Cores, tipografia, espaçamentos
+- **Centraliza tokens** - Valores reutilizáveis em `src/tokens/`
+- **Documenta componentes** - Storybook para cada nível
+- **Facilita manutenção** - Mudanças em átomos refletem em toda a aplicação
+
+### 📚 **Documentação e Desenvolvimento**
+
+#### **Storybook Integration**
+- **Stories para cada componente** - Exemplos e variações
+- **Documentação MDX** - Guias de uso e boas práticas
+- **Controles interativos** - Teste de props e estados
+- **Acessibilidade** - Testes e guidelines
+
+#### **Design Tokens**
+```css
+/* src/app/globals.css */
+:root {
+  /* Cores */
+  --color-primary: rgb(102, 126, 234);
+  --color-secondary: rgb(118, 75, 162);
+  
+  /* Tipografia */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  
+  /* Espaçamentos */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+}
+```
+
+## Vantagens da Implementação
+
+### ✅ **Escalabilidade**
+- Novos componentes seguem padrões estabelecidos
+- Fácil adição de novas funcionalidades
+- Manutenção simplificada
+
+### ✅ **Consistência**
+- Padrões visuais unificados
+- Comportamentos previsíveis
+- Experiência do usuário coesa
+
+### ✅ **Produtividade**
+- Componentes reutilizáveis
+- Desenvolvimento mais rápido
+- Menos duplicação de código
+
+### ✅ **Testabilidade**
+- Componentes isolados
+- Testes unitários simples
+- Integração com Storybook
+
+## Quando Usar Cada Nível
+
+### 🧪 **Use Atoms quando:**
+- Precisa de um elemento básico da interface
+- O componente não pode ser dividido em partes menores
+- Quer manter consistência visual
+- Precisa de um elemento reutilizável
+
+### 🧬 **Use Molecules quando:**
+- Precisa combinar múltiplos átomos
+- Há uma funcionalidade específica
+- O componente tem estado interno
+- Precisa de interações simples
+
+### 🦠 **Use Organisms quando:**
+- Precisa de componentes complexos
+- Há lógica de negócio específica
+- O componente forma uma seção completa
+- Precisa de múltiplas moléculas
+
+### 📋 **Use Templates quando:**
+- Precisa definir estrutura de layout
+- Há padrões de organização
+- Precisa de reutilização de estrutura
+- O foco é na organização, não no conteúdo
+
+### 📄 **Use Pages quando:**
+- Precisa de implementação específica
+- Há conteúdo real e dados
+- Precisa testar a resiliência do design
+- O foco é na experiência final do usuário
+
+## Próximos Passos
+
+- [Molecules](/docs/molecules--page) - Explore as moléculas do Draupnir
+- [Organisms](/docs/organisms--page) - Veja os organismos complexos
+- [Design Tokens](/docs/design-tokens--page) - Entenda os tokens visuais
+- [Boas Práticas](/docs/best-practices--page) - Aprenda as melhores práticas
+
+---
+
+*Baseado no artigo "[Como criar componentes React com uma arquitetura escalável usando Atomic Design](https://medium.com/rd-shipit/como-criar-componentes-react-com-uma-arquitetura-escalável-usando-atomic-design-74a67aaf47e0)" da RD Station* 

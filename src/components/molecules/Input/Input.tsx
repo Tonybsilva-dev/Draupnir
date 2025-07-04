@@ -12,7 +12,7 @@ export type InputControlProps = ComponentProps<"input">;
 const InputControl = forwardRef<HTMLInputElement, InputControlProps>(
   ({ className, disabled, ...props }, ref) => {
     const classNames = twMerge(
-      "flex-1 border-0 bg-transparent p-0 text-zinc-900 placeholder-zinc-600 outline-none truncate",
+      "flex-1 border-0 bg-transparent p-0 text-gray-900 placeholder-gray-500 outline-none truncate",
       disabled && "cursor-not-allowed opacity-60",
       className
     );
@@ -38,13 +38,14 @@ function InputRoot({
   return (
     <>
       {label && (
-        <label className="block mb-1 text-sm font-medium text-zinc-700">
+        <label className="block mb-1 text-sm font-medium text-gray-700">
           {label}
         </label>
       )}
       <div
         className={twMerge(
-          "flex w-full items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 py-2",
+          "flex w-full items-center gap-2 border border-gray-200 bg-white px-3 py-2 transition-colors",
+          "focus-within:border-primary focus-within:shadow-focus",
           hasError && "border-red-500",
           className
         )}

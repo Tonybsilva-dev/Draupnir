@@ -11,7 +11,7 @@ import { Button } from "../../atoms/Button/Button";
 import Typography from "../../atoms/Typography/Typography";
 
 const meta: Meta<ModalProps> = {
-  title: "Organisms/Modal",
+  title: "Components/Organisms/Modal",
   parameters: {
     layout: "centered",
   },

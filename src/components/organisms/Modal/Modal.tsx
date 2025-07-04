@@ -15,8 +15,8 @@ export type ModalProps = {
 
 const modalVariantStyles: Record<ModalVariant, string> = {
   default: "bg-white",
-  warning: "bg-yellow-100 border-yellow-600 text-yellow-600",
-  success: "bg-green-100 border-green-600 text-green-600",
+  warning: "bg-yellow-50 border border-yellow-200 text-yellow-800",
+  success: "bg-green-50 border border-green-200 text-green-800",
 };
 
 const Modal: FunctionComponent<ModalProps> = ({
@@ -79,7 +79,7 @@ const Modal: FunctionComponent<ModalProps> = ({
         >
           <motion.div
             className={twMerge(
-              "p-4 rounded shadow-lg w-full max-w-lg m-6",
+              "p-4 shadow-lg w-full max-w-lg m-6 border border-gray-200",
               variantClasses
             )}
             onClick={(e) => e.stopPropagation()}
@@ -100,10 +100,10 @@ const ModalHeader: FunctionComponent<{ children: ReactNode }> = ({
   children,
 }) => (
   <>
-    <div className="font-bold text-xl mb-4 text-center text-green-600">
+    <div className="font-bold text-xl mb-4 text-center text-gray-900">
       {children}
     </div>
-    <hr className="mb-2" />
+    <hr className="mb-2 border-gray-200" />
   </>
 );
 

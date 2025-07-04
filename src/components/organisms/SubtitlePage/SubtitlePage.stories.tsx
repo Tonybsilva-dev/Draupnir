@@ -4,7 +4,7 @@ import SubtitlePage, { SubtitlePageProps } from "./SubtitlePage";
 import { Button } from "../../atoms/Button/Button";
 
 const meta: Meta<SubtitlePageProps> = {
-  title: "Organisms/SubtitlePage",
+  title: "Components/Organisms/SubtitlePage",
   parameters: {
     parameters: {
       notes: "These are notes for the SubtitlePage stories",

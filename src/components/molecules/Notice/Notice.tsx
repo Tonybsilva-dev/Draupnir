@@ -1,7 +1,7 @@
 import Box from "../../atoms/Box/Box";
 import { tv } from "tailwind-variants";
 import Typography from "../../atoms/Typography/Typography";
-import { ComponentProps, useEffect, useRef, useState } from "react";
+import { ComponentProps, useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "../../atoms/Button/Button";
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from "lucide-react";
 
@@ -72,13 +72,13 @@ const Notice = ({
   const leaveTimeout = useRef<NodeJS.Timeout | null>(null);
   const noticeId = useRef(`notice-${Math.random().toString(36).substr(2, 9)}`).current;
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsLeaving(true);
     leaveTimeout.current = setTimeout(() => {
       setIsVisible(false);
       if (onClose) onClose();
     }, 300); // tempo da animação
-  };
+  }, [onClose]);
 
   useEffect(() => {
     if (autoCloseMs !== null) {
@@ -87,7 +87,7 @@ const Notice = ({
       }, autoCloseMs);
       return () => clearTimeout(timer);
     }
-  }, [autoCloseMs]);
+  }, [autoCloseMs, handleClose]);
 
   useEffect(() => {
     const handleEscKeyPress = (event: KeyboardEvent) => {
@@ -100,7 +100,7 @@ const Notice = ({
       document.removeEventListener("keydown", handleEscKeyPress);
       if (leaveTimeout.current) clearTimeout(leaveTimeout.current);
     };
-  }, []);
+  }, [handleClose]);
 
   if (!isVisible) return null;
 

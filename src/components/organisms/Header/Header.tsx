@@ -32,7 +32,7 @@ export const Header = () => {
 
       {/* Right: User */}
       <div className="flex items-center gap-4 min-w-[180px] justify-end">
-        {logged && (
+        {logged ? (
           <Dropdown>
             <Dropdown.Trigger asChild>
               <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-50 transition">
@@ -46,6 +46,13 @@ export const Header = () => {
               <Dropdown.Item onSelect={() => setLogged(false)} className="text-red-600">Logout</Dropdown.Item>
             </Dropdown.Content>
           </Dropdown>
+        ) : (
+          <button
+            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition"
+            onClick={() => setLogged(true)}
+          >
+            Login
+          </button>
         )}
       </div>
     </header>

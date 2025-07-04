@@ -1,4 +1,4 @@
-import { ReactNode, FunctionComponent, useEffect, useState, useRef } from "react";
+import { ReactNode, FunctionComponent, useEffect, useState, useRef, useCallback } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../../atoms/Button/Button";
@@ -32,13 +32,13 @@ const Modal: FunctionComponent<ModalProps> = ({
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
+  const handleEsc = useCallback((event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      onClose();
+    }
+  }, [onClose]);
 
+  useEffect(() => {
     if (isOpen) {
       // Salva o elemento que tinha foco antes do modal
       previousFocusRef.current = document.activeElement as HTMLElement;
@@ -69,7 +69,7 @@ const Modal: FunctionComponent<ModalProps> = ({
         previousFocusRef.current.focus();
       }
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, handleEsc]);
 
   // Focus trap para manter o foco dentro do modal
   const handleKeyDown = (event: React.KeyboardEvent) => {

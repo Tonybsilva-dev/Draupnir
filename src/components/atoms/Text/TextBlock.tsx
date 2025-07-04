@@ -15,12 +15,11 @@ const TextBlock = ({
   className,
   ...rest
 }: TextBlockProps) => {
-  const textClass = type === "primary" ? "text-zinc-900" : type === "dark" ? "text-white" : "text-zinc-700";
+  const textClass = type === "primary" ? "text-gray-900" : type === "dark" ? "text-white" : "text-gray-700";
   return (
     <Box
-      className={`flex flex-col gap-2 p-5  w-full`}
+      className={`flex flex-col gap-2 p-5 w-full`}
       type={type}
-      rounded
       {...rest}
     >
       <div className={className}>

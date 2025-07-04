@@ -15,12 +15,12 @@ export default function useStyleSwitch({
   const containerVariant = tv({
     base: [
       "outline-none relative inline-flex h-6 w-16 items-center rounded-full",
-      disabled ? "bg-disabled" : "bg-gray-200",
+      disabled ? "bg-gray-200" : "bg-gray-200",
     ],
     variants: {
       variant: {
-        common: enabled ? "bg-primary" : "bg-info",
-        contract: enabled ? "bg-success" : "bg-info",
+        common: enabled ? "bg-primary" : "bg-gray-200",
+        contract: enabled ? "bg-green-600" : "bg-gray-200",
       },
     },
     defaultVariants: {
@@ -36,10 +36,10 @@ export default function useStyleSwitch({
   );
 
   const iconClasses = classNames(
-    "aria-disabled: text-font-disabled",
-    { "text-success": enabled && !disabled },
-    { "text-error": !enabled && !disabled },
-    { "text-disabled": disabled }
+    "text-gray-400",
+    { "text-green-600": enabled && !disabled },
+    { "text-red-600": !enabled && !disabled },
+    { "text-gray-300": disabled }
   );
 
   return {

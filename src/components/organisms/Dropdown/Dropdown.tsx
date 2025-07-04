@@ -10,10 +10,10 @@ const DropdownTrigger = forwardRef<HTMLButtonElement, DropdownTriggerProps>(({ c
   <DropdownMenuPrimitive.Trigger
     ref={ref}
     className={twMerge(
-      "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "inline-flex items-center justify-center text-sm font-medium transition-colors",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
-      "bg-white border border-zinc-200 hover:bg-zinc-100 hover:text-zinc-900",
+      "bg-white border border-gray-200 hover:bg-gray-50 hover:text-gray-900",
       className
     )}
     {...props}
@@ -27,7 +27,7 @@ const DropdownContent = forwardRef<HTMLDivElement, DropdownContentProps>(({ clas
     <DropdownMenuPrimitive.Content
       ref={ref}
       className={twMerge(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-zinc-200 bg-white p-1 text-zinc-950 shadow-md",
+        "z-50 min-w-[8rem] overflow-hidden border border-gray-200 bg-white p-1 text-gray-900 shadow-md",
         "animate-fade-in",
         className
       )}
@@ -43,8 +43,8 @@ const DropdownItem = forwardRef<HTMLDivElement, DropdownItemProps>(({ className,
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={twMerge(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
-      "transition-colors focus:bg-zinc-100 focus:text-zinc-900 data-[disabled]:pointer-events-none",
+      "relative flex cursor-default select-none items-center px-2 py-1.5 text-sm outline-none",
+      "transition-colors focus:bg-gray-50 focus:text-gray-900 data-[disabled]:pointer-events-none",
       "data-[disabled]:opacity-50",
       className
     )}

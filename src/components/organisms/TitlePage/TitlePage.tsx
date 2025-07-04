@@ -12,7 +12,7 @@ export default function TitlePage({ title, description }: TitlePageProps) {
         {title}
       </Typography>
       {description && (
-        <Typography size="md" variant="secondary">
+        <Typography size="md" variant="secondary" className="mt-1">
           {description}
         </Typography>
       )}

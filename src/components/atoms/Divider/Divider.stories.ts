@@ -3,13 +3,14 @@ import { Meta, StoryObj } from "@storybook/react";
 import Divider, { type DividerProps } from "./Divider";
 
 const meta: Meta<DividerProps> = {
-  title: "Atoms/Divider",
+  title: "Components/Atoms/Divider",
   component: Divider,
   parameters: {
     parameters: {
       notes: "These are notes for the Divider stories",
       info: "This is info for the Divider stories",
     },
+    layout: 'centered',
   },
   argTypes: {
     children: {

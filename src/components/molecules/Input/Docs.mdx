@@ -5,7 +5,18 @@ import * as InputStories from './Input.stories'
 <Meta of={InputStories} component={Input}/>
 
 # Input
+
 O componente Input é utilizado para capturar e submeter dados do usuário.
+
+## Descrição
+O Input do Draupnir DS oferece campos de texto com prefixo, estados de erro, desabilitado e integração com formulários.
+
+## Recursos
+- **Prefixo:** Suporte a ícones ou texto antes do campo
+- **Estados:** Normal, erro, desabilitado
+- **Acessível:** Navegação por teclado, ARIA, foco visível, label e mensagem de erro
+- **Customizável:** Tamanhos, preenchimento, integração com formulários
+- **Feedback visual:** Hover, foco, erro
 
 ## Componente
 <Primary />
@@ -31,7 +42,6 @@ O componente Input é utilizado para capturar e submeter dados do usuário.
     <h3 className="text-lg font-semibold mt-4 mb-2">Input Desabilitado</h3>
       <Story of={InputStories.Disabled} />
     </div>
-
     <div>
       <h3 className="text-lg font-semibold mb-2">Input com Erro</h3>
         <Story of={InputStories.WithError} />

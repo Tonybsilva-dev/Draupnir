@@ -4,24 +4,35 @@ import { Loading } from "../../molecules/Loading/Loading";
 
 const button = tv({
   base: [
-    "rounded-none px-4 py-2 text-sm font-semibold outline-none shadow-sm border-none",
-    "focus:ring-2 focus:ring-offset-2 focus:ring-green-500",
-    "active:opacity-80",
+    "px-4 py-2 text-sm font-medium outline-none transition-all duration-200",
+    "focus:ring-2 focus:ring-offset-2 focus:ring-primary",
+    "active:opacity-80 border-none",
   ],
 
   variants: {
     variant: {
       primary:
-        "rounded-md bg-primary text-white hover:bg-hover dark:bg-green-500 dark:hover:bg-green-600",
+        "bg-primary text-white hover:bg-hover",
+      secondary:
+        "bg-secondary text-white hover:bg-primary hover:text-primary-contrast",
       outline:
-        "rounded-md border border-zinc-300 text-zinc-700 hover:bg-zinc-50 dark:text-zinc-400",
+        "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 hover:border-gray-300",
       ghost:
-        "rounded-md px-2 hover:bg-zinc-50 shadow-none text-zinc-500 dark:hover:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800",
+        "bg-transparent text-gray-700 hover:bg-gray-50",
+      danger:
+        "bg-red-600 text-white hover:bg-red-700",
+    },
+    size: {
+      default: "px-4 py-2",
+      sm: "px-3 py-1.5 text-xs",
+      lg: "px-6 py-3 text-base",
+      full: "w-full px-4 py-2",
     },
   },
 
   defaultVariants: {
     variant: "primary",
+    size: "default",
   },
 });
 
@@ -32,20 +43,27 @@ export type ButtonProps = ComponentProps<"button"> &
 
 export function Button({
   variant,
+  size,
   className,
   isLoading,
   ...props
 }: ButtonProps) {
+  const isDisabled = props.disabled || isLoading;
+  // Define a cor do loader: branco para primary, primary para os outros
+  const loadingColor = variant === "primary" ? "bg-white" : "bg-primary";
   return (
     <button
       {...props}
       role="button"
-      disabled={isLoading}
-      className={button({ variant, className })}
+      disabled={isDisabled}
+      className={
+        button({ variant, size, className }) +
+        (isDisabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "")
+      }
       data-dd-action-name={`${props.value?.toString} button`}
       aria-label="button"
     >
-      {isLoading ? <Loading /> : props.children}
+      {isLoading ? <Loading color={loadingColor} /> : props.children}
     </button>
   );
 }

@@ -3,7 +3,7 @@ import { Input, InputRootProps, InputControlProps } from "./Input";
 import { UserCircle, Mail, Lock } from "lucide-react";
 
 const meta: Meta<InputRootProps & InputControlProps> = {
-  title: "Molecules/Input",
+  title: "Components/Molecules/Input",
   component: Input.Root,
   parameters: {
     layout: "centered",

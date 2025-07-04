@@ -12,29 +12,29 @@ const theme = create({
   brandImage: "./draupnir-logo.png",
   brandTarget: "_self",
 
-  colorPrimary: "#10B981",
-  colorSecondary: "#10B981",
+  colorPrimary: "#FFD600", // amarelo solar
+  colorSecondary: "#3A4F63", // azul acinzentado
 
   // UI
-  appBg: "#E4E4E7",
+  appBg: "#F5F5F5", // cinza claro
   appContentBg: "#FFFFFF",
-  appBorderColor: "#E4E4E7",
+  appBorderColor: "#BDBDBD", // cinza médio
   appBorderRadius: 4,
 
   // Text colors
-  textColor: "black",
-  textInverseColor: "rgba(255,255,255,0.9)",
+  textColor: "#212121", // texto escuro
+  textInverseColor: "#FFFFFF",
 
   // Toolbar default and active colors
-  barTextColor: "#18181B",
-  barSelectedColor: "#E4E4E7",
-  barBg: "#E4E4E7",
-  barHoverColor: "#FFFFFF",
+  barTextColor: "#3A4F63", // azul acinzentado
+  barSelectedColor: "#FFD600", // amarelo solar
+  barBg: "#FFFFFF",
+  barHoverColor: "#FFF9C4", // amarelo claro
 
   // Form colors
-  inputBg: "white",
-  inputBorder: "silver",
-  inputTextColor: "black",
+  inputBg: "#FFFFFF",
+  inputBorder: "#BDBDBD",
+  inputTextColor: "#212121",
   inputBorderRadius: 4,
 });
 

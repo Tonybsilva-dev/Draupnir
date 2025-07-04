@@ -1,17 +1,38 @@
-import { Meta, Primary, Controls, Stories } from "@storybook/addon-docs/blocks";
+import { Meta, Primary, Canvas, Controls, Story } from '@storybook/addon-docs/blocks';
+import * as TypographyStories from './Typography.stories';
 
-import * as Story from "./Typography.stories";
-
-<Meta of={Story} />
+<Meta of={TypographyStories} />
 
 # Typography
-This is a atom of Typography.
 
-### Atom
+O componente Typography é utilizado para estilizar textos, títulos e parágrafos de forma consistente.
+
+## Descrição
+O Typography do Draupnir DS garante padronização visual, hierarquia e acessibilidade em todos os textos da interface.
+
+## Recursos
+- **Acessível:** Tipografia semântica, foco visível, tamanhos e pesos claros
+- **Customizável:** Variações de tamanho, peso e cor
+- **Consistente:** Mantém padrão visual em toda a aplicação
+
+## Componente
 <Primary />
-### Controls
 <Controls />
 
+## Exemplos
+<Canvas>
+  <Story of={TypographyStories.Primary} />
+  <Story of={TypographyStories.TextHeadingH1} />
+  <Story of={TypographyStories.TextHeadingH2} />
+  <Story of={TypographyStories.TextHeadingH3} />
+</Canvas>
 
-### Stories
-<Stories />
+## Uso
+
+```tsx
+import { Typography } from 'draupnir-ds';
+
+<Typography size="lg" variant="primary">
+  Texto grande e destacado
+</Typography>
+```

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Button, ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
-  title: "Atoms/Button",
+  title: "Components/Atoms/Button",
   component: Button,
   parameters: {
     layout: "centered",
@@ -44,10 +44,19 @@ import { Button } from '@/components/atoms/Button';
     variant: {
       description: "Variante visual do botão",
       control: { type: "select" },
-      options: ["primary", "outline", "ghost"],
+      options: ["primary", "secondary", "outline", "ghost", "danger"],
       table: {
-        type: { summary: "primary | outline | ghost" },
+        type: { summary: "primary | secondary | outline | ghost | danger" },
         defaultValue: { summary: "primary" },
+      },
+    },
+    size: {
+      description: "Tamanho do botão",
+      control: { type: "select" },
+      options: ["default", "sm", "lg", "full"],
+      table: {
+        type: { summary: "default | sm | lg | full" },
+        defaultValue: { summary: "default" },
       },
     },
     isLoading: {
@@ -151,6 +160,25 @@ export const Ghost: Story = {
 };
 
 /**
+ * ## Variante Secondary
+ * 
+ * Botão secundário com fundo azul acinzentado e texto branco. Ideal para ações alternativas ou menos prioritárias.
+ */
+export const Secondary: Story = {
+  args: {
+    children: "Secondary Button",
+    variant: "secondary",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Botão secundário com fundo azul acinzentado, ideal para ações alternativas ou menos prioritárias.",
+      },
+    },
+  },
+};
+
+/**
  * ## Estado Loading
  * 
  * Botão com indicador de carregamento. Desabilita automaticamente durante o processo.
@@ -204,6 +232,44 @@ export const DarkTheme: Story = {
     docs: {
       description: {
         story: "Botão com classes específicas para o tema escuro.",
+      },
+    },
+  },
+};
+
+/**
+ * ## Variante Danger
+ * 
+ * Botão com cor vermelha para ações destrutivas ou de alerta.
+ */
+export const Danger: Story = {
+  args: {
+    children: "Delete",
+    variant: "danger",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Use para ações destrutivas como 'Excluir', 'Remover' ou 'Cancelar'. A cor vermelha sinaliza perigo.",
+      },
+    },
+  },
+};
+
+/**
+ * ## Tamanho Full
+ * 
+ * Botão que ocupa toda a largura disponível do container.
+ */
+export const Full: Story = {
+  args: {
+    children: "Full Width Button",
+    size: "full",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Ideal para formulários ou quando você quer que o botão ocupe toda a largura disponível.",
       },
     },
   },

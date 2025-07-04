@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Box, { type BoxProps } from "./Box";
 
 const meta: Meta<BoxProps> = {
-  title: "Atoms/Box",
+  title: "Components/Atoms/Box",
   component: Box,
   parameters: {
     notes: "These are notes for the Box stories",
@@ -12,10 +12,12 @@ const meta: Meta<BoxProps> = {
   argTypes: {
     children: { type: "string" },
     type: {
-      control: {
-        type: "radio",
-        description:
-          "Specifies the box's variant or style, affecting its appearance.",
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'dark', 'alert', 'success', 'error', 'info'],
+      description: "Variação de cor/estilo da Box.",
+      table: {
+        type: { summary: '"primary" | "secondary" | "dark" | "alert" | "success" | "error" | "info"' },
+        defaultValue: { summary: 'primary' },
       },
     },
     rounded: {

@@ -2,12 +2,12 @@ import React, { ComponentProps } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 const text = tv({
-  base: ["text-gray-primary font-normal"],
+  base: ["text-gray-900 font-normal"],
   variants: {
     variant: {
-      primary: "text-gray-primary",
-      secondary: "text-gray-secondary",
-      tertiary: "text-gray-tertiary",
+      primary: "text-gray-900",
+      secondary: "text-gray-600",
+      tertiary: "text-gray-500",
     },
     size: {
       xs: "text-xs",
@@ -32,15 +32,15 @@ const text = tv({
 export type TypographyProps = ComponentProps<"p"> & {
   variant?: "primary" | "secondary" | "tertiary";
   size:
-    | "xs"
-    | "sm"
-    | "md"
-    | "xl"
-    | "2xl"
-    | "4xl"
-    | "title1"
-    | "title2"
-    | "title3";
+  | "xs"
+  | "sm"
+  | "md"
+  | "xl"
+  | "2xl"
+  | "4xl"
+  | "title1"
+  | "title2"
+  | "title3";
   children: React.ReactNode;
   element?: keyof JSX.IntrinsicElements;
 } & JSX.IntrinsicElements["p"];

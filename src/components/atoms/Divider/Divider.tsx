@@ -8,9 +8,9 @@ export type DividerProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const colorClassMap = {
-  light: "bg-light",
-  dark: "bg-dark",
-  black: "bg-black",
+  light: "bg-gray-200",
+  dark: "bg-gray-600",
+  black: "bg-gray-900",
 };
 
 const Divider = ({

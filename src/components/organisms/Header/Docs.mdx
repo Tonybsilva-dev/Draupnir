@@ -1,0 +1,34 @@
+import { Meta, Primary, Canvas, Story } from '@storybook/addon-docs/blocks';
+import Header from './Header';
+import * as HeaderStories from './Header.stories';
+
+<Meta of={HeaderStories} component={Header}/>
+
+# Header
+
+O componente Header exibe um cabeçalho funcional para aplicações web.
+
+## Descrição
+O Header do Draupnir DS organiza navegação, logo e área do usuário de forma responsiva e acessível.
+
+## Recursos
+- **Acessível:** Navegação por teclado, ARIA, foco visível
+- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+- **Composição:** Logo, navegação central e usuário à direita
+- **Customizável:** Permite adicionar menus, dropdowns e avatar
+
+## Componente
+<Primary />
+
+## Exemplos
+<Canvas>
+  <Story of={HeaderStories.Default} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Header } from 'draupnir-ds';
+
+<Header />
+``` 

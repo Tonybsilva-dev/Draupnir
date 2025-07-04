@@ -1,0 +1,39 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Box from './Box';
+import * as BoxStories from './Box.stories';
+
+<Meta of={BoxStories} component={Box}/>
+
+# Box
+
+O componente Box é um container versátil para agrupar e estruturar conteúdos na interface.
+
+## Descrição
+O Box do Draupnir DS facilita a organização visual, aplicação de espaçamentos, fundos e bordas.
+
+## Recursos
+- **Versátil:** Pode ser usado para cards, seções, agrupamentos
+- **Customizável:** Suporte a bordas, arredondamento e preenchimento
+- **Temático:** Variações de cor e fundo
+- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+- **Acessível:** Pode ser usado como container semântico, não interfere na navegação por teclado
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={BoxStories.Default} />
+  <Story of={BoxStories.BoxAlert} />
+  <Story of={BoxStories.BoxSuccess} />
+  <Story of={BoxStories.BoxError} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Box } from 'draupnir-ds';
+
+<Box>Conteúdo</Box>
+```

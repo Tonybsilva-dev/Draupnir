@@ -1,0 +1,46 @@
+import { Meta, Primary, Canvas, Controls, Story } from '@storybook/addon-docs/blocks';
+import TitlePage from './TitlePage';
+import * as TitlePageStories from './TitlePage.stories';
+
+<Meta of={TitlePageStories} component={TitlePage}/>
+
+# Title Page
+
+O componente Title Page exibe o título principal e uma descrição no topo da página.
+
+## Descrição
+O Title Page do Draupnir DS destaca o contexto da página, melhorando a hierarquia visual e a acessibilidade.
+
+## Recursos
+- **Acessível:** Usa tags semânticas, foco visível, tipografia clara
+- **Customizável:** Permite título e descrição
+- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas additionalActions={[
+    {
+      title: 'Abrir no GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/TitlePage/TitlePage.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+    <Story of={TitlePageStories.Primary} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { TitlePage } from 'draupnir-ds';
+
+<TitlePage title="Dashboard" description="Bem-vindo ao painel principal" />
+```
+

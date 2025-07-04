@@ -1,0 +1,58 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Select from './Select';
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} component={Select} />
+
+# Select
+
+O componente Select permite ao usuário escolher uma opção de uma lista suspensa, com acessibilidade e estilo minimalista.
+
+## Descrição
+O Select do Draupnir DS oferece seleção única, agrupamento de opções, navegação por teclado e integração visual com o restante do sistema.
+
+## Recursos
+- **Seleção única:** Permite escolher apenas uma opção
+- **Grupos e labels:** Organização de opções em grupos
+- **Acessível:** Navegação por teclado, ARIA, foco visível, labels e grupos para melhor compreensão
+- **Customização:** Tamanhos, estados, integração com formulários
+- **Feedback visual:** Hover, foco, desabilitado
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <div className="grid grid-cols-2 gap-4">
+    <div>
+      <h3 className="text-lg font-semibold mb-2">Select simples</h3>
+      <Story of={SelectStories.Default} />
+      <h3 className="text-lg font-semibold mt-4 mb-2">Select com Label</h3>
+      <Story of={SelectStories.WithLabel} />
+    </div>
+    <div>
+      <h3 className="text-lg font-semibold mb-2">Select com Grupos</h3>
+      <Story of={SelectStories.WithGroups} />
+      <h3 className="text-lg font-semibold mt-4 mb-2">Tamanhos</h3>
+      <Story of={SelectStories.MultipleSizes} />
+    </div>
+  </div>
+</Canvas>
+
+## Uso
+
+```tsx
+import Select from 'draupnir-ds';
+
+<Select defaultValue="option1">
+  <Select.Trigger>
+    <Select.Value placeholder="Selecione uma opção" />
+  </Select.Trigger>
+  <Select.Content>
+    <Select.Item value="option1">Opção 1</Select.Item>
+    <Select.Item value="option2">Opção 2</Select.Item>
+    <Select.Item value="option3">Opção 3</Select.Item>
+  </Select.Content>
+</Select>
+``` 

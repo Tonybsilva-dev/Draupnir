@@ -1,0 +1,74 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Notice from './Notice';
+import * as NoticeStories from './Notice.stories';
+
+<Meta of={NoticeStories} component={Notice}/>
+
+# Notice
+
+O componente Notice é utilizado para exibir mensagens de alerta, sucesso, erro ou informação para o usuário.
+
+## Descrição
+O Notice do Draupnir DS oferece feedback visual imediato, com ícones, cores e possibilidade de fechamento.
+
+## Recursos
+- **Tipos:** Success, Alert, Error, Info
+- **Ícones automáticos:** Exibe ícone conforme o tipo
+- **Acessível:** Suporte a ARIA, navegação por teclado, foco visível, botão de fechar acessível
+- **Customizável:** Permite adicionar conteúdo customizado
+- **Interativo:** Pode ser fechado pelo usuário (botão ou tecla Esc)
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas additionalActions={[
+    {
+      title: 'Abrir no GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Notice/Notice.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+    <div className='flex flex-col gap-3'>
+        <Story of={NoticeStories.Default} />
+   </div>
+</Canvas>
+
+## Uso
+
+```tsx
+import { useNotifications, NotificationsProvider, NotificationsContainer } from 'draupnir-ds';
+
+function MeuComponente() {
+  const { notify } = useNotifications();
+
+  return (
+    <button
+      onClick={() =>
+        notify({
+          notificationType: 'notice',
+          type: 'success',
+          message: 'Operação realizada com sucesso!',
+          position: 'center-top',
+          autoCloseMs: 3000,
+        })
+      }
+    >
+      Mostrar Notice
+    </button>
+  );
+}
+
+// No seu App:
+<NotificationsProvider>
+  <NotificationsContainer />
+  <MeuComponente />
+</NotificationsProvider>
+```
+

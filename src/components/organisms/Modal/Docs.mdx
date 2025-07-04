@@ -1,0 +1,54 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks'
+import Modal  from './Modal'
+import * as ModalStories from './Modal.stories';
+
+<Meta of={ModalStories} component={Modal} />
+
+# Modal
+
+O componente Modal exibe uma janela sobreposta para destacar informações ou ações importantes.
+
+## Descrição
+O Modal do Draupnir DS oferece foco gerenciado, fechamento por ESC, animações suaves e integração com formulários.
+
+## Recursos
+- **Acessível:** Trava foco, ARIA, fechamento por ESC, título e descrição para leitores de tela
+- **Modal e não-modal:** Suporte a ambos os modos
+- **Animado:** Framer Motion e Tailwind para transições
+- **Controlável:** Pode ser controlado por estado externo
+- **Customizável:** Cabeçalho, corpo e rodapé customizáveis
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas additionalActions={[
+    {
+      title: 'Abrir no GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Modal/Modal.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={ModalStories.Primary} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'draupnir-ds';
+
+<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+  <ModalHeader>Título</ModalHeader>
+  <ModalBody>Conteúdo do modal</ModalBody>
+  <ModalFooter>
+    <Button>Salvar</Button>
+    <Button variant="outline">Cancelar</Button>
+  </ModalFooter>
+</Modal>
+```

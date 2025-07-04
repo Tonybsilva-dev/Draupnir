@@ -1,0 +1,48 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks'
+import SubtitlePage  from './SubtitlePage'
+import * as SubtitlePageStories from './SubtitlePage.stories';
+
+<Meta of={SubtitlePageStories} component={SubtitlePage} />
+
+# Subtitle Page
+
+O componente Subtitle Page exibe um subtítulo, descrição e ações no topo de seções da interface.
+
+## Descrição
+O Subtitle Page do Draupnir DS organiza informações secundárias e botões de ação, melhorando a hierarquia visual.
+
+## Recursos
+- **Acessível:** Tipografia semântica, foco visível, estrutura clara
+- **Responsivo:** Layout adaptável para diferentes tamanhos de tela
+- **Customizável:** Permite adicionar botões, descrições e outros elementos
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas additionalActions={[
+    {
+      title: 'Abrir no GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/SubtitlePage/SubtitlePage.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={SubtitlePageStories.Primary} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { SubtitlePage } from 'draupnir-ds';
+
+<SubtitlePage subtitle="Informações pessoais" description="Atualize seus dados aqui.">
+  <Button variant="outline">Cancelar</Button>
+  <Button variant="primary">Salvar</Button>
+</SubtitlePage>
+```

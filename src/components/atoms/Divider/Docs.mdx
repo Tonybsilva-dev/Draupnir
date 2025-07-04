@@ -1,0 +1,38 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Divider from './Divider';
+import * as DividerStories from './Divider.stories';
+
+<Meta of={DividerStories} component={Divider} />
+
+# Divider
+
+O componente Divider é utilizado para separar conteúdos e criar divisões visuais na interface.
+
+## Descrição
+O Divider do Draupnir DS facilita a organização visual, melhorando a leitura e a hierarquia das informações.
+
+## Recursos
+- **Customizável:** Espessura, cor e largura
+- **Horizontal ou vertical:** Adapta-se ao contexto
+- **Semântico:** Pode conter texto ou ícones, lido por leitores de tela como divisor
+- **Responsivo:** Mantém proporção em diferentes telas
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={DividerStories.Default} />
+  <Story of={DividerStories.Dark} />
+  <Story of={DividerStories.DivisorWithProps} />
+  <Story of={DividerStories.ThicknessDivisor} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Divider } from 'draupnir-ds';
+
+<Divider />
+```

@@ -1,0 +1,38 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Link from './Link';
+import * as LinkStories from './Link.stories';
+
+<Meta of={LinkStories} component={Link}/>
+
+# Link
+
+O componente Link é utilizado para navegação entre páginas e ações de redirecionamento.
+
+## Descrição
+O Link do Draupnir DS garante acessibilidade, estilos consistentes e integração com roteadores.
+
+## Recursos
+- **Acessível:** Suporte a ARIA, navegação por teclado, foco visível
+- **Customizável:** Variações de cor, estado e desabilitado
+- **Integração:** Compatível com roteadores (Next.js, React Router)
+- **Feedback visual:** Hover, foco e estados ativos
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={LinkStories.Primary} />
+  <Story of={LinkStories.Disabled} />
+  <Story of={LinkStories.Dark} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Link } from 'draupnir-ds';
+
+<Link href="/pagina">Ir para página</Link>
+```
+

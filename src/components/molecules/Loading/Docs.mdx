@@ -1,0 +1,45 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import Loading from './Loading';
+import * as LoadingStories from './Loading.stories';
+
+<Meta of={LoadingStories} component={Loading}/>
+
+# Loading
+
+O componente Loading exibe um indicador animado de carregamento.
+
+## Descrição
+O Loading do Draupnir DS utiliza animações suaves para indicar processos em andamento, centralizando o feedback visual.
+
+## Recursos
+- **Acessível:** Pode ser lido por leitores de tela (aria-label), foco visível
+- **Animado:** Efeito ping e pulse para melhor percepção
+- **Centralizado:** Sempre centraliza o indicador no container
+- **Customizável:** Pode ser usado em diferentes contextos
+
+## Componente
+<Primary />
+
+## Exemplos
+<Canvas additionalActions={[
+    {
+      title: 'Abrir no GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Loading/Loading.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={LoadingStories.Pulse} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Loading } from 'draupnir-ds';
+
+<Loading />
+```

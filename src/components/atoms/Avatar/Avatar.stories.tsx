@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Avatar>;
 export const WithIcon: Story = {
   args: {
     size: 'md',
-    description: 'Usuário sem imagem',
+    description: 'User without image',
   },
   render: (args) => (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 80 }}>
@@ -28,7 +28,7 @@ export const WithImage: Story = {
   args: {
     size: 'md',
     image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    description: 'Foto de usuário',
+    description: 'User photo',
   },
   render: (args) => (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 80 }}>

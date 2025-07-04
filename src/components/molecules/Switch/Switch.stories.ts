@@ -7,8 +7,8 @@ const meta: Meta<SwitchProps> = {
   parameters: {
     layout: "centered",
     parameters: {
-      notes: "These are notes for the Avatar stories",
-      info: "This is info for the Avatar stories",
+      notes: "These are notes for the Switch stories",
+      info: "This is info for the Switch stories",
     },
   },
   component: Switch,

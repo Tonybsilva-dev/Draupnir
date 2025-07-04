@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Badge, BadgeProps } from "./Badge";
 
-const meta: Meta<BadgeProps> = {
+const meta = {
   title: "Components/Atoms/Badge",
   component: Badge,
   parameters: {
@@ -11,22 +11,22 @@ const meta: Meta<BadgeProps> = {
         component: `
 ## Badge
 
-O componente Badge é usado para exibir informações de status, contadores ou labels de forma compacta e visualmente atrativa.
+The Badge component is used to display status information, counters, or labels in a compact and visually appealing way.
 
-### Características
-- **Variantes**: Primary, Success, Warning e Danger
-- **Compacto**: Design minimalista para não interferir no layout
-- **Semântico**: Cores que comunicam significado (verde=sucesso, vermelho=erro)
-- **Flexível**: Aceita qualquer conteúdo como children
-- **Acessível**: Alto contraste para boa legibilidade
+### Features
+- **Variants**: Primary, success, warning, and danger
+- **Compact**: Minimalist design that doesn't interfere with layout
+- **Semantic**: Colors that communicate meaning (green=success, red=error)
+- **Flexible**: Accepts any content as children
+- **Accessible**: High contrast for good readability
 
-### Uso
+### Usage
 \`\`\`tsx
 import { Badge } from '@/components/atoms/Badge';
 
-<Badge variant="success">Ativo</Badge>
-<Badge variant="warning">Pendente</Badge>
-<Badge variant="danger">Erro</Badge>
+<Badge variant="success">Active</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="danger">Error</Badge>
 \`\`\`
         `,
       },
@@ -34,7 +34,7 @@ import { Badge } from '@/components/atoms/Badge';
   },
   argTypes: {
     children: {
-      description: "Conteúdo do badge",
+      description: "Badge content",
       control: { type: "text" },
       table: {
         type: { summary: "ReactNode" },
@@ -42,7 +42,7 @@ import { Badge } from '@/components/atoms/Badge';
       },
     },
     variant: {
-      description: "Variante visual do badge",
+      description: "Visual variant of the badge",
       control: { type: "select" },
       options: ["primary", "success", "warning", "danger"],
       table: {
@@ -59,12 +59,12 @@ import { Badge } from '@/components/atoms/Badge';
 
 export default meta;
 
-type Story = StoryObj<BadgeProps>;
+type Story = StoryObj<typeof meta>;
 
 /**
- * ## Variante Primary
+ * ## Primary Badge
  * 
- * Badge azul para informações gerais e neutras.
+ * Blue badge for general and neutral information.
  */
 export const Primary: Story = {
   args: {
@@ -74,73 +74,73 @@ export const Primary: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Badge azul para informações gerais, status neutros ou contadores.",
+        story: "Blue badge for general information, neutral status, or counters.",
       },
     },
   },
 };
 
 /**
- * ## Variante Success
+ * ## Success Badge
  * 
- * Badge verde para estados positivos e sucessos.
+ * Green badge for positive states and successes.
  */
 export const Success: Story = {
   args: {
-    children: "Sucesso",
+    children: "Success",
     variant: "success",
   },
   parameters: {
     docs: {
       description: {
-        story: "Badge verde para indicar sucesso, conclusão ou status positivo.",
+        story: "Green badge to indicate success, completion, or positive status.",
       },
     },
   },
 };
 
 /**
- * ## Variante Warning
+ * ## Warning Badge
  * 
- * Badge amarelo para avisos e estados de atenção.
+ * Yellow badge for warnings and attention states.
  */
 export const Warning: Story = {
   args: {
-    children: "Atenção",
+    children: "Warning",
     variant: "warning",
   },
   parameters: {
     docs: {
       description: {
-        story: "Badge amarelo para avisos, pendências ou estados que requerem atenção.",
+        story: "Yellow badge for warnings, pending items, or states that require attention.",
       },
     },
   },
 };
 
 /**
- * ## Variante Danger
+ * ## Danger Badge
  * 
- * Badge vermelho para erros e estados críticos.
+ * Red badge for errors and critical states.
  */
 export const Danger: Story = {
   args: {
-    children: "Erro",
+    children: "Error",
     variant: "danger",
   },
   parameters: {
     docs: {
       description: {
-        story: "Badge vermelho para erros, falhas ou estados críticos que requerem ação imediata.",
+        story: "Red badge for errors, failures, or critical states that require immediate action.",
       },
     },
   },
 };
 
 /**
- * ## Badge Numérico
+ * ## Numeric Badge
  * 
- * Badge usado para exibir contadores e números.
+ * Badge used to display counters and numbers.
  */
 export const Numeric: Story = {
   args: {
@@ -150,26 +150,26 @@ export const Numeric: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Badge numérico ideal para contadores, notificações ou indicadores de quantidade.",
+        story: "Numeric badge ideal for counters, notifications, or quantity indicators.",
       },
     },
   },
 };
 
 /**
- * ## Badge de Status
+ * ## Status Badge
  * 
- * Badge usado para indicar status de entidades.
+ * Badge used to indicate entity status.
  */
 export const Status: Story = {
   args: {
-    children: "Ativo",
+    children: "Active",
     variant: "success",
   },
   parameters: {
     docs: {
       description: {
-        story: "Badge de status perfeito para indicar o estado atual de usuários, pedidos, sistemas ou qualquer entidade.",
+        story: "Status badge perfect for indicating the current state of users, orders, systems, or any entity.",
       },
     },
   },

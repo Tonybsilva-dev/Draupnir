@@ -1,9 +1,9 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Dropdown } from "./Dropdown";
+import { Button } from "../../atoms/Button/Button";
 import { ChevronDown, User, Settings, LogOut } from "lucide-react";
 
-const meta: Meta = {
+const meta: Meta<typeof Dropdown> = {
   title: "Components/Organisms/Dropdown",
   component: Dropdown,
   parameters: {
@@ -13,27 +13,27 @@ const meta: Meta = {
         component: `
 ## Dropdown
 
-O componente Dropdown oferece um menu suspenso interativo com suporte completo a acessibilidade e temas.
+The Dropdown component provides an interactive dropdown menu with complete accessibility and theme support.
 
-### Características
-- **Acessível**: Suporte completo a ARIA e navegação por teclado
-- **Temático**: Suporte a tema claro e escuro
-- **Animado**: Transições suaves de entrada e saída
-- **Flexível**: Composição baseada em componentes (Trigger, Content, Item)
-- **Responsivo**: Adapta-se a diferentes tamanhos de tela
+### Features
+- **Accessible**: Complete ARIA support and keyboard navigation
+- **Themed**: Light and dark theme support
+- **Animated**: Smooth enter and exit transitions
+- **Flexible**: Component-based composition (Trigger, Content, Item)
+- **Responsive**: Adapts to different screen sizes
 
-### Uso
+### Usage
 \`\`\`tsx
 import { Dropdown } from '@/components/organisms/Dropdown';
 import { Button } from '@/components/atoms/Button';
 
 <Dropdown>
-  <Dropdown.Trigger asChild>
-    <Button variant="outline">Abrir Menu</Button>
+  <Dropdown.Trigger>
+    <Button variant="outline">Open Menu</Button>
   </Dropdown.Trigger>
   <Dropdown.Content>
-    <Dropdown.Item>Opção 1</Dropdown.Item>
-    <Dropdown.Item>Opção 2</Dropdown.Item>
+    <Dropdown.Item>Option 1</Dropdown.Item>
+    <Dropdown.Item>Option 2</Dropdown.Item>
   </Dropdown.Content>
 </Dropdown>
 \`\`\`
@@ -41,161 +41,177 @@ import { Button } from '@/components/atoms/Button';
       },
     },
   },
-  argTypes: {
-    buttonText: {
-      description: "Texto do botão trigger",
-      control: "text",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "Dropdown" },
-      },
-    },
-    item1Text: {
-      description: "Texto do primeiro item",
-      control: "text",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "Item 1" },
-      },
-    },
-    item2Text: {
-      description: "Texto do segundo item",
-      control: "text",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "Item 2" },
-      },
-    },
-  },
-  args: {
-    buttonText: "Dropdown",
-    item1Text: "Item 1",
-    item2Text: "Item 2",
-  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Dropdown>;
 
 /**
- * ## Dropdown Simples
- * 
- * Dropdown básico para teste.
+ * ## Playground
+ *
+ * Controllable story to test all Dropdown props.
  */
-export const Simple: Story = {
+export const Playground: Story = {
   render: () => (
     <Dropdown>
-      <Dropdown.Trigger asChild>
-        <button className="px-4 py-2 bg-blue-500 text-black rounded">
-          Abrir Menu
-        </button>
-      </Dropdown.Trigger>
-      <Dropdown.Content>
-        <Dropdown.Item>Opção 1</Dropdown.Item>
-        <Dropdown.Item>Opção 2</Dropdown.Item>
-        <Dropdown.Item>Opção 3</Dropdown.Item>
-      </Dropdown.Content>
-    </Dropdown>
-  ),
-};
-
-/**
- * ## Dropdown Básico
- * 
- * Dropdown simples com duas opções.
- */
-export const Basic: Story = {
-  render: ({ buttonText, item1Text, item2Text }) => (
-    <Dropdown>
-      <Dropdown.Trigger asChild>
-        <button className="px-4 py-2 bg-white border border-zinc-300 text-zinc-700 rounded-md hover:bg-zinc-50">
-          {buttonText}
-        </button>
-      </Dropdown.Trigger>
-      <Dropdown.Content>
-        <Dropdown.Item onSelect={() => console.log(`${item1Text} selected`)}>
-          {item1Text}
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log(`${item2Text} selected`)}>
-          {item2Text}
-        </Dropdown.Item>
-      </Dropdown.Content>
-    </Dropdown>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: "Dropdown básico com trigger e duas opções simples.",
-      },
-    },
-  },
-};
-
-/**
- * ## Dropdown com Ícones
- * 
- * Dropdown com ícones para melhor identificação visual.
- */
-export const WithIcons: Story = {
-  render: () => (
-    <Dropdown>
-      <Dropdown.Trigger asChild>
-        <button className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-zinc-300 text-zinc-700 rounded-md hover:bg-zinc-50">
-          Perfil
+      <Dropdown.Trigger>
+        <Button variant="outline" asChild>
+          Open Menu
           <ChevronDown className="h-4 w-4" />
-        </button>
+        </Button>
       </Dropdown.Trigger>
-      <Dropdown.Content>
-        <Dropdown.Item onSelect={() => console.log("Profile selected")}>
-          <User className="mr-2 h-4 w-4" />
-          Perfil
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Settings selected")}>
-          <Settings className="mr-2 h-4 w-4" />
-          Configurações
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Logout selected")}>
-          <LogOut className="mr-2 h-4 w-4" />
-          Sair
-        </Dropdown.Item>
+      <Dropdown.Content align="center" side="bottom">
+        <Dropdown.Item onSelect={() => console.log("Option 1 selected")}>Option 1</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Option 2 selected")}>Option 2</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Option 3 selected")}>Option 3</Dropdown.Item>
       </Dropdown.Content>
     </Dropdown>
   ),
   parameters: {
     docs: {
       description: {
-        story: "Dropdown com ícones para melhor identificação visual das opções.",
+        story: "Controllable playground to test all Dropdown props.",
       },
     },
   },
 };
 
 /**
- * ## Dropdown de Ações
- * 
- * Dropdown com diferentes tipos de ações.
+ * ## Test Dropdown
+ *
+ * Simple test dropdown to verify functionality.
  */
-export const Actions: Story = {
+export const Test: StoryObj = {
   render: () => (
     <Dropdown>
-      <Dropdown.Trigger asChild>
-        <button className="px-4 py-2 bg-primary text-black rounded-md hover:bg-hover">
-          Ações
-        </button>
+      <Dropdown.Trigger>
+        Click me
       </Dropdown.Trigger>
       <Dropdown.Content>
-        <Dropdown.Item onSelect={() => console.log("Edit selected")}>
-          Editar
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Duplicate selected")}>
-          Duplicar
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Archive selected")}>
-          Arquivar
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Delete selected")} className="text-red-600 focus:text-red-600">
-          Excluir
+        <Dropdown.Item>Option 1</Dropdown.Item>
+        <Dropdown.Item>Option 2</Dropdown.Item>
+        <Dropdown.Item>Option 3</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ),
+};
+
+/**
+ * ## Basic Dropdown
+ *
+ * Simple dropdown with basic options.
+ */
+export const Basic: StoryObj = {
+  render: () => (
+    <Dropdown>
+      <Dropdown.Trigger>
+        <Button variant="outline" asChild>
+          Select Option
+          <ChevronDown className="h-4 w-4" />
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item onSelect={() => console.log("Item 1 selected")}>Item 1</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Item 2 selected")}>Item 2</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Item 3 selected")}>Item 3</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic dropdown with trigger and simple options.",
+      },
+    },
+  },
+};
+
+/**
+ * ## Dropdown with Icons
+ *
+ * Dropdown with icons for better visual identification.
+ */
+export const WithIcons: StoryObj = {
+  render: () => (
+    <Dropdown>
+      <Dropdown.Trigger>
+        <Button variant="outline" asChild>
+          Profile
+          <ChevronDown className="h-4 w-4" />
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item onSelect={() => console.log("Profile selected")}> <User className="mr-2 h-4 w-4" /> Profile </Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Settings selected")}> <Settings className="mr-2 h-4 w-4" /> Settings </Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Logout selected")}> <LogOut className="mr-2 h-4 w-4" /> Logout </Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Dropdown with icons for better visual identification of options.",
+      },
+    },
+  },
+};
+
+/**
+ * ## Dropdown with Label
+ *
+ * Dropdown with label and separators for better organization.
+ */
+export const WithLabel: StoryObj = {
+  render: () => (
+    <Dropdown>
+      <Dropdown.Trigger>
+        <Button variant="outline" asChild>
+          User Menu
+          <ChevronDown className="h-4 w-4" />
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Label>User Options</Dropdown.Label>
+        <Dropdown.Item onSelect={() => console.log("Profile selected")}> <User className="mr-2 h-4 w-4" /> Profile </Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Settings selected")}> <Settings className="mr-2 h-4 w-4" /> Settings </Dropdown.Item>
+        <Dropdown.Separator />
+        <Dropdown.Item onSelect={() => console.log("Logout selected")}> <LogOut className="mr-2 h-4 w-4" /> Logout </Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Dropdown with label and separators for better accessibility.",
+      },
+    },
+  },
+};
+
+/**
+ * ## Actions Dropdown
+ *
+ * Dropdown with different types of actions including destructive.
+ */
+export const Actions: StoryObj = {
+  render: () => (
+    <Dropdown>
+      <Dropdown.Trigger>
+        <Button variant="outline" asChild>
+          Actions
+          <ChevronDown className="h-4 w-4" />
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item onSelect={() => console.log("Edit selected")}>Edit</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Duplicate selected")}>Duplicate</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("Archive selected")}>Archive</Dropdown.Item>
+        <Dropdown.Separator />
+        <Dropdown.Item onSelect={() => console.log("Delete selected")}
+          className="text-red-600 focus:text-red-600"
+        >
+          Delete
         </Dropdown.Item>
       </Dropdown.Content>
     </Dropdown>
@@ -203,7 +219,7 @@ export const Actions: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Dropdown com diferentes tipos de ações, incluindo ações destrutivas.",
+        story: "Dropdown with different types of actions, including destructive actions.",
       },
     },
   },

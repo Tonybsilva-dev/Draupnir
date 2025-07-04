@@ -43,18 +43,52 @@ export type TypographyProps = ComponentProps<"p"> & {
   | "title3";
   children: React.ReactNode;
   element?: keyof JSX.IntrinsicElements;
+  semantic?: "heading" | "paragraph" | "list" | "listitem" | "emphasis" | "strong";
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
 } & JSX.IntrinsicElements["p"];
+
 const Typography = ({
   children,
   element = "p",
   variant = "primary",
   size,
   className,
+  semantic,
+  level,
   ...rest
 }: TypographyProps) => {
-  const Element = element as any;
+  // Determina o elemento semântico correto
+  const getSemanticElement = () => {
+    if (semantic === "heading" && level) {
+      return `h${level}` as keyof JSX.IntrinsicElements;
+    }
+    if (semantic === "list") return "ul";
+    if (semantic === "listitem") return "li";
+    if (semantic === "emphasis") return "em";
+    if (semantic === "strong") return "strong";
+    return element;
+  };
+
+  // Determina o role ARIA apropriado
+  const getAriaRole = () => {
+    if (semantic === "heading") return "heading";
+    if (semantic === "paragraph") return "text";
+    if (semantic === "list") return "list";
+    if (semantic === "listitem") return "listitem";
+    return undefined;
+  };
+
+  const semanticElement = getSemanticElement();
+  const ariaRole = getAriaRole();
+  const Element = semanticElement as any;
+
   return (
-    <Element className={text({ variant, size, className })} {...rest}>
+    <Element
+      className={text({ variant, size, className })}
+      role={ariaRole}
+      aria-level={semantic === "heading" && level ? level : undefined}
+      {...rest}
+    >
       {children}
     </Element>
   );

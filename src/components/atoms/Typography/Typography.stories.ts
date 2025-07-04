@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import Typography, { type TypographyProps } from "./Typography";
 
-const meta: Meta<TypographyProps> = {
+const meta = {
   title: "Components/Atoms/Typography",
   component: Typography,
   parameters: {
@@ -17,13 +17,16 @@ const meta: Meta<TypographyProps> = {
 
 export default meta;
 
-export const Primary: StoryObj<TypographyProps> = {
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
   args: {
     children: "A Text Example",
+    size: "md",
   },
 };
 
-export const TextHeadingH1: StoryObj<TypographyProps> = {
+export const TextHeadingH1: Story = {
   args: {
     children: "Texto",
     element: "h1",
@@ -32,7 +35,7 @@ export const TextHeadingH1: StoryObj<TypographyProps> = {
   },
 };
 
-export const TextHeadingH2: StoryObj<TypographyProps> = {
+export const TextHeadingH2: Story = {
   args: {
     children: "Texto",
     element: "h2",
@@ -41,7 +44,7 @@ export const TextHeadingH2: StoryObj<TypographyProps> = {
   },
 };
 
-export const TextHeadingH3: StoryObj<TypographyProps> = {
+export const TextHeadingH3: Story = {
   args: {
     children: "Texto",
     element: "h3",

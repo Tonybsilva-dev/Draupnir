@@ -5,7 +5,9 @@ import { ChevronDown, Check } from 'lucide-react';
 
 export type SelectTriggerProps = ComponentProps<typeof SelectPrimitive.Trigger>;
 export type SelectContentProps = ComponentProps<typeof SelectPrimitive.Content>;
-export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
+export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item> & {
+  indented?: boolean;
+};
 export type SelectValueProps = ComponentProps<typeof SelectPrimitive.Value>;
 export type SelectLabelProps = ComponentProps<typeof SelectPrimitive.Label>;
 export type SelectGroupProps = ComponentProps<typeof SelectPrimitive.Group>;
@@ -36,7 +38,7 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(({ classNam
     <SelectPrimitive.Content
       ref={ref}
       className={twMerge(
-        "relative z-50 min-w-[8rem] overflow-hidden border border-gray-200 bg-white text-gray-900 shadow-md",
+        "relative z-50 min-w-[var(--radix-select-trigger-width)] overflow-hidden border border-gray-200 bg-white text-gray-900 shadow-md",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -45,6 +47,7 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(({ classNam
         className
       )}
       position={position}
+      style={{ minWidth: 'var(--radix-select-trigger-width)' }}
       {...props}
     >
       <SelectPrimitive.Viewport className="p-1">
@@ -76,13 +79,14 @@ const SelectGroup = forwardRef<HTMLDivElement, SelectGroupProps>(({ className, .
 
 SelectGroup.displayName = 'SelectGroup';
 
-const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ className, children, ...props }, ref) => (
+const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ className, children, indented, ...props }, ref) => (
   <SelectPrimitive.Item
     ref={ref}
     className={twMerge(
       "relative flex w-full cursor-default select-none items-center py-1.5 pl-8 p-2 text-sm outline-none",
       "focus:bg-gray-50 focus:text-gray-900",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      indented && "pl-6",
       className
     )}
     {...props}

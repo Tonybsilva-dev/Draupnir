@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import Link from './Link';
 
 describe('Link', () => {
-  it('renderiza o texto do link', () => {
-    render(<Link href="/teste">Clique aqui</Link>);
-    expect(screen.getByText('Clique aqui')).toBeInTheDocument();
+  it('renders the link text', () => {
+    render(<Link href="/test">Test Link</Link>);
+    expect(screen.getByText('Test Link')).toBeInTheDocument();
   });
 }); 

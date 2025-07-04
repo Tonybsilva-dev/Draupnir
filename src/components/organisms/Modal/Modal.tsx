@@ -1,4 +1,4 @@
-import { ReactNode, FunctionComponent, useEffect, useState } from "react";
+import { ReactNode, FunctionComponent, useEffect, useState, useRef, useCallback } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../../atoms/Button/Button";
@@ -11,6 +11,8 @@ export type ModalProps = {
   onClose: () => void;
   children: ReactNode;
   variant?: ModalVariant;
+  title?: string;
+  description?: string;
 };
 
 const modalVariantStyles: Record<ModalVariant, string> = {
@@ -24,22 +26,76 @@ const Modal: FunctionComponent<ModalProps> = ({
   onClose,
   children,
   variant = "default",
+  title,
+  description,
 }) => {
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
+  const handleEsc = useCallback((event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      onClose();
+    }
+  }, [onClose]);
+
+  useEffect(() => {
     if (isOpen) {
+      // Salva o elemento que tinha foco antes do modal
+      previousFocusRef.current = document.activeElement as HTMLElement;
+
+      // Adiciona listener para ESC
       window.addEventListener("keydown", handleEsc);
+
+      // Previne scroll do body
+      document.body.style.overflow = "hidden";
+
+      // Focus trap - foca no primeiro elemento focável do modal
+      setTimeout(() => {
+        const focusableElements = modalRef.current?.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements && focusableElements.length > 0) {
+          (focusableElements[0] as HTMLElement).focus();
+        }
+      }, 100);
     }
 
     return () => {
       window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "unset";
+
+      // Restaura o foco ao elemento anterior
+      if (previousFocusRef.current) {
+        previousFocusRef.current.focus();
+      }
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, handleEsc]);
+
+  // Focus trap para manter o foco dentro do modal
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Tab") {
+      const focusableElements = modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (!focusableElements) return;
+
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      if (event.shiftKey) {
+        if (document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+  };
 
   const backdrop = {
     hidden: { opacity: 1, scale: 0 },
@@ -64,10 +120,12 @@ const Modal: FunctionComponent<ModalProps> = ({
   if (!isOpen) return null;
 
   const variantClasses = modalVariantStyles[variant];
+  const modalId = "modal-dialog";
+  const titleId = "modal-title";
+  const descriptionId = "modal-description";
 
   return (
     <AnimatePresence>
-      {" "}
       {isOpen && (
         <motion.div
           className="fixed inset-0 z-40 overflow-y-auto bg-gray-500 bg-opacity-50 flex justify-center items-center"
@@ -76,13 +134,21 @@ const Modal: FunctionComponent<ModalProps> = ({
           initial="visible"
           animate="visible"
           exit="hidden"
+          role="presentation"
         >
           <motion.div
+            ref={modalRef}
+            id={modalId}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={title ? titleId : undefined}
+            aria-describedby={description ? descriptionId : undefined}
             className={twMerge(
               "p-4 shadow-lg w-full max-w-lg m-6 border border-gray-200",
               variantClasses
             )}
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={handleKeyDown}
             variants={modal}
             initial="hidden"
             animate="visible"
@@ -96,20 +162,47 @@ const Modal: FunctionComponent<ModalProps> = ({
   );
 };
 
-const ModalHeader: FunctionComponent<{ children: ReactNode }> = ({
-  children,
-}) => (
+const ModalHeader: FunctionComponent<{
+  children: ReactNode;
+  onClose?: () => void;
+}> = ({ children, onClose }) => (
   <>
-    <div className="font-bold text-xl mb-4 text-center text-gray-900">
-      {children}
+    <div className="flex justify-between items-center mb-4">
+      <div
+        id="modal-title"
+        className="font-bold text-xl text-center text-gray-900 flex-1"
+      >
+        {children}
+      </div>
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="ml-4 p-1 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+          aria-label="Fechar modal"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
     </div>
     <hr className="mb-2 border-gray-200" />
   </>
 );
 
-const ModalBody: FunctionComponent<{ children: ReactNode }> = ({
-  children,
-}) => <div className="mb-4 overflow-y-auto">{children}</div>;
+const ModalBody: FunctionComponent<{
+  children: ReactNode;
+  description?: string;
+}> = ({ children, description }) => (
+  <div className="mb-4 overflow-y-auto">
+    {description && (
+      <div id="modal-description" className="sr-only">
+        {description}
+      </div>
+    )}
+    {children}
+  </div>
+);
 
 const ModalFooter: FunctionComponent<{ children: ReactNode }> = ({
   children,
@@ -125,9 +218,13 @@ export const ModalStoryInfo = (args: ModalProps) => {
         isOpen={isOpen}
         variant={"default"}
         onClose={() => setIsOpen(false)}
+        title="Modal Title"
+        description="Modal description for screen readers"
       >
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalBody>
+        <ModalHeader onClose={() => setIsOpen(false)}>
+          Modal Title
+        </ModalHeader>
+        <ModalBody description="Modal description for screen readers">
           <Typography size="md">
             Today, every company I talk to wants to implement a design system
             from scratch. Unfortunately, the details of a design system are not

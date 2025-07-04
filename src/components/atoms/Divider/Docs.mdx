@@ -6,22 +6,22 @@ import * as DividerStories from './Divider.stories';
 
 # Divider
 
-O componente Divider é utilizado para separar conteúdos e criar divisões visuais na interface.
+The Divider component is used to separate content and create visual divisions in the interface.
 
-## Descrição
-O Divider do Draupnir DS facilita a organização visual, melhorando a leitura e a hierarquia das informações.
+## Description
+The Draupnir DS Divider facilitates visual organization, improving readability and information hierarchy.
 
-## Recursos
-- **Customizável:** Espessura, cor e largura
-- **Horizontal ou vertical:** Adapta-se ao contexto
-- **Semântico:** Pode conter texto ou ícones, lido por leitores de tela como divisor
-- **Responsivo:** Mantém proporção em diferentes telas
+## Features
+- **Customizable:** Thickness, color, and width
+- **Horizontal or vertical:** Adapts to context
+- **Semantic:** Can contain text or icons, read by screen readers as divider
+- **Responsive:** Maintains proportion on different screens
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={DividerStories.Default} />
   <Story of={DividerStories.Dark} />
@@ -29,10 +29,55 @@ O Divider do Draupnir DS facilita a organização visual, melhorando a leitura e
   <Story of={DividerStories.ThicknessDivisor} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Divider } from 'draupnir-ds';
+import { Divider } from '@/components/atoms/Divider';
 
 <Divider />
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>width</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Width of the divider. Accepts Tailwind or custom CSS classes.<br/><b>Example:</b> <code>w-full</code></td>
+    </tr>
+    <tr>
+      <td><b>height</b></td>
+      <td><code>string</code></td>
+      <td><code>h-[1px]</code></td>
+      <td>Height of the divider. Accepts Tailwind or custom CSS classes.<br/><b>Example:</b> <code>h-2</code></td>
+    </tr>
+    <tr>
+      <td><b>bgColor</b></td>
+      <td><code>"light" | "dark" | "black"</code></td>
+      <td><code>"black"</code></td>
+      <td>Color of the divider.<br/><b>Examples:</b> <code>light</code>, <code>dark</code>, <code>black</code></td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be displayed in the center of the divider (optional).</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>HTMLDivElement props</code></td>
+      <td>-</td>
+      <td>Any other valid div attributes.</td>
+    </tr>
+  </tbody>
+</table>

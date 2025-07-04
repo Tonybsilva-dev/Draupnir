@@ -7,6 +7,7 @@ export type AvatarProps = {
   size?: "xs" | "sm" | "md" | "lg";
   image?: string;
   description?: string;
+  name?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const avatarSizeMap = {
@@ -19,16 +20,34 @@ const avatarSizeMap = {
 const Avatar = ({
   image,
   description = "",
+  name,
   size = "xs",
   className,
   ...rest
 }: AvatarProps) => {
   const avatarSizeClass = avatarSizeMap[size];
 
+  // Generate accessible description
+  const getAccessibleDescription = () => {
+    if (name) {
+      return `Avatar of ${name}`;
+    }
+    if (description) {
+      return `Avatar: ${description}`;
+    }
+    return "User avatar";
+  };
+
+  const accessibleDescription = getAccessibleDescription();
+
   const AvatarComponent = image ? (
-    <AvatarImage src={image} altDescription={description} />
+    <AvatarImage
+      src={image}
+      altDescription={accessibleDescription}
+      name={name}
+    />
   ) : (
-    <AvatarIcon />
+    <AvatarIcon name={name} />
   );
 
   return (
@@ -38,6 +57,8 @@ const Avatar = ({
         avatarSizeClass,
         className
       )}
+      role="img"
+      aria-label={accessibleDescription}
       {...rest}
     >
       {AvatarComponent}

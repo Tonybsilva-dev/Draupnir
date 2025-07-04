@@ -6,23 +6,23 @@ import * as BoxStories from './Box.stories';
 
 # Box
 
-O componente Box é um container versátil para agrupar e estruturar conteúdos na interface.
+The Box component is a versatile container for grouping and structuring content in the interface.
 
-## Descrição
-O Box do Draupnir DS facilita a organização visual, aplicação de espaçamentos, fundos e bordas.
+## Description
+The Draupnir DS Box facilitates visual organization, application of spacing, backgrounds, and borders.
 
-## Recursos
-- **Versátil:** Pode ser usado para cards, seções, agrupamentos
-- **Customizável:** Suporte a bordas, arredondamento e preenchimento
-- **Temático:** Variações de cor e fundo
-- **Responsivo:** Adapta-se a diferentes tamanhos de tela
-- **Acessível:** Pode ser usado como container semântico, não interfere na navegação por teclado
+## Features
+- **Versatile:** Can be used for cards, sections, groupings
+- **Customizable:** Support for borders, rounding, and padding
+- **Thematic:** Color and background variations
+- **Responsive:** Adapts to different screen sizes
+- **Accessible:** Can be used as semantic container, doesn't interfere with keyboard navigation
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={BoxStories.Default} />
   <Story of={BoxStories.BoxAlert} />
@@ -30,10 +30,67 @@ O Box do Draupnir DS facilita a organização visual, aplicação de espaçament
   <Story of={BoxStories.BoxError} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Box } from 'draupnir-ds';
+import { Box } from '@/components/atoms/Box';
 
-<Box>Conteúdo</Box>
+<Box>Content</Box>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>rounded</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Adds border-radius to the box.</td>
+    </tr>
+    <tr>
+      <td><b>border</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Adds a border to the box.</td>
+    </tr>
+    <tr>
+      <td><b>filledBackground</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Fills the box with the background color according to the <b>type</b> prop.</td>
+    </tr>
+    <tr>
+      <td><b>type</b></td>
+      <td><code>"primary" | "secondary" | "dark" | "alert" | "success" | "error" | "info"</code></td>
+      <td><code>"primary"</code></td>
+      <td>Visual style of the box.<br/><b>Examples:</b> <code>primary</code>, <code>secondary</code>, <code>dark</code>, <code>alert</code>, <code>success</code>, <code>error</code>, <code>info</code></td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered inside the box.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the box.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>HTMLDivElement props</code></td>
+      <td>-</td>
+      <td>Any other valid div attributes.</td>
+    </tr>
+  </tbody>
+</table>

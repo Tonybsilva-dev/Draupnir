@@ -5,30 +5,30 @@ import { Meta, ColorPalette, ColorItem, ArgsTable } from '@storybook/addon-docs/
 <div style={{ textAlign: 'center', margin: '2rem 0 2.5rem 0' }}>
   <h1 style={{ fontWeight: 700, fontSize: '2.2rem', margin: '1rem 0 0.5rem 0' }}>Design Tokens</h1>
   <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>
-Os design tokens são os elementos fundamentais do **Draupnir Design System**. <br/> Eles definem as propriedades visuais que garantem consistência, acessibilidade e escalabilidade em toda a aplicação.
+Design tokens are the fundamental elements of the **Draupnir Design System**. <br/> They define the visual properties that ensure consistency, accessibility, and scalability throughout the application.
   </p>
 </div>
 
 
-## Visão Geral
+## Overview
 
-O Draupnir utiliza uma arquitetura de tokens baseada em **CSS Custom Properties**, onde todos os valores são definidos uma única vez no `globals.css` e referenciados pelos arquivos TypeScript. Isso garante:
+Draupnir uses a token architecture based on **CSS Custom Properties**, where all values are defined once in `globals.css` and referenced by TypeScript files. This ensures:
 
-- ✅ **Consistência** entre CSS e TypeScript
-- ✅ **Tema dinâmico** com suporte a modo escuro
-- ✅ **Performance** otimizada
-- ✅ **Manutenibilidade** centralizada
+- ✅ **Consistency** between CSS and TypeScript
+- ✅ **Dynamic theming** with dark mode support
+- ✅ **Optimized performance**
+- ✅ **Centralized maintainability**
 
-## Cores
+## Colors
 
-O sistema de cores do Draupnir é baseado em uma paleta minimalista, moderna e acessível, composta por amarelo solar, azul acinzentado, branco e cinza.
+The Draupnir color system is based on a minimalist, modern, and accessible palette, composed of solar yellow, bluish gray, white, and gray.
 
-### Paleta Principal
+### Main Palette
 
 <ColorPalette>
   <ColorItem
     title="Background"
-    subtitle="Fundos da aplicação"
+    subtitle="Application backgrounds"
     colors={{
       BgLight: "#FFFFFF",
       Bg: "#F5F5F5",
@@ -36,8 +36,8 @@ O sistema de cores do Draupnir é baseado em uma paleta minimalista, moderna e a
     }}
   />
   <ColorItem
-    title="Escala de cinza"
-    subtitle="Textos e elementos neutros"
+    title="Gray scale"
+    subtitle="Texts and neutral elements"
     colors={{
         TextoPrimario: "#212121",
         TextoSecundario: "#5C5C5C",
@@ -48,7 +48,7 @@ O sistema de cores do Draupnir é baseado em uma paleta minimalista, moderna e a
   />
   <ColorItem
     title="Primary"
-    subtitle="Amarelo solar - cor principal"
+    subtitle="Solar yellow - main color"
     colors={{
         Primary: "#FFD600",
         Hover: "#FFEB3B",
@@ -58,7 +58,7 @@ O sistema de cores do Draupnir é baseado em uma paleta minimalista, moderna e a
   />
   <ColorItem
     title="Secondary"
-    subtitle="Azul acinzentado - cor secundária"
+    subtitle="Bluish gray - secondary color"
     colors={{
         Secondary: "#3A4F63",
         Contrast: "#FFFFFF",
@@ -66,70 +66,70 @@ O sistema de cores do Draupnir é baseado em uma paleta minimalista, moderna e a
   />
 </ColorPalette>
 
-### Cores Semânticas
+### Semantic Colors
 
 <ColorPalette>
   <ColorItem
     title="Success"
-    subtitle="Operações bem-sucedidas"
+    subtitle="Successful operations"
     colors={{
       Success: "#3ac922",
     }}
   />
   <ColorItem
     title="Error"
-    subtitle="Erros e alertas críticos"
+    subtitle="Errors and critical alerts"
     colors={{
       Error: "#ff3030",
     }}
   />
   <ColorItem
     title="Info"
-    subtitle="Informações e dicas"
+    subtitle="Information and tips"
     colors={{
       Info: "#3b82f6",
     }}
   />
   <ColorItem
     title="Warning"
-    subtitle="Avisos e atenção"
+    subtitle="Warnings and attention"
     colors={{
       Warning: "#f59e0b",
     }}
   />
 </ColorPalette>
 
-### Escala de Cores
+### Color Scale
 
-Cada cor possui uma escala de 50 a 900, permitindo variações sutis para diferentes contextos:
+Each color has a scale from 50 to 900, allowing subtle variations for different contexts:
 
 ```tsx
 import { colors } from '@/tokens';
 
-// Cores primárias
-colors.primary[50]   // rgba(var(--primary), 0.05) - Background muito claro
-colors.primary[100]  // rgba(var(--primary), 0.1)  - Background claro
-colors.primary[200]  // rgba(var(--primary), 0.2)  - Background médio-claro
-colors.primary[300]  // rgba(var(--primary), 0.3)  - Background médio
-colors.primary[400]  // rgba(var(--primary), 0.4)  - Background médio-escuro
-colors.primary[500]  // rgb(var(--primary))        - Cor principal
-colors.primary[600]  // rgb(var(--hover))          - Cor hover
-colors.primary[700]  // rgb(var(--click))          - Cor click
-colors.primary[800]  // rgba(var(--primary), 0.8)  - Cor escura
-colors.primary[900]  // rgba(var(--primary), 0.9)  - Cor muito escura
+// Primary colors
+colors.primary[50]   // rgba(var(--primary), 0.05) - Very light background
+colors.primary[100]  // rgba(var(--primary), 0.1)  - Light background
+colors.primary[200]  // rgba(var(--primary), 0.2)  - Medium-light background
+colors.primary[300]  // rgba(var(--primary), 0.3)  - Medium background
+colors.primary[400]  // rgba(var(--primary), 0.4)  - Medium-dark background
+colors.primary[500]  // rgb(var(--primary))        - Main color
+colors.primary[600]  // rgb(var(--hover))          - Hover color
+colors.primary[700]  // rgb(var(--click))          - Click color
+colors.primary[800]  // rgba(var(--primary), 0.8)  - Dark color
+colors.primary[900]  // rgba(var(--primary), 0.9)  - Very dark color
 ```
 
-## Tipografia
+## Typography
 
-O sistema tipográfico do Draupnir utiliza a fonte **Mulish** e define uma hierarquia clara de tamanhos para garantir legibilidade e hierarquia visual.
+The Draupnir typography system uses the **Mulish** font and defines a clear size hierarchy to ensure readability and visual hierarchy.
 
-### Família de Fontes
+### Font Family
 
 ```css
 font-family: 'Mulish', sans-serif;
 ```
 
-### Tamanhos de Texto
+### Text Sizes
 
 <div style={{ 
   marginBottom: '3rem',
@@ -138,7 +138,7 @@ font-family: 'Mulish', sans-serif;
   borderRadius: '12px',
   border: '1px solid #e9ecef'
 }}>
-  <h3 style={{ marginBottom: '1.5rem', color: '#495057', fontSize: '18px' }}>Escala de Tamanhos de Texto</h3>
+  <h3 style={{ marginBottom: '1.5rem', color: '#495057', fontSize: '18px' }}>Text Size Scale</h3>
   
   <div style={{ 
     display: 'grid', 
@@ -162,7 +162,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>4xl</div>
         <div style={{ fontSize: '28px', lineHeight: '1.2', color: '#495057' }}>
-          Título grande, destaques principais
+          Large title, main highlights
         </div>
       </div>
       <div style={{ 
@@ -192,7 +192,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>2xl</div>
         <div style={{ fontSize: '24px', lineHeight: '1.2', color: '#495057' }}>
-          Títulos médios, cabeçalhos de seção
+          Medium titles, section headers
         </div>
       </div>
       <div style={{ 
@@ -222,7 +222,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>xl</div>
         <div style={{ fontSize: '20px', lineHeight: '1.2', color: '#495057' }}>
-          Subtítulos, seções importantes
+          Subtitles, important sections
         </div>
       </div>
       <div style={{ 
@@ -252,7 +252,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>lg</div>
         <div style={{ fontSize: '18px', lineHeight: '1.2', color: '#495057' }}>
-          Texto destacado, parágrafos importantes
+          Highlighted text, important paragraphs
         </div>
       </div>
       <div style={{ 
@@ -282,7 +282,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>md</div>
         <div style={{ fontSize: '16px', lineHeight: '1.2', color: '#495057' }}>
-          Texto base, corpo principal da aplicação
+          Base text, main application body
         </div>
       </div>
       <div style={{ 
@@ -312,7 +312,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>sm</div>
         <div style={{ fontSize: '14px', lineHeight: '1.2', color: '#495057' }}>
-          Texto secundário, descrições e legendas
+          Secondary text, descriptions and legends
         </div>
       </div>
       <div style={{ 
@@ -342,7 +342,7 @@ font-family: 'Mulish', sans-serif;
           color: '#212529'
         }}>xs</div>
         <div style={{ fontSize: '12px', lineHeight: '1.2', color: '#495057' }}>
-          Texto pequeno, legendas e notas de rodapé
+          Small text, legends and footnotes
         </div>
       </div>
       <div style={{ 
@@ -357,7 +357,7 @@ font-family: 'Mulish', sans-serif;
   </div>
 </div>
 
-### Tamanhos de Título
+### Title Sizes
 
 <div style={{ 
   marginBottom: '3rem',
@@ -366,7 +366,7 @@ font-family: 'Mulish', sans-serif;
   borderRadius: '12px',
   border: '1px solid #d4edda'
 }}>
-  <h3 style={{ marginBottom: '1.5rem', color: '#155724', fontSize: '18px' }}>Escala de Títulos</h3>
+  <h3 style={{ marginBottom: '1.5rem', color: '#155724', fontSize: '18px' }}>Title Scale</h3>
   
   <div style={{ 
     display: 'grid', 
@@ -391,7 +391,7 @@ font-family: 'Mulish', sans-serif;
           color: '#155724'
         }}>xl</div>
         <div style={{ fontSize: '56px', lineHeight: '1.1', color: '#155724' }}>
-          Título Extra Grande
+          Extra Large Title
         </div>
       </div>
       <div style={{ 
@@ -423,7 +423,7 @@ font-family: 'Mulish', sans-serif;
           color: '#155724'
         }}>lg</div>
         <div style={{ fontSize: '48px', lineHeight: '1.1', color: '#155724' }}>
-          Título Grande
+          Large Title
         </div>
       </div>
       <div style={{ 
@@ -455,7 +455,7 @@ font-family: 'Mulish', sans-serif;
           color: '#155724'
         }}>md</div>
         <div style={{ fontSize: '40px', lineHeight: '1.1', color: '#155724' }}>
-          Título Médio
+          Medium Title
         </div>
       </div>
       <div style={{ 
@@ -471,7 +471,7 @@ font-family: 'Mulish', sans-serif;
   </div>
 </div>
 
-### Pesos de Fonte
+### Font Weights
 
 <div style={{ 
   display: 'grid', 
@@ -489,7 +489,7 @@ font-family: 'Mulish', sans-serif;
     cursor: 'pointer'
   }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
     <div style={{ fontWeight: '400', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Normal</div>
-    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Texto padrão</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Default text</div>
     <div style={{ 
       fontSize: '14px', 
       color: '#495057', 
@@ -510,7 +510,7 @@ font-family: 'Mulish', sans-serif;
     cursor: 'pointer'
   }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
     <div style={{ fontWeight: '500', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Medium</div>
-    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Destaque sutil</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Slight emphasis</div>
     <div style={{ 
       fontSize: '14px', 
       color: '#495057', 
@@ -531,7 +531,7 @@ font-family: 'Mulish', sans-serif;
     cursor: 'pointer'
   }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
     <div style={{ fontWeight: '600', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Semibold</div>
-    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Destaque médio</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Medium emphasis</div>
     <div style={{ 
       fontSize: '14px', 
       color: '#495057', 
@@ -552,7 +552,7 @@ font-family: 'Mulish', sans-serif;
     cursor: 'pointer'
   }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
     <div style={{ fontWeight: '700', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Bold</div>
-    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Máximo destaque</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Maximum emphasis</div>
     <div style={{ 
       fontSize: '14px', 
       color: '#495057', 
@@ -565,12 +565,12 @@ font-family: 'Mulish', sans-serif;
   </div>
 </div>
 
-### Uso em Código
+### Usage in Code
 
 ```tsx
 import { typography } from '@/tokens';
 
-// Tamanhos de texto
+// Text sizes
 typography.text.xs      // var(--text-xs) - 12px
 typography.text.sm      // var(--text-sm) - 14px
 typography.text.md      // var(--text-md) - 16px
@@ -579,23 +579,23 @@ typography.text.xl      // var(--text-xl) - 20px
 typography.text['2xl']  // var(--text-2xl) - 24px
 typography.text['4xl']  // var(--text-4xl) - 28px
 
-// Tamanhos de título
+// Title sizes
 typography.title.md     // var(--title-md) - 40px
 typography.title.lg     // var(--title-lg) - 48px
 typography.title.xl     // var(--title-xl) - 56px
 
-// Pesos de fonte
+// Font weights
 typography.fontWeight.normal    // 400
 typography.fontWeight.medium    // 500
 typography.fontWeight.semibold  // 600
 typography.fontWeight.bold      // 700
 ```
 
-## Espaçamentos
+## Spacing
 
-O sistema de espaçamento do Draupnir é baseado em múltiplos de 8px para garantir consistência e harmonia visual.
+The Draupnir spacing system is based on multiples of 8px to ensure consistency and visual harmony.
 
-### Escala de Espaçamentos
+### Spacing Scale
 
 <div style={{ 
   marginBottom: '3rem',
@@ -604,7 +604,7 @@ O sistema de espaçamento do Draupnir é baseado em múltiplos de 8px para garan
   borderRadius: '12px',
   border: '1px solid #e9ecef'
 }}>
-  <h3 style={{ marginBottom: '1.5rem', color: '#495057', fontSize: '18px' }}>Escala de Espaçamentos (Base: 8px)</h3>
+  <h3 style={{ marginBottom: '1.5rem', color: '#495057', fontSize: '18px' }}>Spacing Scale (Base: 8px)</h3>
   
   <div style={{ 
     display: 'grid', 
@@ -913,12 +913,12 @@ O sistema de espaçamento do Draupnir é baseado em múltiplos de 8px para garan
   </div>
 </div>
 
-### Uso em Código
+### Usage in Code
 
 ```tsx
 import { spacing } from '@/tokens';
 
-// Espaçamentos básicos
+// Basic spacing
 spacing.none     // var(--spacing-none) - 0px
 spacing['4xs']   // var(--spacing-4xs)  - 8px
 spacing['2xs']   // var(--spacing-2xs)  - 12px
@@ -931,11 +931,11 @@ spacing['2xl']   // var(--spacing-2xl)  - 48px
 spacing['4xl']   // var(--spacing-4xl)  - 56px
 ```
 
-## Sombras
+## Shadows
 
-O sistema de sombras do Draupnir oferece diferentes níveis de elevação para criar hierarquia visual e profundidade.
+The Draupnir shadow system offers different elevation levels to create visual hierarchy and depth.
 
-### Sombras Base
+### Base Shadows
 
 <div style={{ 
   display: 'grid', 
@@ -951,7 +951,7 @@ O sistema de sombras do Draupnir oferece diferentes níveis de elevação para c
     border: '1px solid #e9ecef'
   }}>
     <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow SM</div>
-    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Elevação baixa</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Low elevation</div>
     <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
       var(--shadow-sm)
     </div>
@@ -964,7 +964,7 @@ O sistema de sombras do Draupnir oferece diferentes níveis de elevação para c
     border: '1px solid #e9ecef'
   }}>
     <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow MD</div>
-    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Elevação média</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Medium elevation</div>
     <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
       var(--shadow-md)
     </div>
@@ -977,14 +977,14 @@ O sistema de sombras do Draupnir oferece diferentes níveis de elevação para c
     border: '1px solid #e9ecef'
   }}>
     <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow LG</div>
-    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Elevação alta</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>High elevation</div>
     <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
       var(--shadow-lg)
     </div>
   </div>
 </div>
 
-### Sombras Especiais
+### Special Shadows
 
 <div style={{ 
   display: 'grid', 
@@ -1000,7 +1000,7 @@ O sistema de sombras do Draupnir oferece diferentes níveis de elevação para c
     border: '1px solid #e9ecef'
   }}>
     <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow Focus</div>
-    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Estado de foco</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Focus state</div>
     <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
       var(--shadow-focus)
     </div>
@@ -1013,31 +1013,31 @@ O sistema de sombras do Draupnir oferece diferentes níveis de elevação para c
     border: '1px solid #e9ecef'
   }}>
     <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow Outline</div>
-    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Contorno sutil</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Subtle outline</div>
     <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
       var(--shadow-outline)
     </div>
   </div>
 </div>
 
-### Uso em Código
+### Usage in Code
 
 ```tsx
 import { shadows } from '@/tokens';
 
-// Sombras base
-shadows.sm       // var(--shadow-sm) - Elevação baixa
-shadows.md       // var(--shadow-md) - Elevação média
-shadows.lg       // var(--shadow-lg) - Elevação alta
+// Base shadows
+shadows.sm       // var(--shadow-sm) - Low elevation
+shadows.md       // var(--shadow-md) - Medium elevation
+shadows.lg       // var(--shadow-lg) - High elevation
 
-// Sombras especiais
-shadows.focus    // var(--shadow-focus) - Estado de foco
-shadows.outline  // var(--shadow-outline) - Contorno sutil
+// Special shadows
+shadows.focus    // var(--shadow-focus) - Focus state
+shadows.outline  // var(--shadow-outline) - Subtle outline
 ```
 
-## Uso Integrado
+## Integrated Usage
 
-### Exemplo de Componente
+### Component Example
 
 ```tsx
 import { colors, spacing, typography, shadows } from '@/tokens';
@@ -1058,25 +1058,25 @@ const Card = ({ children, variant = 'default' }) => {
 };
 ```
 
-### Funções Helper
+### Helper Functions
 
 ```tsx
 import { getColor, getSpacing, getTextSize, getShadow } from '@/tokens';
 
-// Obtém cores com escala
+// Get colors with scale
 const primaryColor = getColor('primary', '500');
 
-// Obtém espaçamento
+// Get spacing
 const mediumSpacing = getSpacing('md');
 
-// Obtém tamanho de texto
+// Get text size
 const mediumText = getTextSize('md');
 
-// Obtém sombra
+// Get shadow
 const mediumShadow = getShadow('md');
 ```
 
-## Próximos Passos
+## Next Steps
 
-- **[Cores](/docs/colors--page)**: Documentação detalhada do sistema de cores
-- **[Componentes](/docs/atoms--page)**: Componentes que utilizam estes tokens 
+- **[Colors](/docs/colors--page)**: Detailed documentation of the color system
+- **[Components](/docs/atoms--page)**: Components that use these tokens 

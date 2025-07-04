@@ -6,23 +6,23 @@ import * as BadgeStories from './Badge.stories';
 
 # Badge
 
-O componente Badge é utilizado para exibir informações de status, contadores ou rótulos de forma compacta e visualmente destacada.
+The Badge component is used to display status information, counters, or labels in a compact and visually highlighted format.
 
-## Descrição
-O Badge do Draupnir DS permite sinalizar estados, categorias ou quantidades de maneira clara e acessível.
+## Description
+The Draupnir DS Badge allows signaling states, categories, or quantities in a clear and accessible manner.
 
-## Recursos
-- **Variações visuais:** Primary, Success, Warning e Danger
-- **Compacto:** Design minimalista que não interfere no layout
-- **Semântico:** Cores que comunicam significado (verde=sucesso, vermelho=erro)
-- **Flexível:** Aceita qualquer conteúdo como children
-- **Acessível:** Alto contraste, lido por leitores de tela, cores semânticas
+## Features
+- **Visual variations:** Primary, Success, Warning, and Danger
+- **Compact:** Minimalist design that doesn't interfere with layout
+- **Semantic:** Colors that communicate meaning (green=success, red=error)
+- **Flexible:** Accepts any content as children
+- **Accessible:** High contrast, readable by screen readers, semantic colors
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={BadgeStories.Primary} />
   <Story of={BadgeStories.Success} />
@@ -32,10 +32,37 @@ O Badge do Draupnir DS permite sinalizar estados, categorias ou quantidades de m
   <Story of={BadgeStories.Status} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Badge } from 'draupnir-ds';
+import { Badge } from '@/components/atoms/Badge';
 
-<Badge variant="success">Ativo</Badge>
+<Badge variant="success">Active</Badge>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be displayed inside the badge.</td>
+    </tr>
+    <tr>
+      <td><b>variant</b></td>
+      <td><code>"primary" | "success" | "warning" | "danger"</code></td>
+      <td><code>"primary"</code></td>
+      <td>Visual style of the badge.<br/><b>Examples:</b> <code>primary</code>, <code>success</code>, <code>warning</code>, <code>danger</code></td>
+    </tr>
+  </tbody>
+</table>

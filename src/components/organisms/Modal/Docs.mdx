@@ -6,26 +6,26 @@ import * as ModalStories from './Modal.stories';
 
 # Modal
 
-O componente Modal exibe uma janela sobreposta para destacar informações ou ações importantes.
+The Modal component displays an overlay window to highlight important information or actions.
 
-## Descrição
-O Modal do Draupnir DS oferece foco gerenciado, fechamento por ESC, animações suaves e integração com formulários.
+## Description
+The Draupnir DS Modal offers managed focus, ESC closing, smooth animations, and form integration.
 
-## Recursos
-- **Acessível:** Trava foco, ARIA, fechamento por ESC, título e descrição para leitores de tela
-- **Modal e não-modal:** Suporte a ambos os modos
-- **Animado:** Framer Motion e Tailwind para transições
-- **Controlável:** Pode ser controlado por estado externo
-- **Customizável:** Cabeçalho, corpo e rodapé customizáveis
+## Features
+- **Accessible:** Focus trap, ARIA, ESC closing, title and description for screen readers
+- **Modal and non-modal:** Support for both modes
+- **Animated:** Framer Motion and Tailwind for transitions
+- **Controllable:** Can be controlled by external state
+- **Customizable:** Customizable header, body, and footer
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas additionalActions={[
     {
-      title: 'Abrir no GitHub',
+      title: 'Open on GitHub',
       onClick: () => {
         window.open(
           'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Modal/Modal.tsx',
@@ -38,17 +38,110 @@ O Modal do Draupnir DS oferece foco gerenciado, fechamento por ESC, animações 
   <Story of={ModalStories.Primary} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Modal, ModalBody, ModalFooter, ModalHeader } from 'draupnir-ds';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from '@/components/organisms/Modal';
 
 <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-  <ModalHeader>Título</ModalHeader>
-  <ModalBody>Conteúdo do modal</ModalBody>
+  <ModalHeader>Title</ModalHeader>
+  <ModalBody>Modal content</ModalBody>
   <ModalFooter>
-    <Button>Salvar</Button>
-    <Button variant="outline">Cancelar</Button>
+    <Button>Save</Button>
+    <Button variant="outline">Cancel</Button>
   </ModalFooter>
 </Modal>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Component</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Modal</b></td>
+      <td><b>isOpen</b></td>
+      <td><code>boolean</code></td>
+      <td>-</td>
+      <td>Controls the visibility of the modal.</td>
+    </tr>
+    <tr>
+      <td><b>Modal</b></td>
+      <td><b>onClose</b></td>
+      <td><code>() =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback fired when the modal requests to close (ESC, click outside, close button).</td>
+    </tr>
+    <tr>
+      <td><b>Modal</b></td>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered inside the modal (usually ModalHeader, ModalBody, ModalFooter).</td>
+    </tr>
+    <tr>
+      <td><b>Modal</b></td>
+      <td><b>variant</b></td>
+      <td><code>"default" | "warning" | "success"</code></td>
+      <td><code>"default"</code></td>
+      <td>Visual style of the modal.<br/><b>Examples:</b> <code>default</code>, <code>warning</code>, <code>success</code></td>
+    </tr>
+    <tr>
+      <td><b>Modal</b></td>
+      <td><b>title</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Title for the modal (used for accessibility).</td>
+    </tr>
+    <tr>
+      <td><b>Modal</b></td>
+      <td><b>description</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Description for the modal (used for accessibility).</td>
+    </tr>
+    <tr>
+      <td><b>ModalHeader</b></td>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered as the modal header (usually the title).</td>
+    </tr>
+    <tr>
+      <td><b>ModalHeader</b></td>
+      <td><b>onClose</b></td>
+      <td><code>() =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback fired when the close button is clicked.</td>
+    </tr>
+    <tr>
+      <td><b>ModalBody</b></td>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered as the modal body.</td>
+    </tr>
+    <tr>
+      <td><b>ModalBody</b></td>
+      <td><b>description</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Description for the modal body (used for accessibility).</td>
+    </tr>
+    <tr>
+      <td><b>ModalFooter</b></td>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered as the modal footer (usually actions).</td>
+    </tr>
+  </tbody>
+</table>

@@ -3,9 +3,10 @@ import Image from "next/image";
 export type AvatarImageProps = {
   src: string;
   altDescription: string | "";
+  name?: string;
 };
 
-const AvatarImage = ({ src, altDescription }: AvatarImageProps) => {
+const AvatarImage = ({ src, altDescription, name }: AvatarImageProps) => {
   return (
     <div>
       <Image
@@ -14,7 +15,7 @@ const AvatarImage = ({ src, altDescription }: AvatarImageProps) => {
         className="rounded-full"
         width={100}
         height={100}
-        title={`Avatar ${altDescription}`}
+        title={name ? `Avatar de ${name}` : `Avatar ${altDescription}`}
         data-dd-action-name={`${altDescription} avatar`}
       />
     </div>

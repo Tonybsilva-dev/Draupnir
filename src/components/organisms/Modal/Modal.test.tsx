@@ -1,28 +1,18 @@
 import { render, screen } from '@testing-library/react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
+import Modal from './Modal';
 
 describe('Modal', () => {
-  it('renderiza o Modal fechado', () => {
-    render(
-      <Modal isOpen={false} onClose={() => { }}>
-        <ModalHeader>Header</ModalHeader>
-        <ModalBody>Body</ModalBody>
-        <ModalFooter>Footer</ModalFooter>
-      </Modal>
-    );
+  it('renders the Modal closed', () => {
+    render(<Modal isOpen={false} onClose={() => { }} />);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
-  it('renderiza o Modal aberto', () => {
+
+  it('renders the Modal open', () => {
     render(
       <Modal isOpen={true} onClose={() => { }}>
-        <ModalHeader>Header</ModalHeader>
-        <ModalBody>Body</ModalBody>
-        <ModalFooter>Footer</ModalFooter>
+        <div>Modal content</div>
       </Modal>
     );
-    // O Modal não usa role="dialog" explicitamente, então vamos checar pelo texto
-    expect(screen.getByText('Header')).toBeInTheDocument();
-    expect(screen.getByText('Body')).toBeInTheDocument();
-    expect(screen.getByText('Footer')).toBeInTheDocument();
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 }); 

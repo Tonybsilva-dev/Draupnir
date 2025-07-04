@@ -5,21 +5,21 @@ import * as TypographyStories from './Typography.stories';
 
 # Typography
 
-O componente Typography é utilizado para estilizar textos, títulos e parágrafos de forma consistente.
+The Typography component is used to style texts, titles, and paragraphs consistently.
 
-## Descrição
-O Typography do Draupnir DS garante padronização visual, hierarquia e acessibilidade em todos os textos da interface.
+## Description
+The Draupnir DS Typography ensures visual standardization, hierarchy, and accessibility in all interface texts.
 
-## Recursos
-- **Acessível:** Tipografia semântica, foco visível, tamanhos e pesos claros
-- **Customizável:** Variações de tamanho, peso e cor
-- **Consistente:** Mantém padrão visual em toda a aplicação
+## Features
+- **Accessible:** Semantic typography, visible focus, clear sizes and weights
+- **Customizable:** Size, weight, and color variations
+- **Consistent:** Maintains visual pattern throughout the application
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={TypographyStories.Primary} />
   <Story of={TypographyStories.TextHeadingH1} />
@@ -27,12 +27,75 @@ O Typography do Draupnir DS garante padronização visual, hierarquia e acessibi
   <Story of={TypographyStories.TextHeadingH3} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Typography } from 'draupnir-ds';
+import { Typography } from '@/components/atoms/Typography';
 
 <Typography size="lg" variant="primary">
-  Texto grande e destacado
+  Large and highlighted text
 </Typography>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>variant</b></td>
+      <td><code>"primary" | "secondary" | "tertiary"</code></td>
+      <td><code>"primary"</code></td>
+      <td>Visual style of the text.<br/><b>Examples:</b> <code>primary</code>, <code>secondary</code>, <code>tertiary</code></td>
+    </tr>
+    <tr>
+      <td><b>size</b></td>
+      <td><code>"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "title1" | "title2" | "title3"</code></td>
+      <td><code>"md"</code></td>
+      <td>Font size of the text.<br/><b>Examples:</b> <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>4xl</code>, <code>title1</code>, <code>title2</code>, <code>title3</code></td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered inside the typography element.</td>
+    </tr>
+    <tr>
+      <td><b>element</b></td>
+      <td><code>keyof JSX.IntrinsicElements</code></td>
+      <td><code>"p"</code></td>
+      <td>HTML element to render (e.g., <code>p</code>, <code>span</code>, <code>div</code>).</td>
+    </tr>
+    <tr>
+      <td><b>semantic</b></td>
+      <td><code>"heading" | "paragraph" | "list" | "listitem" | "emphasis" | "strong"</code></td>
+      <td>-</td>
+      <td>Semantic meaning for accessibility and ARIA roles.<br/><b>Examples:</b> <code>heading</code>, <code>paragraph</code>, <code>list</code>, <code>listitem</code>, <code>emphasis</code>, <code>strong</code></td>
+    </tr>
+    <tr>
+      <td><b>level</b></td>
+      <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
+      <td>-</td>
+      <td>Heading level (used with <b>semantic="heading"</b>).</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the typography element.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>HTML element props</code></td>
+      <td>-</td>
+      <td>Any other valid HTML attributes for the rendered element.</td>
+    </tr>
+  </tbody>
+</table>

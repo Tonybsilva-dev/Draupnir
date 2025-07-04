@@ -6,33 +6,90 @@ import * as LinkStories from './Link.stories';
 
 # Link
 
-O componente Link é utilizado para navegação entre páginas e ações de redirecionamento.
+The Link component is used for navigation between pages and redirect actions.
 
-## Descrição
-O Link do Draupnir DS garante acessibilidade, estilos consistentes e integração com roteadores.
+## Description
+The Draupnir DS Link ensures accessibility, consistent styles, and router integration.
 
-## Recursos
-- **Acessível:** Suporte a ARIA, navegação por teclado, foco visível
-- **Customizável:** Variações de cor, estado e desabilitado
-- **Integração:** Compatível com roteadores (Next.js, React Router)
-- **Feedback visual:** Hover, foco e estados ativos
+## Features
+- **Accessible:** ARIA support, keyboard navigation, visible focus
+- **Customizable:** Color variations, state, and disabled
+- **Integration:** Compatible with routers (Next.js, React Router)
+- **Visual feedback:** Hover, focus, and active states
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={LinkStories.Primary} />
   <Story of={LinkStories.Disabled} />
   <Story of={LinkStories.Dark} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Link } from 'draupnir-ds';
+import { Link } from '@/components/molecules/Link';
 
-<Link href="/pagina">Ir para página</Link>
+<Link href="/page">Go to page</Link>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered inside the link.</td>
+    </tr>
+    <tr>
+      <td><b>href</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>URL to navigate to when the link is clicked.</td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disables the link and prevents navigation.</td>
+    </tr>
+    <tr>
+      <td><b>external</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Opens the link in a new tab and adds <code>rel="noopener noreferrer"</code>.</td>
+    </tr>
+    <tr>
+      <td><b>description</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional description for accessibility (aria-label).</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the link.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</code></td>
+      <td>-</td>
+      <td>Any other valid anchor attributes (onClick, target, etc).</td>
+    </tr>
+  </tbody>
+</table>
 

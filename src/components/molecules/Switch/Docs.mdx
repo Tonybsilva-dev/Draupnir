@@ -73,4 +73,60 @@ import { Switch } from 'draupnir-ds';
 ```
 
 </div>
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>defaultEnable</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Initial state of the switch (on/off).</td>
+    </tr>
+    <tr>
+      <td><b>variant</b></td>
+      <td><code>"common" | "contract"</code></td>
+      <td><code>"common"</code></td>
+      <td>Visual style of the switch.<br/><b>Examples:</b> <code>common</code>, <code>contract</code></td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disables the switch.</td>
+    </tr>
+    <tr>
+      <td><b>onChange</b></td>
+      <td><code>(enabled: boolean) =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback fired when the switch state changes.</td>
+    </tr>
+    <tr>
+      <td><b>label</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Label displayed next to the switch.</td>
+    </tr>
+    <tr>
+      <td><b>description</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Description or helper text below the label.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>RadixSwitchProps</code></td>
+      <td>-</td>
+      <td>Any other valid props from <code>@radix-ui/react-switch</code>.</td>
+    </tr>
+  </tbody>
+</table> 
 

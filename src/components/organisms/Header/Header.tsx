@@ -1,65 +1,60 @@
-import React, { useState } from 'react';
-import Button from '../../atoms/Button/Button';
+import { useState } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
-import Avatar from '../../atoms/Avatar/Avatar';
 
-const USERNAME = 'Antonio';
-const USER_AVATAR = '';
-
-const navLinks = [
-  { label: 'Início', href: '#' },
-  { label: 'Componentes', href: '#' },
-  { label: 'Tokens', href: '#' },
-  { label: 'Sobre', href: '#' },
-];
-
-export const Header: React.FC = () => {
+export const Header = () => {
   const [logged, setLogged] = useState(true);
 
   return (
     <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
-      {/* Esquerda: Logo */}
+      {/* Left: Logo */}
       <div className="flex items-center gap-2 min-w-[120px]">
-        <span className="text-xl font-bold text-gray-900 select-none">Draupnir DS</span>
+        <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
+          <span className="text-black font-bold text-sm">D</span>
+        </div>
+        <span className="font-semibold text-gray-900">Draupnir</span>
       </div>
 
-      {/* Centro: Navegação */}
-      <nav className="flex-1 flex justify-center gap-6">
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="text-gray-700 hover:text-primary font-medium transition-colors px-2 py-1"
-          >
-            {link.label}
-          </a>
-        ))}
+      {/* Center: Navigation */}
+      <nav className="hidden md:flex items-center gap-6">
+        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+          Dashboard
+        </a>
+        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+          Projects
+        </a>
+        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+          Team
+        </a>
+        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+          Settings
+        </a>
       </nav>
 
-      {/* Direita: Usuário */}
+      {/* Right: User */}
       <div className="flex items-center gap-4 min-w-[180px] justify-end">
         {logged ? (
           <Dropdown>
             <Dropdown.Trigger asChild>
               <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-50 transition">
-                <Avatar size="sm" description={USERNAME} image={USER_AVATAR || undefined} />
-                <span className="text-gray-800 font-medium">{USERNAME}</span>
+                <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+                <span className="text-sm text-gray-700">User</span>
               </button>
             </Dropdown.Trigger>
             <Dropdown.Content>
-              <Dropdown.Item>Perfil</Dropdown.Item>
-              <Dropdown.Item>Configurações</Dropdown.Item>
-              <Dropdown.Item onSelect={() => setLogged(false)} className="text-red-600">Sair</Dropdown.Item>
+              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item onSelect={() => setLogged(false)} className="text-red-600">Logout</Dropdown.Item>
             </Dropdown.Content>
           </Dropdown>
         ) : (
-          <Button variant="primary" onClick={() => setLogged(true)}>
-            Logar
-          </Button>
+          <button
+            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition"
+            onClick={() => setLogged(true)}
+          >
+            Login
+          </button>
         )}
       </div>
     </header>
   );
-};
-
-export default Header; 
+}; 

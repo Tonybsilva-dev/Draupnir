@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Button, ButtonProps } from "./Button";
 
-const meta: Meta<ButtonProps> = {
+const meta = {
   title: "Components/Atoms/Button",
   component: Button,
   parameters: {
@@ -9,23 +9,23 @@ const meta: Meta<ButtonProps> = {
     docs: {
       description: {
         component: `
-## Botão
+## Button
 
-O componente Button é um elemento fundamental do Draupnir Design System, oferecendo diferentes variantes visuais e estados para ações do usuário.
+The Button component is a fundamental element of the Draupnir Design System, offering different visual variants and states for user actions.
 
-### Características
-- **Acessibilidade**: Suporte completo a ARIA labels e roles
-- **Estados**: Normal, hover, focus, disabled e loading
-- **Variantes**: Primary, Outline e Ghost
-- **Responsivo**: Adapta-se a diferentes tamanhos de tela
-- **Performance**: Otimizado com Tailwind Variants
+### Features
+- **Accessibility**: Complete ARIA labels and roles support
+- **States**: Normal, hover, focus, disabled, and loading
+- **Variants**: Primary, Outline, and Ghost
+- **Responsive**: Adapts to different screen sizes
+- **Performance**: Optimized with Tailwind Variants
 
-### Uso
+### Usage
 \`\`\`tsx
 import { Button } from '@/components/atoms/Button';
 
 <Button variant="primary" onClick={handleClick}>
-  Clique aqui
+  Click here
 </Button>
 \`\`\`
         `,
@@ -34,7 +34,7 @@ import { Button } from '@/components/atoms/Button';
   },
   argTypes: {
     children: {
-      description: "Conteúdo do botão",
+      description: "Button content",
       control: { type: "text" },
       table: {
         type: { summary: "ReactNode" },
@@ -42,7 +42,7 @@ import { Button } from '@/components/atoms/Button';
       },
     },
     variant: {
-      description: "Variante visual do botão",
+      description: "Visual variant of the button",
       control: { type: "select" },
       options: ["primary", "secondary", "outline", "ghost", "danger"],
       table: {
@@ -51,7 +51,7 @@ import { Button } from '@/components/atoms/Button';
       },
     },
     size: {
-      description: "Tamanho do botão",
+      description: "Button size",
       control: { type: "select" },
       options: ["default", "sm", "lg", "full"],
       table: {
@@ -60,7 +60,7 @@ import { Button } from '@/components/atoms/Button';
       },
     },
     isLoading: {
-      description: "Exibe um indicador de carregamento",
+      description: "Displays a loading indicator",
       control: { type: "boolean" },
       table: {
         type: { summary: "boolean" },
@@ -68,7 +68,7 @@ import { Button } from '@/components/atoms/Button';
       },
     },
     disabled: {
-      description: "Desabilita o botão",
+      description: "Disables the button",
       control: { type: "boolean" },
       table: {
         type: { summary: "boolean" },
@@ -76,14 +76,14 @@ import { Button } from '@/components/atoms/Button';
       },
     },
     className: {
-      description: "Classes CSS adicionais",
+      description: "Additional CSS classes",
       control: { type: "text" },
       table: {
         type: { summary: "string" },
       },
     },
     onClick: {
-      description: "Função executada ao clicar",
+      description: "Function executed when clicked",
       action: "clicked",
       table: {
         type: { summary: "() => void" },
@@ -100,12 +100,12 @@ import { Button } from '@/components/atoms/Button';
 
 export default meta;
 
-type Story = StoryObj<ButtonProps>;
+type Story = StoryObj<typeof meta>;
 
 /**
- * ## Variante Primary
+ * ## Primary Variant
  * 
- * Botão principal com fundo verde e texto branco. Ideal para ações principais da interface.
+ * Main button with green background and white text. Ideal for primary interface actions.
  */
 export const Primary: Story = {
   args: {
@@ -115,16 +115,16 @@ export const Primary: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Botão principal com destaque visual máximo. Use para ações importantes como 'Salvar', 'Confirmar' ou 'Enviar'.",
+        story: "Primary button with maximum visual emphasis. Use for important actions like 'Save', 'Confirm', or 'Send'.",
       },
     },
   },
 };
 
 /**
- * ## Variante Outline
+ * ## Outline Variant
  * 
- * Botão com borda e fundo transparente. Mantém a hierarquia visual sem ser intrusivo.
+ * Button with border and transparent background. Maintains visual hierarchy without being intrusive.
  */
 export const Outline: Story = {
   args: {
@@ -134,16 +134,16 @@ export const Outline: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Botão secundário com borda. Ideal para ações complementares ou cancelamentos.",
+        story: "Secondary button with border. Ideal for complementary actions or cancellations.",
       },
     },
   },
 };
 
 /**
- * ## Variante Ghost
+ * ## Ghost Variant
  * 
- * Botão discreto sem bordas ou fundo. Perfeito para ações sutis e navegação.
+ * Discreet button without borders or background. Perfect for subtle actions and navigation.
  */
 export const Ghost: Story = {
   args: {
@@ -153,16 +153,16 @@ export const Ghost: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Botão discreto para ações menos importantes ou navegação interna.",
+        story: "Discreet button for less important actions or internal navigation.",
       },
     },
   },
 };
 
 /**
- * ## Variante Secondary
+ * ## Secondary Variant
  * 
- * Botão secundário com fundo azul acinzentado e texto branco. Ideal para ações alternativas ou menos prioritárias.
+ * Secondary button with bluish-gray background and white text. Ideal for alternative or less priority actions.
  */
 export const Secondary: Story = {
   args: {
@@ -172,16 +172,31 @@ export const Secondary: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Botão secundário com fundo azul acinzentado, ideal para ações alternativas ou menos prioritárias.",
+        story: "Secondary button with bluish-gray background, ideal for alternative or less priority actions.",
+      },
+    },
+  },
+};
+
+
+export const Danger: Story = {
+  args: {
+    children: "Danger Button",
+    variant: "danger",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Danger button with red background and white text. Ideal for destructive actions.",
       },
     },
   },
 };
 
 /**
- * ## Estado Loading
+ * ## Loading State
  * 
- * Botão com indicador de carregamento. Desabilita automaticamente durante o processo.
+ * Button with loading indicator. Automatically disabled during the process.
  */
 export const Loading: Story = {
   args: {
@@ -192,84 +207,7 @@ export const Loading: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Use este estado quando a ação do botão requer tempo de processamento. O botão fica automaticamente desabilitado.",
-      },
-    },
-  },
-};
-
-/**
- * ## Estado Disabled
- * 
- * Botão desabilitado. Não responde a interações do usuário.
- */
-export const Disabled: Story = {
-  args: {
-    children: "Disabled Button",
-    variant: "primary",
-    disabled: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Use quando a ação não está disponível no momento atual.",
-      },
-    },
-  },
-};
-
-/**
- * ## Tema Escuro
- * 
- * Botão adaptado para o tema escuro da aplicação.
- */
-export const DarkTheme: Story = {
-  args: {
-    children: "Dark Theme Button",
-    className: "dark-theme",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Botão com classes específicas para o tema escuro.",
-      },
-    },
-  },
-};
-
-/**
- * ## Variante Danger
- * 
- * Botão com cor vermelha para ações destrutivas ou de alerta.
- */
-export const Danger: Story = {
-  args: {
-    children: "Delete",
-    variant: "danger",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Use para ações destrutivas como 'Excluir', 'Remover' ou 'Cancelar'. A cor vermelha sinaliza perigo.",
-      },
-    },
-  },
-};
-
-/**
- * ## Tamanho Full
- * 
- * Botão que ocupa toda a largura disponível do container.
- */
-export const Full: Story = {
-  args: {
-    children: "Full Width Button",
-    size: "full",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Ideal para formulários ou quando você quer que o botão ocupe toda a largura disponível.",
+        story: "Use this state when the button action requires processing time. The button is automatically disabled.",
       },
     },
   },

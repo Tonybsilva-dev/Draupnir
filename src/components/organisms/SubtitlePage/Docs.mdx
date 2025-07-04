@@ -6,24 +6,24 @@ import * as SubtitlePageStories from './SubtitlePage.stories';
 
 # Subtitle Page
 
-O componente Subtitle Page exibe um subtítulo, descrição e ações no topo de seções da interface.
+The Subtitle Page component displays a subtitle, description, and actions at the top of interface sections.
 
-## Descrição
-O Subtitle Page do Draupnir DS organiza informações secundárias e botões de ação, melhorando a hierarquia visual.
+## Description
+The Draupnir DS Subtitle Page organizes secondary information and action buttons, improving visual hierarchy.
 
-## Recursos
-- **Acessível:** Tipografia semântica, foco visível, estrutura clara
-- **Responsivo:** Layout adaptável para diferentes tamanhos de tela
-- **Customizável:** Permite adicionar botões, descrições e outros elementos
+## Features
+- **Accessible:** Semantic typography, visible focus, clear structure
+- **Responsive:** Adaptable layout for different screen sizes
+- **Customizable:** Allows adding buttons, descriptions, and other elements
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas additionalActions={[
     {
-      title: 'Abrir no GitHub',
+      title: 'Open on GitHub',
       onClick: () => {
         window.open(
           'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/SubtitlePage/SubtitlePage.tsx',
@@ -36,13 +36,13 @@ O Subtitle Page do Draupnir DS organiza informações secundárias e botões de 
   <Story of={SubtitlePageStories.Primary} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { SubtitlePage } from 'draupnir-ds';
+import { SubtitlePage } from '@/components/organisms/SubtitlePage';
 
-<SubtitlePage subtitle="Informações pessoais" description="Atualize seus dados aqui.">
-  <Button variant="outline">Cancelar</Button>
-  <Button variant="primary">Salvar</Button>
+<SubtitlePage subtitle="Personal Information" description="Update your data here.">
+  <Button variant="outline">Cancel</Button>
+  <Button variant="primary">Save</Button>
 </SubtitlePage>
 ```

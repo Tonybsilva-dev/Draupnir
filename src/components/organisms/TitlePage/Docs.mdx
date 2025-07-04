@@ -6,24 +6,24 @@ import * as TitlePageStories from './TitlePage.stories';
 
 # Title Page
 
-O componente Title Page exibe o título principal e uma descrição no topo da página.
+The Title Page component displays the main title and description at the top of the page.
 
-## Descrição
-O Title Page do Draupnir DS destaca o contexto da página, melhorando a hierarquia visual e a acessibilidade.
+## Description
+The Draupnir DS Title Page highlights the page context, improving visual hierarchy and accessibility.
 
-## Recursos
-- **Acessível:** Usa tags semânticas, foco visível, tipografia clara
-- **Customizável:** Permite título e descrição
-- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+## Features
+- **Accessible:** Uses semantic tags, visible focus, clear typography
+- **Customizable:** Allows title and description
+- **Responsive:** Adapts to different screen sizes
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas additionalActions={[
     {
-      title: 'Abrir no GitHub',
+      title: 'Open on GitHub',
       onClick: () => {
         window.open(
           'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/TitlePage/TitlePage.tsx',
@@ -36,11 +36,11 @@ O Title Page do Draupnir DS destaca o contexto da página, melhorando a hierarqu
     <Story of={TitlePageStories.Primary} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { TitlePage } from 'draupnir-ds';
+import { TitlePage } from '@/components/organisms/TitlePage';
 
-<TitlePage title="Dashboard" description="Bem-vindo ao painel principal" />
+<TitlePage title="Dashboard" description="Welcome to the main panel" />
 ```
 

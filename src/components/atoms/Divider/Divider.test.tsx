@@ -1,8 +1,9 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Divider from './Divider';
 
 describe('Divider', () => {
-  it('renderiza sem erros', () => {
+  it('renders without errors', () => {
     render(<Divider />);
+    expect(document.querySelector('hr')).toBeInTheDocument();
   });
 }); 

@@ -16,7 +16,8 @@
     "build-storybook": "storybook build",
     "storybook-docs": "storybook dev --docs",
     "build-storybook-docs": "storybook build --docs",
-    "chromatic": "npx chromatic --project-token=chpt_d869775758fc19a"
+    "chromatic": "npx chromatic --project-token=chpt_d869775758fc19a",
+    "test": "jest"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
@@ -36,23 +37,34 @@
     "tailwind-variants": "^0.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
     "@storybook/manager-api": "^7.6.20",
     "@storybook/nextjs": "^7.6.17",
     "@storybook/theming": "^7.6.20",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.17",
+    "babel-jest": "^30.0.4",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
     "postcss": "^8",
     "storybook": "^7.6.17",
     "storybook-dark-mode": "^4.0.2",
     "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.4.0",
     "typescript": "^5"
   },
   "files": [

@@ -1,0 +1,1082 @@
+import { Meta, ColorPalette, ColorItem, ArgsTable } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Design Tokens" />
+
+# Design Tokens
+
+Os design tokens são os elementos fundamentais do **Draupnir Design System**. Eles definem as propriedades visuais que garantem consistência, acessibilidade e escalabilidade em toda a aplicação.
+
+## Visão Geral
+
+O Draupnir utiliza uma arquitetura de tokens baseada em **CSS Custom Properties**, onde todos os valores são definidos uma única vez no `globals.css` e referenciados pelos arquivos TypeScript. Isso garante:
+
+- ✅ **Consistência** entre CSS e TypeScript
+- ✅ **Tema dinâmico** com suporte a modo escuro
+- ✅ **Performance** otimizada
+- ✅ **Manutenibilidade** centralizada
+
+## Cores
+
+O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente selecionada que garante acessibilidade e consistência visual.
+
+### Paleta Principal
+
+<ColorPalette>
+  <ColorItem
+    title="Background"
+    subtitle="Fundos da aplicação"
+    colors={{
+      BgLight: "#FFFFFF",
+      BgEscuro: "#F8F8F8",
+      BgDisabled: "#EFEFEF",
+    }}
+  />
+  <ColorItem
+    title="Escala de cinza"
+    subtitle="Textos e elementos neutros"
+    colors={{
+        TextoPrimario: "#181818",
+        TextoSecundario: "#5C5C5C",
+        TextoTerciario: "#747474",
+        TextoDesativado: "#8A8A8A",
+    }}
+  />
+  <ColorItem
+    title="Tom 1"
+    subtitle="Verde - Cor principal da marca"
+    colors={{
+        Primario: "#22C55E",
+        Secundario: "#4ADE80",
+        Terciario: "#86EFAC",
+        Quaternario: "#DCFCE7",
+        Hover: "#16A34A",
+        Click: "#15803D",
+    }}
+  />
+  <ColorItem
+    title="Tom 2"
+    subtitle="Laranja - Cor secundária"
+    colors={{
+        Primario: "#F97316",
+        Secundario: "#FB923C",
+        Terciario: "#FED7AA",
+        Quaternario: "#FFF7ED",
+    }}
+  />
+</ColorPalette>
+
+### Cores Semânticas
+
+<ColorPalette>
+  <ColorItem
+    title="Success"
+    subtitle="Operações bem-sucedidas"
+    colors={{
+      Success: "#3ac922",
+    }}
+  />
+  <ColorItem
+    title="Error"
+    subtitle="Erros e alertas críticos"
+    colors={{
+      Error: "#ff3030",
+    }}
+  />
+  <ColorItem
+    title="Info"
+    subtitle="Informações e dicas"
+    colors={{
+      Info: "#3b82f6",
+    }}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="Avisos e atenção"
+    colors={{
+      Warning: "#f59e0b",
+    }}
+  />
+</ColorPalette>
+
+### Escala de Cores
+
+Cada cor possui uma escala de 50 a 900, permitindo variações sutis para diferentes contextos:
+
+```tsx
+import { colors } from '@/tokens';
+
+// Cores primárias
+colors.primary[50]   // rgba(var(--primary), 0.05) - Background muito claro
+colors.primary[100]  // rgba(var(--primary), 0.1)  - Background claro
+colors.primary[200]  // rgba(var(--primary), 0.2)  - Background médio-claro
+colors.primary[300]  // rgba(var(--primary), 0.3)  - Background médio
+colors.primary[400]  // rgba(var(--primary), 0.4)  - Background médio-escuro
+colors.primary[500]  // rgb(var(--primary))        - Cor principal
+colors.primary[600]  // rgb(var(--hover))          - Cor hover
+colors.primary[700]  // rgb(var(--click))          - Cor click
+colors.primary[800]  // rgba(var(--primary), 0.8)  - Cor escura
+colors.primary[900]  // rgba(var(--primary), 0.9)  - Cor muito escura
+```
+
+## Tipografia
+
+O sistema tipográfico do Draupnir utiliza a fonte **Mulish** e define uma hierarquia clara de tamanhos para garantir legibilidade e hierarquia visual.
+
+### Família de Fontes
+
+```css
+font-family: 'Mulish', sans-serif;
+```
+
+### Tamanhos de Texto
+
+<div style={{ 
+  marginBottom: '3rem',
+  padding: '2rem',
+  backgroundColor: '#f8f9fa',
+  borderRadius: '12px',
+  border: '1px solid #e9ecef'
+}}>
+  <h3 style={{ marginBottom: '1.5rem', color: '#495057', fontSize: '18px' }}>Escala de Tamanhos de Texto</h3>
+  
+  <div style={{ 
+    display: 'grid', 
+    gridTemplateColumns: '1fr', 
+    gap: '1.5rem'
+  }}>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '28px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>4xl</div>
+        <div style={{ fontSize: '28px', lineHeight: '1.2', color: '#495057' }}>
+          Título grande, destaques principais
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>28px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '24px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>2xl</div>
+        <div style={{ fontSize: '24px', lineHeight: '1.2', color: '#495057' }}>
+          Títulos médios, cabeçalhos de seção
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>24px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '20px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>xl</div>
+        <div style={{ fontSize: '20px', lineHeight: '1.2', color: '#495057' }}>
+          Subtítulos, seções importantes
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>20px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '18px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>lg</div>
+        <div style={{ fontSize: '18px', lineHeight: '1.2', color: '#495057' }}>
+          Texto destacado, parágrafos importantes
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>18px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '16px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>md</div>
+        <div style={{ fontSize: '16px', lineHeight: '1.2', color: '#495057' }}>
+          Texto base, corpo principal da aplicação
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>16px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '14px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>sm</div>
+        <div style={{ fontSize: '14px', lineHeight: '1.2', color: '#495057' }}>
+          Texto secundário, descrições e legendas
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>14px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      border: '1px solid #dee2e6'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ 
+          fontSize: '12px', 
+          lineHeight: '1.2',
+          fontWeight: '600',
+          color: '#212529'
+        }}>xs</div>
+        <div style={{ fontSize: '12px', lineHeight: '1.2', color: '#495057' }}>
+          Texto pequeno, legendas e notas de rodapé
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '12px', 
+        color: '#6c757d', 
+        backgroundColor: '#e9ecef',
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        fontFamily: 'monospace'
+      }}>12px</div>
+    </div>
+  </div>
+</div>
+
+### Tamanhos de Título
+
+<div style={{ 
+  marginBottom: '3rem',
+  padding: '2rem',
+  backgroundColor: '#e8f5e8',
+  borderRadius: '12px',
+  border: '1px solid #d4edda'
+}}>
+  <h3 style={{ marginBottom: '1.5rem', color: '#155724', fontSize: '18px' }}>Escala de Títulos</h3>
+  
+  <div style={{ 
+    display: 'grid', 
+    gridTemplateColumns: '1fr', 
+    gap: '2rem'
+  }}>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1.5rem',
+      backgroundColor: 'white',
+      borderRadius: '12px',
+      border: '1px solid #c3e6cb',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <div style={{ 
+          fontSize: '56px', 
+          lineHeight: '1.1',
+          fontWeight: 'bold',
+          color: '#155724'
+        }}>xl</div>
+        <div style={{ fontSize: '56px', lineHeight: '1.1', color: '#155724' }}>
+          Título Extra Grande
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '14px', 
+        color: '#155724', 
+        backgroundColor: '#d4edda',
+        padding: '0.5rem 1rem',
+        borderRadius: '6px',
+        fontFamily: 'monospace',
+        fontWeight: '600'
+      }}>56px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1.5rem',
+      backgroundColor: 'white',
+      borderRadius: '12px',
+      border: '1px solid #c3e6cb',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <div style={{ 
+          fontSize: '48px', 
+          lineHeight: '1.1',
+          fontWeight: 'bold',
+          color: '#155724'
+        }}>lg</div>
+        <div style={{ fontSize: '48px', lineHeight: '1.1', color: '#155724' }}>
+          Título Grande
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '14px', 
+        color: '#155724', 
+        backgroundColor: '#d4edda',
+        padding: '0.5rem 1rem',
+        borderRadius: '6px',
+        fontFamily: 'monospace',
+        fontWeight: '600'
+      }}>48px</div>
+    </div>
+
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between',
+      padding: '1.5rem',
+      backgroundColor: 'white',
+      borderRadius: '12px',
+      border: '1px solid #c3e6cb',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <div style={{ 
+          fontSize: '40px', 
+          lineHeight: '1.1',
+          fontWeight: 'bold',
+          color: '#155724'
+        }}>md</div>
+        <div style={{ fontSize: '40px', lineHeight: '1.1', color: '#155724' }}>
+          Título Médio
+        </div>
+      </div>
+      <div style={{ 
+        fontSize: '14px', 
+        color: '#155724', 
+        backgroundColor: '#d4edda',
+        padding: '0.5rem 1rem',
+        borderRadius: '6px',
+        fontFamily: 'monospace',
+        fontWeight: '600'
+      }}>40px</div>
+    </div>
+  </div>
+</div>
+
+### Pesos de Fonte
+
+<div style={{ 
+  display: 'grid', 
+  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+  gap: '1.5rem', 
+  marginBottom: '2rem' 
+}}>
+  <div style={{ 
+    padding: '1.5rem', 
+    backgroundColor: '#f8f9fa', 
+    borderRadius: '12px', 
+    textAlign: 'center',
+    border: '2px solid #e9ecef',
+    transition: 'transform 0.2s ease',
+    cursor: 'pointer'
+  }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
+    <div style={{ fontWeight: '400', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Normal</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Texto padrão</div>
+    <div style={{ 
+      fontSize: '14px', 
+      color: '#495057', 
+      backgroundColor: '#e9ecef',
+      padding: '0.5rem',
+      borderRadius: '6px',
+      fontFamily: 'monospace',
+      fontWeight: '600'
+    }}>400</div>
+  </div>
+  <div style={{ 
+    padding: '1.5rem', 
+    backgroundColor: '#f8f9fa', 
+    borderRadius: '12px', 
+    textAlign: 'center',
+    border: '2px solid #e9ecef',
+    transition: 'transform 0.2s ease',
+    cursor: 'pointer'
+  }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
+    <div style={{ fontWeight: '500', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Medium</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Destaque sutil</div>
+    <div style={{ 
+      fontSize: '14px', 
+      color: '#495057', 
+      backgroundColor: '#e9ecef',
+      padding: '0.5rem',
+      borderRadius: '6px',
+      fontFamily: 'monospace',
+      fontWeight: '600'
+    }}>500</div>
+  </div>
+  <div style={{ 
+    padding: '1.5rem', 
+    backgroundColor: '#f8f9fa', 
+    borderRadius: '12px', 
+    textAlign: 'center',
+    border: '2px solid #e9ecef',
+    transition: 'transform 0.2s ease',
+    cursor: 'pointer'
+  }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
+    <div style={{ fontWeight: '600', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Semibold</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Destaque médio</div>
+    <div style={{ 
+      fontSize: '14px', 
+      color: '#495057', 
+      backgroundColor: '#e9ecef',
+      padding: '0.5rem',
+      borderRadius: '6px',
+      fontFamily: 'monospace',
+      fontWeight: '600'
+    }}>600</div>
+  </div>
+  <div style={{ 
+    padding: '1.5rem', 
+    backgroundColor: '#f8f9fa', 
+    borderRadius: '12px', 
+    textAlign: 'center',
+    border: '2px solid #e9ecef',
+    transition: 'transform 0.2s ease',
+    cursor: 'pointer'
+  }} onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
+    <div style={{ fontWeight: '700', fontSize: '24px', marginBottom: '0.75rem', color: '#212529' }}>Bold</div>
+    <div style={{ fontSize: '16px', color: '#6c757d', marginBottom: '1rem' }}>Máximo destaque</div>
+    <div style={{ 
+      fontSize: '14px', 
+      color: '#495057', 
+      backgroundColor: '#e9ecef',
+      padding: '0.5rem',
+      borderRadius: '6px',
+      fontFamily: 'monospace',
+      fontWeight: '600'
+    }}>700</div>
+  </div>
+</div>
+
+### Uso em Código
+
+```tsx
+import { typography } from '@/tokens';
+
+// Tamanhos de texto
+typography.text.xs      // var(--text-xs) - 12px
+typography.text.sm      // var(--text-sm) - 14px
+typography.text.md      // var(--text-md) - 16px
+typography.text.lg      // var(--text-lg) - 18px
+typography.text.xl      // var(--text-xl) - 20px
+typography.text['2xl']  // var(--text-2xl) - 24px
+typography.text['4xl']  // var(--text-4xl) - 28px
+
+// Tamanhos de título
+typography.title.md     // var(--title-md) - 40px
+typography.title.lg     // var(--title-lg) - 48px
+typography.title.xl     // var(--title-xl) - 56px
+
+// Pesos de fonte
+typography.fontWeight.normal    // 400
+typography.fontWeight.medium    // 500
+typography.fontWeight.semibold  // 600
+typography.fontWeight.bold      // 700
+```
+
+## Espaçamentos
+
+O sistema de espaçamento do Draupnir é baseado em múltiplos de 8px para garantir consistência e harmonia visual.
+
+### Escala de Espaçamentos
+
+<div style={{ 
+  marginBottom: '3rem',
+  padding: '2rem',
+  backgroundColor: '#f8f9fa',
+  borderRadius: '12px',
+  border: '1px solid #e9ecef'
+}}>
+  <h3 style={{ marginBottom: '1.5rem', color: '#495057', fontSize: '18px' }}>Escala de Espaçamentos (Base: 8px)</h3>
+  
+  <div style={{ 
+    display: 'grid', 
+    gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
+    gap: '1rem' 
+  }}>
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #6c757d', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#6c757d',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>none</div>
+      <div style={{ 
+        height: '0px',
+        backgroundColor: '#6c757d',
+        margin: '1rem 0',
+        borderRadius: '2px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>0px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-none)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>4xs</div>
+      <div style={{ 
+        height: '8px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>8px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-4xs)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>2xs</div>
+      <div style={{ 
+        height: '12px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>12px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-2xs)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>xs</div>
+      <div style={{ 
+        height: '16px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>16px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-xs)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>sm</div>
+      <div style={{ 
+        height: '20px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>20px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-sm)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>md</div>
+      <div style={{ 
+        height: '24px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>24px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-md)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>lg</div>
+      <div style={{ 
+        height: '32px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>32px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-lg)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>xl</div>
+      <div style={{ 
+        height: '40px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>40px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-xl)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>2xl</div>
+      <div style={{ 
+        height: '48px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>48px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-2xl)</div>
+    </div>
+
+    <div style={{ 
+      padding: '1.5rem', 
+      border: '3px solid #22c55e', 
+      borderRadius: '12px', 
+      textAlign: 'center',
+      backgroundColor: 'white',
+      position: 'relative'
+    }}>
+      <div style={{ 
+        position: 'absolute',
+        top: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: '#22c55e',
+        color: 'white',
+        padding: '0.25rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>4xl</div>
+      <div style={{ 
+        height: '56px',
+        backgroundColor: '#22c55e',
+        margin: '1rem 0',
+        borderRadius: '4px'
+      }}></div>
+      <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '0.5rem' }}>56px</div>
+      <div style={{ fontSize: '12px', color: '#6c757d', fontFamily: 'monospace' }}>var(--spacing-4xl)</div>
+    </div>
+  </div>
+</div>
+
+### Uso em Código
+
+```tsx
+import { spacing } from '@/tokens';
+
+// Espaçamentos básicos
+spacing.none     // var(--spacing-none) - 0px
+spacing['4xs']   // var(--spacing-4xs)  - 8px
+spacing['2xs']   // var(--spacing-2xs)  - 12px
+spacing.xs       // var(--spacing-xs)   - 16px
+spacing.sm       // var(--spacing-sm)   - 20px
+spacing.md       // var(--spacing-md)   - 24px
+spacing.lg       // var(--spacing-lg)   - 32px
+spacing.xl       // var(--spacing-xl)   - 40px
+spacing['2xl']   // var(--spacing-2xl)  - 48px
+spacing['4xl']   // var(--spacing-4xl)  - 56px
+```
+
+## Sombras
+
+O sistema de sombras do Draupnir oferece diferentes níveis de elevação para criar hierarquia visual e profundidade.
+
+### Sombras Base
+
+<div style={{ 
+  display: 'grid', 
+  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+  gap: '2rem', 
+  marginBottom: '2rem' 
+}}>
+  <div style={{ 
+    padding: '2rem', 
+    backgroundColor: 'white', 
+    boxShadow: '0px 0px 10px rgba(132, 132, 132, 15%)', 
+    borderRadius: '12px',
+    border: '1px solid #e9ecef'
+  }}>
+    <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow SM</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Elevação baixa</div>
+    <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
+      var(--shadow-sm)
+    </div>
+  </div>
+  <div style={{ 
+    padding: '2rem', 
+    backgroundColor: 'white', 
+    boxShadow: '0px 0px 20px rgba(132, 132, 132, 20%)', 
+    borderRadius: '12px',
+    border: '1px solid #e9ecef'
+  }}>
+    <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow MD</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Elevação média</div>
+    <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
+      var(--shadow-md)
+    </div>
+  </div>
+  <div style={{ 
+    padding: '2rem', 
+    backgroundColor: 'white', 
+    boxShadow: '0px 0px 30px rgba(132, 132, 132, 25%)', 
+    borderRadius: '12px',
+    border: '1px solid #e9ecef'
+  }}>
+    <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow LG</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Elevação alta</div>
+    <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
+      var(--shadow-lg)
+    </div>
+  </div>
+</div>
+
+### Sombras Especiais
+
+<div style={{ 
+  display: 'grid', 
+  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+  gap: '2rem', 
+  marginBottom: '2rem' 
+}}>
+  <div style={{ 
+    padding: '2rem', 
+    backgroundColor: 'white', 
+    boxShadow: '0px 0px 0px 2px #643296', 
+    borderRadius: '12px',
+    border: '1px solid #e9ecef'
+  }}>
+    <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow Focus</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Estado de foco</div>
+    <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
+      var(--shadow-focus)
+    </div>
+  </div>
+  <div style={{ 
+    padding: '2rem', 
+    backgroundColor: 'white', 
+    boxShadow: '0px 0px 0px 2px #e8e8e8', 
+    borderRadius: '12px',
+    border: '1px solid #e9ecef'
+  }}>
+    <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>Shadow Outline</div>
+    <div style={{ fontSize: '14px', color: '#6c757d', marginBottom: '1rem' }}>Contorno sutil</div>
+    <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>
+      var(--shadow-outline)
+    </div>
+  </div>
+</div>
+
+### Uso em Código
+
+```tsx
+import { shadows } from '@/tokens';
+
+// Sombras base
+shadows.sm       // var(--shadow-sm) - Elevação baixa
+shadows.md       // var(--shadow-md) - Elevação média
+shadows.lg       // var(--shadow-lg) - Elevação alta
+
+// Sombras especiais
+shadows.focus    // var(--shadow-focus) - Estado de foco
+shadows.outline  // var(--shadow-outline) - Contorno sutil
+```
+
+## Uso Integrado
+
+### Exemplo de Componente
+
+```tsx
+import { colors, spacing, typography, shadows } from '@/tokens';
+
+const Card = ({ children, variant = 'default' }) => {
+  return (
+    <div style={{
+      backgroundColor: colors.background.light,
+      padding: spacing.md,
+      borderRadius: '8px',
+      boxShadow: shadows.md,
+      fontSize: typography.text.md,
+      color: colors.text.primary,
+    }}>
+      {children}
+    </div>
+  );
+};
+```
+
+### Funções Helper
+
+```tsx
+import { getColor, getSpacing, getTextSize, getShadow } from '@/tokens';
+
+// Obtém cores com escala
+const primaryColor = getColor('primary', '500');
+
+// Obtém espaçamento
+const mediumSpacing = getSpacing('md');
+
+// Obtém tamanho de texto
+const mediumText = getTextSize('md');
+
+// Obtém sombra
+const mediumShadow = getShadow('md');
+```
+
+## Próximos Passos
+
+- **[Cores](/docs/colors--page)**: Documentação detalhada do sistema de cores
+- **[Componentes](/docs/atoms--page)**: Componentes que utilizam estes tokens
+- **[Guia de Uso](/docs/introduction--page)**: Como aplicar os tokens em projetos 

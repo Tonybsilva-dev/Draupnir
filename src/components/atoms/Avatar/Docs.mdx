@@ -1,0 +1,42 @@
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
+import Avatar from './Avatar';
+import * as AvatarStories from './Avatar.stories';
+
+<Meta of={AvatarStories} component={Avatar}/>
+
+# Avatar
+
+O componente Avatar é utilizado para exibir imagens, ícones ou iniciais de usuários de forma circular e responsiva.
+
+## Descrição
+O Avatar do Draupnir DS é ideal para representar perfis, listas de usuários e áreas de autenticação.
+
+## Recursos
+- **Tamanhos:** xs, sm, md, lg
+- **Fallback:** Ícone padrão quando não há imagem
+- **Acessibilidade:** Suporte a descrições alt para leitores de tela
+- **Interativo:** Estados hover e focus
+- **Flexível:** Aceita imagens ou ícone padrão
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={AvatarStories.WithImage} />
+  <Story of={AvatarStories.WithIcon} />
+  <Story of={AvatarStories.ExtraSmall} />
+  <Story of={AvatarStories.Small} />
+  <Story of={AvatarStories.Medium} />
+  <Story of={AvatarStories.Large} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Avatar } from 'draupnir-ds';
+
+<Avatar size="md" description="Foto de João Silva" image="/caminho/para/imagem.jpg" />
+```
+

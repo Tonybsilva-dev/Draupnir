@@ -1,0 +1,188 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Atoms" />
+
+# Atoms
+
+Os **Atoms** são os componentes fundamentais e indivisíveis do Draupnir Design System. Eles formam a base sobre a qual todos os outros componentes são construídos.
+
+## 🧩 O que são Atoms?
+
+Atoms são os componentes mais básicos da interface, como botões, inputs, labels e outros elementos HTML básicos. Eles não podem ser divididos em componentes menores sem perder sua funcionalidade.
+
+### Características dos Atoms:
+
+- ✅ **Indivisíveis**: Não podem ser quebrados em componentes menores
+- ✅ **Reutilizáveis**: Podem ser usados em qualquer lugar da aplicação
+- ✅ **Consistentes**: Seguem estritamente os design tokens
+- ✅ **Acessíveis**: Implementam padrões de acessibilidade básicos
+- ✅ **Tipados**: Possuem tipagem TypeScript completa
+
+## 📋 Lista de Atoms
+
+### Avatar
+Representação visual de usuários com suporte a imagens, ícones e iniciais.
+
+```tsx
+import { Avatar } from 'draupnir-ds';
+
+<Avatar size="md" image="/avatar.jpg" description="João Silva" />
+<Avatar size="sm" description="JS" />
+```
+
+**Características:**
+- 4 tamanhos: xs, sm, md, lg
+- Suporte a imagens, ícones e iniciais
+- Fallback automático para iniciais
+- Acessível com ARIA labels
+
+### Badge
+Indicadores visuais para status, categorias e contadores.
+
+```tsx
+import { Badge } from 'draupnir-ds';
+
+<Badge variant="success">Ativo</Badge>
+<Badge variant="error">Inativo</Badge>
+<Badge variant="warning">Pendente</Badge>
+```
+
+**Características:**
+- Variantes semânticas (success, error, warning, info)
+- Suporte a ícones
+- Tamanhos customizáveis
+- Cores consistentes com design tokens
+
+### Box
+Container flexível para layouts e agrupamento de conteúdo.
+
+```tsx
+import { Box } from 'draupnir-ds';
+
+<Box filledBackground type="primary">
+  Conteúdo do box
+</Box>
+
+<Box type="success" className="p-4">
+  Box com padding customizado
+</Box>
+```
+
+**Características:**
+- Container flexível
+- Tipos semânticos (primary, success, error, info)
+- Suporte a background preenchido
+- Customização via className
+
+### Button
+Elementos de ação interativos com múltiplas variantes.
+
+```tsx
+import { Button } from 'draupnir-ds';
+
+<Button variant="primary">Botão Primário</Button>
+<Button variant="outline">Botão Outline</Button>
+<Button variant="ghost">Botão Ghost</Button>
+<Button isLoading>Carregando...</Button>
+```
+
+**Características:**
+- 3 variantes: primary, outline, ghost
+- Estado de loading integrado
+- Suporte a ícones
+- Estados de hover e focus
+- Acessível com ARIA labels
+
+### Divider
+Separadores visuais para organizar conteúdo.
+
+```tsx
+import { Divider } from 'draupnir-ds';
+
+<Divider />
+<Divider>Ou</Divider>
+<Divider thickness="thick" />
+```
+
+**Características:**
+- Suporte a texto centralizado
+- Diferentes espessuras
+- Cores customizáveis
+- Responsivo
+
+### Text
+Componentes de texto tipográfico com hierarquia clara.
+
+```tsx
+import { TextBlock } from 'draupnir-ds';
+
+<TextBlock 
+  title="Título do Texto"
+  content="Conteúdo do texto com formatação rica."
+/>
+```
+
+**Características:**
+- Título e conteúdo separados
+- Formatação rica de texto
+- Hierarquia tipográfica clara
+- Responsivo
+
+### Typography
+Sistema de tipografia com tamanhos e pesos padronizados.
+
+```tsx
+import { Typography } from 'draupnir-ds';
+
+<Typography size="lg" weight="semibold">
+  Título da página
+</Typography>
+
+<Typography size="md" weight="normal">
+  Texto do corpo
+</Typography>
+```
+
+**Características:**
+- 7 tamanhos: xs, sm, md, lg, xl, 2xl, 4xl
+- 4 pesos: normal, medium, semibold, bold
+- Responsivo
+- Consistente com design tokens
+
+## 🎯 Quando Usar Atoms
+
+### ✅ Use Atoms quando:
+
+- Precisar de um elemento básico da interface
+- O componente não pode ser dividido em partes menores
+- Quiser manter consistência visual
+- Precisar de um elemento reutilizável
+
+### ❌ Evite usar Atoms quando:
+
+- O componente combina múltiplos atoms
+- Há lógica de estado complexa
+- O componente é específico de uma funcionalidade
+- Precisa de interações complexas
+
+## 🔗 Composição
+
+Atoms são frequentemente combinados para criar **Molecules**:
+
+```tsx
+// Exemplo: Input (Molecule) composto por Atoms
+<Input.Root>
+  <Input.Prefix>
+    <Icon /> {/* Atom */}
+  </Input.Prefix>
+  <Input.Control />
+  <Badge variant="error">Erro</Badge> {/* Atom */}
+</Input.Root>
+```
+
+## 📚 Próximos Passos
+
+- **[Molecules](/docs/molecules--page)**: Combinações de atoms
+- **[Organisms](/docs/organisms--page)**: Componentes complexos
+- **[Design Tokens](/docs/design-tokens--page)**: Fundamentos visuais
+- **[Exemplos](/docs/examples--page)**: Casos de uso práticos 

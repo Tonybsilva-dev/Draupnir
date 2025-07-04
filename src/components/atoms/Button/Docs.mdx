@@ -1,0 +1,39 @@
+import { Meta, Controls, Primary, Canvas, Story } from "@storybook/addon-docs/blocks"
+import Button from './Button'
+import * as ButtonStories from "./Button.stories.ts"
+
+<Meta of={ButtonStories} component={Button}/>
+
+# Button
+
+O componente Button é utilizado para acionar ações e interações em interfaces.
+
+## Descrição
+O Button do Draupnir DS oferece diferentes estilos visuais, estados e acessibilidade, sendo essencial para qualquer aplicação web.
+
+## Recursos
+- **Variações visuais:** Primary, Outline e Ghost
+- **Feedback visual:** Hover, foco e clique
+- **Estado de carregamento:** Spinner integrado
+- **Customização:** Tamanhos, preenchimento e variantes
+- **Acessibilidade:** HTML semântico e suporte a ARIA
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={ButtonStories.Primary} />
+  <Story of={ButtonStories.Outline} />
+  <Story of={ButtonStories.Ghost} />
+  <Story of={ButtonStories.Loading} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Button } from 'draupnir-ds';
+
+<Button variant="primary">Salvar</Button>
+```

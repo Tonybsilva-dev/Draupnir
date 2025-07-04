@@ -1,0 +1,41 @@
+import { Meta, Story, ArgsTable, Canvas, Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
+import Badge from './Badge';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} component={Badge} />
+
+# Badge
+
+O componente Badge é utilizado para exibir informações de status, contadores ou rótulos de forma compacta e visualmente destacada.
+
+## Descrição
+O Badge do Draupnir DS permite sinalizar estados, categorias ou quantidades de maneira clara e acessível.
+
+## Recursos
+- **Variações visuais:** Primary, Success, Warning e Danger
+- **Compacto:** Design minimalista que não interfere no layout
+- **Semântico:** Cores que comunicam significado (verde=sucesso, vermelho=erro)
+- **Flexível:** Aceita qualquer conteúdo como children
+- **Acessibilidade:** Alto contraste para boa legibilidade
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplos
+<Canvas>
+  <Story of={BadgeStories.Primary} />
+  <Story of={BadgeStories.Success} />
+  <Story of={BadgeStories.Warning} />
+  <Story of={BadgeStories.Danger} />
+  <Story of={BadgeStories.Numeric} />
+  <Story of={BadgeStories.Status} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Badge } from 'draupnir-ds';
+
+<Badge variant="success">Ativo</Badge>
+```

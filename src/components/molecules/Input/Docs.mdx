@@ -6,26 +6,26 @@ import * as InputStories from './Input.stories'
 
 # Input
 
-O componente Input é utilizado para capturar e submeter dados do usuário.
+The Input component is used to capture and submit user data.
 
-## Descrição
-O Input do Draupnir DS oferece campos de texto com prefixo, estados de erro, desabilitado e integração com formulários.
+## Description
+The Draupnir DS Input offers text fields with prefix, error states, disabled state, and form integration.
 
-## Recursos
-- **Prefixo:** Suporte a ícones ou texto antes do campo
-- **Estados:** Normal, erro, desabilitado
-- **Acessível:** Navegação por teclado, ARIA, foco visível, label e mensagem de erro
-- **Customizável:** Tamanhos, preenchimento, integração com formulários
-- **Feedback visual:** Hover, foco, erro
+## Features
+- **Prefix:** Support for icons or text before the field
+- **States:** Normal, error, disabled
+- **Accessible:** Keyboard navigation, ARIA, visible focus, label and error message
+- **Customizable:** Sizes, padding, form integration
+- **Visual feedback:** Hover, focus, error
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas additionalActions={[
     {
-      title: 'Abrir no GitHub',
+      title: 'Open on GitHub',
       onClick: () => {
         window.open(
           'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Input/Input.tsx',
@@ -37,28 +37,107 @@ O Input do Draupnir DS oferece campos de texto com prefixo, estados de erro, des
   withToolbar>
   <div className={"grid grid-cols-2 gap-2"}>
    <div>
-    <h3 className="text-lg font-semibold mb-2">Input com Prefixo</h3>
+    <h3 className="text-lg font-semibold mb-2">Input with Prefix</h3>
       <Story of={InputStories.WithPrefix} />   
-    <h3 className="text-lg font-semibold mt-4 mb-2">Input Desabilitado</h3>
+    <h3 className="text-lg font-semibold mt-4 mb-2">Disabled Input</h3>
       <Story of={InputStories.Disabled} />
     </div>
     <div>
-      <h3 className="text-lg font-semibold mb-2">Input com Erro</h3>
+      <h3 className="text-lg font-semibold mb-2">Input with Error</h3>
         <Story of={InputStories.WithError} />
       </div>
   </div>
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Input } from 'draupnir-ds';
+import { Input } from '@/components/molecules/Input';
 
-<Input.Root label="Nome" errorMessage="Nome é obrigatório">
+<Input.Root label="Name" errorMessage="Name is required">
   <Input.Prefix>
     <Search className="w-5 h-5" />
   </Input.Prefix>
-  <Input.Control placeholder="Digite seu nome" />
+  <Input.Control placeholder="Enter your name" />
 </Input.Root>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Component</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Input.Root</b></td>
+      <td><b>label</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Label for the input field.</td>
+    </tr>
+    <tr>
+      <td><b>Input.Root</b></td>
+      <td><b>errorMessage</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Error message to display below the input.</td>
+    </tr>
+    <tr>
+      <td><b>Input.Root</b></td>
+      <td><b>required</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Marks the input as required.</td>
+    </tr>
+    <tr>
+      <td><b>Input.Root</b></td>
+      <td><b>id</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>ID for the input and label association.</td>
+    </tr>
+    <tr>
+      <td><b>Input.Control</b></td>
+      <td><b>required</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Marks the input as required (HTML attribute).</td>
+    </tr>
+    <tr>
+      <td><b>Input.Control</b></td>
+      <td><b>autocomplete</b></td>
+      <td><code>"list" | "none" | "inline" | "both"</code></td>
+      <td>-</td>
+      <td>Autocomplete behavior for the input.</td>
+    </tr>
+    <tr>
+      <td><b>Input.Control</b></td>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the input element.</td>
+    </tr>
+    <tr>
+      <td><b>Input.Prefix</b></td>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered before the input (icon, text, etc).</td>
+    </tr>
+    <tr>
+      <td><b>All</b></td>
+      <td><b>...rest</b></td>
+      <td><code>HTMLDivElement/Input props</code></td>
+      <td>-</td>
+      <td>Any other valid HTML attributes for each subcomponent.</td>
+    </tr>
+  </tbody>
+</table>
 

@@ -12,25 +12,25 @@ const meta: Meta<InputRootProps & InputControlProps> = {
         component: `
 ## Input
 
-O componente Input é um campo de entrada de texto composto que oferece flexibilidade e acessibilidade para formulários.
+The Input component is a composite text input field that offers flexibility and accessibility for forms.
 
-### Características
-- **Composição**: Arquitetura baseada em composição (Root, Control, Prefix)
-- **Acessibilidade**: Labels e mensagens de erro integradas
-- **Estados**: Normal, focus, disabled e error
-- **Tema**: Suporte completo a tema escuro
-- **Flexível**: Suporte a prefixos e customizações
+### Features
+- **Composition**: Composition-based architecture (Root, Control, Prefix)
+- **Accessibility**: Integrated labels and error messages
+- **States**: Normal, focus, disabled, and error
+- **Theme**: Complete dark theme support
+- **Flexible**: Prefix support and customizations
 
-### Uso
+### Usage
 \`\`\`tsx
 import { Input } from '@/components/molecules/Input';
 import { UserCircle } from 'lucide-react';
 
-<Input.Root label="Nome" errorMessage="Nome é obrigatório">
+<Input.Root label="Name" errorMessage="Name is required">
   <Input.Prefix>
     <UserCircle className="h-5 w-5 text-zinc-500" />
   </Input.Prefix>
-  <Input.Control placeholder="Digite seu nome" />
+  <Input.Control placeholder="Enter your name" />
 </Input.Root>
 \`\`\`
         `,
@@ -39,7 +39,7 @@ import { UserCircle } from 'lucide-react';
   },
   argTypes: {
     label: {
-      description: "Label do campo de entrada",
+      description: "Input field label",
       control: { type: "text" },
       table: {
         type: { summary: "string" },
@@ -47,7 +47,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     errorMessage: {
-      description: "Mensagem de erro exibida abaixo do campo",
+      description: "Error message displayed below the field",
       control: { type: "text" },
       table: {
         type: { summary: "string" },
@@ -55,7 +55,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     className: {
-      description: "Classes CSS adicionais para o container",
+      description: "Additional CSS classes for the container",
       control: { type: "text" },
       table: {
         type: { summary: "string" },
@@ -63,7 +63,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     disabled: {
-      description: "Desabilita o campo de entrada",
+      description: "Disables the input field",
       control: { type: "boolean" },
       table: {
         type: { summary: "boolean" },
@@ -72,7 +72,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     type: {
-      description: "Tipo do campo de entrada",
+      description: "Input field type",
       control: { type: "select" },
       options: ["text", "email", "password", "number", "tel", "url"],
       table: {
@@ -82,7 +82,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     placeholder: {
-      description: "Texto de placeholder",
+      description: "Placeholder text",
       control: { type: "text" },
       table: {
         type: { summary: "string" },
@@ -90,7 +90,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     value: {
-      description: "Valor controlado do campo",
+      description: "Controlled field value",
       control: { type: "text" },
       table: {
         type: { summary: "string" },
@@ -98,7 +98,7 @@ import { UserCircle } from 'lucide-react';
       },
     },
     onChange: {
-      description: "Função executada quando o valor muda",
+      description: "Function executed when value changes",
       action: "changed",
       table: {
         type: { summary: "(value: string) => void" },
@@ -107,8 +107,8 @@ import { UserCircle } from 'lucide-react';
     },
   },
   args: {
-    label: "Label do campo",
-    placeholder: "Digite aqui...",
+    label: "Field label",
+    placeholder: "Type here...",
     type: "text",
     disabled: false,
     errorMessage: "",
@@ -122,12 +122,12 @@ type Story = StoryObj<InputRootProps & InputControlProps>;
 /**
  * ## Playground
  *
- * Story controlável para testar todas as props do Input.
+ * Controllable story to test all Input props.
  */
 export const Playground: Story = {
   args: {
-    label: "Label do campo",
-    placeholder: "Digite aqui...",
+    label: "Field label",
+    placeholder: "Type here...",
     type: "text",
     disabled: false,
     errorMessage: "",
@@ -146,43 +146,43 @@ export const Playground: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Playground controlável para testar todas as props do Input.",
+        story: "Controllable playground to test all Input props.",
       },
     },
   },
 };
 
 /**
- * ## Input com Prefixo
+ * ## Input with Prefix
  *
- * Exemplo de input com ícone prefixo, mantendo o visual limpo.
+ * Example of input with prefix icon, maintaining clean visual.
  */
 export const WithPrefix: StoryObj = {
   render: () => (
-    <Input.Root label="E-mail">
+    <Input.Root label="Email">
       <Input.Prefix>
         <Mail className="h-5 w-5 text-zinc-500" />
       </Input.Prefix>
-      <Input.Control placeholder="seu@email.com" />
+      <Input.Control placeholder="your@email.com" />
     </Input.Root>
   ),
   parameters: {
     docs: {
       description: {
-        story: "Input com ícone prefixo, mantendo o visual limpo.",
+        story: "Input with prefix icon, maintaining clean visual.",
       },
     },
   },
 };
 
 /**
- * ## Input Desabilitado
+ * ## Disabled Input
  *
- * Exemplo de input desabilitado, mantendo o visual limpo.
+ * Example of disabled input, maintaining clean visual.
  */
 export const Disabled: StoryObj = {
   render: () => (
-    <Input.Root label="ID do usuário">
+    <Input.Root label="User ID">
       <Input.Prefix>
         <UserCircle className="h-5 w-5 text-zinc-500" />
       </Input.Prefix>
@@ -192,30 +192,30 @@ export const Disabled: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: "Input desabilitado, mantendo o visual limpo.",
+        story: "Disabled input, maintaining clean visual.",
       },
     },
   },
 };
 
 /**
- * ## Input com Erro
+ * ## Input with Error
  *
- * Exemplo de input com mensagem de erro, mantendo o visual limpo.
+ * Example of input with error message, maintaining clean visual.
  */
 export const WithError: StoryObj = {
   render: () => (
-    <Input.Root label="Senha" errorMessage="A senha deve ter pelo menos 8 caracteres">
+    <Input.Root label="Password" errorMessage="Password must be at least 8 characters">
       <Input.Prefix>
         <Lock className="h-5 w-5 text-zinc-500" />
       </Input.Prefix>
-      <Input.Control placeholder="Digite sua senha" type="password" />
+      <Input.Control placeholder="Enter your password" type="password" />
     </Input.Root>
   ),
   parameters: {
     docs: {
       description: {
-        story: "Input com mensagem de erro, mantendo o visual limpo.",
+        story: "Input with error message, maintaining clean visual.",
       },
     },
   },

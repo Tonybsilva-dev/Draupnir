@@ -5,17 +5,17 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 <div style={{ textAlign: 'center', margin: '2rem 0 2.5rem 0' }}>
   <h1 style={{ fontWeight: 700, fontSize: '2.2rem', margin: '1rem 0 0.5rem 0' }}>Colors</h1>
   <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>
-    O sistema de cores do Draupnir é baseado em uma paleta cuidadosamente <br/> selecionada que garante consistência visual e acessibilidade em toda a aplicação.
+    The Draupnir color system is based on a carefully selected palette that ensures <br/> visual consistency and accessibility throughout the application.
   </p>
 </div>
 
 
-## Paleta de Cores
+## Color Palette
 
 <ColorPalette>
   <ColorItem
     title="Background"
-    subtitle="Fundos da aplicação"
+    subtitle="Application backgrounds"
     colors={{
       BgLight: "#FFFFFF",
       Bg: "#F5F5F5",
@@ -23,8 +23,8 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
     }}
   />
   <ColorItem
-    title="Escala de cinza"
-    subtitle="Textos e elementos neutros"
+    title="Gray scale"
+    subtitle="Texts and neutral elements"
     colors={{
         TextoPrimario: "#212121",
         TextoSecundario: "#5C5C5C",
@@ -35,7 +35,7 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
   />
   <ColorItem
     title="Primary"
-    subtitle="Amarelo solar - cor principal"
+    subtitle="Solar yellow - main color"
     colors={{
         Primary: "#FFD600",
         Hover: "#FFEB3B",
@@ -45,7 +45,7 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
   />
   <ColorItem
     title="Secondary"
-    subtitle="Azul acinzentado - cor secundária"
+    subtitle="Bluish gray - secondary color"
     colors={{
         Secondary: "#3A4F63",
         Contrast: "#FFFFFF",
@@ -53,98 +53,116 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
   />
 </ColorPalette>
 
-## Cores Semânticas
+## Semantic Colors
 
 <ColorPalette>
   <ColorItem
     title="Success"
-    subtitle="Operações bem-sucedidas"
+    subtitle="Successful operations"
     colors={{
       Success: "#3ac922",
     }}
   />
   <ColorItem
     title="Error"
-    subtitle="Erros e alertas críticos"
+    subtitle="Errors and critical alerts"
     colors={{
       Error: "#ff3030",
     }}
   />
   <ColorItem
     title="Info"
-    subtitle="Informações e dicas"
+    subtitle="Information and tips"
     colors={{
       Info: "#3b82f6",
     }}
   />
   <ColorItem
     title="Warning"
-    subtitle="Avisos e atenção"
+    subtitle="Warnings and attention"
     colors={{
       Warning: "#f59e0b",
     }}
   />
 </ColorPalette>
 
-## Escala de Cores
+## Color Scale
 
-Cada cor possui uma escala de 50 a 900, permitindo variações sutis para diferentes contextos.
+Each color has a scale from 50 to 900, allowing subtle variations for different contexts.
 
-### Primary Scale (Verde)
+### Primary Scale (Solar Yellow)
 
-- **50**: rgba(22, 163, 74, 0.05) - Background muito claro
-- **100**: rgba(22, 163, 74, 0.1) - Background claro
-- **200**: rgba(22, 163, 74, 0.2) - Background médio-claro
-- **300**: rgba(22, 163, 74, 0.3) - Background médio
-- **400**: rgba(22, 163, 74, 0.4) - Background médio-escuro
-- **500**: #16a34a - Cor principal
-- **600**: #15803d - Cor principal escura
-- **700**: #14532d - Cor principal mais escura
-- **800**: #0f3e22 - Cor principal muito escura
-- **900**: #0a2917 - Cor principal mais escura
+- **50**: rgba(255, 214, 0, 0.05) - Very light background
+- **100**: rgba(255, 214, 0, 0.1) - Light background
+- **200**: rgba(255, 214, 0, 0.2) - Medium-light background
+- **300**: rgba(255, 214, 0, 0.3) - Medium background
+- **400**: rgba(255, 214, 0, 0.4) - Medium-dark background
+- **500**: #FFD600 - Main color (Solar Yellow)
+- **600**: #FFEB3B - Hover state
+- **700**: #FFC228 - Click state
+- **800**: rgba(255, 214, 0, 0.8) - Dark color
+- **900**: rgba(255, 214, 0, 0.9) - Very dark color
+
+### Secondary Scale (Bluish Gray)
+
+- **50**: rgba(58, 79, 99, 0.05) - Very light background
+- **100**: rgba(58, 79, 99, 0.1) - Light background
+- **200**: rgba(58, 79, 99, 0.2) - Medium-light background
+- **300**: rgba(58, 79, 99, 0.3) - Medium background
+- **400**: rgba(58, 79, 99, 0.4) - Medium-dark background
+- **500**: #3A4F63 - Main color (Bluish Gray)
+- **600**: #2d3f4f - Dark secondary
+- **700**: #1f2b36 - Darker secondary
+- **800**: rgba(58, 79, 99, 0.8) - Dark color
+- **900**: rgba(58, 79, 99, 0.9) - Very dark color
 
 ### Gray Scale
 
-- **50**: #f8fafc - Cinza muito claro
-- **100**: #f1f5f9 - Cinza claro
-- **200**: #e2e8f0 - Cinza médio-claro
-- **300**: #cbd5e1 - Cinza médio
-- **400**: #94a3b8 - Cinza médio-escuro
-- **500**: #64748b - Cinza médio
-- **600**: #475569 - Cinza escuro
-- **700**: #334155 - Cinza mais escuro
-- **800**: #1e293b - Cinza muito escuro
-- **900**: #0f172a - Cinza mais escuro
+- **50**: #f8fafc - Very light gray
+- **100**: #f1f5f9 - Light gray
+- **200**: #e2e8f0 - Medium-light gray
+- **300**: #cbd5e1 - Medium gray
+- **400**: #94a3b8 - Medium-dark gray
+- **500**: #64748b - Medium gray
+- **600**: #475569 - Dark gray
+- **700**: #334155 - Darker gray
+- **800**: #1e293b - Very dark gray
+- **900**: #0f172a - Darkest gray
 
-## Uso em Código
+## Usage in Code
 
-### Importação
+### Import
 
 ```tsx
-import { colors } from 'draupnir-ds';
+import { colors } from '@/tokens';
 ```
 
-### Exemplos de Uso
+### Usage Examples
 
 ```tsx
-// Cores primárias
-const primaryColor = colors.primary[500];  // #16a34a
-const primaryLight = colors.primary[100];  // rgba(22, 163, 74, 0.1)
-const primaryDark = colors.primary[700];   // #14532d
+// Primary colors (Solar Yellow)
+const primaryColor = colors.primary[500];  // #FFD600
+const primaryLight = colors.primary[100];  // rgba(255, 214, 0, 0.1)
+const primaryDark = colors.primary[700];   // #FFC228
 
-// Cores semânticas
+// Secondary colors (Bluish Gray)
+const secondaryColor = colors.secondary[500];  // #3A4F63
+const secondaryLight = colors.secondary[100];  // rgba(58, 79, 99, 0.1)
+const secondaryDark = colors.secondary[700];   // #1f2b36
+
+// Semantic colors
 const successColor = colors.success[500];  // #3ac922
 const errorColor = colors.error[500];      // #ff3030
 const infoColor = colors.info[500];        // #3b82f6
 const warningColor = colors.warning[500];  // #f59e0b
 
-// Cores neutras
+// Neutral colors
 const grayLight = colors.gray[100];        // #f1f5f9
 const grayMedium = colors.gray[500];       // #64748b
 const grayDark = colors.gray[800];         // #1e293b
 ```
 
-### Em Componentes
+### In Components
 
 ```tsx
 const MyComponent = () => {
@@ -155,85 +173,58 @@ const MyComponent = () => {
       padding: '1rem',
       borderRadius: '8px',
     }}>
-      Botão com cor primária
+      Button with primary color
     </div>
   );
 };
 ```
 
-### Em Tailwind CSS
+### In Tailwind CSS
 
 ```tsx
-// As cores estão disponíveis como classes Tailwind
+// Colors are available as Tailwind classes
 <div className="bg-primary-500 text-white p-4 rounded-lg">
-  Botão com cor primária
+  Button with primary color
+</div>
+
+<div className="bg-secondary-500 text-white p-4 rounded-lg">
+  Button with secondary color
 </div>
 
 <div className="bg-success-500 text-white p-4 rounded-lg">
-  Botão de sucesso
+  Success button
 </div>
 
 <div className="bg-error-500 text-white p-4 rounded-lg">
-  Botão de erro
+  Error button
 </div>
 ```
 
-## Diretrizes de Uso
+## Usage Guidelines
 
-### Cores Primárias
+### Primary Colors (Solar Yellow)
 
-- **500**: Use para elementos principais (botões, links)
-- **600-700**: Use para estados hover e active
-- **100-200**: Use para backgrounds sutis
-- **800-900**: Use para texto sobre fundos claros
+- **500**: Use for main elements (buttons, links)
+- **600**: Use for hover states
+- **700**: Use for active/click states
+- **100-200**: Use for subtle backgrounds
+- **800-900**: Use for text on light backgrounds
 
-### Cores Semânticas
+### Secondary Colors (Bluish Gray)
 
-- **Success**: Operações bem-sucedidas, confirmações
-- **Error**: Erros, validações falhadas, alertas críticos
-- **Warning**: Avisos, ações que requerem atenção
-- **Info**: Informações, dicas, estados neutros
+- **500**: Use for secondary elements (headers, navigation)
+- **600-700**: Use for hover and active states
+- **100-200**: Use for subtle backgrounds
+- **800-900**: Use for text on light backgrounds
 
-### Cores Neutras
+### Semantic Colors
 
-- **50-100**: Backgrounds muito claros
-- **200-300**: Bordas e separadores
-- **400-500**: Texto secundário
-- **600-700**: Texto principal
-- **800-900**: Texto sobre fundos claros
+- **Success**: Successful operations, confirmations
+- **Error**: Errors, failed validations, critical alerts
+- **Warning**: Warnings, actions that require attention
+- **Info**: Information, tips, neutral states
 
-## Acessibilidade
+### Neutral Colors
 
-### Contraste
-
-Todas as cores foram testadas para garantir contraste adequado:
-
-- **AA**: Contraste mínimo de 4.5:1 para texto normal
-- **AAA**: Contraste mínimo de 7:1 para texto pequeno
-- **Botões**: Contraste mínimo de 3:1 para elementos interativos
-
-### Daltonismo
-
-As cores foram escolhidas considerando diferentes tipos de daltonismo:
-
-- Verde e vermelho são distinguíveis
-- Azul e amarelo são alternativas seguras
-- Semântica não depende apenas da cor
-
-## Tema Escuro
-
-O sistema suporta tema escuro com cores adaptadas:
-
-```tsx
-// Cores se adaptam automaticamente ao tema
-<div className="bg-primary-500 dark:bg-primary-400">
-  Conteúdo adaptável
-</div>
-```
-
-## Próximos Passos
-
-- **[Typography](/docs/typography--page)**: Sistema tipográfico
-- **[Spacing](/docs/spacing--page)**: Sistema de espaçamentos
-- **[Shadows](/docs/shadows--page)**: Sistema de sombras
-- **[Components](/docs/atoms--page)**: Componentes que usam essas cores 
+- **50-100**: Very light backgrounds
+- **200-300**: Borders and separators 

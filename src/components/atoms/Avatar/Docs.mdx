@@ -5,32 +5,83 @@ import * as AvatarStories from './Avatar.stories.tsx';
 
 # Avatar
 
-O componente Avatar é utilizado para exibir imagens, ícones ou iniciais de usuários de forma quadrada e responsiva.
+The Avatar component is used to display user images, icons, or initials in a square and responsive format.
 
-## Descrição
-O Avatar do Draupnir DS é ideal para representar perfis, listas de usuários e áreas de autenticação.
+## Description
+The Draupnir DS Avatar is ideal for representing profiles, user lists, and authentication areas.
 
-## Recursos
-- **Tamanhos:** xs, sm, md, lg
-- **Fallback:** Ícone padrão quando não há imagem
-- **Acessível:** Suporte a descrições alt para leitores de tela, foco visível ao navegar por teclado, ícone fallback
-- **Interativo:** Estados hover e focus
-- **Flexível:** Aceita imagens ou ícone padrão
+## Features
+- **Sizes:** xs, sm, md, lg
+- **Fallback:** Default icon when no image is available
+- **Accessible:** Alt description support for screen readers, visible focus when navigating with keyboard, fallback icon
+- **Interactive:** Hover and focus states
+- **Flexible:** Accepts images or default icon
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={AvatarStories.TodosOsTamanhos} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Avatar } from 'draupnir-ds';
+import { Avatar } from '@/components/atoms/Avatar';
 
-<Avatar size="md" description="Foto de João Silva" image="/caminho/para/imagem.jpg" />
+<Avatar size="md" description="John Smith's photo" image="/path/to/image.jpg" />
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>size</b></td>
+      <td><code>"xs" | "sm" | "md" | "lg"</code></td>
+      <td><code>"xs"</code></td>
+      <td>Size of the avatar.<br/><b>Examples:</b> <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code></td>
+    </tr>
+    <tr>
+      <td><b>image</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>URL of the image to display as avatar.</td>
+    </tr>
+    <tr>
+      <td><b>description</b></td>
+      <td><code>string</code></td>
+      <td>""</td>
+      <td>Alternative text for accessibility (aria-label). Used if <b>name</b> is not provided.</td>
+    </tr>
+    <tr>
+      <td><b>name</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>User's name. Used for accessible description and fallback icon.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the avatar container.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>HTMLDivElement props</code></td>
+      <td>-</td>
+      <td>Any other valid div attributes.</td>
+    </tr>
+  </tbody>
+</table>
 

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { Dropdown } from './Dropdown';
 
 describe('Dropdown', () => {
-  it('renderiza trigger', () => {
+  it('renders dropdown trigger', () => {
     render(
       <Dropdown>
         <Dropdown.Trigger asChild>
@@ -13,8 +13,9 @@ describe('Dropdown', () => {
         </Dropdown.Content>
       </Dropdown>
     );
+
     expect(screen.getByText('Menu')).toBeInTheDocument();
-    // O item não aparece porque o dropdown está fechado por padrão
+    // Item doesn't appear because dropdown is closed by default
     expect(screen.queryByText('Item 1')).not.toBeInTheDocument();
   });
 }); 

@@ -1,9 +1,10 @@
 import { ComponentProps } from "react";
 import { tv, VariantProps } from "tailwind-variants";
-import { Loading } from "../../molecules/Loading/Loading";
+import Loading from "../../molecules/Loading/Loading";
 
 const button = tv({
   base: [
+    "flex items-center gap-2", // alinhamento para texto e ícones
     "px-4 py-2 text-sm font-medium outline-none transition-all duration-200",
     "focus:ring-2 focus:ring-offset-2 focus:ring-primary",
     "active:opacity-80 border-none",
@@ -39,6 +40,10 @@ const button = tv({
 export type ButtonProps = ComponentProps<"button"> &
   VariantProps<typeof button> & {
     isLoading?: boolean;
+    isToggle?: boolean;
+    pressed?: boolean;
+    loadingText?: string;
+    asChild?: boolean;
   };
 
 export function Button({
@@ -46,24 +51,50 @@ export function Button({
   size,
   className,
   isLoading,
+  isToggle = false,
+  pressed = false,
+  loadingText = "Loading...",
+  asChild = false,
+  children,
   ...props
 }: ButtonProps) {
   const isDisabled = props.disabled || isLoading;
-  // Define a cor do loader: branco para primary, primary para os outros
   const loadingColor = variant === "primary" ? "bg-white" : "bg-primary";
+
+  // Generate descriptive aria-label based on content
+  const generateAriaLabel = () => {
+    if (isLoading) {
+      return `${loadingText} ${children}`;
+    }
+    if (isToggle) {
+      return `${children} ${pressed ? 'activated' : 'deactivated'}`;
+    }
+    return `${children} button`;
+  };
+
   return (
     <button
       {...props}
-      role="button"
       disabled={isDisabled}
       className={
         button({ variant, size, className }) +
         (isDisabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "")
       }
-      data-dd-action-name={`${props.value?.toString} button`}
-      aria-label="button"
+      aria-label={asChild ? undefined : generateAriaLabel()}
+      aria-describedby={asChild ? undefined : (isLoading ? "loading-description" : undefined)}
+      aria-pressed={asChild ? undefined : (isToggle ? pressed : undefined)}
+      aria-busy={asChild ? undefined : isLoading}
     >
-      {isLoading ? <Loading color={loadingColor} /> : props.children}
+      {isLoading ? (
+        <>
+          <Loading color={loadingColor} label={loadingText} />
+          <span id="loading-description" className="sr-only">
+            {loadingText}
+          </span>
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }

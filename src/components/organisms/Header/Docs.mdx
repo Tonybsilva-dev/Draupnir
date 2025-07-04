@@ -6,29 +6,31 @@ import * as HeaderStories from './Header.stories';
 
 # Header
 
-O componente Header exibe um cabeçalho funcional para aplicações web.
+The Draupnir DS Header organizes navigation, logo, and user area in a responsive and accessible way.
 
-## Descrição
-O Header do Draupnir DS organiza navegação, logo e área do usuário de forma responsiva e acessível.
+## Overview
 
-## Recursos
-- **Acessível:** Navegação por teclado, ARIA, foco visível
-- **Responsivo:** Adapta-se a diferentes tamanhos de tela
-- **Composição:** Logo, navegação central e usuário à direita
-- **Customizável:** Permite adicionar menus, dropdowns e avatar
+The Draupnir DS Header allows you to create consistent navigation headers with complete accessibility and theme support.
 
-## Componente
-<Primary />
+## Features
 
-## Exemplos
-<Canvas>
-  <Story of={HeaderStories.Default} />
-</Canvas>
+- **Accessible:** Keyboard navigation, ARIA, visible focus
+- **Responsive:** Adapts to different screen sizes
+- **Composable:** Logo, center navigation, and user area on the right
+- **Customizable:** Allows adding menus, dropdowns, and avatar
 
-## Uso
+## Examples
+
+<Story of={HeaderStories.Basic} />
+
+<Story of={HeaderStories.WithNavigation} />
+
+<Story of={HeaderStories.WithUserMenu} />
+
+## Usage
 
 ```tsx
-import { Header } from 'draupnir-ds';
+import { Header } from '@/components/organisms/Header';
 
 <Header />
 ``` 

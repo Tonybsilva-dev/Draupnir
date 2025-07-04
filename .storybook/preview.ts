@@ -1,12 +1,8 @@
+import type { Preview } from "@storybook/react";
 import "../src/app/globals.css";
-import theme from "./theme";
-import { themes } from '@storybook/theming';
 
-const preview = {
+const preview: Preview = {
   parameters: {
-    docs: {
-      theme: theme,
-    },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -14,10 +10,16 @@ const preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      toc: {
+        title: "Table of Contents",
+        headingSelector: "h1, h2, h3",
+      },
+    },
     options: {
       storySort: {
         method: "alphabetical",
-        locales: "pt-BR",
+        locales: "en-US",
         order: [
           "Foundations",
           ["Overview", "Colors", "Typography", "Spacing", "Shadows"],
@@ -30,65 +32,13 @@ const preview = {
             "Atoms",
             ["Avatar", "Badge", "Box", "Button", "Divider", "Text", "Typography"],
             "Molecules",
-            ["Input", "Select", "Notice", "Switch", "Link", "Loading"],
+            ["Input", "Link", "Loading", "Notice", "Switch"],
             "Organisms",
-            ["Header", "Modal", "Dropdown", "TitlePage", "SubtitlePage"],
+            ["Dropdown", "Header", "Modal", "SubtitlePage", "TitlePage"],
             "Templates",
-            ["PageLayout", "AuthLayout"],
-            "Pages"
-          ]
+          ],
         ],
       },
-    },
-    backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#fff',
-        },
-        {
-          name: 'dark',
-          value: '#1a1a1a',
-        },
-        {
-          name: 'gray',
-          value: '#f5f5f5',
-        },
-      ],
-    },
-    viewport: {
-      viewports: {
-        mobile: {
-          name: 'Mobile',
-          styles: {
-            width: '375px',
-            height: '667px',
-          },
-        },
-        tablet: {
-          name: 'Tablet',
-          styles: {
-            width: '768px',
-            height: '1024px',
-          },
-        },
-        desktop: {
-          name: 'Desktop',
-          styles: {
-            width: '1440px',
-            height: '900px',
-          },
-        },
-      },
-    },
-    darkMode: {
-      classTarget: 'body',
-      darkClass: 'dark-theme',
-      lightClass: '',
-      stylePreview: true,
-      dark: { ...themes.dark, appBg: '#1a1a1a' },
-      light: { ...themes.normal, appBg: '#fff', background: '#fff' },
     },
   },
 };

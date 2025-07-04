@@ -1,47 +1,89 @@
 import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks'
 import Dropdown from './Dropdown'
-import * as DropdownStories from './Dropdown.stories';
+import * as DropdownStories from './Dropdown.stories'
 
 <Meta of={DropdownStories} component={Dropdown}/>
 
 # Dropdown
 
-O componente Dropdown oferece um menu suspenso interativo e acessível.
+The Dropdown component provides an interactive and accessible dropdown menu.
 
-## Descrição
-O Dropdown do Draupnir DS permite criar menus contextuais com suporte completo a acessibilidade e temas.
+## Overview
 
-## Recursos
-- **Acessível:** Suporte completo a ARIA, navegação por teclado, foco visível
-- **Temático:** Suporte a tema claro e escuro
-- **Animado:** Transições suaves de entrada e saída
-- **Flexível:** Composição baseada em componentes (Trigger, Content, Item)
-- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+The Draupnir DS Dropdown allows you to create contextual menus with complete accessibility and theme support.
 
-## Componente
+## Features
+
+- **Accessible:** Complete ARIA support, keyboard navigation, visible focus
+- **Themed:** Light and dark theme support
+- **Animated:** Smooth enter and exit transitions
+- **Flexible:** Component-based composition (Trigger, Content, Item)
+- **Responsive:** Adapts to different screen sizes
+
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
-<Canvas>
-  <Story of={DropdownStories.Simple} />
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open on GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/organisms/Dropdown/Dropdown.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={DropdownStories.Test} />
   <Story of={DropdownStories.Basic} />
   <Story of={DropdownStories.WithIcons} />
+  <Story of={DropdownStories.WithLabel} />
   <Story of={DropdownStories.Actions} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Dropdown } from 'draupnir-ds';
+import { Dropdown } from '@/components/organisms/Dropdown';
+import { Button } from '@/components/atoms/Button';
 
 <Dropdown>
   <Dropdown.Trigger asChild>
-    <button>Menu</button>
+    <Button variant="outline">Open Menu</Button>
   </Dropdown.Trigger>
   <Dropdown.Content>
-    <Dropdown.Item>Opção 1</Dropdown.Item>
-    <Dropdown.Item>Opção 2</Dropdown.Item>
+    <Dropdown.Item>Option 1</Dropdown.Item>
+    <Dropdown.Item>Option 2</Dropdown.Item>
   </Dropdown.Content>
 </Dropdown>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Conteúdo do Dropdown, geralmente composto por <code>Dropdown.Trigger</code>, <code>Dropdown.Content</code>, <code>Dropdown.Item</code>, etc.</td>
+    </tr>
+    <tr>
+      <td><b>onOpenChange</b></td>
+      <td><code>(open: boolean) =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback chamado quando o estado de abertura do Dropdown muda.</td>
+    </tr>
+  </tbody>
+</table>

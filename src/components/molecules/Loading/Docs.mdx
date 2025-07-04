@@ -6,40 +6,88 @@ import * as LoadingStories from './Loading.stories';
 
 # Loading
 
-O componente Loading exibe um indicador animado de carregamento.
+The Loading component displays an animated loading indicator.
 
-## Descrição
-O Loading do Draupnir DS utiliza animações suaves para indicar processos em andamento, centralizando o feedback visual.
+## Description
+The Draupnir DS Loading uses smooth animations to indicate ongoing processes, centralizing visual feedback.
 
-## Recursos
-- **Acessível:** Pode ser lido por leitores de tela (aria-label), foco visível
-- **Animado:** Efeito ping e pulse para melhor percepção
-- **Centralizado:** Sempre centraliza o indicador no container
-- **Customizável:** Pode ser usado em diferentes contextos
+## Features
+- **Accessible:** Can be read by screen readers (aria-label), visible focus
+- **Animated:** Ping and pulse effect for better perception
+- **Centered:** Always centers the indicator in the container
+- **Customizable:** Can be used in different contexts
 
-## Componente
+## Component
 <Primary />
+<Controls />
 
-## Exemplos
-<Canvas additionalActions={[
-    {
-      title: 'Abrir no GitHub',
-      onClick: () => {
-        window.open(
-          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Loading/Loading.tsx',
-          '_blank'
-        );
-      },
-    }
-  ]}
-  withToolbar>
-  <Story of={LoadingStories.Pulse} />
-</Canvas>
+## Examples
 
-## Uso
+<div style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center', alignItems: 'end', margin: '2rem 0' }}>
+  <div style={{ textAlign: 'center' }}>
+    <Story of={LoadingStories.Pulse} />
+    <div style={{ fontSize: '0.95rem', color: '#666', marginTop: '0.5rem' }}>Default</div>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <Story of={LoadingStories.Small} />
+    <div style={{ fontSize: '0.95rem', color: '#666', marginTop: '0.5rem' }}>Small</div>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <Story of={LoadingStories.Large} />
+    <div style={{ fontSize: '0.95rem', color: '#666', marginTop: '0.5rem' }}>Large</div>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <Story of={LoadingStories.White} />
+    <div style={{ fontSize: '0.95rem', color: '#666', marginTop: '0.5rem' }}>White</div>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <Story of={LoadingStories.Secondary} />
+    <div style={{ fontSize: '0.95rem', color: '#666', marginTop: '0.5rem' }}>Secondary</div>
+  </div>
+</div>
 
-```tsx
-import { Loading } from 'draupnir-ds';
+## Usage
 
-<Loading />
-```
+<div style={{ background: '#f7f7fa', borderRadius: '8px', padding: '1.2rem 1rem', margin: '1.5rem 0', boxShadow: '0 1px 6px #0001' }}>
+  <div style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>How to use</div>
+  <pre style={{ margin: 0 }}>
+    <code>
+      {`import { Loading } from '@/components/molecules/Loading';
+
+<Loading color="bg-primary" size="md" label="Loading content" />`}
+    </code>
+  </pre>
+</div>
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>color</b></td>
+      <td><code>string</code></td>
+      <td><code>bg-primary</code></td>
+      <td>Color of the loading indicator.<br/><b>Examples:</b> <code>bg-primary</code>, <code>bg-secondary</code>, <code>bg-white</code></td>
+    </tr>
+    <tr>
+      <td><b>label</b></td>
+      <td><code>string</code></td>
+      <td><code>Loading content</code></td>
+      <td>Descriptive text for screen readers (aria-label).<br/><b>Example:</b> <code>Loading data</code></td>
+    </tr>
+    <tr>
+      <td><b>size</b></td>
+      <td><code>"sm" | "md" | "lg"</code></td>
+      <td><code>md</code></td>
+      <td>Size of the loading indicator.<br/><b>Examples:</b> <code>sm</code>, <code>md</code>, <code>lg</code></td>
+    </tr>
+  </tbody>
+</table>

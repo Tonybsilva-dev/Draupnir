@@ -6,26 +6,26 @@ import * as NoticeStories from './Notice.stories';
 
 # Notice
 
-O componente Notice é utilizado para exibir mensagens de alerta, sucesso, erro ou informação para o usuário.
+The Notice component is used to display alert, success, error, or information messages for the user.
 
-## Descrição
-O Notice do Draupnir DS oferece feedback visual imediato, com ícones, cores e possibilidade de fechamento.
+## Description
+The Draupnir DS Notice offers immediate visual feedback with icons, colors, and the possibility of closing.
 
-## Recursos
-- **Tipos:** Success, Alert, Error, Info
-- **Ícones automáticos:** Exibe ícone conforme o tipo
-- **Acessível:** Suporte a ARIA, navegação por teclado, foco visível, botão de fechar acessível
-- **Customizável:** Permite adicionar conteúdo customizado
-- **Interativo:** Pode ser fechado pelo usuário (botão ou tecla Esc)
+## Features
+- **Types:** Success, Alert, Error, Info
+- **Automatic icons:** Displays icon according to type
+- **Accessible:** ARIA support, keyboard navigation, visible focus, accessible close button
+- **Customizable:** Allows adding custom content
+- **Interactive:** Can be closed by user (button or Esc key)
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas additionalActions={[
     {
-      title: 'Abrir no GitHub',
+      title: 'Open on GitHub',
       onClick: () => {
         window.open(
           'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/Notice/Notice.tsx',
@@ -40,12 +40,12 @@ O Notice do Draupnir DS oferece feedback visual imediato, com ícones, cores e p
    </div>
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { useNotifications, NotificationsProvider, NotificationsContainer } from 'draupnir-ds';
+import { useNotifications, NotificationsProvider, NotificationsContainer } from '@/components/molecules/Notice';
 
-function MeuComponente() {
+function MyComponent() {
   const { notify } = useNotifications();
 
   return (
@@ -54,21 +54,90 @@ function MeuComponente() {
         notify({
           notificationType: 'notice',
           type: 'success',
-          message: 'Operação realizada com sucesso!',
+          message: 'Operation completed successfully!',
           position: 'center-top',
           autoCloseMs: 3000,
         })
       }
     >
-      Mostrar Notice
+      Show Notice
     </button>
   );
 }
 
-// No seu App:
+// In your App:
 <NotificationsProvider>
   <NotificationsContainer />
-  <MeuComponente />
+  <MyComponent />
 </NotificationsProvider>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>type</b></td>
+      <td><code>"alert" | "success" | "error" | "info"</code></td>
+      <td>-</td>
+      <td>Type of the notice. Defines color and icon.<br/><b>Examples:</b> <code>alert</code>, <code>success</code>, <code>error</code>, <code>info</code></td>
+    </tr>
+    <tr>
+      <td><b>message</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Main message of the notice.</td>
+    </tr>
+    <tr>
+      <td><b>title</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Optional title for the notice.</td>
+    </tr>
+    <tr>
+      <td><b>onClose</b></td>
+      <td><code>() =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback fired when the close button is clicked.</td>
+    </tr>
+    <tr>
+      <td><b>autoCloseMs</b></td>
+      <td><code>number | null</code></td>
+      <td><code>3000</code></td>
+      <td>Time in milliseconds to auto-close the notice. <code>null</code> disables auto-close.</td>
+    </tr>
+    <tr>
+      <td><b>position</b></td>
+      <td><code>"center-top" | "center-bottom"</code></td>
+      <td>-</td>
+      <td>Position of the notice on the screen.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Additional content or actions (e.g., custom buttons).</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the notice container.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>HTMLDivElement props</code></td>
+      <td>-</td>
+      <td>Any other valid div attributes.</td>
+    </tr>
+  </tbody>
+</table>
 

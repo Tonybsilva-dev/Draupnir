@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import Header from './Header';
+import { Header } from './Header';
 
-const meta: Meta = {
+const meta: Meta<typeof Header> = {
   title: 'Components/Organisms/Header',
   component: Header,
   parameters: {
@@ -11,10 +11,10 @@ const meta: Meta = {
         component: `
 ## Header
 
-Componente de cabeçalho funcional com nome do usuário à esquerda, logo central e botão de login/logout à direita.
+Functional header component with user name on the left, centered logo, and login/logout button on the right.
 
-- Mostra "Olá, Antonio!" quando logado e "Visitante" quando deslogado.
-- O botão alterna entre "Logar" e "Deslogar".
+- Shows "Hello, Antonio!" when logged in and "Visitor" when logged out.
+- The button toggles between "Login" and "Logout".
         `,
       },
     },
@@ -23,14 +23,36 @@ Componente de cabeçalho funcional com nome do usuário à esquerda, logo centra
 
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Basic: Story = {
   render: () => <Header />,
   parameters: {
     docs: {
       description: {
-        story: 'Header funcional com alternância de login/logout.',
+        story: 'Functional header with login/logout toggle.',
+      },
+    },
+  },
+};
+
+export const WithNavigation: Story = {
+  render: () => <Header />,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Header with navigation menu.',
+      },
+    },
+  },
+};
+
+export const WithUserMenu: Story = {
+  render: () => <Header />,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Header with user dropdown menu.',
       },
     },
   },

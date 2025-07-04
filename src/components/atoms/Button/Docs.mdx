@@ -1,42 +1,120 @@
-import { Meta, Controls, Primary, Canvas, Story } from "@storybook/addon-docs/blocks"
-import Button from './Button'
-import * as ButtonStories from "./Button.stories.ts"
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks"
+import { Button } from './Button'
+import * as ButtonStories from "./Button.stories"
 
 <Meta of={ButtonStories} component={Button}/>
 
 # Button
 
-O componente Button é utilizado para acionar ações e interações em interfaces.
+The Button component is used to trigger actions and interactions in interfaces.
 
-## Descrição
-O Button do Draupnir DS oferece diferentes estilos visuais, estados e acessibilidade, sendo essencial para qualquer aplicação web.
+## Description
+The Draupnir DS Button offers different visual styles, states, and accessibility, being essential for any web application.
 
-## Recursos
-- **Variações visuais:** Primary, Outline, Ghost e Danger
-- **Tamanhos:** Small, Default, Large e Full
-- **Feedback visual:** Hover, foco e clique
-- **Estado de carregamento:** Spinner integrado
-- **Customização:** Tamanhos, preenchimento e variantes
-- **Acessibilidade:** HTML semântico e suporte a ARIA
+## Features
+- **Visual variations:** Primary, Secondary, Outline, Ghost, and Danger
+- **Sizes:** Small, Default, Large, and Full
+- **Visual feedback:** Hover, focus, and click states
+- **Loading state:** Integrated spinner
+- **Customization:** Sizes, padding, and variants
+- **Accessibility:** Semantic HTML and ARIA support
 
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
-<Canvas>
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open on GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/atoms/Button/Button.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
   <Story of={ButtonStories.Primary} />
   <Story of={ButtonStories.Outline} />
   <Story of={ButtonStories.Ghost} />
   <Story of={ButtonStories.Danger} />
-  <Story of={ButtonStories.Full} />
-  <Story of={ButtonStories.Loading} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { Button } from 'draupnir-ds';
+import { Button } from '@/components/atoms/Button';
 
-<Button variant="primary">Salvar</Button>
+<Button variant="primary">Save</Button>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>variant</b></td>
+      <td><code>"primary" | "secondary" | "outline" | "ghost" | "danger"</code></td>
+      <td><code>"primary"</code></td>
+      <td>Visual style of the button.<br/><b>Examples:</b> <code>primary</code>, <code>secondary</code>, <code>outline</code>, <code>ghost</code>, <code>danger</code></td>
+    </tr>
+    <tr>
+      <td><b>size</b></td>
+      <td><code>"default" | "sm" | "lg" | "full"</code></td>
+      <td><code>"default"</code></td>
+      <td>Size of the button.<br/><b>Examples:</b> <code>default</code>, <code>sm</code>, <code>lg</code>, <code>full</code></td>
+    </tr>
+    <tr>
+      <td><b>isLoading</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Displays a loading indicator and disables the button.</td>
+    </tr>
+    <tr>
+      <td><b>isToggle</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Enables toggle (pressed/unpressed) state for the button.</td>
+    </tr>
+    <tr>
+      <td><b>pressed</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Current toggle state (used with <b>isToggle</b>).</td>
+    </tr>
+    <tr>
+      <td><b>loadingText</b></td>
+      <td><code>string</code></td>
+      <td><code>"Loading..."</code></td>
+      <td>Text to display when loading.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered inside the button.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the button.</td>
+    </tr>
+    <tr>
+      <td><b>...props</b></td>
+      <td><code>button props</code></td>
+      <td>-</td>
+      <td>Any other valid button attributes (onClick, disabled, etc).</td>
+    </tr>
+  </tbody>
+</table>

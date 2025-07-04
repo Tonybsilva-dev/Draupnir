@@ -6,53 +6,141 @@ import * as SelectStories from './Select.stories';
 
 # Select
 
-O componente Select permite ao usuário escolher uma opção de uma lista suspensa, com acessibilidade e estilo minimalista.
+The Select component provides a customizable dropdown selection interface.
 
-## Descrição
-O Select do Draupnir DS oferece seleção única, agrupamento de opções, navegação por teclado e integração visual com o restante do sistema.
-
-## Recursos
-- **Seleção única:** Permite escolher apenas uma opção
-- **Grupos e labels:** Organização de opções em grupos
-- **Acessível:** Navegação por teclado, ARIA, foco visível, labels e grupos para melhor compreensão
-- **Customização:** Tamanhos, estados, integração com formulários
-- **Feedback visual:** Hover, foco, desabilitado
-
-## Componente
+## Component
 <Primary />
 <Controls />
 
-## Exemplos
-<Canvas>
-  <div className="grid grid-cols-2 gap-4">
-    <div>
-      <h3 className="text-lg font-semibold mb-2">Select simples</h3>
-      <Story of={SelectStories.Default} />
-      <h3 className="text-lg font-semibold mt-4 mb-2">Select com Label</h3>
-      <Story of={SelectStories.WithLabel} />
-    </div>
-    <div>
-      <h3 className="text-lg font-semibold mb-2">Select com Grupos</h3>
-      <Story of={SelectStories.WithGroups} />
-      <h3 className="text-lg font-semibold mt-4 mb-2">Tamanhos</h3>
-      <Story of={SelectStories.MultipleSizes} />
-    </div>
-  </div>
-</Canvas>
+## Examples
 
-## Uso
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: '2rem',
+  background: '#fff',
+  border: '1px solid #eee',
+  borderRadius: '8px',
+  padding: '2rem',
+  margin: '2rem 0'
+}}>
+  <div>
+    <div style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: 8 }}>Default</div>
+    <Story of={SelectStories.Default} />
+  </div>
+  <div>
+    <div style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: 8 }}>With Label</div>
+    <Story of={SelectStories.WithLabel} />
+  </div>
+  <div>
+    <div style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: 8 }}>With Groups</div>
+    <Story of={SelectStories.WithGroups} />
+  </div>
+  <div>
+    <div style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: 8 }}>Multiple Sizes</div>
+    <Story of={SelectStories.MultipleSizes} />
+  </div>
+</div>
+
+
+## Usage
 
 ```tsx
-import Select from 'draupnir-ds';
+import { Select } from '@/components/molecules/Select';
 
-<Select defaultValue="option1">
+<Select>
   <Select.Trigger>
-    <Select.Value placeholder="Selecione uma opção" />
+    <Select.Value placeholder="Select an option" />
   </Select.Trigger>
   <Select.Content>
-    <Select.Item value="option1">Opção 1</Select.Item>
-    <Select.Item value="option2">Opção 2</Select.Item>
-    <Select.Item value="option3">Opção 3</Select.Item>
+    <Select.Item value="option1">Option 1</Select.Item>
+    <Select.Item value="option2">Option 2</Select.Item>
   </Select.Content>
 </Select>
-``` 
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Component</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Select</b></td>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Options and groups to be rendered inside the select.</td>
+    </tr>
+    <tr>
+      <td><b>Select</b></td>
+      <td><b>value</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Current value of the select (controlled).</td>
+    </tr>
+    <tr>
+      <td><b>Select</b></td>
+      <td><b>onValueChange</b></td>
+      <td><code>(value: string) =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback fired when the selected value changes.</td>
+    </tr>
+    <tr>
+      <td><b>Select</b></td>
+      <td><b>defaultValue</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Initial value of the select (uncontrolled).</td>
+    </tr>
+    <tr>
+      <td><b>Select</b></td>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disables the select.</td>
+    </tr>
+    <tr>
+      <td><b>Select.Trigger</b></td>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the trigger button.</td>
+    </tr>
+    <tr>
+      <td><b>Select.Content</b></td>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the dropdown content.</td>
+    </tr>
+    <tr>
+      <td><b>Select.Item</b></td>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Content of the select option.</td>
+    </tr>
+    <tr>
+      <td><b>Select.Item</b></td>
+      <td><b>indented</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Adds extra padding-left (pl-6) for visual indentation, useful for items within groups.</td>
+    </tr>
+    <tr>
+      <td><b>All</b></td>
+      <td><b>...rest</b></td>
+      <td><code>Radix Select props</code></td>
+      <td>-</td>
+      <td>Any other valid props from <code>@radix-ui/react-select</code> for each subcomponent.</td>
+    </tr>
+  </tbody>
+</table> 

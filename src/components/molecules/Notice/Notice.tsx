@@ -27,18 +27,32 @@ export type NoticeProps = ComponentProps<"div"> & {
   onClose?: () => void;
   autoCloseMs?: number | null; // tempo em ms para auto-fechar, null desativa
   position?: "center-top" | "center-bottom";
+  title?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const getIcon = (type: NoticeProps["type"]) => {
   switch (type) {
     case "success":
-      return <CheckCircle2 className="w-5 h-5" />;
+      return <CheckCircle2 className="w-5 h-5" aria-hidden="true" />;
     case "alert":
-      return <AlertCircle className="w-5 h-5" />;
+      return <AlertCircle className="w-5 h-5" aria-hidden="true" />;
     case "error":
-      return <XCircle className="w-5 h-5" />;
+      return <XCircle className="w-5 h-5" aria-hidden="true" />;
     case "info":
-      return <Info className="w-5 h-5" />;
+      return <Info className="w-5 h-5" aria-hidden="true" />;
+  }
+};
+
+const getAriaLive = (type: NoticeProps["type"]) => {
+  switch (type) {
+    case "error":
+    case "alert":
+      return "assertive"; // Para erros e alertas críticos
+    case "success":
+    case "info":
+      return "polite"; // Para sucessos e informações
+    default:
+      return "polite";
   }
 };
 
@@ -50,11 +64,13 @@ const Notice = ({
   onClose,
   autoCloseMs = 3000,
   position,
+  title,
   ...props
 }: NoticeProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
   const leaveTimeout = useRef<NodeJS.Timeout | null>(null);
+  const noticeId = useRef(`notice-${Math.random().toString(36).substr(2, 9)}`).current;
 
   const handleClose = () => {
     setIsLeaving(true);
@@ -105,14 +121,45 @@ const Notice = ({
     }
   }
 
+  const ariaLive = getAriaLive(type);
+  const generateAriaLabel = () => {
+    if (title) {
+      return `${title}: ${message}`;
+    }
+    return `${type} notification: ${message}`;
+  };
+
   return (
-    <Box filledBackground type={type} className={"border-none min-w-[320px] max-w-[480px] mx-auto " + animationClass + (className || "")} {...props}>
+    <Box
+      filledBackground
+      type={type}
+      className={"border-none min-w-[320px] max-w-[480px] mx-auto " + animationClass + (className || "")}
+      role="alert"
+      aria-live={ariaLive}
+      aria-labelledby={title ? `${noticeId}-title` : undefined}
+      aria-describedby={`${noticeId}-message`}
+      {...props}
+    >
       <div className={`flex justify-between items-center ${notice({ type })}`}>
         <div className="flex gap-2 justify-between items-center">
           <div className="px-2">{getIcon(type)}</div>
-          <Typography size={"md"} className="">
-            {message}
-          </Typography>
+          <div className="flex-1">
+            {title && (
+              <div
+                id={`${noticeId}-title`}
+                className="font-semibold text-sm mb-1"
+              >
+                {title}
+              </div>
+            )}
+            <Typography
+              size={"md"}
+              className=""
+              id={`${noticeId}-message`}
+            >
+              {message}
+            </Typography>
+          </div>
         </div>
         {children}
         {onClose && (
@@ -123,8 +170,9 @@ const Notice = ({
               e.stopPropagation();
               handleClose();
             }}
+            aria-label={`Fechar notificação ${type}`}
           >
-            <X className="w-5 h-5 cursor-pointer" />
+            <X className="w-5 h-5 cursor-pointer" aria-hidden="true" />
           </Button>
         )}
       </div>

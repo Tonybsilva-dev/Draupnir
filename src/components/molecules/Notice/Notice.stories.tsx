@@ -38,20 +38,20 @@ const NoticeTriggerButton = (args: NoticeProps) => {
     notify({
       notificationType: "notice",
       type: args.type || "info",
-      message: args.message || "Este é um aviso acionado por botão!",
+      message: args.message || "This is a button-triggered notice!",
       position: args.position || "center-top",
       autoCloseMs: args.autoCloseMs ?? 3000,
     });
   }, [notify, args]);
   return (
-    <Button onClick={handleClick}>Mostrar Notice</Button>
+    <Button onClick={handleClick}>Show Notice</Button>
   );
 };
 
 export const WithControls: StoryObj<NoticeProps> = {
   args: {
     type: "info",
-    message: "Mensagem customizável",
+    message: "Customizable message",
     position: "center-top",
     autoCloseMs: 3000,
   },

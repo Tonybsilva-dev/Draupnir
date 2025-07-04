@@ -5,21 +5,21 @@ import * as StoryBlock from './TextBlock.stories.tsx';
 
 # Text Block
 
-O componente Text Block é utilizado para exibir blocos de texto com título e descrição, facilitando a organização de informações.
+The Text Block component is used to display text blocks with title and description, facilitating information organization.
 
-## Descrição
-O Text Block do Draupnir DS destaca textos importantes, títulos de seções e descrições de forma clara e acessível.
+## Description
+The Draupnir DS Text Block highlights important texts, section titles, and descriptions in a clear and accessible manner.
 
-## Recursos
-- **Acessível:** Tipografia semântica, foco visível, estrutura clara
-- **Customizável:** Permite título, descrição e children
-- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+## Features
+- **Accessible:** Semantic typography, visible focus, clear structure
+- **Customizable:** Allows title, description, and children
+- **Responsive:** Adapts to different screen sizes
 
-## Componente
+## Component
 <Primary of={StoryBlock} />
 <Controls />
 
-## Exemplos
+## Examples
 <Canvas>
   <Story of={StoryBlock.Primary} />
   <Story of={StoryBlock.TextBlockPrimary} />
@@ -27,12 +27,57 @@ O Text Block do Draupnir DS destaca textos importantes, títulos de seções e d
   <Story of={StoryBlock.TextBlockTertiary} />
 </Canvas>
 
-## Uso
+## Usage
 
 ```tsx
-import { TextBlock } from 'draupnir-ds';
+import { TextBlock } from '@/components/atoms/Text';
 
-<TextBlock title="Título" type="primary">
-  Descrição ou conteúdo do bloco de texto.
+<TextBlock title="Title" type="primary">
+  Description or content of the text block.
 </TextBlock>
 ```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>title</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Title to be displayed at the top of the text block.</td>
+    </tr>
+    <tr>
+      <td><b>type</b></td>
+      <td><code>"primary" | "secondary" | "dark"</code></td>
+      <td><code>"primary"</code></td>
+      <td>Visual style of the text block.<br/><b>Examples:</b> <code>primary</code>, <code>secondary</code>, <code>dark</code></td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered as the description or body of the text block.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the text block container.</td>
+    </tr>
+    <tr>
+      <td><b>...rest</b></td>
+      <td><code>HTMLElement props</code></td>
+      <td>-</td>
+      <td>Any other valid HTML element attributes.</td>
+    </tr>
+  </tbody>
+</table>

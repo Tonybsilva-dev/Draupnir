@@ -35,7 +35,7 @@ export { type SelectProps } from "./molecules/Select/Select";
 // Organisms - Complex combinations of molecules and atoms
 export { Dropdown, default as DropdownDefault } from "./organisms/Dropdown/Dropdown";
 export { type DropdownProps } from "./organisms/Dropdown/Dropdown";
-export { Modal, default as ModalDefault } from "./organisms/Modal/Modal";
+export { Modal, ModalHeader, ModalBody, ModalFooter } from "./organisms/Modal/Modal";
 export { type ModalProps } from "./organisms/Modal/Modal";
 export { default as SubtitlePage } from "./organisms/SubtitlePage/SubtitlePage";
 export { type SubtitlePageProps } from "./organisms/SubtitlePage/SubtitlePage";

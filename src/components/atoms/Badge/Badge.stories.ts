@@ -44,9 +44,9 @@ import { Badge } from '@/components/atoms/Badge';
     variant: {
       description: "Visual variant of the badge",
       control: { type: "select" },
-      options: ["primary", "success", "warning", "danger"],
+      options: ["primary", "info", "success", "warning", "danger"],
       table: {
-        type: { summary: "primary | success | warning | danger" },
+        type: { summary: "primary | info | success | warning | danger" },
         defaultValue: { summary: "primary" },
       },
     },
@@ -170,6 +170,25 @@ export const Status: Story = {
     docs: {
       description: {
         story: "Status badge perfect for indicating the current state of users, orders, systems, or any entity.",
+      },
+    },
+  },
+};
+
+/**
+ * ## Info Badge
+ *
+ * Blue badge for informational states.
+ */
+export const Info: Story = {
+  args: {
+    children: "Info",
+    variant: "info",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Blue badge for informational or neutral states.",
       },
     },
   },

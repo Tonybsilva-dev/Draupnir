@@ -44,12 +44,12 @@ const Switch = ({
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
       <RadixSwitch
         checked={enabled}
         onClick={toggle}
         disabled={disabled}
-        className={style.Container}
+        style={style.Container}
         aria-checked={enabled}
         aria-label={generateAriaLabel()}
         {...rest}
@@ -57,23 +57,23 @@ const Switch = ({
         <span className="sr-only">
           {label || 'Switch'} {enabled ? 'activated' : 'deactivated'}
         </span>
-        {variant === "common" && <span className={style.Switch} />}
+        {variant === "common" && <span style={style.Switch} />}
         {variant === "contract" && (
-          <span className={style.Switch}>
-            {enabled && <Check className={`${style.Icon} w-4 h-4`} aria-hidden="true" />}
-            {enabled || <X className={`${style.Icon} w-4 h-4`} aria-hidden="true" />}
+          <span style={style.Switch}>
+            {enabled && <Check style={style.Icon} aria-hidden="true" />}
+            {enabled || <X style={style.Icon} aria-hidden="true" />}
           </span>
         )}
       </RadixSwitch>
       {(label || description) && (
-        <div className="flex flex-col">
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           {label && (
-            <span className="text-sm font-medium text-gray-900">
+            <span style={{ fontSize: 14, fontWeight: 500, color: '#212121' }}>
               {label}
             </span>
           )}
           {description && (
-            <span className="text-xs text-gray-500">
+            <span style={{ fontSize: 12, color: '#757575' }}>
               {description}
             </span>
           )}

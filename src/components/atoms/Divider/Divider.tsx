@@ -1,35 +1,52 @@
-import classNames from "classnames";
+import { colors, spacing } from '../../../tokens';
 
 export type DividerProps = {
-  width?: string;
-  height?: string;
-  bgColor?: "light" | "dark" | "black";
+  width?: string | number;
+  height?: string | number;
+  bgColor?: "light" | "default" | "dark" | "black";
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const colorClassMap = {
-  light: "bg-gray-200",
-  dark: "bg-gray-600",
-  black: "bg-gray-900",
+const colorMap = {
+  light: colors.divider.light,
+  default: colors.divider.default,
+  dark: colors.divider.dark,
+  black: colors.text.primary,
 };
 
 const Divider = ({
   width,
-  height = "h-[1px]",
+  height = '1px',
   children,
-  bgColor = "black",
+  bgColor = "default",
   className,
+  style,
   ...rest
 }: DividerProps) => {
-  const colorClass = colorClassMap[bgColor];
-
-  const barClass = classNames(children ? "w-1/3" : "w-1/2", height, colorClass);
+  const barStyle = {
+    width: children ? '33%' : '50%',
+    height,
+    background: colorMap[bgColor],
+    minHeight: '1px',
+    borderRadius: spacing.xs,
+  };
 
   return (
-    <div className={classNames(width, "flex items-center justify-center", className)} {...rest}>
-      <div className={barClass}></div>
-      {children && <div className="px-3">{children} </div>}
-      <div className={barClass}></div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width,
+        ...(style || {}),
+      }}
+      className={className}
+      {...rest}
+    >
+      <div style={barStyle}></div>
+      {children && <div style={{ paddingLeft: spacing[3], paddingRight: spacing[3] }}>{children} </div>}
+      <div style={barStyle}></div>
     </div>
   );
 };

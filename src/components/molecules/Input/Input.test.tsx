@@ -146,7 +146,7 @@ describe('Input', () => {
 
       // Verifica se o container pai tem as classes de foco
       const container = input.closest('div');
-      expect(container?.className).toContain('focus-within:border-primary');
+      expect(container).toHaveStyle('border: 1px solid rgb(var(--divider))');
     });
 
     it('deve estar desabilitado quando disabled', () => {
@@ -180,7 +180,7 @@ describe('Input', () => {
       );
 
       const container = screen.getByRole('textbox').closest('div');
-      expect(container?.className).toContain('border-red-500');
+      expect(container).toHaveStyle('border: 1px solid rgb(var(--text-error))');
     });
 
     it('deve ter aria-live="polite" na mensagem de erro', () => {
@@ -252,7 +252,7 @@ describe('Input', () => {
   });
 
   describe('Estilos e Classes', () => {
-    it('deve aplicar classes corretas no input', () => {
+    it('deve aplicar estilos corretos no input', () => {
       render(
         <Input.Root label="Name">
           <Input.Control />
@@ -260,11 +260,11 @@ describe('Input', () => {
       );
 
       const input = screen.getByRole('textbox');
-      expect(input.className).toContain('flex-1');
-      expect(input.className).toContain('bg-transparent');
+      expect(input).toHaveStyle('flex: 1');
+      expect(input).toHaveStyle('background: transparent');
     });
 
-    it('deve aplicar classes corretas no container', () => {
+    it('deve aplicar estilos corretos no container', () => {
       render(
         <Input.Root label="Name">
           <Input.Control />
@@ -272,11 +272,11 @@ describe('Input', () => {
       );
 
       const container = screen.getByRole('textbox').closest('div');
-      expect(container?.className).toContain('flex');
-      expect(container?.className).toContain('border');
+      expect(container).toHaveStyle('display: flex');
+      expect(container).toHaveStyle('border: 1px solid rgb(var(--divider))');
     });
 
-    it('deve aplicar classes de desabilitado', () => {
+    it('deve aplicar estilos de desabilitado', () => {
       render(
         <Input.Root label="Name">
           <Input.Control disabled />
@@ -284,8 +284,8 @@ describe('Input', () => {
       );
 
       const input = screen.getByRole('textbox');
-      expect(input.className).toContain('cursor-not-allowed');
-      expect(input.className).toContain('opacity-60');
+      expect(input).toHaveStyle('cursor: not-allowed');
+      expect(input).toHaveStyle('opacity: 0.6');
     });
   });
 

@@ -50,7 +50,11 @@ describe('Select', () => {
   it('renders with custom trigger styling', () => {
     renderSelect();
     const trigger = screen.getByRole('combobox');
-    expect(trigger).toHaveClass('flex', 'h-10', 'w-full', 'items-center', 'justify-between');
+    expect(trigger).toHaveStyle('display: flex');
+    expect(trigger).toHaveStyle('height: 32px');
+    expect(trigger).toHaveStyle('width: 100%');
+    expect(trigger).toHaveStyle('align-items: center');
+    expect(trigger).toHaveStyle('justify-content: space-between');
   });
 
   it('renders chevron icon', () => {

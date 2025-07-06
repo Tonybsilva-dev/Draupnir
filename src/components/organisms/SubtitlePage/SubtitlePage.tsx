@@ -1,19 +1,31 @@
 import Typography from "../../atoms/Typography/Typography";
+import { colors, spacing, borders } from '../../../tokens';
 
 export interface SubtitlePageProps {
   subtitle: string;
   description?: string;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export default function SubtitlePage({
   subtitle,
   description,
   children,
+  style,
 }: SubtitlePageProps) {
   return (
-    <div className="flex lg:flex-row items-center justify-between border-b border-gray-200 pb-5">
-      <div className="space-y-1">
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      borderBottom: `${borders.sm} solid ${colors.divider.default}`,
+      paddingBottom: spacing[5],
+      gap: spacing[2],
+      ...(style || {}),
+    }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: spacing[1] }}>
         <Typography element="h2" size="xl" variant="primary">
           {subtitle}
         </Typography>
@@ -23,7 +35,11 @@ export default function SubtitlePage({
           </Typography>
         )}
       </div>
-      {children && <div className="flex items-center gap-2">{children}</div>}
+      {children && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: spacing[2] }}>
+          {children}
+        </div>
+      )}
     </div>
   );
 }

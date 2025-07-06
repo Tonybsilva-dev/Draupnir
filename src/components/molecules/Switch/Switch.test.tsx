@@ -165,12 +165,12 @@ describe('Switch', () => {
       expect(switchElement).toHaveFocus();
     });
 
-    it('deve ter focus ring quando focado', async () => {
+    it('deve ter outline none quando focado', async () => {
       render(<Switch />);
       const switchElement = screen.getByRole('switch');
 
       switchElement.focus();
-      expect(switchElement.className).toContain('outline-none');
+      expect(switchElement).toHaveStyle('outline: none');
     });
 
     it('não deve ser focável quando disabled', async () => {
@@ -182,32 +182,32 @@ describe('Switch', () => {
   });
 
   describe('Estilos e Classes', () => {
-    it('deve ter classes corretas quando disabled', () => {
+    it('deve ter background correto quando disabled', () => {
       render(<Switch />);
       const switchElement = screen.getByRole('switch');
 
-      expect(switchElement.className).toContain('bg-gray-200');
+      expect(switchElement).toHaveStyle('background: rgb(var(--divider-light))');
     });
 
-    it('deve ter classes corretas quando enabled', () => {
+    it('deve ter background correto quando enabled', () => {
       render(<Switch defaultEnable />);
       const switchElement = screen.getByRole('switch');
 
-      expect(switchElement.className).toContain('bg-primary');
+      expect(switchElement).toHaveStyle('background: rgb(var(--primary))');
     });
 
-    it('deve ter classes de disabled', () => {
+    it('deve ter background correto quando disabled', () => {
       render(<Switch disabled />);
       const switchElement = screen.getByRole('switch');
 
-      expect(switchElement.className).toContain('bg-gray-200');
+      expect(switchElement).toHaveStyle('background: rgb(var(--divider))');
     });
 
-    it('deve ter classes de hover quando enabled', () => {
+    it('deve ter outline none', () => {
       render(<Switch />);
       const switchElement = screen.getByRole('switch');
 
-      expect(switchElement.className).toContain('outline-none');
+      expect(switchElement).toHaveStyle('outline: none');
     });
   });
 
@@ -215,13 +215,13 @@ describe('Switch', () => {
     it('deve aplicar variante common por padrão', () => {
       render(<Switch />);
       const switchElement = screen.getByRole('switch');
-      expect(switchElement.className).toContain('bg-gray-200');
+      expect(switchElement).toHaveStyle('background: rgb(var(--divider-light))');
     });
 
     it('deve aplicar variante contract', () => {
       render(<Switch variant="contract" />);
       const switchElement = screen.getByRole('switch');
-      expect(switchElement.className).toContain('bg-gray-200');
+      expect(switchElement).toHaveStyle('background: rgb(var(--divider-light))');
     });
 
     it('deve ter ícones na variante contract quando enabled', () => {

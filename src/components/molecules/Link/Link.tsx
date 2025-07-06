@@ -1,4 +1,5 @@
 import { ComponentProps, forwardRef } from "react";
+import { colors, typography } from '../../../tokens';
 
 export type LinkProps = {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
   external = false,
   description,
   className,
+  style,
   ...rest
 }, ref) => {
   const generateAriaLabel = () => {
@@ -39,12 +41,18 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
     <a
       ref={ref}
       href={disabled ? undefined : href}
-      className={`
-        text-primary hover:text-hover transition-colors 
-        focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
-        ${disabled ? 'text-gray-400 cursor-not-allowed' : 'cursor-pointer'} 
-        ${className || ''}
-      `}
+      style={{
+        color: disabled ? colors.text.disabled : colors.primary[500],
+        fontWeight: typography.fontWeight.medium,
+        fontSize: typography.text.md,
+        textDecoration: 'underline',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.6 : 1,
+        outline: 'none',
+        transition: 'color 0.2s',
+        ...(style || {}),
+      }}
+      className={className}
       aria-disabled={disabled}
       aria-label={generateAriaLabel()}
       onKeyDown={handleKeyDown}
@@ -55,7 +63,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
     >
       {children}
       {external && (
-        <span className="sr-only"> (abre em nova aba)</span>
+        <span style={{ position: 'absolute', left: '-9999px' }}> (abre em nova aba)</span>
       )}
     </a>
   );

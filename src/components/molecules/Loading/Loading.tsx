@@ -1,33 +1,60 @@
+import { useEffect, useState } from 'react';
+import { colors, spacing } from '../../../tokens';
+
 export type LoadingProps = {
-  color?: string;
   label?: string;
   size?: "sm" | "md" | "lg";
+  variant?: "auto" | "light" | "dark";
 };
 
+const sizeMap = {
+  sm: { width: 12, height: 12 },
+  md: { width: 20, height: 20 },
+  lg: { width: 32, height: 32 },
+};
+
+function getLoadingColor(variant: "auto" | "light" | "dark") {
+  if (variant === 'light') return '#FFF';
+  if (variant === 'dark') return '#212121';
+  // auto: laranja padrão do DS
+  return '#FF6F00';
+}
+
 export function Loading({
-  color = "bg-primary",
   label = "Loading content",
-  size = "md"
+  size = "md",
+  variant = "auto"
 }: LoadingProps) {
-  const sizeClasses = {
-    sm: "w-3 h-3",
-    md: "w-5 h-5",
-    lg: "w-8 h-8"
-  };
+  const { width, height } = sizeMap[size];
+  const [resolvedColor, setResolvedColor] = useState<string>(() => getLoadingColor(variant));
+
+  useEffect(() => {
+    setResolvedColor(getLoadingColor(variant));
+  }, [variant]);
 
   return (
     <div
-      className="flex justify-center items-center w-full h-full"
+      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}
       role="status"
       aria-live="polite"
       aria-label={label}
     >
-      <div className="relative inline-flex">
-        <div className={`${sizeClasses[size]} ${color} rounded-full`}></div>
-        <div className={`${sizeClasses[size]} ${color} absolute top-0 left-0 animate-ping rounded-full`}></div>
-        <div className={`${sizeClasses[size]} ${color} absolute top-0 left-0 animate-pulse rounded-full`}></div>
+      <div style={{ position: 'relative', display: 'inline-flex' }}>
+        <div style={{ width, height, background: resolvedColor, borderRadius: '50%' }} />
+        <div style={{ width, height, background: resolvedColor, borderRadius: '50%', position: 'absolute', top: 0, left: 0, opacity: 0.5, animation: 'loading-ping 1s cubic-bezier(0,0,0.2,1) infinite' }} />
+        <div style={{ width, height, background: resolvedColor, borderRadius: '50%', position: 'absolute', top: 0, left: 0, opacity: 0.3, animation: 'loading-pulse 1.2s cubic-bezier(0.4,0,0.6,1) infinite' }} />
       </div>
-      <span className="sr-only">{label}</span>
+      <span style={{ position: 'absolute', left: '-9999px' }}>{label}</span>
+      <style>{`
+        @keyframes loading-ping {
+          0% { transform: scale(1); opacity: 0.5; }
+          75%, 100% { transform: scale(2); opacity: 0; }
+        }
+        @keyframes loading-pulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+        }
+      `}</style>
     </div>
   );
 }

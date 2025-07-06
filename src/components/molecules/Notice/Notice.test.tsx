@@ -68,25 +68,25 @@ describe('Notice', () => {
     it('deve aplicar estilo de success', () => {
       render(<Notice type="success" message="Success message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('bg-green-50');
+      expect(notice).toHaveStyle('background-color: rgba(58, 201, 34, 0.05)');
     });
 
     it('deve aplicar estilo de error', () => {
       render(<Notice type="error" message="Error message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('bg-red-50');
+      expect(notice).toHaveStyle('background-color: rgba(255, 48, 48, 0.05)');
     });
 
     it('deve aplicar estilo de alert', () => {
       render(<Notice type="alert" message="Alert message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('bg-yellow-50');
+      expect(notice).toHaveStyle('background-color: rgba(245, 158, 11, 0.05)');
     });
 
     it('deve aplicar estilo de info', () => {
       render(<Notice type="info" message="Info message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('bg-blue-50');
+      expect(notice).toHaveStyle('background-color: rgba(59, 130, 246, 0.05)');
     });
   });
 
@@ -161,12 +161,12 @@ describe('Notice', () => {
       expect(screen.getByText('Success message')).toBeInTheDocument();
     });
 
-    it('deve ter classes de layout corretas', () => {
+    it('deve ter estilos de layout corretos', () => {
       render(<Notice type="success" message="Success message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('border-none');
-      expect(notice.className).toContain('min-w-[320px]');
-      expect(notice.className).toContain('max-w-[480px]');
+      expect(notice).toHaveStyle('border: none');
+      expect(notice).toHaveStyle('min-width: 320px');
+      expect(notice).toHaveStyle('max-width: 480px');
     });
 
     it('deve ter classes de animação', () => {
@@ -180,29 +180,29 @@ describe('Notice', () => {
     it('deve ter cores corretas para success', () => {
       render(<Notice type="success" message="Success message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('text-green-800');
-      expect(notice.className).toContain('bg-green-50');
+      expect(notice).toHaveStyle('color: rgba(35, 121, 20, 1)');
+      expect(notice).toHaveStyle('background-color: rgba(58, 201, 34, 0.05)');
     });
 
     it('deve ter cores corretas para error', () => {
       render(<Notice type="error" message="Error message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('text-red-800');
-      expect(notice.className).toContain('bg-red-50');
+      expect(notice).toHaveStyle('color: rgba(153, 29, 29, 1)');
+      expect(notice).toHaveStyle('background-color: rgba(255, 48, 48, 0.05)');
     });
 
     it('deve ter cores corretas para alert', () => {
       render(<Notice type="alert" message="Alert message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('text-yellow-800');
-      expect(notice.className).toContain('bg-yellow-50');
+      expect(notice).toHaveStyle('color: rgba(147, 95, 7, 1)');
+      expect(notice).toHaveStyle('background-color: rgba(245, 158, 11, 0.05)');
     });
 
     it('deve ter cores corretas para info', () => {
       render(<Notice type="info" message="Info message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('text-blue-800');
-      expect(notice.className).toContain('bg-blue-50');
+      expect(notice).toHaveStyle('color: rgba(35, 78, 148, 1)');
+      expect(notice).toHaveStyle('background-color: rgba(59, 130, 246, 0.05)');
     });
   });
 
@@ -215,26 +215,26 @@ describe('Notice', () => {
       expect(screen.getByText('Success message')).toBeInTheDocument();
     });
 
-    it('deve ter flex-1 na div do texto', () => {
+    it('deve ter flex: 1 na div do texto', () => {
       render(<Notice type="success" message="Success message" />);
       const notice = screen.getByRole('alert');
-      const textDiv = notice.querySelector('.flex-1');
+      const textDiv = notice.querySelector('div[style*="flex: 1"]');
       expect(textDiv).toBeInTheDocument();
     });
 
-    it('deve ter gap-2 entre ícone e texto', () => {
+    it('deve ter gap entre ícone e texto', () => {
       render(<Notice type="success" message="Success message" />);
       const notice = screen.getByRole('alert');
-      const iconContainer = notice.querySelector('.gap-2');
+      const iconContainer = notice.querySelector('div[style*="gap"]');
       expect(iconContainer).toBeInTheDocument();
     });
   });
 
   describe('Responsividade', () => {
-    it('deve ter classes responsivas', () => {
+    it('deve ter margin auto para centralização', () => {
       render(<Notice type="success" message="Success message" />);
       const notice = screen.getByRole('alert');
-      expect(notice.className).toContain('mx-auto');
+      expect(notice).toHaveStyle('margin: 0 auto');
     });
   });
 

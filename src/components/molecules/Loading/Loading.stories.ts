@@ -12,10 +12,10 @@ const meta: Meta<typeof Loading> = {
   },
   component: Loading,
   argTypes: {
-    color: {
+    variant: {
       control: { type: "select" },
-      options: ["bg-primary", "bg-secondary", "bg-white", "bg-gray-500"],
-      description: "Color of the loading indicator",
+      options: ["auto", "light", "dark"],
+      description: "Visual variant for contrast/context",
     },
     label: {
       control: { type: "text" },
@@ -34,17 +34,17 @@ type Story = StoryObj<typeof Loading>;
 
 export const Pulse: Story = {
   args: {
-    color: "bg-primary",
     label: "Loading content",
     size: "md",
+    variant: "auto",
   },
 };
 
 export const Small: Story = {
   args: {
-    color: "bg-primary",
     label: "Loading content",
     size: "sm",
+    variant: "auto",
   },
   parameters: {
     docs: {
@@ -57,9 +57,9 @@ export const Small: Story = {
 
 export const Large: Story = {
   args: {
-    color: "bg-primary",
     label: "Loading content",
     size: "lg",
+    variant: "auto",
   },
   parameters: {
     docs: {
@@ -72,9 +72,9 @@ export const Large: Story = {
 
 export const White: Story = {
   args: {
-    color: "bg-white",
     label: "Loading content",
     size: "md",
+    variant: "light",
   },
   parameters: {
     docs: {
@@ -85,16 +85,16 @@ export const White: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const Dark: Story = {
   args: {
-    color: "bg-secondary",
     label: "Loading content",
     size: "md",
+    variant: "dark",
   },
   parameters: {
     docs: {
       description: {
-        story: "Secondary color loading indicator.",
+        story: "Dark loading indicator for light backgrounds.",
       },
     },
   },

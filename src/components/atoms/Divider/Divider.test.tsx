@@ -4,63 +4,65 @@ import Divider from './Divider';
 describe('Divider', () => {
   describe('Renderização Básica', () => {
     it('renderiza sem erros', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
       expect(divider).toBeInTheDocument();
     });
 
     it('renderiza com estrutura correta', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      expect(divider).toHaveClass('flex', 'items-center', 'justify-center');
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      expect(divider).toHaveStyle('display: flex');
+      expect(divider).toHaveStyle('align-items: center');
+      expect(divider).toHaveStyle('justify-content: center');
     });
 
     it('renderiza com altura padrão', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('h-[1px]');
-      expect(bars?.[1]).toHaveClass('h-[1px]');
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('height: 1px');
+      expect(bars?.[1]).toHaveStyle('height: 1px');
     });
   });
 
   describe('Props e Configuração', () => {
     it('deve aplicar width customizado', () => {
-      render(<Divider width="w-full" />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      expect(divider).toHaveClass('w-full');
+      render(<Divider width="100%" data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      expect(divider).toHaveStyle('width: 100%');
     });
 
     it('deve aplicar height customizado', () => {
-      render(<Divider height="h-2" />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('h-2');
-      expect(bars?.[1]).toHaveClass('h-2');
+      render(<Divider height="8px" data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('height: 8px');
+      expect(bars?.[1]).toHaveStyle('height: 8px');
     });
 
     it('deve aplicar bgColor light', () => {
-      render(<Divider bgColor="light" />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('bg-gray-200');
-      expect(bars?.[1]).toHaveClass('bg-gray-200');
+      render(<Divider bgColor="light" data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('background: rgb(var(--divider-light))');
+      expect(bars?.[1]).toHaveStyle('background: rgb(var(--divider-light))');
     });
 
     it('deve aplicar bgColor dark', () => {
-      render(<Divider bgColor="dark" />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('bg-gray-600');
-      expect(bars?.[1]).toHaveClass('bg-gray-600');
+      render(<Divider bgColor="dark" data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('background: rgb(var(--divider-dark))');
+      expect(bars?.[1]).toHaveStyle('background: rgb(var(--divider-dark))');
     });
 
-    it('deve aplicar bgColor black por padrão', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('bg-gray-900');
-      expect(bars?.[1]).toHaveClass('bg-gray-900');
+    it('deve aplicar bgColor default por padrão', () => {
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('background: rgb(var(--divider))');
+      expect(bars?.[1]).toHaveStyle('background: rgb(var(--divider))');
     });
   });
 
@@ -70,68 +72,77 @@ describe('Divider', () => {
       expect(screen.getByText('Texto')).toBeInTheDocument();
     });
 
-    it('deve ter largura w-1/3 quando tem children', () => {
-      render(<Divider>Texto</Divider>);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('w-1/3');
-      expect(bars?.[2]).toHaveClass('w-1/3');
+    it('deve ter largura 33% quando tem children', () => {
+      render(<Divider data-testid="divider">Texto</Divider>);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('width: 33%');
+      expect(bars?.[2]).toHaveStyle('width: 33%');
     });
 
-    it('deve ter largura w-1/2 quando não tem children', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0]).toHaveClass('w-1/2');
-      expect(bars?.[1]).toHaveClass('w-1/2');
+    it('deve ter largura 50% quando não tem children', () => {
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+      expect(bars?.[0]).toHaveStyle('width: 50%');
+      expect(bars?.[1]).toHaveStyle('width: 50%');
     });
 
     it('deve ter padding no container de children', () => {
-      render(<Divider>Texto</Divider>);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const childrenContainer = divider?.querySelector('.px-3');
-      expect(childrenContainer).toBeInTheDocument();
+      render(<Divider data-testid="divider">Texto</Divider>);
+      const divider = screen.getByTestId('divider');
+      const childrenContainer = divider.children[1];
+      expect(childrenContainer).toHaveStyle('padding-left: 16px');
+      expect(childrenContainer).toHaveStyle('padding-right: 16px');
     });
   });
 
   describe('Estrutura do Componente', () => {
     it('deve ter duas barras quando não tem children', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
       expect(bars).toHaveLength(2); // Duas barras
     });
 
     it('deve ter estrutura correta com children', () => {
-      render(<Divider>Texto</Divider>);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const divs = divider?.querySelectorAll('div');
+      render(<Divider data-testid="divider">Texto</Divider>);
+      const divider = screen.getByTestId('divider');
+      const divs = divider.children;
       expect(divs).toHaveLength(3); // Duas barras + container de children
     });
 
     it('deve ter flexbox layout', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      expect(divider).toHaveClass('flex', 'items-center', 'justify-center');
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      expect(divider).toHaveStyle('display: flex');
+      expect(divider).toHaveStyle('align-items: center');
+      expect(divider).toHaveStyle('justify-content: center');
     });
   });
 
   describe('Estilos e Classes', () => {
-    it('deve aplicar classes corretas no container', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      expect(divider?.className).toContain('flex');
-      expect(divider?.className).toContain('items-center');
-      expect(divider?.className).toContain('justify-center');
+    it('deve aplicar estilos corretos no container', () => {
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      expect(divider).toHaveStyle('display: flex');
+      expect(divider).toHaveStyle('align-items: center');
+      expect(divider).toHaveStyle('justify-content: center');
     });
 
-    it('deve aplicar classes corretas nas barras', () => {
-      render(<Divider />);
-      const divider = document.querySelector('.flex.items-center.justify-center');
-      const bars = divider?.querySelectorAll('div');
-      expect(bars?.[0].className).toContain('w-1/2');
-      expect(bars?.[0].className).toContain('h-[1px]');
-      expect(bars?.[0].className).toContain('bg-gray-900');
+    it('deve aplicar estilos corretos nas barras', () => {
+      render(<Divider data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      const bars = divider.querySelectorAll('div');
+
+      // Verificar se as barras existem
+      expect(bars?.[0]).toBeDefined();
+      expect(bars?.[1]).toBeDefined();
+
+      // Verificar estilos das barras usando toHaveStyle
+      expect(bars?.[0]).toHaveStyle('width: 50%');
+      expect(bars?.[0]).toHaveStyle('height: 1px');
+      expect(bars?.[0]).toHaveStyle('background: rgb(var(--divider))');
     });
   });
 

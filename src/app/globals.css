@@ -24,8 +24,8 @@ html {
     /* COLORS */
     --background: 245, 245, 245;
     /* cinza claro */
-    --primary: 255, 214, 0;
-    /* amarelo solar */
+    --primary: 255, 111, 0;
+    /* laranja vibrante */
     --primary-contrast: 33, 33, 33;
     /* texto escuro */
     --secondary: 58, 79, 99;
@@ -37,13 +37,18 @@ html {
     --quaternary: 189, 189, 189;
     /* cinza médio */
 
-    --hover: 255, 235, 59;
-    /* amarelo claro */
-    --click: 255, 202, 40;
-    /* amarelo escuro */
+    --hover: 255, 152, 0;
+    /* laranja claro */
+    --click: 230, 81, 0;
+    /* laranja escuro */
     --icon: 92, 92, 92;
     --outline: 215, 215, 215;
-    --divider: 237, 237, 237;
+    --divider-light: 237, 237, 237;
+    /* cinza claro */
+    --divider: 180, 180, 180;
+    /* cinza médio, padrão */
+    --divider-dark: 120, 120, 120;
+    /* cinza escuro */
 
     --bg-light: 255, 255, 255;
     --bg-dark: 58, 79, 99;

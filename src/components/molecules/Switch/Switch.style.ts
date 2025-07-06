@@ -1,5 +1,4 @@
-import { tv } from "tailwind-variants";
-import classNames from "classnames";
+import { colors, spacing } from '../../../tokens';
 
 interface SwitchProps {
   variant: "common" | "contract";
@@ -12,39 +11,55 @@ export default function useStyleSwitch({
   enabled,
   disabled,
 }: SwitchProps) {
-  const containerVariant = tv({
-    base: [
-      "outline-none relative inline-flex h-6 w-16 items-center rounded-full",
-      disabled ? "bg-gray-200" : "bg-gray-200",
-    ],
-    variants: {
-      variant: {
-        common: enabled ? "bg-primary" : "bg-gray-200",
-        contract: enabled ? "bg-green-600" : "bg-gray-200",
-      },
-    },
-    defaultVariants: {
-      variant: "common",
-    },
-  });
+  // Container
+  let containerStyle: React.CSSProperties = {
+    outline: 'none',
+    position: 'relative',
+    display: 'inline-flex',
+    height: 24,
+    width: 64,
+    alignItems: 'center',
+    borderRadius: 9999,
+    background: colors.divider.light,
+    transition: 'background 0.2s',
+  };
+  if (variant === 'common') {
+    containerStyle.background = enabled ? colors.primary[500] : colors.divider.light;
+  } else if (variant === 'contract') {
+    containerStyle.background = enabled ? colors.success[600] : colors.divider.light;
+  }
+  if (disabled) {
+    containerStyle.background = colors.divider.default;
+    containerStyle.opacity = 0.6;
+    containerStyle.cursor = 'not-allowed';
+  }
 
-  const containerClasses = containerVariant({ variant });
+  // Switch (círculo)
+  const switchStyle: React.CSSProperties = {
+    display: 'inline-block',
+    background: colors.background.light,
+    height: 16,
+    width: 16,
+    borderRadius: 9999,
+    transform: enabled ? 'translateX(44px)' : 'translateX(4px)',
+    transition: 'transform 0.2s, background 0.2s',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+  };
 
-  const switchClasses = classNames(
-    "inline-block bg-white h-4 w-4 rounded-full transform transition-transform duration-200 ease-in-out",
-    enabled ? "translate-x-[2.1rem]" : "translate-x-1"
-  );
-
-  const iconClasses = classNames(
-    "text-gray-400",
-    { "text-green-600": enabled && !disabled },
-    { "text-red-600": !enabled && !disabled },
-    { "text-gray-300": disabled }
-  );
+  // Ícone
+  let iconColor: string = colors.divider.dark;
+  if (enabled && !disabled) iconColor = colors.success[600];
+  if (!enabled && !disabled) iconColor = colors.error[600];
+  if (disabled) iconColor = colors.divider.default;
+  const iconStyle: React.CSSProperties = {
+    color: iconColor,
+    width: 16,
+    height: 16,
+  };
 
   return {
-    Icon: iconClasses,
-    Switch: switchClasses,
-    Container: containerClasses,
+    Icon: iconStyle,
+    Switch: switchStyle,
+    Container: containerStyle,
   };
 }

@@ -133,7 +133,11 @@ export const colors = {
   // Cores de interface
   icon: 'rgb(var(--icon))',
   outline: 'rgb(var(--outline))',
-  divider: 'rgb(var(--divider))',
+  divider: {
+    light: 'rgb(var(--divider-light))',
+    default: 'rgb(var(--divider))',
+    dark: 'rgb(var(--divider-dark))',
+  },
 
   // Cores de scrollbar
   scrollbar: {

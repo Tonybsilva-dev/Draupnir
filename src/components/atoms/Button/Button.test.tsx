@@ -134,31 +134,31 @@ describe('Button', () => {
     it('deve aplicar variante primary por padrão', () => {
       render(<Button>Primary</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('bg-primary');
+      expect(button).toHaveStyle('background-color: rgb(var(--primary))');
     });
 
     it('deve aplicar variante secondary', () => {
       render(<Button variant="secondary">Secondary</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('bg-secondary');
+      expect(button).toHaveStyle('background-color: rgb(var(--secondary))');
     });
 
     it('deve aplicar variante outline', () => {
       render(<Button variant="outline">Outline</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('bg-white');
+      expect(button).toHaveStyle('background-color: rgb(var(--bg-light))');
     });
 
     it('deve aplicar variante ghost', () => {
       render(<Button variant="ghost">Ghost</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('bg-transparent');
+      expect(button).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
     });
 
     it('deve aplicar variante danger', () => {
       render(<Button variant="danger">Danger</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('bg-red-600');
+      expect(button).toHaveStyle('background-color: rgba(204, 38, 38, 1)');
     });
   });
 
@@ -166,25 +166,25 @@ describe('Button', () => {
     it('deve aplicar tamanho default por padrão', () => {
       render(<Button>Default</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('px-4 py-2');
+      expect(button).toHaveStyle('padding: 16px 20px');
     });
 
     it('deve aplicar tamanho sm', () => {
       render(<Button size="sm">Small</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('px-3 py-1.5');
+      expect(button).toHaveStyle('padding: 12px 16px');
     });
 
     it('deve aplicar tamanho lg', () => {
       render(<Button size="lg">Large</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('px-6 py-3');
+      expect(button).toHaveStyle('padding: 20px 32px');
     });
 
     it('deve aplicar tamanho full', () => {
       render(<Button size="full">Full</Button>);
       const button = screen.getByRole('button');
-      expect(button.className).toContain('w-full');
+      expect(button).toHaveStyle('width: 100%');
     });
   });
 
@@ -219,7 +219,7 @@ describe('Button', () => {
       const button = screen.getByRole('button');
 
       button.focus();
-      expect(button.className).toContain('focus:ring-2');
+      expect(button).toHaveStyle('outline: none');
     });
 
     it('não deve ser focável quando desabilitado', async () => {

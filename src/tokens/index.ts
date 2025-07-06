@@ -8,6 +8,7 @@ export { colors, getColor } from './colors';
 export { spacing, getSpacing } from './spacing';
 export { typography, getTextSize, getTitleSize } from './typography';
 export { shadows, getShadow } from './shadows';
+export { borders, borderRadius } from './borders';
 
 // Tipos
 export type {

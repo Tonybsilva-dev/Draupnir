@@ -1,19 +1,20 @@
 import { Meta, Primary, Canvas, Controls, Story } from '@storybook/addon-docs/blocks';
-import * as TypographyStories from './Typography.stories';
+import * as TypographyStories from './Typography.stories.ts';
 
 <Meta of={TypographyStories} />
 
 # Typography
 
-The Typography component is used to style texts, titles, and paragraphs consistently.
+The Typography component is used to style texts, titles, and paragraphs consistently using design system tokens.
 
 ## Description
-The Draupnir DS Typography ensures visual standardization, hierarchy, and accessibility in all interface texts.
+The Draupnir DS Typography ensures visual standardization, hierarchy, and accessibility in all interface texts, using only design system tokens.
 
 ## Features
 - **Accessible:** Semantic typography, visible focus, clear sizes and weights
-- **Customizable:** Size, weight, and color variations
+- **Customizable:** Size, weight, and color variations through tokens
 - **Consistent:** Maintains visual pattern throughout the application
+- **Tokenized:** Uses only design system tokens, no hardcoded values
 
 ## Component
 <Primary />
@@ -22,9 +23,11 @@ The Draupnir DS Typography ensures visual standardization, hierarchy, and access
 ## Examples
 <Canvas>
   <Story of={TypographyStories.Primary} />
-  <Story of={TypographyStories.TextHeadingH1} />
-  <Story of={TypographyStories.TextHeadingH2} />
-  <Story of={TypographyStories.TextHeadingH3} />
+  <Story of={TypographyStories.AllVariants} />
+  <Story of={TypographyStories.AllSizes} />
+  <Story of={TypographyStories.Headings} />
+  <Story of={TypographyStories.SemanticElements} />
+  <Story of={TypographyStories.WithCustomStyles} />
 </Canvas>
 
 ## Usage
@@ -32,8 +35,23 @@ The Draupnir DS Typography ensures visual standardization, hierarchy, and access
 ```tsx
 import { Typography } from '@/components/atoms/Typography';
 
+// Basic text
 <Typography size="lg" variant="primary">
   Large and highlighted text
+</Typography>
+
+// Semantic heading
+<Typography semantic="heading" level={1} size="title1">
+  Main Title
+</Typography>
+
+// Text with custom styles
+<Typography 
+  size="md" 
+  variant="secondary"
+  style={{ backgroundColor: '#f0f0f0', padding: '16px' }}
+>
+  Text with custom styles
 </Typography>
 ```
 
@@ -53,13 +71,13 @@ import { Typography } from '@/components/atoms/Typography';
       <td><b>variant</b></td>
       <td><code>"primary" | "secondary" | "tertiary"</code></td>
       <td><code>"primary"</code></td>
-      <td>Visual style of the text.<br/><b>Examples:</b> <code>primary</code>, <code>secondary</code>, <code>tertiary</code></td>
+      <td>Visual style of the text using color tokens.<br/><b>Examples:</b> <code>primary</code>, <code>secondary</code>, <code>tertiary</code></td>
     </tr>
     <tr>
       <td><b>size</b></td>
       <td><code>"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "title1" | "title2" | "title3"</code></td>
       <td><code>"md"</code></td>
-      <td>Font size of the text.<br/><b>Examples:</b> <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>4xl</code>, <code>title1</code>, <code>title2</code>, <code>title3</code></td>
+      <td>Font size using typography tokens.<br/><b>Examples:</b> <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>4xl</code>, <code>title1</code>, <code>title2</code>, <code>title3</code></td>
     </tr>
     <tr>
       <td><b>children</b></td>
@@ -92,6 +110,12 @@ import { Typography } from '@/components/atoms/Typography';
       <td>Additional CSS classes for the typography element.</td>
     </tr>
     <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Inline CSS styles for additional customization.</td>
+    </tr>
+    <tr>
       <td><b>...rest</b></td>
       <td><code>HTML element props</code></td>
       <td>-</td>
@@ -99,3 +123,28 @@ import { Typography } from '@/components/atoms/Typography';
     </tr>
   </tbody>
 </table>
+
+## Design System Tokens
+
+The Typography component uses the following design system tokens:
+
+### Colors
+- `colors.text.primary` - Primary text color
+- `colors.text.secondary` - Secondary text color  
+- `colors.text.tertiary` - Tertiary text color
+
+### Typography
+- `typography.fontWeight.normal` - Font weight
+- `typography.lineHeight.normal` - Line height
+
+### Font Sizes
+- `xs`: 12px
+- `sm`: 14px
+- `md`: 16px
+- `lg`: 18px
+- `xl`: 20px
+- `2xl`: 24px
+- `4xl`: 32px
+- `title1`: 28px
+- `title2`: 24px
+- `title3`: 20px

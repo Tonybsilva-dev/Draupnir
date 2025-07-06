@@ -1,23 +1,51 @@
 import React from "react";
+import { colors, spacing, borderRadius, typography } from '../../../tokens';
 
-type BadgeVariant = "primary" | "success" | "warning" | "danger";
+type BadgeVariant = "primary" | "info" | "success" | "warning" | "danger";
 
 export interface BadgeProps {
   children: React.ReactNode;
   variant?: BadgeVariant;
+  style?: React.CSSProperties;
 }
 
-const badgeVariantClasses = {
-  primary: "bg-blue-100 text-blue-800",
-  success: "bg-green-100 text-green-800",
-  warning: "bg-yellow-100 text-yellow-800",
-  danger: "bg-red-100 text-red-800",
+const badgeVariantStyleMap = {
+  primary: {
+    background: colors.divider.light,
+    color: colors.text.primary,
+  },
+  info: {
+    background: colors.info[100],
+    color: colors.info[700],
+  },
+  success: {
+    background: colors.success[100],
+    color: colors.success[700],
+  },
+  warning: {
+    background: colors.warning[100],
+    color: colors.warning[700],
+  },
+  danger: {
+    background: colors.error[100],
+    color: colors.error[700],
+  },
 };
 
-const Badge: React.FC<BadgeProps> = ({ children, variant = "primary" }) => {
-  const badgeClasses = badgeVariantClasses[variant];
+const Badge: React.FC<BadgeProps> = ({ children, variant = "primary", style }) => {
+  const variantStyle = badgeVariantStyleMap[variant];
   return (
-    <span className={`text-xs px-2 py-1 font-medium ${badgeClasses}`}>
+    <span
+      style={{
+        fontSize: typography.text.xs,
+        padding: `${spacing[1]} ${spacing[2]}`,
+        fontWeight: typography.fontWeight.medium,
+        borderRadius: borderRadius.sm,
+        display: 'inline-block',
+        ...variantStyle,
+        ...(style || {}),
+      }}
+    >
       {children}
     </span>
   );

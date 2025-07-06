@@ -1,5 +1,5 @@
 import React, { ComponentProps, forwardRef, ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import { colors, spacing, borders, borderRadius, typography } from '../../../tokens';
 
 export type InputPrefixProps = ComponentProps<"div">;
 
@@ -13,22 +13,29 @@ export type InputControlProps = ComponentProps<"input"> & {
 };
 
 const InputControl = forwardRef<HTMLInputElement, InputControlProps>(
-  ({ className, disabled, required, autocomplete, id, ...props }, ref) => {
+  ({ className, disabled, required, autocomplete, id, style, ...props }, ref) => {
     const hasError = props["aria-invalid"] === "true";
     const errorId = hasError ? `${id}-error` : undefined;
     const describedBy = [errorId, props["aria-describedby"]].filter(Boolean).join(" ");
-
-    const classNames = twMerge(
-      "flex-1 border-0 bg-transparent p-0 text-gray-900 placeholder-gray-500 outline-none truncate",
-      disabled && "cursor-not-allowed opacity-60",
-      className
-    );
 
     return (
       <input
         ref={ref}
         type="text"
-        className={classNames}
+        style={{
+          flex: 1,
+          border: 'none',
+          background: 'transparent',
+          padding: 0,
+          color: colors.text.primary,
+          fontSize: typography.text.md,
+          fontFamily: typography.fontFamily.primary,
+          outline: 'none',
+          minWidth: 0,
+          ...(disabled ? { cursor: 'not-allowed', opacity: 0.6 } : {}),
+          ...(style || {}),
+        }}
+        className={className}
         disabled={disabled}
         required={required}
         aria-required={required}
@@ -56,6 +63,7 @@ function InputRoot({
   className,
   children,
   required = false,
+  style,
   ...props
 }: InputRootProps) {
   const hasError = !!errorMessage;
@@ -73,19 +81,36 @@ function InputRoot({
       {label && (
         <label
           htmlFor={inputId}
-          className="block mb-1 text-sm font-medium text-gray-700"
+          style={{
+            display: 'block',
+            marginBottom: spacing[1],
+            fontSize: typography.text.sm,
+            fontWeight: typography.fontWeight.medium,
+            color: colors.text.primary,
+          }}
         >
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span style={{ color: colors.error[500], marginLeft: spacing[1] }}>*</span>}
         </label>
       )}
       <div
-        className={twMerge(
-          "flex w-full items-center gap-2 border border-gray-200 bg-white px-3 py-2 transition-colors",
-          "focus-within:border-primary focus-within:shadow-focus",
-          hasError && "border-red-500",
-          className
-        )}
+        style={{
+          display: 'flex',
+          width: '100%',
+          alignItems: 'center',
+          gap: spacing[2],
+          border: `${borders.sm} solid ${hasError ? colors.error[500] : colors.divider.default}`,
+          background: colors.background.light,
+          paddingLeft: spacing[3],
+          paddingRight: spacing[3],
+          paddingTop: spacing[2],
+          paddingBottom: spacing[2],
+          borderRadius: borderRadius.sm,
+          transition: 'border-color 0.2s',
+          boxSizing: 'border-box',
+          ...(style || {}),
+        }}
+        className={className}
         {...props}
       >
         {children}
@@ -93,7 +118,13 @@ function InputRoot({
       {hasError && (
         <p
           id={errorId}
-          className="text-red-500 font-mono text-xs mt-1 text-right"
+          style={{
+            color: colors.error[500],
+            fontFamily: 'monospace',
+            fontSize: typography.text.xs,
+            marginTop: spacing[1],
+            textAlign: 'right',
+          }}
           role="alert"
           aria-live="polite"
         >

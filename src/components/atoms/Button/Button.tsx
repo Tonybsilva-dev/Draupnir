@@ -1,54 +1,73 @@
 import { ComponentProps, forwardRef } from "react";
-import { tv, VariantProps } from "tailwind-variants";
 import Loading from "../../molecules/Loading/Loading";
+import { colors, spacing, borders, borderRadius, typography } from '../../../tokens';
 
-const button = tv({
-  base: [
-    "flex items-center gap-2", // alinhamento para texto e ícones
-    "px-4 py-2 text-sm font-medium outline-none transition-all duration-200",
-    "focus:ring-2 focus:ring-offset-2 focus:ring-primary",
-    "active:opacity-80 border-none",
-  ],
-
-  variants: {
-    variant: {
-      primary:
-        "bg-primary text-white hover:bg-hover",
-      secondary:
-        "bg-secondary text-white hover:bg-primary hover:text-primary-contrast",
-      outline:
-        "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 hover:border-gray-300",
-      ghost:
-        "bg-transparent text-gray-700 hover:bg-gray-50",
-      danger:
-        "bg-red-600 text-white hover:bg-red-700",
-    },
-    size: {
-      default: "px-4 py-2",
-      sm: "px-3 py-1.5 text-xs",
-      lg: "px-6 py-3 text-base",
-      full: "w-full px-4 py-2",
-    },
+const buttonStyleMap = {
+  primary: {
+    backgroundColor: colors.primary[500],
+    color: colors.text.primary,
+    border: borders.none,
   },
-
-  defaultVariants: {
-    variant: "primary",
-    size: "default",
+  secondary: {
+    backgroundColor: colors.secondary[500],
+    color: colors.text.primary,
+    border: borders.none,
   },
-});
+  outline: {
+    backgroundColor: colors.background.light,
+    color: colors.text.primary,
+    border: `${borders.sm} solid ${colors.divider}`,
+  },
+  ghost: {
+    backgroundColor: 'transparent',
+    color: colors.text.secondary,
+    border: borders.none,
+  },
+  danger: {
+    backgroundColor: colors.error[600],
+    color: colors.text.primary,
+    border: borders.none,
+  },
+};
 
-export type ButtonProps = ComponentProps<"button"> &
-  VariantProps<typeof button> & {
-    isLoading?: boolean;
-    isToggle?: boolean;
-    pressed?: boolean;
-    loadingText?: string;
-    asChild?: boolean;
-  };
+const buttonSizeMap = {
+  default: {
+    padding: `${spacing[3]} ${spacing[4]}`,
+    fontSize: typography.text.sm,
+    fontWeight: typography.fontWeight.medium,
+  },
+  sm: {
+    padding: `${spacing[2]} ${spacing[3]}`,
+    fontSize: typography.text.xs,
+    fontWeight: typography.fontWeight.medium,
+  },
+  lg: {
+    padding: `${spacing[4]} ${spacing[6]}`,
+    fontSize: typography.text.md,
+    fontWeight: typography.fontWeight.medium,
+  },
+  full: {
+    width: '100%',
+    padding: `${spacing[3]} ${spacing[4]}`,
+    fontSize: typography.text.sm,
+    fontWeight: typography.fontWeight.medium,
+  },
+};
+
+export type ButtonProps = ComponentProps<"button"> & {
+  variant?: keyof typeof buttonStyleMap;
+  size?: keyof typeof buttonSizeMap;
+  isLoading?: boolean;
+  isToggle?: boolean;
+  pressed?: boolean;
+  loadingText?: string;
+  asChild?: boolean;
+  style?: React.CSSProperties;
+};
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
-  variant,
-  size,
+  variant = 'primary',
+  size = 'default',
   className,
   isLoading,
   isToggle = false,
@@ -56,10 +75,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   loadingText = "Loading...",
   asChild = false,
   children,
+  style,
   ...props
 }, ref) => {
   const isDisabled = props.disabled || isLoading;
-  const loadingColor = variant === "primary" ? "bg-white" : "bg-primary";
+  const variantStyle = buttonStyleMap[variant] || buttonStyleMap.primary;
+  const sizeStyle = buttonSizeMap[size] || buttonSizeMap.default;
 
   // Generate descriptive aria-label based on content
   const generateAriaLabel = () => {
@@ -77,10 +98,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
       ref={ref}
       {...props}
       disabled={isDisabled}
-      className={
-        button({ variant, size, className }) +
-        (isDisabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "")
-      }
+      style={{
+        ...variantStyle,
+        ...sizeStyle,
+        borderRadius: borderRadius.sm,
+        outline: 'none',
+        opacity: isDisabled ? 0.5 : 1,
+        cursor: isDisabled ? 'not-allowed' : 'pointer',
+        transition: 'all 0.2s',
+        display: 'flex',
+        alignItems: 'center',
+        gap: spacing[2],
+        ...style,
+      }}
+      className={className}
       aria-label={asChild ? undefined : generateAriaLabel()}
       aria-describedby={asChild ? undefined : (isLoading ? "loading-description" : undefined)}
       aria-pressed={asChild ? undefined : (isToggle ? pressed : undefined)}
@@ -88,7 +119,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     >
       {isLoading ? (
         <>
-          <Loading color={loadingColor} label={loadingText} />
+          <Loading color={variant === 'primary' ? colors.text.primary : colors.primary[500]} label={loadingText} />
           <span id="loading-description" className="sr-only">
             {loadingText}
           </span>

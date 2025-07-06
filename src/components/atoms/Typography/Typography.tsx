@@ -1,33 +1,5 @@
 import React, { ComponentProps } from "react";
-import { tv, VariantProps } from "tailwind-variants";
-
-const text = tv({
-  base: ["text-gray-900 font-normal"],
-  variants: {
-    variant: {
-      primary: "text-gray-900",
-      secondary: "text-gray-600",
-      tertiary: "text-gray-500",
-    },
-    size: {
-      xs: "text-xs",
-      sm: "text-sm",
-      md: "text-md",
-      lg: "text-lg",
-      xl: "text-xl",
-      "2xl": "text-2xl",
-      "4xl": "text-4xl",
-      title1: "text-txl",
-      title2: "text-tlg",
-      title3: "text-tmd",
-    },
-  },
-
-  defaultVariants: {
-    variant: "primary",
-    size: "md",
-  },
-});
+import { colors, typography } from '../../../tokens';
 
 export type TypographyProps = ComponentProps<"p"> & {
   variant?: "primary" | "secondary" | "tertiary";
@@ -35,6 +7,7 @@ export type TypographyProps = ComponentProps<"p"> & {
   | "xs"
   | "sm"
   | "md"
+  | "lg"
   | "xl"
   | "2xl"
   | "4xl"
@@ -45,7 +18,27 @@ export type TypographyProps = ComponentProps<"p"> & {
   element?: keyof JSX.IntrinsicElements;
   semantic?: "heading" | "paragraph" | "list" | "listitem" | "emphasis" | "strong";
   level?: 1 | 2 | 3 | 4 | 5 | 6;
+  style?: React.CSSProperties;
 } & JSX.IntrinsicElements["p"];
+
+const variantColorMap = {
+  primary: colors.text.primary,
+  secondary: colors.text.secondary,
+  tertiary: colors.text.tertiary,
+};
+
+const sizeFontSizeMap = {
+  xs: '12px',
+  sm: '14px',
+  md: '16px',
+  lg: '18px',
+  xl: '20px',
+  '2xl': '24px',
+  '4xl': '32px',
+  title1: '28px',
+  title2: '24px',
+  title3: '20px',
+};
 
 const Typography = ({
   children,
@@ -55,6 +48,7 @@ const Typography = ({
   className,
   semantic,
   level,
+  style,
   ...rest
 }: TypographyProps) => {
   // Determina o elemento semântico correto
@@ -84,7 +78,14 @@ const Typography = ({
 
   return (
     <Element
-      className={text({ variant, size, className })}
+      style={{
+        color: variantColorMap[variant],
+        fontSize: sizeFontSizeMap[size],
+        fontWeight: typography.fontWeight.normal,
+        lineHeight: typography.lineHeight.normal,
+        ...(style || {}),
+      }}
+      className={className}
       role={ariaRole}
       aria-level={semantic === "heading" && level ? level : undefined}
       {...rest}

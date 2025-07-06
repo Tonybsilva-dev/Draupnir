@@ -1,24 +1,9 @@
 import Box from "../../atoms/Box/Box";
-import { tv } from "tailwind-variants";
 import Typography from "../../atoms/Typography/Typography";
 import { ComponentProps, useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "../../atoms/Button/Button";
 import { AlertCircle, CheckCircle2, Info, X, XCircle } from "lucide-react";
-
-const notice = tv({
-  base: [""],
-  variants: {
-    type: {
-      success: "bg-notice-success-bg text-notice-success-text",
-      error: "bg-notice-error-bg text-notice-error-text",
-      alert: "bg-notice-alert-bg text-notice-alert-text",
-      info: "bg-notice-info-bg text-notice-info-text",
-    },
-    defaultVariants: {
-      variant: "success",
-    },
-  },
-});
+import { colors, spacing, typography } from '../../../tokens';
 
 export type NoticeProps = ComponentProps<"div"> & {
   type: "alert" | "success" | "error" | "info";
@@ -31,15 +16,16 @@ export type NoticeProps = ComponentProps<"div"> & {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const getIcon = (type: NoticeProps["type"]) => {
+  const iconStyle = { color: colors.text.primary, width: 20, height: 20 };
   switch (type) {
     case "success":
-      return <CheckCircle2 className="w-5 h-5" aria-hidden="true" />;
+      return <CheckCircle2 style={iconStyle} aria-hidden="true" />;
     case "alert":
-      return <AlertCircle className="w-5 h-5" aria-hidden="true" />;
+      return <AlertCircle style={iconStyle} aria-hidden="true" />;
     case "error":
-      return <XCircle className="w-5 h-5" aria-hidden="true" />;
+      return <XCircle style={iconStyle} aria-hidden="true" />;
     case "info":
-      return <Info className="w-5 h-5" aria-hidden="true" />;
+      return <Info style={iconStyle} aria-hidden="true" />;
   }
 };
 
@@ -54,6 +40,25 @@ const getAriaLive = (type: NoticeProps["type"]) => {
     default:
       return "polite";
   }
+};
+
+const noticeStyleMap = {
+  success: {
+    backgroundColor: colors.success[50],
+    color: colors.success[700],
+  },
+  error: {
+    backgroundColor: colors.error[50],
+    color: colors.error[700],
+  },
+  alert: {
+    backgroundColor: colors.warning[50],
+    color: colors.warning[700],
+  },
+  info: {
+    backgroundColor: colors.info[50],
+    color: colors.info[700],
+  },
 };
 
 const Notice = ({
@@ -132,29 +137,35 @@ const Notice = ({
   return (
     <Box
       filledBackground
-      type={type}
-      className={"border-none min-w-[320px] max-w-[480px] mx-auto " + animationClass + (className || "")}
+      style={{
+        ...noticeStyleMap[type],
+        minWidth: 320,
+        maxWidth: 480,
+        margin: '0 auto',
+        border: 'none',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+      }}
+      className={animationClass + (className || "")}
       role="alert"
       aria-live={ariaLive}
       aria-labelledby={title ? `${noticeId}-title` : undefined}
       aria-describedby={`${noticeId}-message`}
       {...props}
     >
-      <div className={`flex justify-between items-center ${notice({ type })}`}>
-        <div className="flex gap-2 justify-between items-center">
-          <div className="px-2">{getIcon(type)}</div>
-          <div className="flex-1">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: spacing[2] }}>
+        <div style={{ display: 'flex', gap: spacing[2], alignItems: 'center' }}>
+          <div style={{ paddingLeft: spacing[2], paddingRight: spacing[2] }}>{getIcon(type)}</div>
+          <div style={{ flex: 1 }}>
             {title && (
               <div
                 id={`${noticeId}-title`}
-                className="font-semibold text-sm mb-1"
+                style={{ fontWeight: typography.fontWeight.semibold, fontSize: typography.text.sm, marginBottom: spacing[1] }}
               >
                 {title}
               </div>
             )}
             <Typography
               size={"md"}
-              className=""
               id={`${noticeId}-message`}
             >
               {message}
@@ -165,14 +176,14 @@ const Notice = ({
         {onClose && (
           <Button
             variant="ghost"
-            className="text-gray-600 hover:text-gray-900"
+            style={{ color: colors.text.secondary, padding: spacing[1], minWidth: 0, minHeight: 0 }}
             onClick={(e) => {
               e.stopPropagation();
               handleClose();
             }}
             aria-label={`Fechar notificação ${type}`}
           >
-            <X className="w-5 h-5 cursor-pointer" aria-hidden="true" />
+            <X style={{ width: 20, height: 20 }} aria-hidden="true" />
           </Button>
         )}
       </div>

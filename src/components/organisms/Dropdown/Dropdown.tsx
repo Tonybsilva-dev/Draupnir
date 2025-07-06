@@ -1,22 +1,26 @@
 import { ComponentProps, forwardRef, ReactNode } from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { twMerge } from 'tailwind-merge';
+import { colors, spacing, borders, borderRadius, typography } from '../../../tokens';
 
 export type DropdownTriggerProps = ComponentProps<typeof DropdownMenuPrimitive.Trigger>;
 
-const DropdownTrigger = forwardRef<HTMLButtonElement, DropdownTriggerProps>(({
-  className,
-  children,
-  ...props
-}, ref) => (
+const DropdownTrigger = forwardRef<HTMLButtonElement, DropdownTriggerProps>(({ className, children, style, ...props }, ref) => (
   <DropdownMenuPrimitive.Trigger
     ref={ref}
-    className={twMerge(
-      "inline-flex items-center justify-center text-sm font-medium transition-colors",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-      "disabled:pointer-events-none disabled:opacity-50",
-      className
-    )}
+    style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: typography.text.sm,
+      fontWeight: typography.fontWeight.medium,
+      background: 'none',
+      border: 'none',
+      outline: 'none',
+      cursor: 'pointer',
+      transition: 'color 0.2s',
+      ...(style || {}),
+    }}
+    className={className}
     {...props}
   >
     {children}
@@ -25,20 +29,25 @@ const DropdownTrigger = forwardRef<HTMLButtonElement, DropdownTriggerProps>(({
 
 DropdownTrigger.displayName = 'DropdownTrigger';
 
-const DropdownContent = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Content>>(({
-  className,
-  children,
-  ...props
-}, ref) => (
+const DropdownContent = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Content>>(({ className, children, style, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
       ref={ref}
-      className={twMerge(
-        "z-[9999] min-w-[8rem] overflow-hidden border border-gray-200 bg-white p-1 text-gray-900 shadow-lg",
-        "animate-fade-in",
-        "w-[var(--radix-dropdown-menu-trigger-width)]",
-        className
-      )}
+      style={{
+        zIndex: 9999,
+        minWidth: 128,
+        overflow: 'hidden',
+        border: `${borders.sm} solid ${colors.divider.default}`,
+        background: colors.background.light,
+        color: colors.text.primary,
+        padding: spacing[1],
+        borderRadius: borderRadius.md,
+        boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
+        fontSize: typography.text.sm,
+        fontFamily: typography.fontFamily.primary,
+        ...style,
+      }}
+      className={className}
       sideOffset={5}
       {...props}
     >
@@ -49,19 +58,26 @@ const DropdownContent = forwardRef<HTMLDivElement, ComponentProps<typeof Dropdow
 
 DropdownContent.displayName = 'DropdownContent';
 
-const DropdownItem = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Item>>(({
-  className,
-  children,
-  ...props
-}, ref) => (
+const DropdownItem = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Item>>(({ className, children, style, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
-    className={twMerge(
-      "relative flex cursor-default select-none items-center px-2 py-1.5 text-sm outline-none",
-      "transition-colors focus:bg-gray-50 focus:text-gray-900 data-[disabled]:pointer-events-none",
-      "data-[disabled]:opacity-50",
-      className
-    )}
+    style={{
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      cursor: 'pointer',
+      userSelect: 'none',
+      paddingLeft: spacing[2],
+      paddingRight: spacing[2],
+      paddingTop: spacing[2],
+      paddingBottom: spacing[2],
+      fontSize: typography.text.sm,
+      outline: 'none',
+      borderRadius: borderRadius.sm,
+      transition: 'background 0.2s, color 0.2s',
+      ...(style || {}),
+    }}
+    className={className}
     {...props}
   >
     {children}
@@ -70,32 +86,38 @@ const DropdownItem = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMe
 
 DropdownItem.displayName = 'DropdownItem';
 
-const DropdownSeparator = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Separator>>(({
-  className,
-  ...props
-}, ref) => (
+const DropdownSeparator = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Separator>>(({ className, style, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={twMerge(
-      "h-px bg-gray-200 my-1",
-      className
-    )}
+    style={{
+      height: 1,
+      background: colors.divider.default,
+      marginTop: spacing[1],
+      marginBottom: spacing[1],
+      border: 'none',
+      ...style,
+    }}
+    className={className}
     {...props}
   />
 ));
 
 DropdownSeparator.displayName = 'DropdownSeparator';
 
-const DropdownLabel = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Label>>(({
-  className,
-  ...props
-}, ref) => (
+const DropdownLabel = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMenuPrimitive.Label>>(({ className, style, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
-    className={twMerge(
-      "px-2 py-1.5 text-sm font-semibold text-gray-700",
-      className
-    )}
+    style={{
+      paddingLeft: spacing[2],
+      paddingRight: spacing[2],
+      paddingTop: spacing[2],
+      paddingBottom: spacing[2],
+      fontSize: typography.text.sm,
+      fontWeight: typography.fontWeight.semibold,
+      color: colors.text.secondary,
+      ...style,
+    }}
+    className={className}
     {...props}
   />
 ));

@@ -6,19 +6,42 @@ import Box from '../../atoms/Box/Box';
 import { SearchIcon, Globe, User, Settings as SettingsIcon, LogOut } from 'lucide-react';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Typography from '../../atoms/Typography/Typography';
+import { colors, spacing, borders, borderRadius, typography } from '../../../tokens';
 
 export const Header = () => {
   const [logged, setLogged] = useState(false);
 
   return (
-    <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200 relative">
+    <header
+      style={{
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: `${spacing[4]} ${spacing[6]}`,
+        background: colors.background.light,
+        borderBottom: `${borders.sm} solid ${colors.divider}`,
+        position: 'relative',
+        minHeight: 64,
+        boxSizing: 'border-box',
+      }}
+    >
       {/* Esquerda: Logo */}
-      <div className="flex items-center min-w-[120px]">
-        <Avatar size="lg" name="Logo" className="w-[120px] h-[40px] bg-transparent" />
+      <div style={{ display: 'flex', alignItems: 'center', minWidth: 120 }}>
+        <Avatar size="lg" name="Logo" style={{ width: 120, height: 40, background: 'transparent' }} />
       </div>
 
       {/* Centro: Barra de pesquisa usando Input do DS */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] max-w-[50vw]">
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 320,
+          maxWidth: '50vw',
+        }}
+      >
         <Input.Root>
           <Input.Prefix>
             <SearchIcon />
@@ -28,12 +51,12 @@ export const Header = () => {
       </div>
 
       {/* Direita: Navegação, Internacionalização, Login/Profile */}
-      <div className="flex items-center gap-2 ml-auto">
-        <nav className="flex items-center gap-1" role="navigation">
+      <div style={{ display: 'flex', alignItems: 'center', gap: spacing[2], marginLeft: 'auto' }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: spacing[1] }} role="navigation">
           <Dropdown>
             <Dropdown.Trigger asChild>
               <Button variant="ghost" aria-label="Internacionalização">
-                <Globe className="w-5 h-5" />
+                <Globe style={{ width: 20, height: 20 }} />
               </Button>
             </Dropdown.Trigger>
             <Dropdown.Content>
@@ -44,42 +67,42 @@ export const Header = () => {
                 <Typography size="xs">SPANISH</Typography>
               </Dropdown.Item>
               <Dropdown.Item >
-                <Typography size="xs" className="font-medium">PORTUGUESE</Typography>
+                <Typography size="xs" style={{ fontWeight: typography.fontWeight.medium }}>PORTUGUESE</Typography>
               </Dropdown.Item>
             </Dropdown.Content>
           </Dropdown>
         </nav>
         {!logged ? (
           <Button variant="primary" onClick={() => setLogged(true)}>
-            <Typography size="sm" className="font-medium">LOGIN</Typography>
+            <Typography size="sm" style={{ fontWeight: typography.fontWeight.medium }}>LOGIN</Typography>
           </Button>
         ) : (
           <Dropdown>
             <Dropdown.Trigger asChild>
-              <Button variant="outline" className="flex items-center gap-2 px-3">
-                <Avatar size="sm" name="User" className="bg-transparent w-1/3 justify-center" image='https://avatars.githubusercontent.com/u/54373473?v=4' />
-                <span className="hidden sm:inline">
-                  <Typography size="xs" className="font-medium">PROFILE</Typography>
+              <Button variant="outline" style={{ display: 'flex', alignItems: 'center', gap: spacing[2], paddingLeft: spacing[3], paddingRight: spacing[3] }}>
+                <Avatar size="sm" name="User" style={{ background: 'transparent', width: 32, height: 32, justifyContent: 'center' }} image='https://avatars.githubusercontent.com/u/54373473?v=4' />
+                <span style={{ display: 'inline' }}>
+                  <Typography size="xs" style={{ fontWeight: typography.fontWeight.medium }}>PROFILE</Typography>
                 </span>
               </Button>
             </Dropdown.Trigger>
             <Dropdown.Content>
               <Dropdown.Item>
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
+                <div style={{ display: 'flex', alignItems: 'center', gap: spacing[2] }}>
+                  <User style={{ width: 16, height: 16 }} />
                   <Typography size="xs">ACCOUNT</Typography>
                 </div>
               </Dropdown.Item>
               <Dropdown.Item>
-                <div className="flex items-center gap-2">
-                  <SettingsIcon className="w-4 h-4" />
+                <div style={{ display: 'flex', alignItems: 'center', gap: spacing[2] }}>
+                  <SettingsIcon style={{ width: 16, height: 16 }} />
                   <Typography size="xs">SETTINGS</Typography>
                 </div>
               </Dropdown.Item>
-              <Dropdown.Item onSelect={() => setLogged(false)} className="text-red-600">
-                <div className="flex items-center gap-2">
-                  <LogOut className="w-4 h-4" />
-                  <Typography size="xs" className="font-medium">LOGOUT</Typography>
+              <Dropdown.Item onSelect={() => setLogged(false)} style={{ color: colors.error[600] }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: spacing[2] }}>
+                  <LogOut style={{ width: 16, height: 16 }} />
+                  <Typography size="xs" style={{ fontWeight: typography.fontWeight.medium }}>LOGOUT</Typography>
                 </div>
               </Dropdown.Item>
             </Dropdown.Content>

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Select from './Select';
+import { colors, spacing } from '../../../tokens';
 
 const meta: Meta<typeof Select> = {
   title: "Components/Molecules/Select",
@@ -40,7 +41,7 @@ export const Default: Story = {
     defaultValue: 'option1',
   },
   render: (args) => (
-    <div className="w-[300px]">
+    <div style={{ width: '300px' }}>
       <Select {...args}>
         <Select.Trigger>
           <Select.Value placeholder="Select an option" />
@@ -62,8 +63,16 @@ export const WithLabel: Story = {
     defaultValue: 'option1',
   },
   render: (args) => (
-    <div className="w-[300px] space-y-2">
-      <label className="text-sm font-medium text-gray-700">Select an option</label>
+    <div style={{ width: '300px' }}>
+      <label style={{
+        fontSize: '14px',
+        fontWeight: 500,
+        color: colors.text.primary,
+        marginBottom: spacing[2],
+        display: 'block'
+      }}>
+        Select an option
+      </label>
       <Select {...args}>
         <Select.Trigger>
           <Select.Value placeholder="Choose..." />
@@ -88,7 +97,7 @@ export const Disabled: Story = {
     defaultValue: 'option1',
   },
   render: (args) => (
-    <div className="w-[300px]">
+    <div style={{ width: '300px' }}>
       <Select {...args} disabled>
         <Select.Trigger>
           <Select.Value placeholder="Select an option" />
@@ -110,7 +119,7 @@ export const WithGroups: Story = {
     defaultValue: 'fruits-apple',
   },
   render: (args) => (
-    <div className="w-[300px]">
+    <div style={{ width: '300px' }}>
       <Select {...args}>
         <Select.Trigger>
           <Select.Value placeholder="Select a category" />
@@ -139,7 +148,7 @@ export const Controlled: Story = {
     value: 'option1',
   },
   render: (args) => (
-    <div className="w-[300px] space-y-4">
+    <div style={{ width: '300px' }}>
       <Select {...args}>
         <Select.Trigger>
           <Select.Value placeholder="Select an option" />
@@ -152,7 +161,11 @@ export const Controlled: Story = {
           ))}
         </Select.Content>
       </Select>
-      <p className="text-sm text-gray-600">
+      <p style={{
+        fontSize: '14px',
+        color: colors.text.secondary,
+        marginTop: spacing[4]
+      }}>
         Selected value: {args.value || 'None'}
       </p>
     </div>
@@ -161,11 +174,19 @@ export const Controlled: Story = {
 
 export const MultipleSizes: Story = {
   render: () => (
-    <div className="space-y-4 w-[300px]">
-      <div>
-        <label className="text-sm font-medium text-gray-700 mb-2 block">Small</label>
+    <div style={{ width: '300px' }}>
+      <div style={{ marginBottom: spacing[4] }}>
+        <label style={{
+          fontSize: '14px',
+          fontWeight: 500,
+          color: colors.text.primary,
+          marginBottom: spacing[2],
+          display: 'block'
+        }}>
+          Small
+        </label>
         <Select defaultValue="option1">
-          <Select.Trigger className="h-8 text-xs">
+          <Select.Trigger style={{ height: spacing[4], fontSize: '12px' }}>
             <Select.Value placeholder="Select..." />
           </Select.Trigger>
           <Select.Content>
@@ -178,8 +199,16 @@ export const MultipleSizes: Story = {
         </Select>
       </div>
 
-      <div>
-        <label className="text-sm font-medium text-gray-700 mb-2 block">Medium (default)</label>
+      <div style={{ marginBottom: spacing[4] }}>
+        <label style={{
+          fontSize: '14px',
+          fontWeight: 500,
+          color: colors.text.primary,
+          marginBottom: spacing[2],
+          display: 'block'
+        }}>
+          Medium (default)
+        </label>
         <Select defaultValue="option1">
           <Select.Trigger>
             <Select.Value placeholder="Select..." />
@@ -195,9 +224,17 @@ export const MultipleSizes: Story = {
       </div>
 
       <div>
-        <label className="text-sm font-medium text-gray-700 mb-2 block">Large</label>
+        <label style={{
+          fontSize: '14px',
+          fontWeight: 500,
+          color: colors.text.primary,
+          marginBottom: spacing[2],
+          display: 'block'
+        }}>
+          Large
+        </label>
         <Select defaultValue="option1">
-          <Select.Trigger className="h-12 text-base">
+          <Select.Trigger style={{ height: spacing[8], fontSize: '16px' }}>
             <Select.Value placeholder="Select..." />
           </Select.Trigger>
           <Select.Content>

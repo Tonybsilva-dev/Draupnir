@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import { colors, spacing, borders, borderRadius } from '../../../tokens';
 
 export type BoxProps = {
   rounded?: boolean;
@@ -7,16 +8,38 @@ export type BoxProps = {
   filledBackground?: boolean;
   type?: "primary" | "secondary" | "dark" | "alert" | "success" | "error" | "info";
   children: React.ReactNode;
+  style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const boxClassMap = {
-  primary: "bg-gray-50 text-gray-900",
-  secondary: "bg-gray-100 text-gray-900",
-  dark: "bg-gray-900 text-white",
-  alert: "bg-yellow-50 text-yellow-800",
-  success: "bg-green-50 text-green-800",
-  error: "bg-red-50 text-red-800",
-  info: "bg-blue-50 text-blue-800",
+const boxStyleMap: Record<NonNullable<BoxProps['type']>, React.CSSProperties> = {
+  primary: {
+    backgroundColor: colors.background.light,
+    color: colors.text.primary,
+  },
+  secondary: {
+    backgroundColor: colors.background.default,
+    color: colors.text.primary,
+  },
+  dark: {
+    backgroundColor: colors.background.dark,
+    color: colors.text.secondary,
+  },
+  alert: {
+    backgroundColor: colors.warning[50],
+    color: colors.warning[700],
+  },
+  success: {
+    backgroundColor: colors.success[50],
+    color: colors.success[700],
+  },
+  error: {
+    backgroundColor: colors.error[50],
+    color: colors.error[700],
+  },
+  info: {
+    backgroundColor: colors.info[50],
+    color: colors.info[700],
+  },
 };
 
 const Box = ({
@@ -26,20 +49,22 @@ const Box = ({
   type = "primary",
   children,
   className,
+  style,
   ...rest
 }: BoxProps) => {
-  const classes = classNames(
-    {
-      // Borda só se explicitamente requisitada, e sempre clara
-      "border border-gray-200": border,
-      // Remove qualquer bg escuro padrão
-      // "bg-gray-900": filledBackground, // Removido para não poluir visual minimalista
-      [boxClassMap[type]]: type,
-    },
-    className
-  );
+  const variantStyle = boxStyleMap[type] || boxStyleMap.primary;
   return (
-    <div className={`p-2 ${classes}`} {...rest}>
+    <div
+      style={{
+        ...variantStyle,
+        padding: spacing[3], // 16px
+        border: border ? `${borders.sm} solid ${colors.divider}` : borders.none,
+        borderRadius: rounded ? borderRadius.sm : borderRadius.none,
+        ...(style || {}),
+      }}
+      className={className}
+      {...rest}
+    >
       {children}
     </div>
   );

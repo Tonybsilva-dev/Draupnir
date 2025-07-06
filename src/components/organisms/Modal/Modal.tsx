@@ -184,7 +184,7 @@ const ModalHeader: FunctionComponent<{
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing[4] }}>
       <div
         id="modal-title"
-        style={{ fontWeight: typography.fontWeight.bold, fontSize: typography.title.lg, textAlign: 'center', color: colors.text.primary, flex: 1 }}
+        style={{ fontWeight: typography.fontWeight.bold, fontSize: typography.text["2xl"], textAlign: 'center', color: colors.text.primary, flex: 1 }}
       >
         {children}
       </div>
@@ -200,7 +200,7 @@ const ModalHeader: FunctionComponent<{
         </button>
       )}
     </div>
-    <hr style={{ marginBottom: spacing[2], borderColor: colors.divider }} />
+    <hr style={{ marginBottom: spacing[2], borderColor: colors.divider.default }} />
   </>
 );
 

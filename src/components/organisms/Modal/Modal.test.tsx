@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Modal, { ModalHeader, ModalBody } from './Modal';
+import { Modal, ModalHeader, ModalBody } from './Modal';
 
 describe('Modal', () => {
   const user = userEvent.setup();
@@ -272,7 +272,7 @@ describe('Modal', () => {
       );
 
       const dialog = screen.getByRole('dialog');
-      expect(dialog.className).toContain('bg-white');
+      expect(dialog).toHaveStyle('background-color: rgb(var(--bg-light))');
     });
 
     it('deve aplicar variante warning', () => {
@@ -283,7 +283,7 @@ describe('Modal', () => {
       );
 
       const dialog = screen.getByRole('dialog');
-      expect(dialog.className).toContain('bg-yellow-50');
+      expect(dialog).toHaveStyle('background-color: rgba(245, 158, 11, 0.05)');
     });
 
     it('deve aplicar variante success', () => {
@@ -294,7 +294,7 @@ describe('Modal', () => {
       );
 
       const dialog = screen.getByRole('dialog');
-      expect(dialog.className).toContain('bg-green-50');
+      expect(dialog).toHaveStyle('background-color: rgba(58, 201, 34, 0.05)');
     });
   });
 
@@ -366,7 +366,7 @@ describe('Modal', () => {
   });
 
   describe('Animações', () => {
-    it('deve ter classes de animação', () => {
+    it('deve ter estilos de animação', () => {
       render(
         <Modal isOpen={true} onClose={() => { }}>
           <div>Content</div>
@@ -376,8 +376,8 @@ describe('Modal', () => {
       const backdrop = screen.getByRole('presentation');
       const dialog = screen.getByRole('dialog');
 
-      expect(backdrop.className).toContain('fixed');
-      expect(dialog.className).toContain('shadow-lg');
+      expect(backdrop).toHaveStyle('position: fixed');
+      expect(dialog).toHaveStyle('box-shadow: 0 4px 24px rgba(0,0,0,0.10)');
     });
   });
 

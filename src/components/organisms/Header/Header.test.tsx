@@ -16,9 +16,9 @@ describe('Header', () => {
   describe('Renderização e Estrutura', () => {
     it('renderiza o logo como Avatar transparente', () => {
       render(<Header />);
-      const logo = screen.getByRole('img', { name: /avatar of logo/i });
+      const logo = screen.getByRole('img', { name: /avatar de logo/i });
       expect(logo).toBeInTheDocument();
-      expect(logo).toHaveClass('bg-transparent');
+      expect(logo).toHaveStyle('background: transparent');
     });
 
     it('renderiza a barra de pesquisa centralizada', () => {
@@ -45,8 +45,8 @@ describe('Header', () => {
       const loginButton = screen.getByText('LOGIN').closest('button');
       expect(loginButton).toBeInTheDocument();
       expect(loginButton?.textContent?.toLowerCase()).toContain('login');
-      // Typography: verifica se há um elemento com font-medium
-      expect(loginButton?.querySelector('.font-medium')).toBeInTheDocument();
+      // Typography: verifica se há um elemento com font-weight: 500
+      expect(loginButton?.querySelector('p')).toHaveStyle('font-weight: 500');
     });
   });
 
@@ -75,7 +75,7 @@ describe('Header', () => {
       expect(screen.getByText(/PROFILE/i)).toBeInTheDocument();
       // Avatar do usuário deve ser transparente
       const avatar = screen.getAllByRole('img', { name: /user/i })[0];
-      expect(avatar).toHaveClass('bg-transparent');
+      expect(avatar).toHaveStyle('background: transparent');
     });
 
     it('mostra o dropdown de profile com ícones e opções corretas', async () => {
@@ -131,21 +131,19 @@ describe('Header', () => {
     });
     it('todos os textos principais usam Typography', () => {
       render(<Header />);
-      // Typography para login
-      expect(screen.getByText(/LOGIN/i).className).toMatch(/font-medium/);
-      // Verifica se o elemento LOGIN tem a classe font-medium
+      // Typography para login - verifica se o elemento LOGIN tem font-weight: 500
       const loginText = screen.getByText('LOGIN');
-      expect(loginText).toHaveClass('font-medium');
+      expect(loginText).toHaveStyle('font-weight: 500');
     });
 
-    it('Typography do PROFILE usa font-medium quando visível', async () => {
+    it('Typography do PROFILE usa font-weight: 500 quando visível', async () => {
       render(<Header />);
       // Login para mostrar o PROFILE
       const loginButton = screen.getByText('LOGIN').closest('button');
       await user.click(loginButton!);
-      // Verifica se o PROFILE tem Typography
+      // Verifica se o PROFILE tem Typography com font-weight: 500
       const profileText = screen.getByText(/PROFILE/i);
-      expect(profileText).toHaveClass('font-medium');
+      expect(profileText).toHaveStyle('font-weight: 500');
     });
   });
 
@@ -153,13 +151,13 @@ describe('Header', () => {
     it('Avatar do usuário e logo são sempre transparentes', async () => {
       render(<Header />);
       // Logo
-      const logo = screen.getByRole('img', { name: /avatar of logo/i });
-      expect(logo).toHaveClass('bg-transparent');
+      const logo = screen.getByRole('img', { name: /avatar de logo/i });
+      expect(logo).toHaveStyle('background: transparent');
       // Login e profile
       const loginButton = screen.getByText('LOGIN').closest('button');
       await user.click(loginButton!);
       const avatar = screen.getAllByRole('img', { name: /user/i })[0];
-      expect(avatar).toHaveClass('bg-transparent');
+      expect(avatar).toHaveStyle('background: transparent');
     });
     it('Ícones do dropdown de profile estão presentes', async () => {
       const { container } = render(<Header />);

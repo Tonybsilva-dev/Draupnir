@@ -47,7 +47,7 @@ export default function useStyleSwitch({
   };
 
   // Ícone
-  let iconColor = colors.divider.dark;
+  let iconColor: string = colors.divider.dark;
   if (enabled && !disabled) iconColor = colors.success[600];
   if (!enabled && !disabled) iconColor = colors.error[600];
   if (disabled) iconColor = colors.divider.default;

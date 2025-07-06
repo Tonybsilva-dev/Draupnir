@@ -119,7 +119,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     >
       {isLoading ? (
         <>
-          <Loading color={variant === 'primary' ? colors.text.primary : colors.primary[500]} label={loadingText} />
+          <Loading variant={variant === 'primary' ? 'dark' : 'light'} label={loadingText} />
           <span id="loading-description" className="sr-only">
             {loadingText}
           </span>

@@ -1,0 +1,94 @@
+import { Meta, Primary, Controls, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as CardStories from './Card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+O componente Card agrupa informações de forma visual e minimalista.
+
+## Features
+
+- **Composto:** Header, Content, Image, Action
+- **Variantes:** default, elevated, outlined, flat
+- **Tamanhos:** sm, md, lg
+- **Acessível:** ARIA, navegação por teclado
+- **Responsivo:** Adapta-se a diferentes tamanhos de tela
+
+## Componente
+<Primary />
+<Controls />
+
+## Exemplo
+<Canvas>
+  <Story of={CardStories.CompleteExample} />
+</Canvas>
+
+## Uso
+
+```tsx
+import { Card, CardHeader, CardContent, CardImage, CardAction } from "@/components/organisms/Card";
+
+<Card>
+  <Card.Image src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80" alt="Produto Premium" aspectRatio="square" />
+  <Card.Header>
+    <Typography size="xl" className="font-semibold">Produto Premium</Typography>
+  </Card.Header>
+  <Typography size="sm" className="text-gray-500 mb-2">Categoria: Eletrônicos</Typography>
+  <Card.Content>
+    <p className="text-gray-700">Descrição detalhada do produto e seus benefícios.</p>
+  </Card.Content>
+  <Card.Action size="full">Comprar Agora</Card.Action>
+</Card>
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Conteúdo do card.</td>
+    </tr>
+    <tr>
+      <td><b>variant</b></td>
+      <td><code>'default' | 'elevated' | 'outlined' | 'flat'</code></td>
+      <td><code>'default'</code></td>
+      <td>Variante visual do card.</td>
+    </tr>
+    <tr>
+      <td><b>size</b></td>
+      <td><code>'sm' | 'md' | 'lg'</code></td>
+      <td><code>'md'</code></td>
+      <td>Tamanho do card.</td>
+    </tr>
+    <tr>
+      <td><b>onClick</b></td>
+      <td><code>() =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback de clique (opcional).</td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Desabilita o card.</td>
+    </tr>
+    <tr>
+      <td><b>loading</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Exibe estado de carregamento.</td>
+    </tr>
+  </tbody>
+</table> 

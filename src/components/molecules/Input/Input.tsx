@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef } from "react";
+import React, { ComponentProps, forwardRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type InputPrefixProps = ComponentProps<"div">;
@@ -34,6 +34,7 @@ const InputControl = forwardRef<HTMLInputElement, InputControlProps>(
         aria-required={required}
         aria-autocomplete={autocomplete}
         aria-describedby={describedBy || undefined}
+        id={id}
         {...props}
       />
     );
@@ -46,7 +47,7 @@ export type InputRootProps = ComponentProps<"div"> & {
   errorMessage?: string;
   label?: string;
   required?: boolean;
-  id?: string;
+  children: ReactNode;
 };
 
 function InputRoot({
@@ -55,11 +56,16 @@ function InputRoot({
   className,
   children,
   required = false,
-  id,
   ...props
 }: InputRootProps) {
   const hasError = !!errorMessage;
-  const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
+
+  // Extract id from children (Input.Control)
+  const inputElement = React.Children.toArray(children).find(
+    (child) => React.isValidElement(child) && child.type === InputControl
+  ) as React.ReactElement<InputControlProps> | undefined;
+
+  const inputId = inputElement?.props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
   const errorId = hasError ? `${inputId}-error` : undefined;
 
   return (

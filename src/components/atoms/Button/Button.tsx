@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 import Loading from "../../molecules/Loading/Loading";
 
@@ -46,7 +46,7 @@ export type ButtonProps = ComponentProps<"button"> &
     asChild?: boolean;
   };
 
-export function Button({
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   variant,
   size,
   className,
@@ -57,7 +57,7 @@ export function Button({
   asChild = false,
   children,
   ...props
-}: ButtonProps) {
+}, ref) => {
   const isDisabled = props.disabled || isLoading;
   const loadingColor = variant === "primary" ? "bg-white" : "bg-primary";
 
@@ -74,6 +74,7 @@ export function Button({
 
   return (
     <button
+      ref={ref}
       {...props}
       disabled={isDisabled}
       className={
@@ -97,6 +98,8 @@ export function Button({
       )}
     </button>
   );
-}
+});
 
-export default Button
+Button.displayName = "Button";
+
+export default Button;

@@ -1,11 +1,12 @@
 {
   "name": "draupnir-ds",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": false,
   "main": "src/components/index.ts",
   "author": {
     "name": "Antonio Bernardino da Silva",
-    "email": "contato@antoniobsilva.com.br"
+    "email": "contato@antoniobsilva.com.br",
+    "url": "https://www.linkedin.com/in/tony-silva/"
   },
   "scripts": {
     "dev": "next dev",

@@ -1,58 +1,89 @@
 import { useState } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
+import { Input } from '../../molecules/Input/Input';
+import { Button } from '../../atoms/Button/Button';
+import Box from '../../atoms/Box/Box';
+import { SearchIcon, Globe, User, Settings as SettingsIcon, LogOut } from 'lucide-react';
+import Avatar from '../../atoms/Avatar/Avatar';
+import Typography from '../../atoms/Typography/Typography';
 
 export const Header = () => {
-  const [logged, setLogged] = useState(true);
+  const [logged, setLogged] = useState(false);
 
   return (
-    <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
-      {/* Left: Logo */}
-      <div className="flex items-center gap-2 min-w-[120px]">
-        <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-          <span className="text-black font-bold text-sm">D</span>
-        </div>
-        <span className="font-semibold text-gray-900">Draupnir</span>
+    <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200 relative">
+      {/* Esquerda: Logo */}
+      <div className="flex items-center min-w-[120px]">
+        <Avatar size="lg" name="Logo" className="w-[120px] h-[40px] bg-transparent" />
       </div>
 
-      {/* Center: Navigation */}
-      <nav className="hidden md:flex items-center gap-6">
-        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-          Dashboard
-        </a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-          Projects
-        </a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-          Team
-        </a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-          Settings
-        </a>
-      </nav>
+      {/* Centro: Barra de pesquisa usando Input do DS */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] max-w-[50vw]">
+        <Input.Root>
+          <Input.Prefix>
+            <SearchIcon />
+          </Input.Prefix>
+          <Input.Control placeholder="Search..." />
+        </Input.Root>
+      </div>
 
-      {/* Right: User */}
-      <div className="flex items-center gap-4 min-w-[180px] justify-end">
-        {logged ? (
+      {/* Direita: Navegação, Internacionalização, Login/Profile */}
+      <div className="flex items-center gap-2 ml-auto">
+        <nav className="flex items-center gap-1" role="navigation">
           <Dropdown>
             <Dropdown.Trigger asChild>
-              <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-50 transition">
-                <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
-                <span className="text-sm text-gray-700">User</span>
-              </button>
+              <Button variant="ghost" aria-label="Internacionalização">
+                <Globe className="w-5 h-5" />
+              </Button>
             </Dropdown.Trigger>
             <Dropdown.Content>
-              <Dropdown.Item>Profile</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item onSelect={() => setLogged(false)} className="text-red-600">Logout</Dropdown.Item>
+              <Dropdown.Item>
+                <Typography size="xs">ENGLISH</Typography>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Typography size="xs">SPANISH</Typography>
+              </Dropdown.Item>
+              <Dropdown.Item >
+                <Typography size="xs" className="font-medium">PORTUGUESE</Typography>
+              </Dropdown.Item>
             </Dropdown.Content>
           </Dropdown>
+        </nav>
+        {!logged ? (
+          <Button variant="primary" onClick={() => setLogged(true)}>
+            <Typography size="sm" className="font-medium">LOGIN</Typography>
+          </Button>
         ) : (
-          <button
-            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition"
-            onClick={() => setLogged(true)}
-          >
-            Login
-          </button>
+          <Dropdown>
+            <Dropdown.Trigger asChild>
+              <Button variant="outline" className="flex items-center gap-2 px-3">
+                <Avatar size="sm" name="User" className="bg-transparent w-1/3 justify-center" image='https://avatars.githubusercontent.com/u/54373473?v=4' />
+                <span className="hidden sm:inline">
+                  <Typography size="xs" className="font-medium">PROFILE</Typography>
+                </span>
+              </Button>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+              <Dropdown.Item>
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4" />
+                  <Typography size="xs">ACCOUNT</Typography>
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <div className="flex items-center gap-2">
+                  <SettingsIcon className="w-4 h-4" />
+                  <Typography size="xs">SETTINGS</Typography>
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Item onSelect={() => setLogged(false)} className="text-red-600">
+                <div className="flex items-center gap-2">
+                  <LogOut className="w-4 h-4" />
+                  <Typography size="xs" className="font-medium">LOGOUT</Typography>
+                </div>
+              </Dropdown.Item>
+            </Dropdown.Content>
+          </Dropdown>
         )}
       </div>
     </header>

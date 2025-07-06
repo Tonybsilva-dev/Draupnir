@@ -80,10 +80,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({
     <div
       ref={ref}
       className={twMerge(
-        'rounded-lg transition-all duration-200',
+        'rounded-lg transition-all duration-300 ease-in-out',
         cardVariants[variant],
         cardSizes[size],
-        isClickable && 'cursor-pointer hover:scale-[1.02]',
+        isClickable && 'cursor-pointer hover:scale-103',
         disabled && 'opacity-50 cursor-not-allowed',
         loading && 'animate-pulse',
         className

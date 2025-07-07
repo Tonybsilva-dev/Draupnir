@@ -5,7 +5,7 @@ import { colors, spacing, borders, borderRadius, typography } from '../../../tok
 const buttonStyleMap = {
   primary: {
     backgroundColor: colors.primary[500],
-    color: colors.text.primary,
+    color: colors.text.contrast,
     border: borders.none,
   },
   secondary: {
@@ -16,16 +16,15 @@ const buttonStyleMap = {
   outline: {
     backgroundColor: colors.background.light,
     color: colors.text.primary,
-    border: `${borders.sm} solid ${colors.divider}`,
+    border: `${borders.sm} solid ${colors.divider.default}`,
   },
   ghost: {
-    backgroundColor: 'transparent',
     color: colors.text.secondary,
     border: borders.none,
   },
   danger: {
     backgroundColor: colors.error[600],
-    color: colors.text.primary,
+    color: colors.text.contrast,
     border: borders.none,
   },
 };
@@ -101,7 +100,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
       style={{
         ...variantStyle,
         ...sizeStyle,
-        borderRadius: borderRadius.sm,
+        borderRadius: borderRadius.none,
         outline: 'none',
         opacity: isDisabled ? 0.5 : 1,
         cursor: isDisabled ? 'not-allowed' : 'pointer',
@@ -109,9 +108,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
         display: 'flex',
         alignItems: 'center',
         gap: spacing[2],
+        ...(variant === 'ghost' ? { ':hover': { background: colors.hoverGhost } } : {}),
         ...style,
       }}
-      className={className}
+      className={`${className ?? ''} ${variant === 'ghost' ? 'button-ghost' : ''}`}
       aria-label={asChild ? undefined : generateAriaLabel()}
       aria-describedby={asChild ? undefined : (isLoading ? "loading-description" : undefined)}
       aria-pressed={asChild ? undefined : (isToggle ? pressed : undefined)}

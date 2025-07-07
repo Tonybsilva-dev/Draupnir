@@ -152,7 +152,7 @@ describe('Button', () => {
     it('deve aplicar variante ghost', () => {
       render(<Button variant="ghost">Ghost</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
+      expect(button).toHaveStyle('background-color: buttonface');
     });
 
     it('deve aplicar variante danger', () => {

@@ -74,7 +74,7 @@ export const Header = () => {
         </nav>
         {!logged ? (
           <Button variant="primary" onClick={() => setLogged(true)}>
-            <Typography size="sm" style={{ fontWeight: typography.fontWeight.medium }}>LOGIN</Typography>
+            <Typography size="sm" style={{ fontWeight: typography.fontWeight.medium, color: colors.text.contrast }}>LOGIN</Typography>
           </Button>
         ) : (
           <Dropdown>

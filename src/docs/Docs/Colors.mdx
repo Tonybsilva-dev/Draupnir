@@ -15,39 +15,39 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 <ColorPalette>
   <ColorItem
     title="Background"
-    subtitle="Application backgrounds"
+    subtitle="Cores de fundo da aplicação"
     colors={{
-      BgLight: "#FFFFFF",
-      Bg: "#F5F5F5",
-      BgDisabled: "#EFEFEF",
+      BgLight: "rgb(var(--bg-light))",
+      Bg: "rgb(var(--background))",
+      BgDisabled: "rgb(var(--bg-disabled))",
     }}
   />
   <ColorItem
     title="Gray scale"
-    subtitle="Texts and neutral elements"
+    subtitle="Textos e elementos neutros"
     colors={{
-        TextoPrimario: "#212121",
-        TextoSecundario: "#5C5C5C",
-        TextoTerciario: "#747474",
-        TextoDesativado: "#8A8A8A",
-        Borda: "#BDBDBD",
+        Primário: "rgb(var(--text-primary))",
+        Secundário: "rgb(var(--text-secondary))",
+        Terciário: "rgb(var(--text-tertiary))",
+        Desativado: "rgb(var(--text-disabled))",
+        Borda: "rgb(var(--outline))",
     }}
   />
   <ColorItem
     title="Primary"
-    subtitle="Solar yellow - main color"
+    subtitle="Cor principal do sistema (definida por --primary)"
     colors={{
-        Primary: "#FFD600",
-        Hover: "#FFEB3B",
-        Click: "#FFC228",
-        Contrast: "#212121",
+        Primary: "rgb(var(--primary))",
+        Hover: "rgb(var(--hover))",
+        Click: "rgb(var(--click))",
+        Contrast: "rgb(var(--text-contrast))",
     }}
   />
   <ColorItem
     title="Secondary"
-    subtitle="Bluish gray - secondary color"
+    subtitle="Cor secundária do sistema (definida por --secondary, verde)"
     colors={{
-        Secondary: "#3A4F63",
+        Secondary: "rgb(var(--secondary))",
         Contrast: "#FFFFFF",
     }}
   />
@@ -90,31 +90,31 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 Each color has a scale from 50 to 900, allowing subtle variations for different contexts.
 
-### Primary Scale (Solar Yellow)
+### Primary Scale (Token)
 
-- **50**: rgba(255, 214, 0, 0.05) - Very light background
-- **100**: rgba(255, 214, 0, 0.1) - Light background
-- **200**: rgba(255, 214, 0, 0.2) - Medium-light background
-- **300**: rgba(255, 214, 0, 0.3) - Medium background
-- **400**: rgba(255, 214, 0, 0.4) - Medium-dark background
-- **500**: #FFD600 - Main color (Solar Yellow)
-- **600**: #FFEB3B - Hover state
-- **700**: #FFC228 - Click state
-- **800**: rgba(255, 214, 0, 0.8) - Dark color
-- **900**: rgba(255, 214, 0, 0.9) - Very dark color
+- **50**: rgba(var(--primary), 0.05) - Very light background
+- **100**: rgba(var(--primary), 0.1) - Light background
+- **200**: rgba(var(--primary), 0.2) - Medium-light background
+- **300**: rgba(var(--primary), 0.3) - Medium background
+- **400**: rgba(var(--primary), 0.4) - Medium-dark background
+- **500**: rgb(var(--primary)) - Main color (Solar Yellow)
+- **600**: rgb(var(--hover)) - Hover state
+- **700**: rgb(var(--click)) - Click state
+- **800**: rgba(var(--primary), 0.8) - Dark color
+- **900**: rgba(var(--primary), 0.9) - Very dark color
 
-### Secondary Scale (Bluish Gray)
+### Secondary Scale (Token)
 
-- **50**: rgba(58, 79, 99, 0.05) - Very light background
-- **100**: rgba(58, 79, 99, 0.1) - Light background
-- **200**: rgba(58, 79, 99, 0.2) - Medium-light background
-- **300**: rgba(58, 79, 99, 0.3) - Medium background
-- **400**: rgba(58, 79, 99, 0.4) - Medium-dark background
-- **500**: #3A4F63 - Main color (Bluish Gray)
-- **600**: #2d3f4f - Dark secondary
-- **700**: #1f2b36 - Darker secondary
-- **800**: rgba(58, 79, 99, 0.8) - Dark color
-- **900**: rgba(58, 79, 99, 0.9) - Very dark color
+- **50**: rgba(76, 175, 80, 0.05) - Very light background
+- **100**: rgba(76, 175, 80, 0.1) - Light background
+- **200**: rgba(76, 175, 80, 0.2) - Medium-light background
+- **300**: rgba(76, 175, 80, 0.3) - Medium background
+- **400**: rgba(76, 175, 80, 0.4) - Medium-dark background
+- **500**: rgb(var(--secondary)) - Main color (Bluish Gray)
+- **600**: rgba(60, 140, 64, 1) - Dark secondary
+- **700**: rgba(45, 105, 48, 1) - Darker secondary
+- **800**: rgba(30, 70, 32, 1) - Dark color
+- **900**: rgba(15, 35, 16, 1) - Very dark color
 
 ### Gray Scale
 
@@ -140,15 +140,15 @@ import { colors } from '@/tokens';
 ### Usage Examples
 
 ```tsx
-// Primary colors (Solar Yellow)
-const primaryColor = colors.primary[500];  // #FFD600
-const primaryLight = colors.primary[100];  // rgba(255, 214, 0, 0.1)
-const primaryDark = colors.primary[700];   // #FFC228
+// Cores primárias
+const primaryColor = colors.primary[500];  // rgb(var(--primary))
+const primaryLight = colors.primary[100];  // rgba(var(--primary), 0.1)
+const primaryDark = colors.primary[700];   // rgb(var(--click))
 
-// Secondary colors (Bluish Gray)
-const secondaryColor = colors.secondary[500];  // #3A4F63
-const secondaryLight = colors.secondary[100];  // rgba(58, 79, 99, 0.1)
-const secondaryDark = colors.secondary[700];   // #1f2b36
+// Cores secundárias
+const secondaryColor = colors.secondary[500];  // rgb(var(--secondary))
+const secondaryLight = colors.secondary[100];  // rgba(76, 175, 80, 0.1)
+const secondaryDark = colors.secondary[700];   // rgba(45, 105, 48, 1)
 
 // Semantic colors
 const successColor = colors.success[500];  // #3ac922

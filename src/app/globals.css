@@ -143,3 +143,19 @@ html {
   background: rgb(var(--divider-light));
   transition: background 0.2s;
 }
+
+.select-item:hover,
+.select-item[data-state="highlighted"] {
+  background: rgb(var(--divider-light));
+  color: rgb(var(--primary));
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover,
+.dropdown-item[data-state="highlighted"] {
+  background: rgb(var(--divider-light));
+  color: rgb(var(--primary));
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}

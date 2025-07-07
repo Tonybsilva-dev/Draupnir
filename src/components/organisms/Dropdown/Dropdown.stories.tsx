@@ -128,36 +128,6 @@ export const Basic: StoryObj = {
 };
 
 /**
- * ## Dropdown with Icons
- *
- * Dropdown with icons for better visual identification.
- */
-export const WithIcons: StoryObj = {
-  render: () => (
-    <Dropdown>
-      <Dropdown.Trigger>
-        <Button variant="outline" asChild>
-          Profile
-          <ChevronDown className="h-4 w-4" />
-        </Button>
-      </Dropdown.Trigger>
-      <Dropdown.Content>
-        <Dropdown.Item onSelect={() => console.log("Profile selected")}> <User className="mr-2 h-4 w-4" /> Profile </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Settings selected")}> <Settings className="mr-2 h-4 w-4" /> Settings </Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("Logout selected")}> <LogOut className="mr-2 h-4 w-4" /> Logout </Dropdown.Item>
-      </Dropdown.Content>
-    </Dropdown>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: "Dropdown with icons for better visual identification of options.",
-      },
-    },
-  },
-};
-
-/**
  * ## Dropdown with Label
  *
  * Dropdown with label and separators for better organization.

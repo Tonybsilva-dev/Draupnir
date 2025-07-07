@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef, ReactNode } from 'react';
+import { ComponentProps, forwardRef, ReactNode, useRef, useState, useEffect, cloneElement, isValidElement } from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { colors, spacing, borders, borderRadius, typography } from '../../../tokens';
 
@@ -41,7 +41,7 @@ const DropdownContent = forwardRef<HTMLDivElement, ComponentProps<typeof Dropdow
         background: colors.background.light,
         color: colors.text.primary,
         padding: spacing[1],
-        borderRadius: borderRadius.md,
+        borderRadius: borderRadius.none,
         boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
         fontSize: typography.text.sm,
         fontFamily: typography.fontFamily.primary,
@@ -77,7 +77,7 @@ const DropdownItem = forwardRef<HTMLDivElement, ComponentProps<typeof DropdownMe
       transition: 'background 0.2s, color 0.2s',
       ...(style || {}),
     }}
-    className={className}
+    className={`dropdown-item ${className ?? ''}`}
     {...props}
   >
     {children}
@@ -129,11 +129,50 @@ export type DropdownProps = {
   onOpenChange?: (open: boolean) => void;
 };
 
-export const Dropdown = ({ children, onOpenChange }: DropdownProps) => (
-  <DropdownMenuPrimitive.Root onOpenChange={onOpenChange}>
-    {children}
-  </DropdownMenuPrimitive.Root>
-);
+export const Dropdown = ({ children, onOpenChange }: DropdownProps) => {
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const [triggerWidth, setTriggerWidth] = useState<number | undefined>(undefined);
+
+  // Atualiza largura ao abrir o dropdown
+  const handleOpenChange = (open: boolean) => {
+    if (open && triggerRef.current) {
+      setTriggerWidth(triggerRef.current.offsetWidth);
+    }
+    if (onOpenChange) onOpenChange(open);
+  };
+
+  // Clona Trigger e Content para passar ref e largura
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const newChildren = childrenArray.map(child => {
+    if (
+      isValidElement(child) &&
+      child.type &&
+      (child.type as any).displayName === 'DropdownTrigger'
+    ) {
+      return cloneElement(child as React.ReactElement<any>, { ref: triggerRef });
+    }
+    if (
+      isValidElement(child) &&
+      child.type &&
+      (child.type as any).displayName === 'DropdownContent'
+    ) {
+      return cloneElement(child as React.ReactElement<any>, {
+        style: {
+          ...((child.props as any).style),
+          minWidth: triggerWidth,
+          // width removido para permitir expansão do conteúdo
+        },
+      });
+    }
+    return child;
+  });
+
+  return (
+    <DropdownMenuPrimitive.Root onOpenChange={handleOpenChange}>
+      {newChildren}
+    </DropdownMenuPrimitive.Root>
+  );
+};
 
 Dropdown.Trigger = DropdownTrigger;
 Dropdown.Content = DropdownContent;

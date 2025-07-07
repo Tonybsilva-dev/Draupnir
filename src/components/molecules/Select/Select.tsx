@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef, ReactNode } from 'react';
+import { ComponentProps, forwardRef, ReactNode, useRef, useState, useEffect, cloneElement, isValidElement } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDown, Check } from 'lucide-react';
 import { colors, spacing, borders } from '../../../tokens';
@@ -49,6 +49,7 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(({ classNam
       style={{
         position: 'relative',
         zIndex: 50,
+        width: 'var(--radix-select-trigger-width)',
         minWidth: 'var(--radix-select-trigger-width)',
         overflow: 'hidden',
         border: `${borders.sm} solid ${colors.divider.default}`,
@@ -114,7 +115,7 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ className, chi
       transition: 'background 0.2s, color 0.2s',
       ...(style || {}),
     }}
-    className={className}
+    className={`select-item ${className ?? ''}`}
     {...props}
   >
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -147,11 +148,48 @@ export type SelectProps = {
   disabled?: boolean;
 };
 
-export const Select = ({ children, value, onValueChange, defaultValue, disabled }: SelectProps) => (
-  <SelectPrimitive.Root value={value} onValueChange={onValueChange} defaultValue={defaultValue} disabled={disabled}>
-    {children}
-  </SelectPrimitive.Root>
-);
+export const Select = ({ children, value, onValueChange, defaultValue, disabled }: SelectProps) => {
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const [triggerWidth, setTriggerWidth] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    if (triggerRef.current) {
+      setTriggerWidth(triggerRef.current.offsetWidth);
+    }
+  }, [children]);
+
+  // Clona o Trigger para passar o ref
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const newChildren = childrenArray.map(child => {
+    if (
+      isValidElement(child) &&
+      child.type &&
+      (child.type as any).displayName === 'SelectTrigger'
+    ) {
+      return cloneElement(child as React.ReactElement<any>, { ref: triggerRef });
+    }
+    if (
+      isValidElement(child) &&
+      child.type &&
+      (child.type as any).displayName === 'SelectContent'
+    ) {
+      return cloneElement(child as React.ReactElement<any>, {
+        style: {
+          ...((child.props as any).style),
+          minWidth: triggerWidth,
+          width: triggerWidth,
+        },
+      });
+    }
+    return child;
+  });
+
+  return (
+    <SelectPrimitive.Root value={value} onValueChange={onValueChange} defaultValue={defaultValue} disabled={disabled}>
+      {newChildren}
+    </SelectPrimitive.Root>
+  );
+};
 
 Select.Trigger = SelectTrigger;
 Select.Content = SelectContent;

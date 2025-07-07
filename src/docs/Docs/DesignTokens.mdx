@@ -28,39 +28,39 @@ The Draupnir color system is based on a minimalist, modern, and accessible palet
 <ColorPalette>
   <ColorItem
     title="Background"
-    subtitle="Application backgrounds"
+    subtitle="Cores de fundo da aplicação"
     colors={{
-      BgLight: "#FFFFFF",
-      Bg: "#F5F5F5",
-      BgDisabled: "#EFEFEF",
+      BgLight: "rgb(var(--bg-light))",
+      Bg: "rgb(var(--background))",
+      BgDisabled: "rgb(var(--bg-disabled))",
     }}
   />
   <ColorItem
     title="Gray scale"
-    subtitle="Texts and neutral elements"
+    subtitle="Textos e elementos neutros"
     colors={{
-        TextoPrimario: "#212121",
-        TextoSecundario: "#5C5C5C",
-        TextoTerciario: "#747474",
-        TextoDesativado: "#8A8A8A",
-        Borda: "#BDBDBD",
+        Primário: "rgb(var(--text-primary))",
+        Secundário: "rgb(var(--text-secondary))",
+        Terciário: "rgb(var(--text-tertiary))",
+        Desativado: "rgb(var(--text-disabled))",
+        Borda: "rgb(var(--outline))",
     }}
   />
   <ColorItem
     title="Primary"
-    subtitle="Solar yellow - main color"
+    subtitle="Cor principal do sistema (definida por --primary)"
     colors={{
-        Primary: "#FFD600",
-        Hover: "#FFEB3B",
-        Click: "#FFC228",
-        Contrast: "#212121",
+        Primary: "rgb(var(--primary))",
+        Hover: "rgb(var(--hover))",
+        Click: "rgb(var(--click))",
+        Contrast: "rgb(var(--text-contrast))",
     }}
   />
   <ColorItem
     title="Secondary"
-    subtitle="Bluish gray - secondary color"
+    subtitle="Cor secundária do sistema (definida por --secondary, verde)"
     colors={{
-        Secondary: "#3A4F63",
+        Secondary: "rgb(var(--secondary))",
         Contrast: "#FFFFFF",
     }}
   />
@@ -106,17 +106,29 @@ Each color has a scale from 50 to 900, allowing subtle variations for different 
 ```tsx
 import { colors } from '@/tokens';
 
-// Primary colors
-colors.primary[50]   // rgba(var(--primary), 0.05) - Very light background
-colors.primary[100]  // rgba(var(--primary), 0.1)  - Light background
-colors.primary[200]  // rgba(var(--primary), 0.2)  - Medium-light background
-colors.primary[300]  // rgba(var(--primary), 0.3)  - Medium background
-colors.primary[400]  // rgba(var(--primary), 0.4)  - Medium-dark background
-colors.primary[500]  // rgb(var(--primary))        - Main color
-colors.primary[600]  // rgb(var(--hover))          - Hover color
-colors.primary[700]  // rgb(var(--click))          - Click color
-colors.primary[800]  // rgba(var(--primary), 0.8)  - Dark color
-colors.primary[900]  // rgba(var(--primary), 0.9)  - Very dark color
+// Cores primárias
+colors.primary[50]   // rgba(var(--primary), 0.05)
+colors.primary[100]  // rgba(var(--primary), 0.1)
+colors.primary[200]  // rgba(var(--primary), 0.2)
+colors.primary[300]  // rgba(var(--primary), 0.3)
+colors.primary[400]  // rgba(var(--primary), 0.4)
+colors.primary[500]  // rgb(var(--primary))
+colors.primary[600]  // rgb(var(--hover))
+colors.primary[700]  // rgb(var(--click))
+colors.primary[800]  // rgba(var(--primary), 0.8)
+colors.primary[900]  // rgba(var(--primary), 0.9)
+
+// Cores secundárias
+colors.secondary[50]   // rgba(76, 175, 80, 0.05)
+colors.secondary[100]  // rgba(76, 175, 80, 0.1)
+colors.secondary[200]  // rgba(76, 175, 80, 0.2)
+colors.secondary[300]  // rgba(76, 175, 80, 0.3)
+colors.secondary[400]  // rgba(76, 175, 80, 0.4)
+colors.secondary[500]  // rgb(var(--secondary))
+colors.secondary[600]  // rgba(60, 140, 64, 1)
+colors.secondary[700]  // rgba(45, 105, 48, 1)
+colors.secondary[800]  // rgba(30, 70, 32, 1)
+colors.secondary[900]  // rgba(15, 35, 16, 1)
 ```
 
 ## Typography

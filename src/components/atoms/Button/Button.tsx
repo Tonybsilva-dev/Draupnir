@@ -10,7 +10,7 @@ const buttonStyleMap = {
   },
   secondary: {
     backgroundColor: colors.secondary[500],
-    color: colors.text.primary,
+    color: colors.text.contrast,
     border: borders.none,
   },
   outline: {

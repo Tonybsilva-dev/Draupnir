@@ -28,7 +28,7 @@ The Draupnir color system is based on a minimalist, modern, and accessible palet
 <ColorPalette>
   <ColorItem
     title="Background"
-    subtitle="Cores de fundo da aplicação"
+    subtitle="Application backgrounds"
     colors={{
       BgLight: "rgb(var(--bg-light))",
       Bg: "rgb(var(--background))",
@@ -37,18 +37,18 @@ The Draupnir color system is based on a minimalist, modern, and accessible palet
   />
   <ColorItem
     title="Gray scale"
-    subtitle="Textos e elementos neutros"
+    subtitle="Texts and neutral elements"
     colors={{
-        Primário: "rgb(var(--text-primary))",
-        Secundário: "rgb(var(--text-secondary))",
-        Terciário: "rgb(var(--text-tertiary))",
-        Desativado: "rgb(var(--text-disabled))",
-        Borda: "rgb(var(--outline))",
+        Primary: "rgb(var(--text-primary))",
+        Secondary: "rgb(var(--text-secondary))",
+        Tertiary: "rgb(var(--text-tertiary))",
+        Disabled: "rgb(var(--text-disabled))",
+        Border: "rgb(var(--outline))",
     }}
   />
   <ColorItem
     title="Primary"
-    subtitle="Cor principal do sistema (definida por --primary)"
+    subtitle="Main system color (defined by --primary)"
     colors={{
         Primary: "rgb(var(--primary))",
         Hover: "rgb(var(--hover))",
@@ -58,7 +58,7 @@ The Draupnir color system is based on a minimalist, modern, and accessible palet
   />
   <ColorItem
     title="Secondary"
-    subtitle="Cor secundária do sistema (definida por --secondary, verde)"
+    subtitle="Secondary system color (defined by --secondary, green)"
     colors={{
         Secondary: "rgb(var(--secondary))",
         Contrast: "#FFFFFF",
@@ -106,7 +106,7 @@ Each color has a scale from 50 to 900, allowing subtle variations for different 
 ```tsx
 import { colors } from '@/tokens';
 
-// Cores primárias
+// Primary colors
 colors.primary[50]   // rgba(var(--primary), 0.05)
 colors.primary[100]  // rgba(var(--primary), 0.1)
 colors.primary[200]  // rgba(var(--primary), 0.2)
@@ -118,7 +118,7 @@ colors.primary[700]  // rgb(var(--click))
 colors.primary[800]  // rgba(var(--primary), 0.8)
 colors.primary[900]  // rgba(var(--primary), 0.9)
 
-// Cores secundárias
+// Secondary colors
 colors.secondary[50]   // rgba(76, 175, 80, 0.05)
 colors.secondary[100]  // rgba(76, 175, 80, 0.1)
 colors.secondary[200]  // rgba(76, 175, 80, 0.2)

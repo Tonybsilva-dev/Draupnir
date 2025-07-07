@@ -114,6 +114,8 @@ export const colors = {
     900: 'rgba(49, 32, 2, 1)',
   },
 
+  hoverGhost: 'rgb(var(--divider-light))',
+
   // Cores de fundo
   background: {
     light: 'rgb(var(--bg-light))',
@@ -128,6 +130,7 @@ export const colors = {
     secondary: 'rgb(var(--text-secondary))',
     tertiary: 'rgb(var(--text-tertiary))',
     disabled: 'rgb(var(--text-disabled))',
+    contrast: 'rgb(var(--text-contrast))',
   },
 
   // Cores de interface

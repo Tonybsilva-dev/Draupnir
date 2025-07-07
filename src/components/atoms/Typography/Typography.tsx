@@ -79,7 +79,7 @@ const Typography = ({
   return (
     <Element
       style={{
-        color: variantColorMap[variant],
+        color: variant ? variantColorMap[variant] : 'inherit',
         fontSize: sizeFontSizeMap[size],
         fontWeight: typography.fontWeight.normal,
         lineHeight: typography.lineHeight.normal,

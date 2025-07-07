@@ -73,6 +73,7 @@ const config: Config = {
           secondary: "rgba(var(--text-secondary), <alpha-value>)",
           tertiary: "rgba(var(--text-tertiary), <alpha-value>)",
         },
+        contrast: "rgba(var(--text-contrast), <alpha-value>)",
         success: "rgba(var(--text-success), <alpha-value>)",
         error: "rgba(var(--text-error), <alpha-value>)",
         info: "rgba(var(--text-info), <alpha-value>)",

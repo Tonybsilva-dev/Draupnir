@@ -31,6 +31,8 @@ export { default as Switch } from "./molecules/Switch/Switch";
 export { type SwitchProps } from "./molecules/Switch/Switch";
 export { Select, default as SelectDefault } from "./molecules/Select/Select";
 export { type SelectProps } from "./molecules/Select/Select";
+export { Breadcrumb } from "./molecules/Breadcrumb/Breadcrumb";
+export { type BreadcrumbItemProps, type BreadcrumbSeparatorProps, type BreadcrumbHomeProps, type BreadcrumbRootProps } from "./molecules/Breadcrumb/Breadcrumb";
 
 // Organisms - Complex combinations of molecules and atoms
 export { Dropdown, default as DropdownDefault } from "./organisms/Dropdown/Dropdown";

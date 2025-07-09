@@ -160,13 +160,13 @@ export const Select = ({ children, value, onValueChange, defaultValue, disabled 
 
   // Clona o Trigger para passar o ref
   const childrenArray = Array.isArray(children) ? children : [children];
-  const newChildren = childrenArray.map(child => {
+  const newChildren = childrenArray.map((child, index) => {
     if (
       isValidElement(child) &&
       child.type &&
       (child.type as any).displayName === 'SelectTrigger'
     ) {
-      return cloneElement(child as React.ReactElement<any>, { ref: triggerRef });
+      return cloneElement(child as React.ReactElement<any>, { ref: triggerRef, key: child.key ?? index });
     }
     if (
       isValidElement(child) &&
@@ -179,9 +179,10 @@ export const Select = ({ children, value, onValueChange, defaultValue, disabled 
           minWidth: triggerWidth,
           width: triggerWidth,
         },
+        key: child.key ?? index,
       });
     }
-    return child;
+    return isValidElement(child) ? cloneElement(child, { key: child.key ?? index }) : child;
   });
 
   return (

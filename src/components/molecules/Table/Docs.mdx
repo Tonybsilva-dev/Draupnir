@@ -1,0 +1,70 @@
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks"
+import Table from './Table'
+import * as TableStories from "./Table.stories"
+
+<Meta of={TableStories} component={Table.Root}/>
+
+# Table
+
+Tabela acessível, estilizada com tokens do design system, com suporte a cabeçalho, linhas, células e striping.
+
+## Features
+- **Acessível**: Semântica correta, suporte a leitores de tela
+- **Customizável**: Cabeçalho, células, linhas, striping
+- **Tokens**: Usa tokens de cor, tipografia e espaçamento
+- **Composição**: Compound component (Root, Head, Body, Row, Cell)
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas withToolbar>
+  <Story of={TableStories.Basic} />
+  <Story of={TableStories.Striped} />
+  <Story of={TableStories.CustomHeader} />
+</Canvas>
+
+## Usage
+```tsx
+import Table from '@/components/molecules/Table';
+
+<Table.Root>
+  <Table.Head>
+    <Table.Row>
+      <Table.Cell header>ID</Table.Cell>
+      <Table.Cell header>Nome</Table.Cell>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>1</Table.Cell>
+      <Table.Cell>Antonio</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+```
+
+## Props
+
+### Table.Root
+- **children**: Elementos filhos (Head, Body)
+- **striped**: Ativa striping nas linhas (opcional)
+
+### Table.Head, Table.Body
+- **children**: Linhas da tabela
+
+### Table.Row
+- **children**: Células da linha
+- **striped**: Ativa striping para a linha (opcional)
+- **index**: Índice da linha (para striping)
+
+### Table.Cell
+- **children**: Conteúdo da célula
+- **header**: Se é cabeçalho (th) ou célula normal (td)
+
+## Best Practices
+- Sempre use `<Table.Cell header>` para cabeçalhos
+- Use `striped` e `index` para linhas alternadas
+- Prefira tokens do design system para customização
+- Garanta acessibilidade usando a estrutura correta 

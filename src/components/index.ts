@@ -37,6 +37,8 @@ export { default as DatePicker } from "./molecules/DatePicker/DatePicker";
 export { type DatePickerProps } from "./molecules/DatePicker/DatePicker";
 export { default as Pagination } from "./molecules/Pagination/Pagination";
 export { type PaginationProps } from "./molecules/Pagination/Pagination";
+export { FileUpload } from "./molecules/FileUpload/FileUpload";
+export { type FileUploadProps } from "./molecules/FileUpload/FileUpload";
 
 // Organisms - Complex combinations of molecules and atoms
 export { Dropdown, default as DropdownDefault } from "./organisms/Dropdown/Dropdown";

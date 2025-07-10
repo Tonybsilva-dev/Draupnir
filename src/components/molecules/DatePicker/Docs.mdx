@@ -10,10 +10,12 @@ Component for selecting dates or date ranges, with accessibility and keyboard na
 
 ## Example
 <Canvas withToolbar>
-  <Story of={DatePickerStories.Default} />
-  <Story of={DatePickerStories.Range} />
-  <Story of={DatePickerStories.Formats} />
-  <Story of={DatePickerStories.Disabled} />
+  <Story of={DatePickerStories.Basic} />
+</Canvas>
+
+## Interactive Example
+<Canvas withToolbar>
+  <Story of={DatePickerStories.Example} />
 </Canvas>
 
 ## Usage
@@ -38,33 +40,39 @@ import { DatePicker } from '@/components/molecules/DatePicker';
   <tbody>
     <tr>
       <td><b>value</b></td>
-      <td><code>Date | [Date, Date]</code></td>
+      <td><code>Date | undefined</code></td>
       <td>-</td>
-      <td>Selected date or date range.</td>
+      <td>Selected date.</td>
     </tr>
     <tr>
       <td><b>onChange</b></td>
-      <td><code>(date: Date | [Date, Date]) => void</code></td>
+      <td><code>(date: Date | null) => void</code></td>
       <td>-</td>
       <td>Callback called when the date changes.</td>
     </tr>
     <tr>
-      <td><b>format</b></td>
+      <td><b>placeholder</b></td>
       <td><code>string</code></td>
-      <td><code>"dd/MM/yyyy"</code></td>
-      <td>Date display format.</td>
-    </tr>
-    <tr>
-      <td><b>range</b></td>
-      <td><code>boolean</code></td>
-      <td><code>false</code></td>
-      <td>Enable date range selection.</td>
+      <td><code>"Selecione uma data"</code></td>
+      <td>Placeholder text.</td>
     </tr>
     <tr>
       <td><b>disabled</b></td>
       <td><code>boolean</code></td>
       <td><code>false</code></td>
       <td>Disable the date picker.</td>
+    </tr>
+    <tr>
+      <td><b>required</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Mark field as required.</td>
+    </tr>
+    <tr>
+      <td><b>format</b></td>
+      <td><code>"dd/MM/yyyy" | "yyyy-MM-dd"</code></td>
+      <td><code>"dd/MM/yyyy"</code></td>
+      <td>Date display format.</td>
     </tr>
     <tr>
       <td><b>minDate</b></td>
@@ -77,12 +85,6 @@ import { DatePicker } from '@/components/molecules/DatePicker';
       <td><code>Date</code></td>
       <td>-</td>
       <td>Maximum selectable date.</td>
-    </tr>
-    <tr>
-      <td><b>placeholder</b></td>
-      <td><code>string</code></td>
-      <td>-</td>
-      <td>Placeholder text.</td>
     </tr>
     <tr>
       <td><b>className</b></td>

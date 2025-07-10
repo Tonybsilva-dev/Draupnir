@@ -1,0 +1,75 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks"
+import { Tooltip } from './Tooltip'
+import * as TooltipStories from "./Tooltip.stories"
+
+<Meta of={TooltipStories} component={Tooltip}/>
+
+# Tooltip
+
+Accessible tooltip component for hints, descriptions, and extra information on hover or focus.
+
+## Example
+<Canvas withToolbar>
+  <Story of={TooltipStories.Default} />
+</Canvas>
+
+## Usage
+
+```tsx
+import { Tooltip } from '@/components/molecules/Tooltip';
+
+<Tooltip content="Tooltip text">
+  <button>Hover me</button>
+</Tooltip>
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>content</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Tooltip content to display.</td>
+    </tr>
+    <tr>
+      <td><b>position</b></td>
+      <td><code>'top' | 'right' | 'bottom' | 'left'</code></td>
+      <td><code>'top'</code></td>
+      <td>Tooltip position relative to the trigger.</td>
+    </tr>
+    <tr>
+      <td><b>delay</b></td>
+      <td><code>number</code></td>
+      <td><code>200</code></td>
+      <td>Delay in ms before showing the tooltip.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Element that triggers the tooltip.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the tooltip.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the tooltip.</td>
+    </tr>
+  </tbody>
+</table> 

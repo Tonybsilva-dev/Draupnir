@@ -1,0 +1,321 @@
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks"
+import { Breadcrumb } from './Breadcrumb'
+import * as BreadcrumbStories from "./Breadcrumb.stories"
+
+<Meta of={BreadcrumbStories} component={Breadcrumb.Root}/>
+
+# Breadcrumb
+
+The Breadcrumb component provides navigation context and helps users understand their location within a website hierarchy.
+
+## Description
+The Draupnir DS Breadcrumb offers flexible navigation with proper accessibility, semantic HTML structure, and customizable components.
+
+## Features
+- **Compound Components**: Flexible composition with Root, Item, Separator, and Home
+- **Accessibility**: Complete ARIA support with proper navigation semantics
+- **Semantic HTML**: Uses ordered lists and proper navigation structure
+- **Customizable**: Support for custom separators and home icons
+- **Responsive**: Adapts to different screen sizes
+- **Keyboard Navigation**: Full keyboard support for accessibility
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open on GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/molecules/Breadcrumb/Breadcrumb.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={BreadcrumbStories.Basic} />
+</Canvas>
+
+## Usage
+
+```tsx
+import { Breadcrumb } from '@/components/molecules/Breadcrumb';
+
+<Breadcrumb.Root>
+  <Breadcrumb.Home />
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item isCurrent>Current Page</Breadcrumb.Item>
+</Breadcrumb.Root>
+```
+
+## Props
+
+### Breadcrumb.Root
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Breadcrumb items and separators to be rendered.</td>
+    </tr>
+    <tr>
+      <td><b>label</b></td>
+      <td><code>string</code></td>
+      <td><code>"Breadcrumb navigation"</code></td>
+      <td>Accessibility label for the navigation element.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the navigation.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the navigation.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Breadcrumb.Item
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>href</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>URL for the breadcrumb item. If provided, renders as a link.</td>
+    </tr>
+    <tr>
+      <td><b>isCurrent</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Indicates if this is the current page. Adds aria-current="page".</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be rendered inside the breadcrumb item.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the item.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the item.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Breadcrumb.Home
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>href</b></td>
+      <td><code>string</code></td>
+      <td><code>"/"</code></td>
+      <td>URL for the home page link.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td><code>Home icon</code></td>
+      <td>Content to be rendered. Defaults to home icon if not provided.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the home item.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the home item.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Breadcrumb.Separator
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td><code>ChevronRight icon</code></td>
+      <td>Custom separator content. Defaults to chevron icon if not provided.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the separator.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the separator.</td>
+    </tr>
+  </tbody>
+</table>
+
+## Accessibility
+
+The Breadcrumb component follows WCAG guidelines and provides:
+
+- **Semantic HTML**: Uses `<nav>` and `<ol>` elements for proper structure
+- **ARIA Labels**: Customizable navigation labels
+- **Current Page**: `aria-current="page"` for the current page item
+- **Screen Reader Support**: Hidden text for current page indication
+- **Keyboard Navigation**: Full keyboard support for all interactive elements
+- **Focus Management**: Proper focus indicators and management
+
+## Testing Props in Storybook
+
+To test individual component props in Storybook, navigate to:
+
+- **BreadcrumbItem**: `Components/Molecules/Breadcrumb/BreadcrumbItem`
+- **BreadcrumbHome**: `Components/Molecules/Breadcrumb/BreadcrumbHome`
+
+These individual component stories allow you to:
+- Toggle the `isCurrent` prop for BreadcrumbItem
+- Modify the `href` prop for both components
+- Change the `children` content
+- See real-time updates in the Storybook controls
+
+## Best Practices
+
+1. **Always include the current page** as the last item with `isCurrent={true}`
+2. **Use descriptive labels** for better accessibility
+3. **Keep breadcrumbs concise** - avoid too many levels
+4. **Provide meaningful URLs** for all clickable items
+5. **Test with screen readers** to ensure proper navigation
+6. **Consider mobile layouts** - breadcrumbs should be responsive
+
+## Examples
+
+### Basic Navigation
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.Home />
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item isCurrent>Current Page</Breadcrumb.Item>
+</Breadcrumb.Root>
+```
+
+### Deep Navigation
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.Home />
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="/store">Store</Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="/store/electronics">Electronics</Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item href="/store/electronics/computers">Computers</Breadcrumb.Item>
+  <Breadcrumb.Separator />
+  <Breadcrumb.Item isCurrent>MacBook Pro</Breadcrumb.Item>
+</Breadcrumb.Root>
+```
+
+### Custom Separator
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.Home />
+  <Breadcrumb.Separator>/</Breadcrumb.Separator>
+  <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+  <Breadcrumb.Separator>/</Breadcrumb.Separator>
+  <Breadcrumb.Item isCurrent>Current Page</Breadcrumb.Item>
+</Breadcrumb.Root>
+```
+
+### Individual Component Usage
+
+#### Breadcrumb.Item as Link
+```tsx
+<Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+```
+
+#### Breadcrumb.Item as Current Page
+```tsx
+<Breadcrumb.Item isCurrent>Current Page</Breadcrumb.Item>
+```
+
+#### Breadcrumb.Home with Default Icon
+```tsx
+<Breadcrumb.Home />
+```
+
+#### Breadcrumb.Home with Custom Content
+```tsx
+<Breadcrumb.Home>🏠 Home</Breadcrumb.Home>
+```
+
+#### Breadcrumb.Home with Custom URL
+```tsx
+<Breadcrumb.Home href="/dashboard">Dashboard</Breadcrumb.Home>
+```
+
+#### Breadcrumb.Separator with Default Icon
+```tsx
+<Breadcrumb.Separator />
+```
+
+#### Breadcrumb.Separator with Custom Content
+```tsx
+<Breadcrumb.Separator>→</Breadcrumb.Separator>
+``` 

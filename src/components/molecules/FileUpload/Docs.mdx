@@ -1,0 +1,91 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks"
+import { FileUpload } from './FileUpload'
+import * as FileUploadStories from "./FileUpload.stories"
+
+<Meta of={FileUploadStories} component={FileUpload}/>
+
+# FileUpload
+
+Component for uploading multiple files with drag & drop, accessibility, and a visual file list.
+
+> **Note:** Both `<FileUpload />` and `<FileUpload.List />` must be used inside a `<FileUploadProvider>`. This allows you to position the list anywhere in your interface.
+
+## Example
+<Canvas withToolbar>
+  <Story of={FileUploadStories.ComLista} />
+</Canvas>
+
+## Usage
+
+```tsx
+import { FileUploadProvider } from '@/contexts/FileUploadContext';
+import { FileUpload } from '@/components/molecules/FileUpload';
+
+<FileUploadProvider>
+  <FileUpload accept="image/*" />
+  <FileUpload.List />
+</FileUploadProvider>
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>accept</b></td>
+      <td><code>string</code></td>
+      <td><code>undefined</code></td>
+      <td>Accepted file types (e.g. "image/*", ".pdf,.doc")</td>
+    </tr>
+    <tr>
+      <td><b>multiple</b></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code></td>
+      <td>Allow selection of multiple files.</td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disable the upload component.</td>
+    </tr>
+    <tr>
+      <td><b>maxSizeMB</b></td>
+      <td><code>number</code></td>
+      <td><code>10</code></td>
+      <td>Maximum file size in MB.</td>
+    </tr>
+    <tr>
+      <td><b>onFilesChange</b></td>
+      <td><code>(files: File[]) => void</code></td>
+      <td><code>undefined</code></td>
+      <td>Callback called when files are selected.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Additional content (e.g. FileUpload.List).</td>
+    </tr>
+  </tbody>
+</table> 

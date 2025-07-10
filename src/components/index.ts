@@ -31,6 +31,14 @@ export { default as Switch } from "./molecules/Switch/Switch";
 export { type SwitchProps } from "./molecules/Switch/Switch";
 export { Select, default as SelectDefault } from "./molecules/Select/Select";
 export { type SelectProps } from "./molecules/Select/Select";
+export { Breadcrumb } from "./molecules/Breadcrumb/Breadcrumb";
+export { type BreadcrumbItemProps, type BreadcrumbSeparatorProps, type BreadcrumbHomeProps, type BreadcrumbRootProps } from "./molecules/Breadcrumb/Breadcrumb";
+export { default as DatePicker } from "./molecules/DatePicker/DatePicker";
+export { type DatePickerProps } from "./molecules/DatePicker/DatePicker";
+export { default as Pagination } from "./molecules/Pagination/Pagination";
+export { type PaginationProps } from "./molecules/Pagination/Pagination";
+export { FileUpload } from "./molecules/FileUpload/FileUpload";
+export { type FileUploadProps } from "./molecules/FileUpload/FileUpload";
 
 // Organisms - Complex combinations of molecules and atoms
 export { Dropdown, default as DropdownDefault } from "./organisms/Dropdown/Dropdown";

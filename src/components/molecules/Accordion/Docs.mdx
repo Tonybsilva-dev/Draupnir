@@ -1,0 +1,138 @@
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks"
+import { Accordion } from './Accordion'
+import * as AccordionStories from "./Accordion.stories"
+
+<Meta of={AccordionStories} component={Accordion}/>
+
+# Accordion
+
+The Accordion component organizes content into collapsible sections, allowing users to expand or collapse items as needed. It is fully accessible, animated, and visually consistent with the Draupnir Design System.
+
+## Description
+The Draupnir DS Accordion provides accessible, animated, and customizable collapsible sections for advanced content organization.
+
+## Features
+- **Accessible:** WAI-ARIA compliant, keyboard navigation
+- **Animated:** Smooth open/close transitions and icon rotation
+- **Composable:** Built with Radix UI primitives
+- **Customizable:** Full control over appearance using tokens and CSS
+- **Flexible:** Single or multiple open items
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas withToolbar>
+  <Story of={AccordionStories.Basic} />
+</Canvas>
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/molecules/Accordion';
+
+<Accordion type="single" defaultValue="item-1" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionHeader>
+      <AccordionTrigger>Getting Started</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>
+      Content for item 1
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>type</b></td>
+      <td><code>'single' | 'multiple'</code></td>
+      <td><code>'single'</code></td>
+      <td>Whether it allows one or multiple items open</td>
+    </tr>
+    <tr>
+      <td><b>defaultValue</b></td>
+      <td><code>string | string[]</code></td>
+      <td>-</td>
+      <td>Initial value(s) of the open item(s)</td>
+    </tr>
+    <tr>
+      <td><b>value</b></td>
+      <td><code>string | string[]</code></td>
+      <td>-</td>
+      <td>Controlled value(s) of the open item(s)</td>
+    </tr>
+    <tr>
+      <td><b>collapsible</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Allows all items to be closed (only for 'single')</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Accordion items</td>
+    </tr>
+  </tbody>
+</table>
+
+## Subcomponents
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Component</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>AccordionItem</b></td>
+      <td>value</td>
+      <td><code>string</code></td>
+      <td>Unique value for the item</td>
+    </tr>
+    <tr>
+      <td><b>AccordionHeader</b></td>
+      <td>children</td>
+      <td><code>ReactNode</code></td>
+      <td>Header content (usually a Trigger)</td>
+    </tr>
+    <tr>
+      <td><b>AccordionTrigger</b></td>
+      <td>children</td>
+      <td><code>ReactNode</code></td>
+      <td>Content of the trigger button</td>
+    </tr>
+    <tr>
+      <td><b>AccordionContent</b></td>
+      <td>children</td>
+      <td><code>ReactNode</code></td>
+      <td>Expandable content</td>
+    </tr>
+  </tbody>
+</table>
+
+## Accessibility
+The Accordion automatically follows the WAI-ARIA pattern via Radix UI, ensuring keyboard navigation and screen reader support.

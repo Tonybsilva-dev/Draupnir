@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks"
+import { DatePicker } from './DatePicker'
+import * as DatePickerStories from "./DatePicker.stories"
+
+<Meta of={DatePickerStories} component={DatePicker}/>
+
+# DatePicker
+
+Component for selecting dates or date ranges, with accessibility and keyboard navigation support.
+
+## Example
+<Canvas withToolbar>
+  <Story of={DatePickerStories.Default} />
+  <Story of={DatePickerStories.Range} />
+  <Story of={DatePickerStories.Formats} />
+  <Story of={DatePickerStories.Disabled} />
+</Canvas>
+
+## Usage
+
+```tsx
+import { DatePicker } from '@/components/molecules/DatePicker';
+
+<DatePicker />
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>value</b></td>
+      <td><code>Date | [Date, Date]</code></td>
+      <td>-</td>
+      <td>Selected date or date range.</td>
+    </tr>
+    <tr>
+      <td><b>onChange</b></td>
+      <td><code>(date: Date | [Date, Date]) => void</code></td>
+      <td>-</td>
+      <td>Callback called when the date changes.</td>
+    </tr>
+    <tr>
+      <td><b>format</b></td>
+      <td><code>string</code></td>
+      <td><code>"dd/MM/yyyy"</code></td>
+      <td>Date display format.</td>
+    </tr>
+    <tr>
+      <td><b>range</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Enable date range selection.</td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disable the date picker.</td>
+    </tr>
+    <tr>
+      <td><b>minDate</b></td>
+      <td><code>Date</code></td>
+      <td>-</td>
+      <td>Minimum selectable date.</td>
+    </tr>
+    <tr>
+      <td><b>maxDate</b></td>
+      <td><code>Date</code></td>
+      <td>-</td>
+      <td>Maximum selectable date.</td>
+    </tr>
+    <tr>
+      <td><b>placeholder</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Placeholder text.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles.</td>
+    </tr>
+  </tbody>
+</table> 

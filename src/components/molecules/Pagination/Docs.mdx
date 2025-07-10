@@ -1,0 +1,92 @@
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import Pagination from './Pagination';
+import * as PaginationStories from "./Pagination.stories";
+
+<Meta of={PaginationStories} component={Pagination}/>
+
+# Pagination
+
+The Pagination component enables navigation between pages of content, supporting accessibility and custom controls.
+
+## Description
+The Draupnir DS Pagination provides accessible navigation for multi-page content, with support for page numbers, first/last controls, and keyboard navigation.
+
+## Features
+- **Page navigation:** Next, previous, first, last controls
+- **Page numbers:** Show/hide page numbers
+- **Customizable:** Total pages, current page, showFirstLast, showNumbers
+- **Accessibility:** ARIA labels, keyboard navigation
+- **Controlled:** Fully controlled current page state
+
+## Component
+<Primary />
+<Controls />
+
+## Example
+<Canvas withToolbar>
+  <Story of={PaginationStories.Example} />
+</Canvas>
+
+## Usage
+```tsx
+import Pagination from '@/components/molecules/Pagination';
+
+<Pagination page={1} totalPages={10} onPageChange={setPage} />
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>page</b></td>
+      <td><code>number</code></td>
+      <td><code>1</code></td>
+      <td>Current page (controlled).</td>
+    </tr>
+    <tr>
+      <td><b>totalPages</b></td>
+      <td><code>number</code></td>
+      <td><code>1</code></td>
+      <td>Total number of pages.</td>
+    </tr>
+    <tr>
+      <td><b>onPageChange</b></td>
+      <td><code>(page: number) =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback when the page changes.</td>
+    </tr>
+    <tr>
+      <td><b>showFirstLast</b></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code></td>
+      <td>Show first/last page buttons.</td>
+    </tr>
+    <tr>
+      <td><b>showNumbers</b></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code></td>
+      <td>Show page numbers.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the container.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Inline styles for the container.</td>
+    </tr>
+  </tbody>
+</table> 

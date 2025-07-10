@@ -143,13 +143,13 @@ export const Dropdown = ({ children, onOpenChange }: DropdownProps) => {
 
   // Clona Trigger e Content para passar ref e largura
   const childrenArray = Array.isArray(children) ? children : [children];
-  const newChildren = childrenArray.map(child => {
+  const newChildren = childrenArray.map((child, index) => {
     if (
       isValidElement(child) &&
       child.type &&
       (child.type as any).displayName === 'DropdownTrigger'
     ) {
-      return cloneElement(child as React.ReactElement<any>, { ref: triggerRef });
+      return cloneElement(child as React.ReactElement<any>, { ref: triggerRef, key: child.key ?? index });
     }
     if (
       isValidElement(child) &&
@@ -162,9 +162,10 @@ export const Dropdown = ({ children, onOpenChange }: DropdownProps) => {
           minWidth: triggerWidth,
           // width removido para permitir expansão do conteúdo
         },
+        key: child.key ?? index,
       });
     }
-    return child;
+    return isValidElement(child) ? cloneElement(child, { key: child.key ?? index }) : child;
   });
 
   return (

@@ -1,0 +1,111 @@
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import DatePicker from './DatePicker';
+import * as DatePickerStories from "./DatePicker.stories";
+
+<Meta of={DatePickerStories} component={DatePicker}/>
+
+# DatePicker
+
+The DatePicker component allows users to select a date from a calendar or input field, supporting accessibility and multiple formats.
+
+## Description
+The Draupnir DS DatePicker provides an accessible, interactive calendar, supports date ranges, and allows for custom formats, making it ideal for forms and scheduling interfaces.
+
+## Features
+- **Calendar selection:** Interactive calendar popup
+- **Manual input:** Accepts direct date typing
+- **Date range:** minDate and maxDate support
+- **Formats:** "dd/MM/yyyy" and "yyyy-MM-dd"
+- **Accessibility:** ARIA labels, keyboard navigation
+- **Customizable:** Placeholder, disabled, required
+
+## Component
+<Primary />
+<Controls />
+
+## Example
+<Canvas withToolbar>
+  <Story of={DatePickerStories.Example} />
+</Canvas>
+
+## Usage
+```tsx
+import DatePicker from '@/components/molecules/DatePicker';
+
+<DatePicker value={date} onChange={setDate} />
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>value</b></td>
+      <td><code>Date | undefined</code></td>
+      <td>-</td>
+      <td>Selected date (controlled).</td>
+    </tr>
+    <tr>
+      <td><b>onChange</b></td>
+      <td><code>(date: Date | null) =&gt; void</code></td>
+      <td>-</td>
+      <td>Callback when a date is selected or cleared.</td>
+    </tr>
+    <tr>
+      <td><b>placeholder</b></td>
+      <td><code>string</code></td>
+      <td><code>"Selecione uma data"</code></td>
+      <td>Input placeholder text.</td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disables the input and calendar.</td>
+    </tr>
+    <tr>
+      <td><b>required</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Makes the field required.</td>
+    </tr>
+    <tr>
+      <td><b>minDate</b></td>
+      <td><code>Date</code></td>
+      <td>-</td>
+      <td>Minimum selectable date.</td>
+    </tr>
+    <tr>
+      <td><b>maxDate</b></td>
+      <td><code>Date</code></td>
+      <td>-</td>
+      <td>Maximum selectable date.</td>
+    </tr>
+    <tr>
+      <td><b>format</b></td>
+      <td><code>"dd/MM/yyyy" | "yyyy-MM-dd"</code></td>
+      <td><code>"dd/MM/yyyy"</code></td>
+      <td>Date display and input format.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the input.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Inline styles for the input.</td>
+    </tr>
+  </tbody>
+</table> 

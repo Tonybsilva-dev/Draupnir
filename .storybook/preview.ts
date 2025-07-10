@@ -34,7 +34,7 @@ const preview: Preview = {
             "Molecules",
             ["Input", "Link", "Loading", "Notice", "Switch"],
             "Organisms",
-            ["Dropdown", "Header", "Modal", "SubtitlePage", "TitlePage"],
+            ["Breadcrumb", "DatePicker", "Dropdown", "Header", "Modal", "Pagination", "SubtitlePage", "TitlePage"],
             "Templates",
           ],
         ],

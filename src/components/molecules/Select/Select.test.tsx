@@ -51,7 +51,7 @@ describe('Select', () => {
     renderSelect();
     const trigger = screen.getByRole('combobox');
     expect(trigger).toHaveStyle('display: flex');
-    expect(trigger).toHaveStyle('height: 32px');
+    expect(trigger).toHaveStyle('height: 44px');
     expect(trigger).toHaveStyle('width: 100%');
     expect(trigger).toHaveStyle('align-items: center');
     expect(trigger).toHaveStyle('justify-content: space-between');

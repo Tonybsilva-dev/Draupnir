@@ -11,7 +11,6 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, React.ComponentPro
       ref={ref}
       className={['AccordionItem', className].filter(Boolean).join(' ')}
       style={{
-        borderBottom: `${borders.sm} solid ${colors.divider.default}`,
         background: colors.background.light,
       }}
       {...props}

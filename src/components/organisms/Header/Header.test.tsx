@@ -31,13 +31,10 @@ describe('Header', () => {
 
     it('renderiza o botão de internacionalização com ícone de globo', () => {
       render(<Header />);
-      // Usa getAllByRole e filtra pelo ícone de globo
-      const buttons = screen.getAllByRole('button', { name: /\[object Object\] button/i });
-      const globeButton = buttons.find(button =>
-        button.querySelector('svg[class*="lucide-globe"]')
-      );
+      // Busca pelo aria-label
+      const globeButton = screen.getByLabelText(/Internacionalização/i);
       expect(globeButton).toBeInTheDocument();
-      expect(globeButton?.querySelector('svg')).toBeInTheDocument();
+      expect(globeButton.querySelector('svg')).toBeInTheDocument();
     });
 
     it('renderiza o botão de login com Typography', () => {
@@ -53,13 +50,10 @@ describe('Header', () => {
   describe('Dropdown de Internacionalização', () => {
     it('abre o dropdown de idiomas e mostra as opções', async () => {
       render(<Header />);
-      // Usa getAllByRole e filtra pelo ícone de globo
-      const buttons = screen.getAllByRole('button', { name: /\[object Object\] button/i });
-      const globeButton = buttons.find(button =>
-        button.querySelector('svg[class*="lucide-globe"]')
-      );
+      // Busca pelo aria-label
+      const globeButton = screen.getByLabelText(/Internacionalização/i);
       expect(globeButton).toBeInTheDocument();
-      await user.click(globeButton!);
+      await user.click(globeButton);
       expect(screen.getByText(/ENGLISH/i)).toBeInTheDocument();
       expect(screen.getByText(/SPANISH/i)).toBeInTheDocument();
       expect(screen.getByText(/PORTUGUESE/i)).toBeInTheDocument();

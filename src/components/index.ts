@@ -39,6 +39,9 @@ export { default as Pagination } from "./molecules/Pagination/Pagination";
 export { type PaginationProps } from "./molecules/Pagination/Pagination";
 export { FileUpload } from "./molecules/FileUpload/FileUpload";
 export { type FileUploadProps } from "./molecules/FileUpload/FileUpload";
+export { Accordion } from "./molecules/Accordion/Accordion";
+export { Tabs } from "./molecules/Tabs/Tabs";
+export { type TabsProps } from "./molecules/Tabs/Tabs";
 
 // Organisms - Complex combinations of molecules and atoms
 export { Dropdown, default as DropdownDefault } from "./organisms/Dropdown/Dropdown";
@@ -49,6 +52,7 @@ export { default as SubtitlePage } from "./organisms/SubtitlePage/SubtitlePage";
 export { type SubtitlePageProps } from "./organisms/SubtitlePage/SubtitlePage";
 export { default as TitlePage } from './organisms/TitlePage/TitlePage'
 export { type TitlePageProps } from "./organisms/TitlePage/TitlePage";
+export { Header } from "./organisms/Header/Header";
 
 // Design System exports
 export * from '../tokens';

@@ -17,13 +17,16 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(({ class
     ref={ref}
     style={{
       display: 'flex',
-      height: spacing[6],
+      height: '44px',
       width: '100%',
       alignItems: 'center',
       justifyContent: 'space-between',
       border: `${borders.sm} solid ${colors.divider.default}`,
       background: colors.background.light,
-      padding: `${spacing[2]} ${spacing[3]}`,
+      paddingLeft: spacing[5],
+      paddingRight: spacing[5],
+      paddingTop: 0,
+      paddingBottom: 0,
       fontSize: '14px',
       borderRadius: '0',
       outline: 'none',

@@ -112,7 +112,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
         ...style,
       }}
       className={`${className ?? ''} ${variant === 'ghost' ? 'button-ghost' : ''}`}
-      aria-label={asChild ? undefined : generateAriaLabel()}
+      aria-label={props['aria-label'] ?? (asChild ? undefined : generateAriaLabel())}
       aria-describedby={asChild ? undefined : (isLoading ? "loading-description" : undefined)}
       aria-pressed={asChild ? undefined : (isToggle ? pressed : undefined)}
       aria-busy={asChild ? undefined : isLoading}

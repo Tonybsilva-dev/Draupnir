@@ -5,8 +5,7 @@ import Divider from '../../atoms/Divider/Divider';
 import { Button } from '../../atoms/Button/Button';
 import { Badge } from '../../atoms/Badge/Badge';
 import Dropdown from '../Dropdown/Dropdown';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../../molecules/Accordion';
-import { Home, LayoutDashboard, Layers, CheckSquare, BarChart2, Users, LifeBuoy, Settings, LogOut, ChevronDown, SearchIcon } from 'lucide-react';
+import { Home, Layers, CheckSquare, BarChart2, Users, LifeBuoy, Settings, LogOut, ChevronDown, SearchIcon } from 'lucide-react';
 import { colors, spacing, borders, borderRadius, typography } from '../../../tokens';
 import React from 'react';
 

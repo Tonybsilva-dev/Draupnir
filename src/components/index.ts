@@ -40,7 +40,6 @@ export { type PaginationProps } from "./molecules/Pagination/Pagination";
 export { FileUpload } from "./molecules/FileUpload/FileUpload";
 export { type FileUploadProps } from "./molecules/FileUpload/FileUpload";
 export { Accordion } from "./molecules/Accordion/Accordion";
-export { type AccordionProps } from "./molecules/Accordion/Accordion";
 export { Tabs } from "./molecules/Tabs/Tabs";
 export { type TabsProps } from "./molecules/Tabs/Tabs";
 

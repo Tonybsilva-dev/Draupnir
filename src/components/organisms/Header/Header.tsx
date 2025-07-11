@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import { Input } from '../../molecules/Input/Input';
 import { Button } from '../../atoms/Button/Button';
-import Box from '../../atoms/Box/Box';
 import { SearchIcon, Globe, User, Settings as SettingsIcon, LogOut } from 'lucide-react';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Typography from '../../atoms/Typography/Typography';

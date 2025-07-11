@@ -1,0 +1,225 @@
+import { Meta, Story, Primary, Canvas, Controls } from "@storybook/addon-docs/blocks"
+import { Tabs } from './Tabs'
+import * as TabsStories from "./Tabs.stories"
+
+<Meta of={TabsStories} component={Tabs}/>
+
+# Tabs
+
+The Tabs component provides a way to organize content into multiple sections that can be switched between.
+
+## Description
+The Draupnir DS Tabs component offers flexible tab layouts with smooth transitions and complete accessibility support for organizing content into navigable sections.
+
+## Features
+- **Accessibility**: Complete ARIA support with proper roles and attributes
+- **Orientation**: Horizontal and vertical tab layouts
+- **Smooth transitions**: CSS transitions for tab switching
+- **Customizable**: Flexible styling and behavior options
+- **Keyboard navigation**: Full keyboard support
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas additionalActions={[
+    {
+      title: 'Open on GitHub',
+      onClick: () => {
+        window.open(
+          'https://github.com/Tonybsilva-dev/Draupnir/blob/master/src/components/molecules/Tabs/Tabs.tsx',
+          '_blank'
+        );
+      },
+    }
+  ]}
+  withToolbar>
+  <Story of={TabsStories.Basic} />
+  <Story of={TabsStories.Vertical} />
+  <Story of={TabsStories.RichContent} />
+  <Story of={TabsStories.NoDefaultTab} />
+</Canvas>
+
+## Usage
+
+```tsx
+import { Tabs } from '@/components/molecules/Tabs';
+
+<Tabs defaultActiveTab="tab1">
+  <Tabs.List>
+    <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
+    <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="tab1">Content 1</Tabs.Content>
+  <Tabs.Content value="tab2">Content 2</Tabs.Content>
+</Tabs>
+```
+
+## Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>defaultActiveTab</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>The default active tab value.<br/><b>Examples:</b> <code>"tab1"</code>, <code>"overview"</code></td>
+    </tr>
+    <tr>
+      <td><b>orientation</b></td>
+      <td><code>"horizontal" | "vertical"</code></td>
+      <td><code>"horizontal"</code></td>
+      <td>Orientation of the tabs.<br/><b>Examples:</b> <code>"horizontal"</code>, <code>"vertical"</code></td>
+    </tr>
+    <tr>
+      <td><b>onTabChange</b></td>
+      <td><code>(activeTab: string) => void</code></td>
+      <td>-</td>
+      <td>Callback fired when active tab changes.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Tab content to be rendered.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the tabs container.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the tabs container.</td>
+    </tr>
+  </tbody>
+</table>
+
+### TabList Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Tab triggers to be rendered in the list.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the tab list.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the tab list.</td>
+    </tr>
+  </tbody>
+</table>
+
+### TabTrigger Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>value</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Unique value for the tab trigger.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be displayed in the tab trigger.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the tab trigger.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the tab trigger.</td>
+    </tr>
+    <tr>
+      <td><b>...props</b></td>
+      <td><code>button props</code></td>
+      <td>-</td>
+      <td>Any other valid button attributes (onClick, disabled, etc).</td>
+    </tr>
+  </tbody>
+</table>
+
+### TabContent Props
+
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>value</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Value that matches the corresponding tab trigger.</td>
+    </tr>
+    <tr>
+      <td><b>children</b></td>
+      <td><code>React.ReactNode</code></td>
+      <td>-</td>
+      <td>Content to be displayed when the tab is active.</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Additional CSS classes for the content area.</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>React.CSSProperties</code></td>
+      <td>-</td>
+      <td>Additional inline styles for the content area.</td>
+    </tr>
+  </tbody>
+</table> 

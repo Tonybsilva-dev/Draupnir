@@ -1,0 +1,65 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks'
+import Sidebar from './Sidebar'
+import * as SidebarStories from './Sidebar.stories'
+
+<Meta of={SidebarStories} component={Sidebar}/>
+
+# Sidebar
+
+The Sidebar component provides a vertical navigation menu with logo, navigation links, notification badge, and logout action. It is fully styled with Draupnir tokens and ready for use in dashboards and applications.
+
+## Description
+The Draupnir DS Sidebar is a vertical navigation component for layouts, featuring logo/avatar, navigation links, notification badges, and quick actions.
+
+## Features
+- **Vertical navigation:** For dashboards and apps
+- **Logo/avatar:** Top branding
+- **Navigation links:** With icons and badges
+- **Logout action:** Quick access at the bottom
+- **Customizable:** Uses Draupnir tokens for full theming
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas withToolbar>
+  <Story of={SidebarStories.Basic} />
+</Canvas>
+
+## Usage
+```tsx
+import Sidebar from '@/components/organisms/Sidebar/Sidebar';
+
+<Sidebar />
+```
+
+## Props
+
+| Prop      | Type   | Default | Description                |
+|-----------|--------|---------|----------------------------|
+| -         | -      | -       | Sidebar has no props yet   |
+
+## Subcomponents
+
+| Component    | Description                       |
+|--------------|-----------------------------------|
+| SidebarLink  | Internal link with icon and badge |
+
+## Accessibility
+- Uses semantic HTML for navigation and actions
+- All links and buttons are keyboard accessible
+- Uses proper color contrast and focus states
+
+## Styling & Animation
+- Uses Draupnir tokens for color, spacing, border, and typography
+- Add this to your globals.css for hover effect:
+
+```css
+.sidebar-link:hover,
+.sidebar-link:focus {
+  background: rgb(var(--divider-light));
+  color: rgb(var(--primary));
+  text-decoration: none;
+}
+``` 

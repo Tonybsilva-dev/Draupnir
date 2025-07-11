@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef } from 'react';
 import { FileWithStatus, FileStatus, useFileUploadContext, FileUploadProvider } from '../../../contexts/FileUploadContext';
 import { cn } from '../../../utils/cn';
 import { colors, borderRadius, spacing, typography } from '../../../tokens';
@@ -46,23 +46,20 @@ function FileUploadRoot({
     clearFiles,
   } = useFileUploadContext();
 
-  const handleFiles = useCallback(
-    (fileList: FileList | File[]) => {
-      const arr = Array.from(fileList);
-      const validFiles = arr.filter(f => f.size <= maxSizeMB * 1024 * 1024);
-      const invalidFiles = arr.filter(f => f.size > maxSizeMB * 1024 * 1024);
-      if (invalidFiles.length > 0) {
-        setError(`O arquivo "${invalidFiles[0].name}" excede o tamanho máximo de ${maxSizeMB}MB.`);
-      } else {
-        setError(undefined);
-      }
-      if (validFiles.length > 0) {
-        addFiles(validFiles);
-        onFilesChange?.([...files, ...validFiles].map(f => ('file' in f ? f.file : f)));
-      }
-    },
-    [addFiles, setError, maxSizeMB, onFilesChange, files]
-  );
+  const handleFiles = (fileList: FileList | File[]) => {
+    const arr = Array.from(fileList);
+    const validFiles = arr.filter(f => f.size <= maxSizeMB * 1024 * 1024);
+    const invalidFiles = arr.filter(f => f.size > maxSizeMB * 1024 * 1024);
+    if (invalidFiles.length > 0) {
+      setError(`O arquivo "${invalidFiles[0].name}" excede o tamanho máximo de ${maxSizeMB}MB.`);
+    } else {
+      setError(undefined);
+    }
+    if (validFiles.length > 0) {
+      addFiles(validFiles);
+      onFilesChange?.([...files, ...validFiles].map(f => ('file' in f ? f.file : f)));
+    }
+  };
 
   const onDrop = (e: React.DragEvent) => {
     e.preventDefault();

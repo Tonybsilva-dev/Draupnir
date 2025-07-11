@@ -1,0 +1,88 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import { EmptyState } from './EmptyState';
+import * as EmptyStateStories from './EmptyState.stories';
+import { Inbox } from 'lucide-react';
+
+<Meta of={EmptyStateStories} component={EmptyState} />
+
+# EmptyState
+
+## Description
+EmptyState is a component to display empty states in lists, tables, or pages. It composes icon, title, description, and action in an accessible and customizable visual block.
+
+## Features
+- Customizable icon, title, description, and action
+- Uses lucide-react icons
+- Fully accessible
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas>
+  <Story of={EmptyStateStories.Default} />
+  <Story of={EmptyStateStories.CustomIcon} />
+  <Story of={EmptyStateStories.CustomAction} />
+</Canvas>
+
+## Usage
+```tsx
+import { EmptyState } from '@/components/organisms/EmptyState';
+
+<EmptyState />
+<EmptyState title="No results" description="Please try again later." />
+```
+
+## Props
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>icon</b></td>
+      <td><code>ReactNode</code></td>
+      <td><code>&lt;Inbox /&gt;</code></td>
+      <td>Illustrative icon</td>
+    </tr>
+    <tr>
+      <td><b>title</b></td>
+      <td><code>string</code></td>
+      <td><code>'No data found'</code></td>
+      <td>Empty state title</td>
+    </tr>
+    <tr>
+      <td><b>description</b></td>
+      <td><code>string</code></td>
+      <td>Default message</td>
+      <td>Empty state description</td>
+    </tr>
+    <tr>
+      <td><b>action</b></td>
+      <td><code>ReactNode</code></td>
+      <td>Button "Add new item"</td>
+      <td>Main action (optional)</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>CSSProperties</code></td>
+      <td>-</td>
+      <td>Custom style</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Custom class</td>
+    </tr>
+  </tbody>
+</table>
+
+## Accessibility
+Always provide a clear title and description to ensure accessibility for users. 

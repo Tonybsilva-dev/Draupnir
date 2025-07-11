@@ -1,0 +1,105 @@
+import { Meta, Story, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import { ButtonIcon } from './ButtonIcon';
+import * as ButtonIconStories from './ButtonIcon.stories';
+import { Plus } from 'lucide-react';
+
+<Meta of={ButtonIconStories} component={ButtonIcon} />
+
+# ButtonIcon
+
+## Description
+ButtonIcon is a minimalist button that displays only an icon, ideal for quick actions, toolbars, and cards. It offers full accessibility via `aria-label` and supports multiple variants and sizes.
+
+## Features
+- Icon only, no text
+- Accessibility support via `aria-label`
+- Variants: ghost, outline, primary, danger
+- Sizes: sm, md, lg
+
+## Component
+<Primary />
+<Controls />
+
+## Examples
+<Canvas>
+  <Story of={ButtonIconStories.Variants} />
+  <Story of={ButtonIconStories.Sizes} />
+</Canvas>
+
+## Usage
+```tsx
+import { ButtonIcon } from '@/components/atoms/ButtonIcon';
+import { Plus } from 'lucide-react';
+
+<ButtonIcon icon={<Plus />} aria-label="Add" />
+```
+
+## Props
+<table style={{ width: '100%', borderCollapse: 'collapse', margin: '1.5rem 0' }}>
+  <thead>
+    <tr style={{ background: '#f7f7fa' }}>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Prop</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Type</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Default</th>
+      <th style={{ textAlign: 'left', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>icon</b></td>
+      <td><code>ReactNode</code></td>
+      <td>-</td>
+      <td>Icon to be displayed</td>
+    </tr>
+    <tr>
+      <td><b>aria-label</b></td>
+      <td><code>string</code> <i>(required)</i></td>
+      <td>-</td>
+      <td>Accessible description for screen readers</td>
+    </tr>
+    <tr>
+      <td><b>variant</b></td>
+      <td><code>"ghost" | "outline" | "primary" | "secondary" | "danger"</code></td>
+      <td><code>"ghost"</code></td>
+      <td>Visual variant of the button</td>
+    </tr>
+    <tr>
+      <td><b>size</b></td>
+      <td><code>"sm" | "md" | "lg"</code></td>
+      <td><code>"md"</code></td>
+      <td>Button size</td>
+    </tr>
+    <tr>
+      <td><b>disabled</b></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Disables the button</td>
+    </tr>
+    <tr>
+      <td><b>className</b></td>
+      <td><code>string</code></td>
+      <td>-</td>
+      <td>Custom CSS class</td>
+    </tr>
+    <tr>
+      <td><b>style</b></td>
+      <td><code>CSSProperties</code></td>
+      <td>-</td>
+      <td>Custom style</td>
+    </tr>
+    <tr>
+      <td><b>...props</b></td>
+      <td><code>button props</code></td>
+      <td>-</td>
+      <td>Other attributes of the <code>button</code> element</td>
+    </tr>
+  </tbody>
+</table>
+
+## Accessibility
+Always provide a descriptive <code>aria-label</code> to ensure accessibility for users.
+
+## Accessibility Example
+```tsx
+<ButtonIcon icon={<Plus />} aria-label="Add" />
+``` 

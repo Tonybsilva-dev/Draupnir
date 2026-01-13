@@ -58,7 +58,7 @@
     "autoprefixer": "^10.4.17",
     "babel-jest": "^30.0.4",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "16.0.3",
     "eslint-plugin-storybook": "^0.6.15",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
